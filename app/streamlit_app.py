@@ -12,7 +12,7 @@ from pathlib import Path
 from streamlit_ace import st_ace
 
 # --- Page setup ---
-st.set_page_config(page_title="Mini Python Playground", page_icon="💻", layout="centered")
+st.set_page_config(page_title="Mini Python Playground!", page_icon="💻", layout="centered")
 
 # --- Load tasks from JSON ---
 TASKS_PATH = Path(__file__).parent / "tasks.json"
