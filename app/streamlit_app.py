@@ -256,9 +256,12 @@ if st.button("⬇️ Fortschritt als JSON herunterladen"):
 
 
 # --- 2) IMPORT-BUTTON ---
-uploaded = st.file_uploader("⬆️ JSON Fortschritt importieren", type="json", key="upload_progress")
+uploaded = st.file_uploader("⬆️ JSON Fortschritt importieren", type="json")
 
-if uploaded is not None:
+if "import_done" not in st.session_state:
+    st.session_state["import_done"] = False
+
+if uploaded and not st.session_state["import_done"]:
     try:
         imported = json.load(uploaded)
 
@@ -267,11 +270,13 @@ if uploaded is not None:
         st.session_state["attempts"].update(imported.get("attempts", {}))
         st.session_state["review_data"].update(imported.get("review_data", {}))
 
-        # RESET FILE UPLOADER
-        st.session_state["upload_progress"] = None
+        # Mark import as done
+        st.session_state["import_done"] = True
 
-        st.success("✅ Fortschritt erfolgreich importiert!")
+        st.success("✅ Fortschritt erfolgreich importiert! Seite lädt neu…")
         st.rerun()
 
     except Exception as e:
+        st.error(f"❌ Fehler beim Import: {e}")
+
         st.error(f"❌ Fehler beim Import: {e}")
