@@ -10,6 +10,8 @@ import random
 import time
 from pathlib import Path
 from streamlit_ace import st_ace
+import requests
+import json
 
 # --- Page setup ---
 st.set_page_config(page_title="Mini Python Playground!", page_icon="💻", layout="centered")
@@ -61,6 +63,31 @@ with tabs[0]:
             "interval": interval,
             "last_review": time.time(),
         }
+
+
+    def upload_issue_to_gist(task_id, data):
+        """Upload a single issue as a secret GitHub Gist."""
+        token = st.secrets["GITHUB_TOKEN"]
+
+        url = "https://api.github.com/gists"
+        headers = {"Authorization": f"token {token}"}
+
+        payload = {
+            "files": {
+                f"issue_task_{task_id}.json": {
+                    "content": json.dumps(data, indent=2, ensure_ascii=False)
+                }
+            },
+            "public": False  # secret gist
+        }
+
+        resp = requests.post(url, headers=headers, json=payload)
+
+        if resp.status_code == 201:
+            return resp.json()["html_url"]
+        else:
+            st.error(f"❌ Fehler beim Gist-Upload: {resp.text}")
+            return None
 
     def pick_next_task(tasks):
         now = time.time()
@@ -331,7 +358,16 @@ with tabs[1]:
                     encoding="utf-8",
                 )
 
-            if st.button("Issue speichern"):
-                save_issue(issue_id, editable_input)
-                st.success("Issue erfolgreich gespeichert! 🚀")
+
+            if st.button("💾 Issue als Gist speichern"):
+                try:
+                    edited = json.loads(editable_input)
+                    url = upload_issue_to_gist(issue_id, edited)
+
+                    if url:
+                        st.success("🎉 Issue gespeichert!")
+                        st.markdown(f"🔗 **Gist-Link:** {url}")
+
+                except Exception as e:
+                    st.error(f"❌ JSON Fehler: {e}")
 
