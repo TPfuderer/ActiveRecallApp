@@ -1,0 +1,1231 @@
+---
+title: "nb1 questions"
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    toc: true
+    toc-depth: 2
+    number-sections: true
+---
+
+# Instructions
+
+These practice questions cover the Python fundamentals from Notebook 1: variables, data types, strings, lists, dictionaries, sets, tuples, and control flow (conditionals and loops).
+
+**Important:** Work through these questions yourself without using AI tools (ChatGPT, Claude, etc.). The goal is to practice and strengthen your Python skills through hands-on problem-solving.
+---
+
+## Variables and Data Types (30 Questions)
+
+### Question 1
+Create a variable `x` and assign it the value 42.
+
+```{python}
+# Your code here
+
+```
+
+### Question 2
+Create a variable `name` and assign it your name as a string.
+
+```{python}
+# Your code here
+
+```
+
+### Question 3
+Create a variable `pi` with the value 3.14159 and print its type.
+
+```{python}
+# Your code here
+
+```
+
+### Question 4
+Create three variables in one line: `a = 10`, `b = 20`, `c = 30`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 5
+Convert the string `"123"` to an integer and store it in a variable `num`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 6
+Create a boolean variable `is_student` set to `True` and print it.
+
+```{python}
+# Your code here
+
+```
+
+### Question 7
+Calculate `5 ** 3` and store the result in a variable `power_result`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 8
+Create a variable `temp_celsius = 25` and convert it to Fahrenheit using the formula `F = C * 9/5 + 32`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 9
+Check the type of the following values and store them in variables: `100`, `100.0`, `"100"`, `True`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 10
+Create variables `x = 5` and `y = 2`. Calculate and store: sum, difference, product, division, integer division, and modulo.
+
+```{python}
+# Your code here
+
+```
+
+### Question 11
+Create a variable `message` with the text "Hello, World!" and print it.
+
+```{python}
+# Your code here
+
+```
+
+### Question 12
+Create two variables `first_name = "John"` and `last_name = "Doe"`. Concatenate them with a space in between.
+
+```{python}
+# Your code here
+
+```
+
+### Question 13
+Create a variable `age = 25` and use an f-string to print "I am 25 years old".
+
+```{python}
+# Your code here
+
+```
+
+### Question 14
+Calculate the area of a circle with radius 5 (use pi = 3.14159).
+
+```{python}
+# Your code here
+
+```
+
+### Question 15
+Create a variable `price = 19.99` and calculate the price after 20% discount.
+
+```{python}
+# Your code here
+
+```
+
+### Question 16
+Swap the values of two variables `a = 10` and `b = 20` without using a third variable.
+
+```{python}
+# Your code here
+
+```
+
+### Question 17
+Create variables for a rectangle's length (5) and width (3), then calculate both area and perimeter.
+
+```{python}
+# Your code here
+
+```
+
+### Question 18
+Check if the variable `x = 10` is an integer using the `type()` function.
+
+```{python}
+# Your code here
+
+```
+
+### Question 19
+Create a variable with a multi-line string using triple quotes.
+
+```{python}
+# Your code here
+
+```
+
+### Question 20
+Create a variable `num = 17` and check if it's even or odd using the modulo operator.
+
+```{python}
+# Your code here
+
+```
+
+### Question 21
+Convert the float `3.7` to an integer and observe what happens.
+
+```{python}
+# Your code here
+
+```
+
+### Question 22
+Create variables for the three sides of a triangle (3, 4, 5) and calculate its perimeter and area using Heron's formula.
+
+```{python}
+# Your code here
+
+```
+
+### Question 23
+Create a variable `text = "Python"` and repeat it 3 times using the `*` operator.
+
+```{python}
+# Your code here
+
+```
+
+### Question 24
+Calculate compound interest: Principal = 1000, Rate = 5%, Time = 2 years. Formula: A = P(1 + r)^t
+
+```{python}
+# Your code here
+
+```
+
+### Question 25
+Create variables for hours (2) and minutes (30), then convert the total time to seconds.
+
+```{python}
+# Your code here
+
+```
+
+### Question 26
+Check if a variable `value = None` is None using the `is` operator.
+
+```{python}
+# Your code here
+
+```
+
+### Question 27
+Calculate the average of five numbers: 10, 20, 30, 40, 50.
+
+```{python}
+# Your code here
+
+```
+
+### Question 28
+Create a variable `score = 85` and use `//` to find how many tens are in the score.
+
+```{python}
+# Your code here
+
+```
+
+### Question 29
+Calculate the Body Mass Index (BMI) given weight = 70 kg and height = 1.75 m. Formula: BMI = weight / height^2
+
+```{python}
+# Your code here
+
+```
+
+### Question 30
+Create a variable representing seconds (3665) and convert it to hours, minutes, and remaining seconds.
+
+```{python}
+# Your code here
+
+```
+
+## String Manipulation (20 Questions)
+
+### Question 31
+Convert the string `"python"` to uppercase.
+
+```{python}
+# Your code here
+
+```
+
+### Question 32
+Get the length of the string `"Data Analysis"`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 33
+Extract the first character from the string `"Hello"`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 34
+Extract the last character from the string `"World"` using negative indexing.
+
+```{python}
+# Your code here
+
+```
+
+### Question 35
+Extract characters from index 2 to 5 from the string `"Programming"`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 36
+Replace "cat" with "dog" in the string `"I have a cat"`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 37
+Split the string `"apple,banana,orange"` by comma into a list.
+
+```{python}
+# Your code here
+
+```
+
+### Question 38
+Remove leading and trailing spaces from `"  hello  "`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 39
+Count how many times the letter "l" appears in `"Hello World"`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 40
+Check if the string `"Python"` starts with "Py".
+
+```{python}
+# Your code here
+
+```
+
+### Question 41
+Check if the string `"example@email.com"` ends with ".com".
+
+```{python}
+# Your code here
+
+```
+
+### Question 42
+Reverse the string `"Python"` using slicing.
+
+```{python}
+# Your code here
+
+```
+
+### Question 43
+Convert the string `"Hello World"` to title case.
+
+```{python}
+# Your code here
+
+```
+
+### Question 44
+Check if the string `"12345"` contains only digits.
+
+```{python}
+# Your code here
+
+```
+
+### Question 45
+Join the list `["Python", "is", "fun"]` into a single string with spaces.
+
+```{python}
+# Your code here
+
+```
+
+### Question 46
+Extract every second character from the string `"abcdefgh"`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 47
+Find the index of the substring "world" in `"Hello world"`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 48
+Check if the string `"racecar"` is a palindrome.
+
+```{python}
+# Your code here
+
+```
+
+### Question 49
+Remove all vowels from the string `"Hello World"`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 50
+Count the number of words in the string `"Python is a great programming language"`.
+
+```{python}
+# Your code here
+
+```
+
+## Lists (30 Questions)
+
+### Question 51
+Create an empty list called `my_list`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 52
+Create a list with numbers 1 through 5.
+
+```{python}
+# Your code here
+
+```
+
+### Question 53
+Access the third element of the list `[10, 20, 30, 40, 50]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 54
+Get the last element of `[1, 2, 3, 4, 5]` using negative indexing.
+
+```{python}
+# Your code here
+
+```
+
+### Question 55
+Append the number 6 to the list `[1, 2, 3, 4, 5]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 56
+Insert the number 0 at the beginning of the list `[1, 2, 3]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 57
+Remove the last element from the list `[10, 20, 30, 40]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 58
+Extract elements from index 1 to 3 from `[0, 1, 2, 3, 4, 5]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 59
+Get the length of the list `["a", "b", "c", "d"]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 60
+Concatenate two lists: `[1, 2, 3]` and `[4, 5, 6]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 61
+Create a list of numbers from 0 to 9 using `range()`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 62
+Reverse the list `[1, 2, 3, 4, 5]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 63
+Sort the list `[5, 2, 8, 1, 9]` in ascending order.
+
+```{python}
+# Your code here
+
+```
+
+### Question 64
+Find the maximum value in the list `[23, 67, 12, 89, 45]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 65
+Find the minimum value in the list `[23, 67, 12, 89, 45]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 66
+Calculate the sum of all elements in `[10, 20, 30, 40, 50]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 67
+Count how many times the number 3 appears in `[1, 2, 3, 3, 4, 3, 5]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 68
+Find the index of the first occurrence of 7 in `[2, 4, 7, 9, 7, 11]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 69
+Remove all duplicates from the list `[1, 2, 2, 3, 4, 4, 5]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 70
+Create a list of squares of numbers from 1 to 10 using list comprehension.
+
+```{python}
+# Your code here
+
+```
+
+### Question 71
+Check if the number 5 exists in the list `[1, 2, 3, 4, 5]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 72
+Filter even numbers from the list `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 73
+Create a new list by multiplying each element by 2 in `[1, 2, 3, 4, 5]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 74
+Flatten the nested list `[[1, 2], [3, 4], [5, 6]]` into a single list.
+
+```{python}
+# Your code here
+
+```
+
+### Question 75
+Find the second largest number in `[23, 67, 12, 89, 45]`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 76
+Create a list of all even numbers between 1 and 20 using list comprehension.
+
+```{python}
+# Your code here
+
+```
+
+### Question 77
+Extend the list `[1, 2, 3]` with another list `[4, 5, 6]` using the extend method.
+
+```{python}
+# Your code here
+
+```
+
+### Question 78
+Sort the list `[5, 2, 8, 1, 9]` in descending order.
+
+```{python}
+# Your code here
+
+```
+
+### Question 79
+Create a list containing the first 10 Fibonacci numbers.
+
+```{python}
+# Your code here
+
+```
+
+### Question 80
+Find all numbers divisible by 3 and 5 from 1 to 100 using list comprehension.
+
+```{python}
+# Your code here
+
+```
+
+## Dictionaries (25 Questions)
+
+### Question 81
+Create an empty dictionary called `my_dict`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 82
+Create a dictionary with keys "name", "age", and "city" with your information.
+
+```{python}
+# Your code here
+
+```
+
+### Question 83
+Access the value associated with key "name" from `{"name": "John", "age": 25}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 84
+Add a new key-value pair "country": "USA" to `{"name": "John", "age": 25}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 85
+Update the value of "age" to 26 in `{"name": "John", "age": 25}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 86
+Remove the key "age" from `{"name": "John", "age": 25, "city": "NYC"}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 87
+Get all keys from the dictionary `{"a": 1, "b": 2, "c": 3}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 88
+Get all values from the dictionary `{"a": 1, "b": 2, "c": 3}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 89
+Check if the key "name" exists in `{"name": "John", "age": 25}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 90
+Get the number of key-value pairs in `{"a": 1, "b": 2, "c": 3}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 91
+Merge two dictionaries: `{"a": 1, "b": 2}` and `{"c": 3, "d": 4}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 92
+Create a dictionary from two lists: keys = ["name", "age", "city"], values = ["John", 25, "NYC"].
+
+```{python}
+# Your code here
+
+```
+
+### Question 93
+Get the value for key "salary" from `{"name": "John", "age": 25}`, return 0 if not found.
+
+```{python}
+# Your code here
+
+```
+
+### Question 94
+Create a dictionary where keys are numbers 1-5 and values are their squares.
+
+```{python}
+# Your code here
+
+```
+
+### Question 95
+Iterate through the dictionary `{"a": 1, "b": 2, "c": 3}` and print each key-value pair.
+
+```{python}
+# Your code here
+
+```
+
+### Question 96
+Count the frequency of each character in the string "hello" using a dictionary.
+
+```{python}
+# Your code here
+
+```
+
+### Question 97
+Invert a dictionary (swap keys and values): `{"a": 1, "b": 2, "c": 3}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 98
+Find the key with the maximum value in `{"a": 10, "b": 25, "c": 15}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 99
+Create a nested dictionary for students with their subjects and grades.
+
+```{python}
+# Your code here
+
+```
+
+### Question 100
+Filter a dictionary to keep only items where value > 50: `{"a": 30, "b": 60, "c": 45, "d": 70}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 101
+Sort a dictionary by its values in ascending order: `{"a": 3, "b": 1, "c": 2}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 102
+Create a dictionary comprehension to create {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}.
+
+```{python}
+# Your code here
+
+```
+
+### Question 103
+Group a list of words by their first letter: ["apple", "banana", "apricot", "blueberry", "cherry"].
+
+```{python}
+# Your code here
+
+```
+
+### Question 104
+Flatten a nested dictionary: `{"a": {"b": 1, "c": 2}, "d": {"e": 3}}` to `{"a_b": 1, "a_c": 2, "d_e": 3}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 105
+Find all keys that have the same value in `{"a": 1, "b": 2, "c": 1, "d": 3, "e": 2}`.
+
+```{python}
+# Your code here
+
+```
+
+## Sets and Tuples (15 Questions)
+
+### Question 106
+Create an empty set called `my_set`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 107
+Create a set with numbers 1, 2, 3, 4, 5.
+
+```{python}
+# Your code here
+
+```
+
+### Question 108
+Add the number 6 to the set `{1, 2, 3, 4, 5}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 109
+Find the union of two sets: `{1, 2, 3}` and `{3, 4, 5}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 110
+Find the intersection of two sets: `{1, 2, 3}` and `{2, 3, 4}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 111
+Find the difference between `{1, 2, 3, 4}` and `{3, 4, 5, 6}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 112
+Remove duplicates from the list `[1, 2, 2, 3, 4, 4, 5]` using a set.
+
+```{python}
+# Your code here
+
+```
+
+### Question 113
+Create a tuple with three elements: "a", "b", "c".
+
+```{python}
+# Your code here
+
+```
+
+### Question 114
+Access the second element of the tuple `(10, 20, 30, 40)`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 115
+Count how many times "a" appears in the tuple `("a", "b", "a", "c", "a")`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 116
+Find the index of "python" in the tuple `("java", "python", "c++")`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 117
+Check if `{1, 2, 3}` is a subset of `{1, 2, 3, 4, 5}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 118
+Find the symmetric difference between `{1, 2, 3}` and `{3, 4, 5}`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 119
+Unpack a tuple `(1, 2, 3)` into three variables a, b, c.
+
+```{python}
+# Your code here
+
+```
+
+### Question 120
+Create a set of all unique characters in the string "programming".
+
+```{python}
+# Your code here
+
+```
+
+## Control Flow - If Statements (15 Questions)
+
+### Question 121
+Write an if statement to check if a number `x = 10` is positive.
+
+```{python}
+# Your code here
+
+```
+
+### Question 122
+Write an if-else statement to check if `x = 7` is even or odd.
+
+```{python}
+# Your code here
+
+```
+
+### Question 123
+Write an if-elif-else statement to classify a number as positive, negative, or zero.
+
+```{python}
+# Your code here
+
+```
+
+### Question 124
+Check if a number `x = 15` is divisible by both 3 and 5.
+
+```{python}
+# Your code here
+
+```
+
+### Question 125
+Write code to check if a variable `age = 25` qualifies for voting (age >= 18).
+
+```{python}
+# Your code here
+
+```
+
+### Question 126
+Write code to find the largest of three numbers: a=10, b=20, c=15.
+
+```{python}
+# Your code here
+
+```
+
+### Question 127
+Check if a year `year = 2024` is a leap year (divisible by 4, but not 100 unless also by 400).
+
+```{python}
+# Your code here
+
+```
+
+### Question 128
+Write code to assign a letter grade based on a score: A(>=90), B(>=80), C(>=70), D(>=60), F(<60).
+
+```{python}
+# Your code here
+
+```
+
+### Question 129
+Check if a string `text = "hello"` has more than 3 characters.
+
+```{python}
+# Your code here
+
+```
+
+### Question 130
+Write code to check if a number is within a range (10-20).
+
+```{python}
+# Your code here
+
+```
+
+### Question 131
+Check if a string `password = "abc123"` is valid (length >= 6 and contains digits).
+
+```{python}
+# Your code here
+
+```
+
+### Question 132
+Write nested if statements to check age category: child(<13), teen(13-19), adult(20-59), senior(>=60).
+
+```{python}
+# Your code here
+
+```
+
+### Question 133
+Check if a triangle with sides a=3, b=4, c=5 is valid (sum of any two sides > third side).
+
+```{python}
+# Your code here
+
+```
+
+### Question 134
+Write code to determine if a character `ch = 'a'` is a vowel or consonant.
+
+```{python}
+# Your code here
+
+```
+
+### Question 135
+Check if a number is a perfect square (e.g., 16 = 4*4).
+
+```{python}
+# Your code here
+
+```
+
+## Control Flow - Loops (15 Questions)
+
+### Question 136
+Write a for loop to print numbers from 1 to 5.
+
+```{python}
+# Your code here
+
+```
+
+### Question 137
+Write a for loop to iterate through the list `[10, 20, 30, 40]` and print each element.
+
+```{python}
+# Your code here
+
+```
+
+### Question 138
+Write a for loop to calculate the sum of numbers from 1 to 10.
+
+```{python}
+# Your code here
+
+```
+
+### Question 139
+Write a while loop to print numbers from 1 to 5.
+
+```{python}
+# Your code here
+
+```
+
+### Question 140
+Write a for loop to print even numbers from 2 to 10.
+
+```{python}
+# Your code here
+
+```
+
+### Question 141
+Write a for loop to calculate the factorial of 5.
+
+```{python}
+# Your code here
+
+```
+
+### Question 142
+Write a loop to iterate through a dictionary and print key-value pairs.
+
+```{python}
+# Your code here
+
+```
+
+### Question 143
+Write nested loops to print a 3x3 multiplication table.
+
+```{python}
+# Your code here
+
+```
+
+### Question 144
+Write a loop with break to stop when finding the first number divisible by 7 in range(1, 50).
+
+```{python}
+# Your code here
+
+```
+
+### Question 145
+Write a loop with continue to print only odd numbers from 1 to 10.
+
+```{python}
+# Your code here
+
+```
+
+### Question 146
+Write a while loop to find the smallest power of 2 greater than 1000.
+
+```{python}
+# Your code here
+
+```
+
+### Question 147
+Write nested loops to create a pattern of stars (pyramid).
+
+```{python}
+# Your code here
+
+```
+
+### Question 148
+Write a loop to check if a number `n = 29` is prime.
+
+```{python}
+# Your code here
+
+```
+
+### Question 149
+Write a loop to reverse a list without using built-in methods.
+
+```{python}
+# Your code here
+
+```
+
+### Question 150
+Write nested loops to find all pairs of numbers from two lists that sum to 10.
+
+```{python}
+# Your code here
+
+```
