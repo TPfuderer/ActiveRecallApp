@@ -366,7 +366,6 @@ with tabs[1]:
 
                     if url:
                         st.success("🎉 Issue gespeichert!")
-                        st.markdown(f"🔗 **Gist-Link:** {url}")
 
                 except Exception as e:
                     st.error(f"❌ JSON Fehler: {e}")
