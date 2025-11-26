@@ -271,26 +271,49 @@ with tabs[0]:
 # ❗ TAB 2: Issue melden
 # ============================================================
 with tabs[1]:
-
     st.header("❗ Fehler / Issue melden")
 
-    issue_id = st.number_input("Welche Aufgaben-ID hat einen Fehler?", step=1, min_value=1)
+    issue_id = st.number_input("Aufgaben-ID mit Fehler:", step=1, min_value=1)
 
     if issue_id:
         task = next((t for t in tasks if t["id"] == issue_id), None)
 
         if task:
-            st.subheader("Original Aufgabe")
-            st.json(task)
 
-            suggestion = st.text_area(
-                "Änderungsvorschlag:",
-                height=160,
-                placeholder="Beschreibe hier, was korrigiert werden sollte ..."
+            # ---- 1. Fixierter Teil (id + question) ----
+            st.subheader("🔒 Fixierte Felder (nicht editierbar)")
+            fixed = {
+                "id": task["id"],
+                "question": task["question"]
+            }
+            st.json(fixed)
+
+            # ---- 2. Editierbarer Teil ----
+            st.subheader("✏️ Änderbarer JSON-Bereich")
+
+            # Alles außer id + question extrahieren
+            editable = {
+                k: v for k, v in task.items()
+                if k not in ["id", "question"]
+            }
+
+            editable_str = json.dumps(editable, indent=2, ensure_ascii=False)
+
+            editable_input = st.text_area(
+                "Bearbeite JSON:",
+                value=editable_str,
+                height=300
             )
 
-            def save_issue(task_id, task_json, suggestion_text):
+            # ---- SPEICHERN ----
+            def save_issue(task_id, edited_json_str):
                 issues_path = Path(__file__).parent / "issues.json"
+
+                try:
+                    edited_json = json.loads(edited_json_str)
+                except Exception as e:
+                    st.error(f"❌ JSON Fehler: {e}")
+                    return
 
                 if issues_path.exists():
                     data = json.loads(issues_path.read_text("utf-8"))
@@ -300,9 +323,7 @@ with tabs[1]:
                 data["issues"].append({
                     "task_id": task_id,
                     "timestamp": time.time(),
-                    "original_question": task_json.get("question", task_json.get("question_raw")),
-                    "suggested_fix": suggestion_text,
-                    "category": task_json.get("category", "")
+                    "changes": edited_json
                 })
 
                 issues_path.write_text(
@@ -311,5 +332,6 @@ with tabs[1]:
                 )
 
             if st.button("Issue speichern"):
-                save_issue(issue_id, task, suggestion)
-                st.success("Issue gespeichert! 🚀")
+                save_issue(issue_id, editable_input)
+                st.success("Issue erfolgreich gespeichert! 🚀")
+
