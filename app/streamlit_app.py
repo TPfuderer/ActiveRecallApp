@@ -123,8 +123,40 @@ with tabs[0]:
         height=200,
     )
 
+    # =====================================================================
+    # 🌟 LIVE OUTPUT (Ctrl+Enter) – NUR HINZUFÜGEN, NICHTS ERSETZEN
+    # =====================================================================
+    # Detect content change (Ctrl+Enter updates the ACE editor value)
+    if "last_code" not in st.session_state:
+        st.session_state["last_code"] = ""
+
+    if content != st.session_state["last_code"]:
+        st.session_state["last_code"] = content
+
+        stdout_live = io.StringIO()
+        stderr_live = io.StringIO()
+
+        try:
+            with contextlib.redirect_stdout(stdout_live), contextlib.redirect_stderr(stderr_live):
+                exec(content, {})
+
+            out = stdout_live.getvalue().strip()
+            err = stderr_live.getvalue().strip()
+
+            if out or err:
+                st.markdown("### 🖥️ Live Output (Ctrl+Enter)")
+                st.text_area("Output", out if out else err, height=150)
+
+        except Exception as e:
+            st.error(f"❌ Exception: {e}")
+
+    # =====================================================================
+    # ENDE Live Output
+    # =====================================================================
+
     if st.button("▶️ Run & Check"):
         st.subheader("🖥️ Execution Result")
+
 
         tid = task["id"]
         st.session_state["attempts"][tid] = st.session_state["attempts"].get(tid, 0) + 1
