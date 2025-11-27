@@ -116,13 +116,23 @@ with tabs[0]:
     st.markdown(f"### 📝 {task['question']}")
 
     # --- Ctrl+Enter triggers hidden run button ---
-    run_trigger = st.button("___hidden_run_trigger___", key="hidden_run", help="", visible=False)
+    run_trigger = st.button("___run_hidden___", key="run_hidden")
 
+    # Hide the hidden button visually
+    st.markdown("""
+    <style>
+    button[k="run_hidden"] {
+        display: none;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    # JS: Ctrl+Enter triggers the hidden button
     st.markdown("""
     <script>
     document.addEventListener("keydown", function(e) {
         if (e.ctrlKey && e.key === "Enter") {
-            const btn = window.parent.document.querySelector('button[k="hidden_run"]');
+            const btn = window.parent.document.querySelector('button[k="run_hidden"]');
             if(btn){ btn.click(); }
         }
     });
