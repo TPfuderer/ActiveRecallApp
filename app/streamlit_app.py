@@ -27,7 +27,7 @@ except Exception as e:
     st.stop()
 
 # --- Tabs ----------------------------------------------------
-tabs = st.tabs(["🧠 Aufgaben", "❗ Issue melden"])
+tabs = st.tabs(["🧠 Aufgaben", "❗ Issue melden", "🥵 Intense Recall"])
 
 # ============================================================
 # 🧠 TAB 1: Aufgaben & Learning UI
@@ -455,3 +455,27 @@ with tabs[1]:
                 except Exception as e:
                     st.error(f"❌ JSON Fehler: {e}")
 
+# ============================================================
+# 🥵 TAB 3: Intense Recall
+# ============================================================
+with tabs[2]:
+    st.header("Questions by Category")
+
+    all_categories = sorted({task["category"] for task in tasks})
+    selected_category = st.selectbox("Choose a category:", ["All"] + all_categories)
+
+    if st.button("➡️ Next Question in Category"):
+        if selected_category == "All":
+            next_task = pick_next_task(tasks)
+        else:
+            category_tasks = [t for t in tasks if t["category"] == selected_category]
+
+            if category_tasks:
+                next_task = pick_next_task(category_tasks)
+            else:
+                st.error("No tasks found in this category.")
+                st.stop()
+
+        # Update the main task index
+        st.session_state["task_index"] = next_task["id"] - 1
+        st.rerun()

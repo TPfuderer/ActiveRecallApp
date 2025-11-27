@@ -308,5 +308,305 @@
     "expected_value": [1],
     "solution_code": "seconds = 3665\nhours = seconds // 3600\nremaining = seconds % 3600\nminutes = remaining // 60\nsecs_left = remaining % 60",
     "explanation": "3665 seconds = 1 hour, 1 minute, and 5 seconds. We focus on checking the minutes value."
+  },
+    {
+    "id": 31,
+    "qid_original": 31,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Convert the string `\"python\"` to uppercase.",
+    "check_variable": ["result"],
+    "expected_value": ["PYTHON"],
+    "solution_code": "text = 'python'\nresult = text.upper()",
+    "explanation": "The `.upper()` method converts all characters in a string to uppercase."
+  },
+  {
+    "id": 32,
+    "qid_original": 32,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Get the length of the string `\"Data Analysis\"`.",
+    "check_variable": ["length"],
+    "expected_value": [13],
+    "solution_code": "s = 'Data Analysis'\nlength = len(s)",
+    "explanation": "`len()` returns the number of characters in a string, including spaces."
+  },
+  {
+    "id": 33,
+    "qid_original": 33,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Extract the first character from the string `\"Hello\"`.",
+    "check_variable": ["first_char"],
+    "expected_value": ["H"],
+    "solution_code": "s = 'Hello'\nfirst_char = s[0]",
+    "explanation": "String indexing starts at 0, so the first character is s[0]."
+  },
+  {
+    "id": 34,
+    "qid_original": 34,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Extract the last character from the string `\"World\"` using negative indexing.",
+    "check_variable": ["last_char"],
+    "expected_value": ["d"],
+    "solution_code": "s = 'World'\nlast_char = s[-1]",
+    "explanation": "Negative indexing lets you index from the end. -1 refers to the last character."
+  },
+  {
+    "id": 35,
+    "qid_original": 35,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Extract characters from index 2 to 5 from the string `\"Programming\"`.",
+    "check_variable": ["substring"],
+    "expected_value": ["ogra"],
+    "solution_code": "s = 'Programming'\nsubstring = s[2:6]",
+    "explanation": "Slicing s[2:6] includes characters at indices 2,3,4,5."
+  },
+  {
+    "id": 36,
+    "qid_original": 36,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Replace \"cat\" with \"dog\" in the string `\"I have a cat\"`.",
+    "check_variable": ["result"],
+    "expected_value": ["I have a dog"],
+    "solution_code": "s = 'I have a cat'\nresult = s.replace('cat', 'dog')",
+    "explanation": "`replace(old, new)` substitutes occurrences of a substring."
+  },
+  {
+    "id": 37,
+    "qid_original": 37,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Split the string `\"apple,banana,orange\"` by comma into a list.",
+    "check_variable": ["items"],
+    "expected_value": [["apple", "banana", "orange"]],
+    "solution_code": "s = 'apple,banana,orange'\nitems = s.split(',')",
+    "explanation": "`.split(',')` divides the string into a list based on commas."
+  },
+  {
+    "id": 38,
+    "qid_original": 38,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Remove leading and trailing spaces from `\"  hello  \"`.",
+    "check_variable": ["cleaned"],
+    "expected_value": ["hello"],
+    "solution_code": "s = '  hello  '\ncleaned = s.strip()",
+    "explanation": "`.strip()` removes whitespace from both ends of the string."
+  },
+  {
+    "id": 39,
+    "qid_original": 39,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Count how many times the letter \"l\" appears in `\"Hello World\"`.",
+    "check_variable": ["count_l"],
+    "expected_value": [3],
+    "solution_code": "s = 'Hello World'\ncount_l = s.count('l')",
+    "explanation": "`.count()` returns how many times a substring appears."
+  },
+  {
+    "id": 40,
+    "qid_original": 40,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Check if the string `\"Python\"` starts with \"Py\".",
+    "check_variable": ["starts"],
+    "expected_value": [true],
+    "solution_code": "s = 'Python'\nstarts = s.startswith('Py')",
+    "explanation": "`.startswith(prefix)` returns True if the string begins with the given prefix."
+  },
+  {
+    "id": 41,
+    "qid_original": 41,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Check if the string `\"example@email.com\"` ends with \".com\".",
+    "check_variable": ["ends"],
+    "expected_value": [true],
+    "solution_code": "s = 'example@email.com'\nends = s.endswith('.com')",
+    "explanation": "`.endswith(suffix)` returns True if the string ends with the given text."
+  },
+  {
+    "id": 42,
+    "qid_original": 42,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Reverse the string `\"Python\"` using slicing.",
+    "check_variable": ["reversed_text"],
+    "expected_value": ["nohtyP"],
+    "solution_code": "s = 'Python'\nreversed_text = s[::-1]",
+    "explanation": "Slicing with step -1 reverses the string."
+  },
+  {
+    "id": 43,
+    "qid_original": 43,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Convert the string `\"Hello World\"` to title case.",
+    "check_variable": ["titled"],
+    "expected_value": ["Hello World"],
+    "solution_code": "s = 'Hello World'\ntitled = s.title()",
+    "explanation": "`.title()` capitalizes the first letter of each word."
+  },
+  {
+    "id": 44,
+    "qid_original": 44,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Check if the string `\"12345\"` contains only digits.",
+    "check_variable": ["is_digits"],
+    "expected_value": [true],
+    "solution_code": "s = '12345'\nis_digits = s.isdigit()",
+    "explanation": "`.isdigit()` returns True if all characters are numeric."
+  },
+  {
+    "id": 45,
+    "qid_original": 45,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Join the list `[\"Python\", \"is\", \"fun\"]` into a single string with spaces.",
+    "check_variable": ["joined"],
+    "expected_value": ["Python is fun"],
+    "solution_code": "words = ['Python', 'is', 'fun']\njoined = ' '.join(words)",
+    "explanation": "`' '.join(list)` creates a single string by joining elements with spaces."
+  },
+  {
+    "id": 46,
+    "qid_original": 46,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Extract every second character from the string `\"abcdefgh\"`.",
+    "check_variable": ["result"],
+    "expected_value": ["aceg"],
+    "solution_code": "s = 'abcdefgh'\nresult = s[0::2]",
+    "explanation": "Slicing with step 2 selects every second character."
+  },
+  {
+    "id": 47,
+    "qid_original": 47,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Find the index of the substring \"world\" in `\"Hello world\"`.",
+    "check_variable": ["index"],
+    "expected_value": [6],
+    "solution_code": "s = 'Hello world'\nindex = s.find('world')",
+    "explanation": "`.find()` returns the starting index of the substring or -1 if not found."
+  },
+  {
+    "id": 48,
+    "qid_original": 48,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Check if the string `\"racecar\"` is a palindrome.",
+    "check_variable": ["is_palindrome"],
+    "expected_value": [true],
+    "solution_code": "s = 'racecar'\nis_palindrome = (s == s[::-1])",
+    "explanation": "A string is a palindrome if it reads the same forward and backward."
+  },
+  {
+    "id": 49,
+    "qid_original": 49,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Remove all vowels from the string `\"Hello World\"`.",
+    "check_variable": ["result"],
+    "expected_value": ["Hll Wrld"],
+    "solution_code": "s = 'Hello World'\nvowels = 'aeiouAEIOU'\nresult = ''.join(ch for ch in s if ch not in vowels)",
+    "explanation": "We filter out all vowel characters by checking membership in a vowel string."
+  },
+  {
+    "id": 50,
+    "qid_original": 50,
+    "category": "String Manipulation (20 Questions)",
+    "question_raw": "Count the number of words in the string `\"Python is a great programming language\"`.",
+    "check_variable": ["word_count"],
+    "expected_value": [6],
+    "solution_code": "s = 'Python is a great programming language'\nword_count = len(s.split())",
+    "explanation": "Splitting by spaces gives the individual words; using len() counts them."
+  },
+  {
+    "id": 51,
+    "qid_original": 51,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Create an empty list called `my_list`.",
+    "check_variable": ["my_list"],
+    "expected_value": [[]],
+    "solution_code": "my_list = []",
+    "explanation": "An empty list is created using square brackets: `[]`."
+  },
+  {
+    "id": 52,
+    "qid_original": 52,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Create a list with numbers 1 through 5.",
+    "check_variable": ["nums"],
+    "expected_value": [[1, 2, 3, 4, 5]],
+    "solution_code": "nums = [1, 2, 3, 4, 5]",
+    "explanation": "Lists are defined using square brackets containing comma-separated values."
+  },
+  {
+    "id": 53,
+    "qid_original": 53,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Access the third element of the list `[10, 20, 30, 40, 50]`.",
+    "check_variable": ["third"],
+    "expected_value": [30],
+    "solution_code": "lst = [10, 20, 30, 40, 50]\nthird = lst[2]",
+    "explanation": "List indexing starts at 0, so index 2 corresponds to the third element."
+  },
+  {
+    "id": 54,
+    "qid_original": 54,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Get the last element of `[1, 2, 3, 4, 5]` using negative indexing.",
+    "check_variable": ["last"],
+    "expected_value": [5],
+    "solution_code": "lst = [1, 2, 3, 4, 5]\nlast = lst[-1]",
+    "explanation": "Negative index -1 refers to the last element of a list."
+  },
+  {
+    "id": 55,
+    "qid_original": 55,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Append the number 6 to the list `[1, 2, 3, 4, 5]`.",
+    "check_variable": ["lst"],
+    "expected_value": [[1, 2, 3, 4, 5, 6]],
+    "solution_code": "lst = [1, 2, 3, 4, 5]\nlst.append(6)",
+    "explanation": "The `.append()` method adds an element to the end of a list."
+  },
+  {
+    "id": 56,
+    "qid_original": 56,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Insert the number 0 at the beginning of the list `[1, 2, 3]`.",
+    "check_variable": ["lst"],
+    "expected_value": [[0, 1, 2, 3]],
+    "solution_code": "lst = [1, 2, 3]\nlst.insert(0, 0)",
+    "explanation": "`insert(index, value)` places an element at a specific position in the list."
+  },
+  {
+    "id": 57,
+    "qid_original": 57,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Remove the last element from the list `[10, 20, 30, 40]`.",
+    "check_variable": ["lst"],
+    "expected_value": [[10, 20, 30]],
+    "solution_code": "lst = [10, 20, 30, 40]\nlst.pop()",
+    "explanation": "`.pop()` removes and returns the last element of a list."
+  },
+  {
+    "id": 58,
+    "qid_original": 58,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Extract elements from index 1 to 3 from `[0, 1, 2, 3, 4, 5]`.",
+    "check_variable": ["subset"],
+    "expected_value": [[1, 2, 3]],
+    "solution_code": "lst = [0, 1, 2, 3, 4, 5]\nsubset = lst[1:4]",
+    "explanation": "Slicing `[start:end]` includes start index but excludes end index."
+  },
+  {
+    "id": 59,
+    "qid_original": 59,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Get the length of the list `[\"a\", \"b\", \"c\", \"d\"]`.",
+    "check_variable": ["length"],
+    "expected_value": [4],
+    "solution_code": "lst = ['a', 'b', 'c', 'd']\nlength = len(lst)",
+    "explanation": "`len()` returns the number of items in a list."
+  },
+  {
+    "id": 60,
+    "qid_original": 60,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Concatenate two lists: `[1, 2, 3]` and `[4, 5, 6]`.",
+    "check_variable": ["combined"],
+    "expected_value": [[1, 2, 3, 4, 5, 6]],
+    "solution_code": "a = [1, 2, 3]\nb = [4, 5, 6]\ncombined = a + b",
+    "explanation": "Using `+` merges two lists into a single list."
   }
 ]
