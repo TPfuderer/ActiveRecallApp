@@ -114,6 +114,18 @@ with tabs[0]:
     st.title(f"🧠 Task {task['id']}/{len(tasks)}")
     st.markdown(f"### 📝 {task['question']}")
 
+    # --- Force Ace Editor to update on Ctrl+Enter ---
+    st.markdown("""
+    <script>
+    document.addEventListener("keydown", function(e) {
+        if (e.ctrlKey && e.key === "Enter") {
+            // Force ACE to commit value to Streamlit
+            document.activeElement.blur();
+        }
+    });
+    </script>
+    """, unsafe_allow_html=True)
+
     # --- Code editor ---
     content = st_ace(
         value="# Write your code below:\n\n",
@@ -127,6 +139,7 @@ with tabs[0]:
     # 🌟 LIVE OUTPUT (Ctrl+Enter) – NUR HINZUFÜGEN, NICHTS ERSETZEN
     # =====================================================================
     # Detect content change (Ctrl+Enter updates the ACE editor value)
+    # Live Output trigger
     if "last_code" not in st.session_state:
         st.session_state["last_code"] = ""
 
@@ -135,7 +148,6 @@ with tabs[0]:
 
         stdout_live = io.StringIO()
         stderr_live = io.StringIO()
-
         try:
             with contextlib.redirect_stdout(stdout_live), contextlib.redirect_stderr(stderr_live):
                 exec(content, {})
