@@ -121,7 +121,6 @@ with tabs[0]:
         theme="dracula",
         key=f"ace_editor_{task['id']}",
         height=200,
-        submit_on_enter=True,  # <-- NEU
     )
 
     # =====================================================================
