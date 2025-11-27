@@ -204,5 +204,109 @@
     "expected_value": [false],
     "solution_code": "num = 17\nis_even = (num % 2 == 0)",
     "explanation": "A number is even if `num % 2` equals 0; otherwise it is odd."
+  },
+    {
+    "id": 21,
+    "qid_original": 21,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Convert the float `3.7` to an integer and observe what happens.",
+    "check_variable": ["result"],
+    "expected_value": [3],
+    "solution_code": "x = 3.7\nresult = int(x)",
+    "explanation": "Converting a float to an integer using `int()` truncates the decimal part rather than rounding."
+  },
+  {
+    "id": 22,
+    "qid_original": 22,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create variables for the three sides of a triangle (3, 4, 5) and calculate its perimeter and area using Heron's formula.",
+    "check_variable": ["area"],
+    "expected_value": [6.0],
+    "solution_code": "a, b, c = 3, 4, 5\nperimeter = a + b + c\ns = perimeter / 2\narea = (s * (s - a) * (s - b) * (s - c)) ** 0.5",
+    "explanation": "For a 3–4–5 triangle, Heron's formula gives area = 6.0. Perimeter is a + b + c."
+  },
+  {
+    "id": 23,
+    "qid_original": 23,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a variable `text = \"Python\"` and repeat it 3 times using the `*` operator.",
+    "check_variable": ["result"],
+    "expected_value": ["PythonPythonPython"],
+    "solution_code": "text = 'Python'\nresult = text * 3",
+    "explanation": "Repeating a string using `*` concatenates it multiple times."
+  },
+  {
+    "id": 24,
+    "qid_original": 24,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Calculate compound interest: Principal = 1000, Rate = 5%, Time = 2 years. Formula: A = P(1 + r)^t",
+    "check_variable": ["amount"],
+    "expected_value": [1102.5],
+    "check_type": "float_tolerance",
+    "tolerance": 0.001,
+    "solution_code": "P = 1000\nr = 0.05\nt = 2\namount = P * (1 + r) ** t",
+    "explanation": "Compound interest uses A = P(1 + r)^t. With 5% for 2 years, the amount becomes 1102.5."
+  },
+  {
+    "id": 25,
+    "qid_original": 25,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create variables for hours (2) and minutes (30), then convert the total time to seconds.",
+    "check_variable": ["seconds"],
+    "expected_value": [9000],
+    "solution_code": "hours = 2\nminutes = 30\nseconds = hours * 3600 + minutes * 60",
+    "explanation": "We convert hours and minutes into seconds: 2h = 7200s, +30m = 1800s → total 9000 seconds."
+  },
+  {
+    "id": 26,
+    "qid_original": 26,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Check if a variable `value = None` is None using the `is` operator.",
+    "check_variable": ["is_none"],
+    "expected_value": [true],
+    "solution_code": "value = None\nis_none = (value is None)",
+    "explanation": "The `is` operator checks identity. `value is None` evaluates to True."
+  },
+  {
+    "id": 27,
+    "qid_original": 27,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Calculate the average of five numbers: 10, 20, 30, 40, 50.",
+    "check_variable": ["avg"],
+    "expected_value": [30.0],
+    "solution_code": "nums = [10, 20, 30, 40, 50]\navg = sum(nums) / len(nums)",
+    "explanation": "The mean is total sum divided by count: (10+20+30+40+50)/5 = 30."
+  },
+  {
+    "id": 28,
+    "qid_original": 28,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a variable `score = 85` and use `//` to find how many tens are in the score.",
+    "check_variable": ["tens"],
+    "expected_value": [8],
+    "solution_code": "score = 85\ntens = score // 10",
+    "explanation": "Floor division by 10 gives the number of tens in a number: 85 // 10 = 8."
+  },
+  {
+    "id": 29,
+    "qid_original": 29,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Calculate the Body Mass Index (BMI) given weight = 70 kg and height = 1.75 m. Formula: BMI = weight / height^2",
+    "check_variable": ["bmi"],
+    "expected_value": [22.857142857142858],
+    "check_type": "float_tolerance",
+    "tolerance": 0.001,
+    "solution_code": "weight = 70\nheight = 1.75\nbmi = weight / (height ** 2)",
+    "explanation": "BMI = 70 / 1.75² ≈ 22.857. A tolerance is used due to floating-point precision."
+  },
+  {
+    "id": 30,
+    "qid_original": 30,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a variable representing seconds (3665) and convert it to hours, minutes, and remaining seconds.",
+    "check_variable": ["minutes"],
+    "expected_value": [1],
+    "solution_code": "seconds = 3665\nhours = seconds // 3600\nremaining = seconds % 3600\nminutes = remaining // 60\nsecs_left = remaining % 60",
+    "explanation": "3665 seconds = 1 hour, 1 minute, and 5 seconds. We focus on checking the minutes value."
   }
 ]
