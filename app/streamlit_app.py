@@ -396,7 +396,7 @@ with tabs[1]:
             st.subheader("🔒 Fixierte Felder (nicht editierbar)")
             fixed = {
                 "id": task["id"],
-                "question": task["question"]
+                "question": task.get("question_raw", task.get("question"))
             }
             st.json(fixed)
 
