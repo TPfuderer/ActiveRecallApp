@@ -115,14 +115,17 @@
     "solution_code": "pi = 3.14159\nradius = 5\narea = pi * radius ** 2",
     "explanation": "We compute the circle area using the formula A = π × r²."
   },
-  {
-    "id": 15,
-    "question": "Create a variable `price = 19.99` and calculate the price after 20% discount.",
-    "check_variable": ["discounted_price"],
-    "expected_value": [15.992],
-    "solution_code": "price = 19.99\ndiscounted_price = price * 0.8",
-    "explanation": "A 20% discount means multiplying the price by 0.8."
-  },
+{
+  "id": 15,
+  "question": "Create a variable `price = 19.99` and calculate the price after 20% discount.",
+  "check_variable": ["discounted_price"],
+  "expected_value": [15.992],
+  "check_type": "float_tolerance",
+  "tolerance": 0.01,
+  "solution_code": "price = 19.99\ndiscounted_price = price * 0.8",
+  "explanation": "A 20% discount means multiplying the price by 0.8."
+},
+
   {
     "id": 16,
     "question": "Swap the values of two variables `a = 10` and `b = 20` without using a third variable.",
