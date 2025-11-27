@@ -107,6 +107,7 @@ with tabs[0]:
 
         return random.choice(due_tasks)
 
+
     # --- Current task ---
     task = get_task()
 
@@ -114,13 +115,15 @@ with tabs[0]:
     st.title(f"🧠 Task {task['id']}/{len(tasks)}")
     st.markdown(f"### 📝 {task['question']}")
 
-    # --- Force Ace Editor to update on Ctrl+Enter ---
+    # --- Ctrl+Enter triggers hidden run button ---
+    run_trigger = st.button("___hidden_run_trigger___", key="hidden_run", help="", visible=False)
+
     st.markdown("""
     <script>
     document.addEventListener("keydown", function(e) {
         if (e.ctrlKey && e.key === "Enter") {
-            // Force ACE to commit value to Streamlit
-            document.activeElement.blur();
+            const btn = window.parent.document.querySelector('button[k="hidden_run"]');
+            if(btn){ btn.click(); }
         }
     });
     </script>
@@ -135,36 +138,39 @@ with tabs[0]:
         height=200,
     )
 
-    # =====================================================================
-    # 🌟 LIVE OUTPUT (Ctrl+Enter) – NUR HINZUFÜGEN, NICHTS ERSETZEN
-    # =====================================================================
-    # Detect content change (Ctrl+Enter updates the ACE editor value)
-    # Live Output trigger
-    if "last_code" not in st.session_state:
-        st.session_state["last_code"] = ""
+    # --- Unified run: manual button OR Ctrl+Enter ---
+    do_run = st.button("▶️ Run") or run_trigger
 
-    if content != st.session_state["last_code"]:
-        st.session_state["last_code"] = content
+    if do_run:
+        st.subheader("🖥️ Execution Result")
 
-        stdout_live = io.StringIO()
-        stderr_live = io.StringIO()
+        stdout_buffer = io.StringIO()
+        stderr_buffer = io.StringIO()
+
         try:
-            with contextlib.redirect_stdout(stdout_live), contextlib.redirect_stderr(stderr_live):
-                exec(content, {})
+            # Execute user code
+            with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
+                user_globals = {}
+                exec(content, user_globals)
 
-            out = stdout_live.getvalue().strip()
-            err = stderr_live.getvalue().strip()
+            # Collect outputs
+            output = stdout_buffer.getvalue().strip()
+            errors = stderr_buffer.getvalue().strip()
 
-            if out or err:
-                st.markdown("### 🖥️ Live Output (Ctrl+Enter)")
-                st.text_area("Output", out if out else err, height=150)
+            # Show stdout
+            if output:
+                st.text_area("📤 Output", output, height=150)
+
+            # Show stderr
+            if errors:
+                st.error(errors)
+
+            # If no output at all
+            if not output and not errors:
+                st.info("ℹ️ Code executed without output.")
 
         except Exception as e:
-            st.error(f"❌ Exception: {e}")
-
-    # =====================================================================
-    # ENDE Live Output
-    # =====================================================================
+            st.error(f"❌ Exception during execution:\n{e}")
 
     if st.button("▶️ Run & Check"):
         st.subheader("🖥️ Execution Result")
