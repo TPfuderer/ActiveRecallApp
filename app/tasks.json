@@ -1,7 +1,9 @@
 [
   {
     "id": 1,
-    "question": "Create a variable `x` and assign it the value 42.",
+    "qid_original": 1,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a variable `x` and assign it the value 42.",
     "check_variable": ["x"],
     "expected_value": [42],
     "solution_code": "x = 42",
@@ -9,90 +11,112 @@
   },
   {
     "id": 2,
-    "question": "Create a variable `name` and assign name 'David' as a string.",
+    "qid_original": 2,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a variable `name` and assign it your name as a string.",
     "check_variable": ["name"],
     "expected_value": ["David"],
     "solution_code": "name = 'David'",
-    "explanation": "Strings in Python are written with quotes. Here we assign 'David' to the variable `name`."
+    "explanation": "Strings in Python are written with quotes. Here we assign a string value to the variable `name`."
   },
   {
     "id": 3,
-    "question": "Create a variable `pi` with the value 3.14159 and print its type.",
+    "qid_original": 3,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a variable `pi` with the value 3.14159 and print its type.",
     "check_variable": ["pi"],
     "expected_value": [3.14159],
     "expected_output": "<class 'float'>\n",
     "solution_code": "pi = 3.14159\nprint(type(pi))",
-    "explanation": "`pi` stores the float value 3.14159. Using `print(type(pi))` shows that its type is `float`."
+    "explanation": "`pi` stores the float value 3.14159. Using `print(type(pi))` shows the variable's data type."
   },
   {
     "id": 4,
-    "question": "Create three variables in one line: `a = 10`, `b = 20`, `c = 30`.",
+    "qid_original": 4,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create three variables in one line: `a = 10`, `b = 20`, `c = 30`.",
     "check_variable": ["c"],
     "expected_value": [30],
     "solution_code": "a, b, c = 10, 20, 30",
-    "explanation": "We assign three values to three variables in one line using tuple unpacking: `a, b, c = 10, 20, 30`."
+    "explanation": "We assign multiple values to multiple variables using tuple unpacking."
   },
   {
     "id": 5,
-    "question": "Convert the string `'123'` to an integer and store it in a variable `num`.",
+    "qid_original": 5,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Convert the string `\"123\"` to an integer and store it in a variable `num`.",
     "check_variable": ["num"],
     "expected_value": [123],
     "solution_code": "num = int('123')",
-    "explanation": "We use the built-in `int()` function to convert a numeric string into an integer."
+    "explanation": "The `int()` function converts numeric strings into integer values."
   },
   {
     "id": 6,
-    "question": "Create a boolean variable `is_student` set to `True` and print it.",
+    "qid_original": 6,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a boolean variable `is_student` set to `True` and print it.",
     "check_variable": ["is_student"],
     "expected_value": [true],
     "expected_output": "True\n",
     "solution_code": "is_student = True\nprint(is_student)",
-    "explanation": "`True` is a Boolean literal in Python. We assign it to `is_student` and print its value."
+    "explanation": "`True` is a Boolean literal in Python. We assign it to `is_student` and print the value."
   },
   {
     "id": 7,
-    "question": "Calculate `5 ** 3` and store the result in a variable `power_result`.",
+    "qid_original": 7,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Calculate `5 ** 3` and store the result in a variable `power_result`.",
     "check_variable": ["power_result"],
     "expected_value": [125],
     "solution_code": "power_result = 5 ** 3",
-    "explanation": "`**` is the exponentiation operator. `5 ** 3` equals 125."
+    "explanation": "`**` is the exponent operator. `5 ** 3` evaluates to 125."
   },
   {
     "id": 8,
-    "question": "Create a variable `temp_celsius = 25` and convert it to Fahrenheit using the formula F = C * 9/5 + 32.",
+    "qid_original": 8,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a variable `temp_celsius = 25` and convert it to Fahrenheit using the formula `F = C * 9/5 + 32`.",
     "check_variable": ["temp_fahrenheit"],
     "expected_value": [77.0],
     "solution_code": "temp_celsius = 25\ntemp_fahrenheit = temp_celsius * 9/5 + 32",
-    "explanation": "We convert Celsius to Fahrenheit using the formula F = C × 9/5 + 32."
+    "explanation": "We apply the Celsius-to-Fahrenheit formula: F = C × 9/5 + 32."
   },
   {
     "id": 9,
-    "question": "Check the type of the following values and store them in variables: `100`, `100.0`, `'100'`, `True`.",
+    "qid_original": 9,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Check the type of the following values and store them in variables: `100`, `100.0`, `\"100\"`, `True`.",
     "check_variable": ["type_bool"],
     "expected_value": ["bool"],
     "solution_code": "type_int = type(100).__name__\ntype_float = type(100.0).__name__\ntype_str = type('100').__name__\ntype_bool = type(True).__name__",
-    "explanation": "We use `type(x).__name__` to extract the data type names: 'int', 'float', 'str', 'bool'."
+    "explanation": "We extract type names via `type(x).__name__` which returns 'int', 'float', 'str', or 'bool'."
   },
   {
     "id": 10,
-    "question": "Create variables `x = 5` and `y = 2`. Calculate and store: sum, difference, product, division, integer division, and modulo.",
+    "qid_original": 10,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create variables `x = 5` and `y = 2`. Calculate and store: sum, difference, product, division, integer division, and modulo.",
     "check_variable": ["modulo_result"],
     "expected_value": [1],
     "solution_code": "x, y = 5, 2\nsum_result = x + y\ndiff_result = x - y\nprod_result = x * y\ndiv_result = x / y\nint_div_result = x // y\nmodulo_result = x % y",
-    "explanation": "We compute several basic arithmetic results using +, -, *, /, // and %."
+    "explanation": "We compute several arithmetic operations using +, -, *, /, //, and %."
   },
   {
     "id": 11,
-    "question": "Create a variable `message` with the text 'Hello, World!' and print it.",
+    "qid_original": 11,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a variable `message` with the text \"Hello, World!\" and print it.",
     "check_variable": ["message"],
     "expected_value": ["Hello, World!"],
     "expected_output": "Hello, World!\n",
     "solution_code": "message = 'Hello, World!'\nprint(message)",
-    "explanation": "We assign a string to `message` and print it using `print()`."
+    "explanation": "We store a string in `message` and print it with `print()`."
   },
   {
     "id": 12,
-    "question": "Create two variables `first_name = 'John'` and `last_name = 'Doe'`. Concatenate them with a space in between.",
+    "qid_original": 12,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create two variables `first_name = \"John\"` and `last_name = \"Doe\"`. Concatenate them with a space in between.",
     "check_variable": ["full_name"],
     "expected_value": ["John Doe"],
     "solution_code": "first_name, last_name = 'John', 'Doe'\nfull_name = first_name + ' ' + last_name",
@@ -100,70 +124,85 @@
   },
   {
     "id": 13,
-    "question": "Create a variable `age = 25` and use an f-string to print 'I am 25 years old'.",
+    "qid_original": 13,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a variable `age = 25` and use an f-string to print \"I am 25 years old\".",
     "check_variable": ["age"],
     "expected_value": [25],
     "expected_output": "I am 25 years old\n",
     "solution_code": "age = 25\nprint(f'I am {age} years old')",
-    "explanation": "We assign 25 to `age` and use an f-string to embed the value into the printed message."
+    "explanation": "We assign 25 to `age` and embed it in an f-string to print the message."
   },
   {
     "id": 14,
-    "question": "Calculate the area of a circle with radius 5 (use pi = 3.14159).",
+    "qid_original": 14,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Calculate the area of a circle with radius 5 (use pi = 3.14159).",
     "check_variable": ["area"],
     "expected_value": [78.53975],
     "solution_code": "pi = 3.14159\nradius = 5\narea = pi * radius ** 2",
-    "explanation": "We compute the circle area using the formula A = π × r²."
+    "explanation": "We compute a circle's area using A = π × r²."
   },
-{
-  "id": 15,
-  "question": "Create a variable `price = 19.99` and calculate the price after 20% discount.",
-  "check_variable": ["discounted_price"],
-  "expected_value": [15.992],
-  "check_type": "float_tolerance",
-  "tolerance": 0.01,
-  "solution_code": "price = 19.99\ndiscounted_price = price * 0.8",
-  "explanation": "A 20% discount means multiplying the price by 0.8."
-},
-
+  {
+    "id": 15,
+    "qid_original": 15,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a variable `price = 19.99` and calculate the price after 20% discount.",
+    "check_variable": ["discounted_price"],
+    "expected_value": [15.992],
+    "check_type": "float_tolerance",
+    "tolerance": 0.01,
+    "solution_code": "price = 19.99\ndiscounted_price = price * 0.8",
+    "explanation": "A 20% discount means multiplying the price by 0.8."
+  },
   {
     "id": 16,
-    "question": "Swap the values of two variables `a = 10` and `b = 20` without using a third variable.",
+    "qid_original": 16,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Swap the values of two variables `a = 10` and `b = 20` without using a third variable.",
     "check_variable": ["a"],
     "expected_value": [20],
     "solution_code": "a, b = 10, 20\na, b = b, a",
-    "explanation": "Python allows swapping using tuple unpacking: `a, b = b, a`."
+    "explanation": "Python allows swapping two variables using tuple unpacking."
   },
   {
     "id": 17,
-    "question": "Create variables for a rectangle's length (5) and width (3), then calculate both area and perimeter.",
+    "qid_original": 17,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create variables for a rectangle's length (5) and width (3), then calculate both area and perimeter.",
     "check_variable": ["perimeter"],
     "expected_value": [16],
     "solution_code": "length, width = 5, 3\narea = length * width\nperimeter = 2 * (length + width)",
-    "explanation": "Area is length × width. Perimeter is 2 × (length + width)."
+    "explanation": "Area = length × width. Perimeter = 2 × (length + width)."
   },
   {
     "id": 18,
-    "question": "Check if the variable `x = 10` is an integer using the `type()` function.",
+    "qid_original": 18,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Check if the variable `x = 10` is an integer using the `type()` function.",
     "check_variable": ["is_int"],
     "expected_value": [true],
     "solution_code": "x = 10\nis_int = (type(x) == int)",
-    "explanation": "We check integer type by comparing `type(x)` with `int`."
+    "explanation": "`type(x) == int` evaluates to True if x is an integer."
   },
   {
     "id": 19,
-    "question": "Create a variable with a multi-line string using triple quotes.",
+    "qid_original": 19,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a variable with a multi-line string using triple quotes.",
     "check_variable": ["multi_text"],
     "expected_value": ["Line1\nLine2"],
     "solution_code": "multi_text = '''Line1\nLine2'''",
-    "explanation": "Triple quotes allow defining multi-line strings directly across multiple lines."
+    "explanation": "Triple quotes allow defining multi-line string values across several lines."
   },
   {
     "id": 20,
-    "question": "Create a variable `num = 17` and check if it's even or odd using the modulo operator.",
+    "qid_original": 20,
+    "category": "Variables and Data Types (30 Questions)",
+    "question_raw": "Create a variable `num = 17` and check if it's even or odd using the modulo operator.",
     "check_variable": ["is_even"],
     "expected_value": [false],
     "solution_code": "num = 17\nis_even = (num % 2 == 0)",
-    "explanation": "`num % 2` equals 0 if the number is even; otherwise it is odd."
+    "explanation": "A number is even if `num % 2` equals 0; otherwise it is odd."
   }
 ]
