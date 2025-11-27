@@ -111,9 +111,19 @@ with tabs[0]:
     # --- Current task ---
     task = get_task()
 
-    # --- Display ---
+    # --- Display Header ---
     st.title(f"🧠 Task {task['id']}/{len(tasks)}")
-    st.markdown(f"### 📝 {task['question']}")
+
+    # 🔹 Show original QID
+    if "qid_original" in task:
+        st.markdown(f"**🧩 Original ID:** `{task['qid_original']}`")
+
+    # 🔹 Show category
+    if "category" in task:
+        st.markdown(f"**📚 Category:** *{task['category']}*")
+
+    # 🔹 Show question
+    st.markdown(f"### 📝 {task.get('question_raw', task.get('question'))}")
 
     # --- Ctrl+Enter triggers hidden run button ---
     run_trigger = st.button("___run_hidden___", key="run_hidden")
@@ -163,28 +173,28 @@ with tabs[0]:
                 user_globals = {}
                 exec(content, user_globals)
 
-            # Collect outputs
+            # Output collection
             output = stdout_buffer.getvalue().strip()
             errors = stderr_buffer.getvalue().strip()
 
-            # Show stdout
             if output:
                 st.text_area("📤 Output", output, height=150)
 
-            # Show stderr
             if errors:
                 st.error(errors)
 
-            # If no output at all
             if not output and not errors:
                 st.info("ℹ️ Code executed without output.")
 
         except Exception as e:
             st.error(f"❌ Exception during execution:\n{e}")
 
+    # ============================
+    # ▶️ RUN & CHECK LOGIC
+    # ============================
+
     if st.button("▶️ Run & Check"):
         st.subheader("🖥️ Execution Result")
-
 
         tid = task["id"]
         st.session_state["attempts"][tid] = st.session_state["attempts"].get(tid, 0) + 1
@@ -215,19 +225,19 @@ with tabs[0]:
                 for var, exp in zip(check_vars, expected_vals):
                     user_val = user_globals.get(var, None)
 
-                    # --- tolerance check (from JSON) ---
+                    # --- tolerance-based check (JSON configurable) ---
                     check_type = task.get("check_type", "exact")
                     if check_type == "float_tolerance":
                         tol = task.get("tolerance", 0.001)
                         try:
                             if isinstance(user_val, (int, float)) and abs(user_val - exp) <= tol:
                                 results.append(f"✅ `{var}` ≈ {user_val} (within ±{tol})")
-                                continue  # skip exact check
+                                continue
                         except:
                             pass
-                    # ------------------------------------
+                    # --------------------------------------------------
 
-                    # exact check fallback
+                    # exact equality fallback
                     if user_val == exp:
                         results.append(f"✅ `{var}` = {exp}")
                     else:
@@ -235,7 +245,6 @@ with tabs[0]:
                             results.append(f"❌ `{var}` not found.")
                         else:
                             results.append(f"❌ `{var}` = {user_val} (expected {exp})")
-
 
             elif isinstance(check_vars, str):
                 user_val = user_globals.get(check_vars, None)
@@ -247,12 +256,14 @@ with tabs[0]:
                     else:
                         results.append(f"❌ `{check_vars}` = {user_val} (expected {expected_vals})")
 
+            # Check printed output if defined
             if expected_output is not None:
                 if output == expected_output:
                     results.append("✅ Printed output is correct.")
                 else:
                     results.append(f"❌ Printed output was `{output.strip()}` (expected `{expected_output.strip()}`)")
 
+            # Show results
             if results:
                 for line in results:
                     if "✅" in line:
@@ -264,7 +275,6 @@ with tabs[0]:
 
         except Exception as e:
             st.error(f"❌ Exception: {e}")
-
 
     st.markdown("---")
 
