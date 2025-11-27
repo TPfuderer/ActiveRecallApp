@@ -214,6 +214,20 @@ with tabs[0]:
             if isinstance(check_vars, list):
                 for var, exp in zip(check_vars, expected_vals):
                     user_val = user_globals.get(var, None)
+
+                    # --- tolerance check (from JSON) ---
+                    check_type = task.get("check_type", "exact")
+                    if check_type == "float_tolerance":
+                        tol = task.get("tolerance", 0.001)
+                        try:
+                            if isinstance(user_val, (int, float)) and abs(user_val - exp) <= tol:
+                                results.append(f"✅ `{var}` ≈ {user_val} (within ±{tol})")
+                                continue  # skip exact check
+                        except:
+                            pass
+                    # ------------------------------------
+
+                    # exact check fallback
                     if user_val == exp:
                         results.append(f"✅ `{var}` = {exp}")
                     else:
@@ -221,6 +235,7 @@ with tabs[0]:
                             results.append(f"❌ `{var}` not found.")
                         else:
                             results.append(f"❌ `{var}` = {user_val} (expected {exp})")
+
 
             elif isinstance(check_vars, str):
                 user_val = user_globals.get(check_vars, None)
