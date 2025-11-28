@@ -21,6 +21,7 @@ import json
 # --- Page setup ---
 st.set_page_config(page_title="Mini Python Playground!", page_icon="💻", layout="centered")
 
+
 # --- Load tasks from JSON ---
 TASKS_PATH = Path(__file__).parent / "tasks.json"
 
@@ -60,6 +61,42 @@ with tabs[0]:
     # --- Helper functions ---
     def get_task():
         return tasks[st.session_state["task_index"]]
+
+
+    def save_progress(username):
+        export_data = {
+            "ratings": st.session_state.get("ratings", {}),
+            "attempts": st.session_state.get("attempts", {}),
+            "review_data": st.session_state.get("review_data", {}),
+            "timestamp": time.time(),
+        }
+
+        supabase.table("user_progress").upsert({
+            "username": username,
+            "progress": export_data
+        }).execute()
+
+        st.success("✔ Fortschritt gespeichert!")
+
+
+    def load_progress(username):
+        res = supabase.table("user_progress") \
+            .select("progress") \
+            .eq("username", username) \
+            .limit(1) \
+            .execute()
+
+        if res.data:
+            progress = res.data[0]["progress"]
+
+            st.session_state["ratings"].update(progress.get("ratings", {}))
+            st.session_state["attempts"].update(progress.get("attempts", {}))
+            st.session_state["review_data"].update(progress.get("review_data", {}))
+
+            st.success("✔ Fortschritt geladen!")
+        else:
+            st.warning("⚠ Kein Fortschritt für diesen Username gefunden.")
+
 
     def update_review(task_id, difficulty):
         data = st.session_state["review_data"].get(task_id, {"interval": 0.5, "last_review": time.time()})
@@ -120,6 +157,21 @@ with tabs[0]:
 
         return random.choice(due_tasks)
 
+    st.sidebar.header("🔐 Login / Cloud-Speicher")
+
+    username = st.sidebar.text_input("Username (ohne Passwort)")
+
+    if st.sidebar.button("⬆ Load Progress"):
+        if username:
+            load_progress(username)
+        else:
+            st.error("Bitte Username eingeben.")
+
+    if st.sidebar.button("⬇ Save Progress"):
+        if username:
+            save_progress(username)
+        else:
+            st.error("Bitte Username eingeben.")
 
     # --- Current task ---
     task = get_task()
