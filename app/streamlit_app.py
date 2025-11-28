@@ -83,16 +83,22 @@ with tabs[0]:
         # create user
         supabase.table("users").insert({"username": username}).execute()
 
-        # create empty progress record
-        supabase.table("users_progress").upsert({
-            "username": username,
-            "progress": {
-                "ratings": {},
-                "attempts": {},
-                "review_data": {},
-                "timestamp": time.time(),
-            }
-        }).execute()
+        # create empty progress record WITH DEBUG
+        try:
+            res = supabase.table("users_progress").upsert({
+                "username": username,
+                "progress": {
+                    "ratings": {},
+                    "attempts": {},
+                    "review_data": {},
+                    "timestamp": time.time(),
+                }
+            }).execute()
+            st.write("UPSERT RESULT:", res)
+        except Exception as e:
+            st.error("SUPABASE ERROR (RAW):")
+            st.write(repr(e))
+            return False
 
         st.success(f"🎉 Username '{username}' created!")
         return True
