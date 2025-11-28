@@ -12,6 +12,11 @@ from pathlib import Path
 from streamlit_ace import st_ace
 import requests
 import json
+from supabase import create_client
+import json
+
+
+
 
 # --- Page setup ---
 st.set_page_config(page_title="Mini Python Playground!", page_icon="💻", layout="centered")
@@ -25,6 +30,14 @@ try:
 except Exception as e:
     st.error(f"❌ Could not load tasks.json: {e}")
     st.stop()
+
+supabase = create_client(
+    st.secrets["SUPABASE_URL"],
+    st.secrets["SUPABASE_ANON_KEY"]
+)
+
+st.write("Supabase connected:", supabase is not None)
+
 
 # --- Tabs ----------------------------------------------------
 tabs = st.tabs(["🧠 Aufgaben", "❗ Issue melden"])
