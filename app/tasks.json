@@ -608,5 +608,410 @@
     "expected_value": [[1, 2, 3, 4, 5, 6]],
     "solution_code": "a = [1, 2, 3]\nb = [4, 5, 6]\ncombined = a + b",
     "explanation": "Using `+` merges two lists into a single list."
+  },
+    {
+    "id": 61,
+    "qid_original": 61,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Create a list of numbers from 0 to 9 using `range()`.",
+    "check_variable": ["numbers"],
+    "expected_value": [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]],
+    "solution_code": "numbers = list(range(10))",
+    "explanation": "`range(10)` generates 0–9. Wrapping it with `list()` converts it to a list."
+  },
+  {
+    "id": 62,
+    "qid_original": 62,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Reverse the list `[1, 2, 3, 4, 5]`.",
+    "check_variable": ["reversed_list"],
+    "expected_value": [[5, 4, 3, 2, 1]],
+    "solution_code": "lst = [1, 2, 3, 4, 5]\nreversed_list = lst[::-1]",
+    "explanation": "Using slicing with `[::-1]` reverses a list."
+  },
+  {
+    "id": 63,
+    "qid_original": 63,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Sort the list `[5, 2, 8, 1, 9]` in ascending order.",
+    "check_variable": ["sorted_list"],
+    "expected_value": [[1, 2, 5, 8, 9]],
+    "solution_code": "lst = [5, 2, 8, 1, 9]\nsorted_list = sorted(lst)",
+    "explanation": "`sorted()` returns a new sorted list without modifying the original."
+  },
+  {
+    "id": 64,
+    "qid_original": 64,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Find the maximum value in the list `[23, 67, 12, 89, 45]`.",
+    "check_variable": ["max_value"],
+    "expected_value": [89],
+    "solution_code": "lst = [23, 67, 12, 89, 45]\nmax_value = max(lst)",
+    "explanation": "`max()` returns the largest element in the list."
+  },
+  {
+    "id": 65,
+    "qid_original": 65,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Find the minimum value in the list `[23, 67, 12, 89, 45]`.",
+    "check_variable": ["min_value"],
+    "expected_value": [12],
+    "solution_code": "lst = [23, 67, 12, 89, 45]\nmin_value = min(lst)",
+    "explanation": "`min()` returns the smallest element in the list."
+  },
+  {
+    "id": 66,
+    "qid_original": 66,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Calculate the sum of all elements in `[10, 20, 30, 40, 50]`.",
+    "check_variable": ["total"],
+    "expected_value": [150],
+    "solution_code": "lst = [10, 20, 30, 40, 50]\ntotal = sum(lst)",
+    "explanation": "`sum()` adds all elements in an iterable."
+  },
+  {
+    "id": 67,
+    "qid_original": 67,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Count how many times the number 3 appears in `[1, 2, 3, 3, 4, 3, 5]`.",
+    "check_variable": ["count_three"],
+    "expected_value": [3],
+    "solution_code": "lst = [1, 2, 3, 3, 4, 3, 5]\ncount_three = lst.count(3)",
+    "explanation": "`list.count(x)` counts occurrences of `x`."
+  },
+  {
+    "id": 68,
+    "qid_original": 68,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Find the index of the first occurrence of 7 in `[2, 4, 7, 9, 7, 11]`.",
+    "check_variable": ["index_first"],
+    "expected_value": [2],
+    "solution_code": "lst = [2, 4, 7, 9, 7, 11]\nindex_first = lst.index(7)",
+    "explanation": "`list.index(x)` returns the index of the first occurrence of `x`."
+  },
+  {
+    "id": 69,
+    "qid_original": 69,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Remove all duplicates from the list `[1, 2, 2, 3, 4, 4, 5]`.",
+    "check_variable": ["unique_list"],
+    "expected_value": [[1, 2, 3, 4, 5]],
+    "solution_code": "lst = [1, 2, 2, 3, 4, 4, 5]\nunique_list = list(dict.fromkeys(lst))",
+    "explanation": "Converting to a dict removes duplicates while preserving order."
+  },
+  {
+    "id": 70,
+    "qid_original": 70,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Create a list of squares of numbers from 1 to 10 using list comprehension.",
+    "check_variable": ["squares"],
+    "expected_value": [[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]],
+    "solution_code": "squares = [x*x for x in range(1, 11)]",
+    "explanation": "List comprehensions allow concise generation of lists."
+  },
+  {
+    "id": 71,
+    "qid_original": 71,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Check if the number 5 exists in the list `[1, 2, 3, 4, 5]`.",
+    "check_variable": ["exists"],
+    "expected_value": [true],
+    "solution_code": "lst = [1, 2, 3, 4, 5]\nexists = (5 in lst)",
+    "explanation": "`x in list` returns True if x is an element of the list."
+  },
+  {
+    "id": 72,
+    "qid_original": 72,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Filter even numbers from the list `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`.",
+    "check_variable": ["evens"],
+    "expected_value": [[2, 4, 6, 8, 10]],
+    "solution_code": "lst = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nevens = [x for x in lst if x % 2 == 0]",
+    "explanation": "A list comprehension with a condition filters elements."
+  },
+  {
+    "id": 73,
+    "qid_original": 73,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Create a new list by multiplying each element by 2 in `[1, 2, 3, 4, 5]`.",
+    "check_variable": ["doubled"],
+    "expected_value": [[2, 4, 6, 8, 10]],
+    "solution_code": "lst = [1, 2, 3, 4, 5]\ndoubled = [x*2 for x in lst]",
+    "explanation": "Element-wise transformations are easy with list comprehension."
+  },
+  {
+    "id": 74,
+    "qid_original": 74,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Flatten the nested list `[[1, 2], [3, 4], [5, 6]]` into a single list.",
+    "check_variable": ["flat"],
+    "expected_value": [[1, 2, 3, 4, 5, 6]],
+    "solution_code": "nested = [[1, 2], [3, 4], [5, 6]]\nflat = [x for sub in nested for x in sub]",
+    "explanation": "Double list comprehension flattens nested lists."
+  },
+  {
+    "id": 75,
+    "qid_original": 75,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Find the second largest number in `[23, 67, 12, 89, 45]`.",
+    "check_variable": ["second_largest"],
+    "expected_value": [67],
+    "solution_code": "lst = [23, 67, 12, 89, 45]\nsorted_lst = sorted(lst, reverse=True)\nsecond_largest = sorted_lst[1]",
+    "explanation": "Sort descending and take index 1."
+  },
+  {
+    "id": 76,
+    "qid_original": 76,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Create a list of all even numbers between 1 and 20 using list comprehension.",
+    "check_variable": ["evens"],
+    "expected_value": [[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]],
+    "solution_code": "evens = [x for x in range(1, 21) if x % 2 == 0]",
+    "explanation": "Filter even numbers inside the comprehension."
+  },
+  {
+    "id": 77,
+    "qid_original": 77,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Extend the list `[1, 2, 3]` with another list `[4, 5, 6]` using the extend method.",
+    "check_variable": ["lst"],
+    "expected_value": [[1, 2, 3, 4, 5, 6]],
+    "solution_code": "lst = [1, 2, 3]\nlst.extend([4, 5, 6])",
+    "explanation": "`extend()` appends each element of another list."
+  },
+  {
+    "id": 78,
+    "qid_original": 78,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Sort the list `[5, 2, 8, 1, 9]` in descending order.",
+    "check_variable": ["sorted_desc"],
+    "expected_value": [[9, 8, 5, 2, 1]],
+    "solution_code": "lst = [5, 2, 8, 1, 9]\nsorted_desc = sorted(lst, reverse=True)",
+    "explanation": "`reverse=True` sorts the list in descending order."
+  },
+  {
+    "id": 79,
+    "qid_original": 79,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Create a list containing the first 10 Fibonacci numbers.",
+    "check_variable": ["fib"],
+    "expected_value": [[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]],
+    "solution_code": "fib = [0, 1]\nfor _ in range(8):\n    fib.append(fib[-1] + fib[-2])",
+    "explanation": "Each Fibonacci number is the sum of the two previous ones."
+  },
+  {
+    "id": 80,
+    "qid_original": 80,
+    "category": "Lists (30 Questions)",
+    "question_raw": "Find all numbers divisible by 3 and 5 from 1 to 100 using list comprehension.",
+    "check_variable": ["divisible"],
+    "expected_value": [[15, 30, 45, 60, 75, 90]],
+    "solution_code": "divisible = [x for x in range(1, 101) if x % 3 == 0 and x % 5 == 0]",
+    "explanation": "Numbers divisible by both 3 and 5 satisfy both modulo conditions."
+  },
+    {
+    "id": 81,
+    "qid_original": 81,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Create an empty dictionary called `my_dict`.",
+    "check_variable": ["my_dict"],
+    "expected_value": [{}],
+    "solution_code": "my_dict = {}",
+    "explanation": "An empty dictionary is created using `{}`."
+  },
+  {
+    "id": 82,
+    "qid_original": 82,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Create a dictionary with keys \"name\", \"age\", and \"city\" with your information.",
+    "check_variable": ["info"],
+    "expected_value": [{"name": "Tristan", "age": 24, "city": "Bamberg"}],
+    "solution_code": "info = {\n    \"name\": \"Tristan\",\n    \"age\": 24,\n    \"city\": \"Bamberg\"\n}",
+    "explanation": "Dictionaries store key-value pairs. The values can be any data type."
+  },
+  {
+    "id": 83,
+    "qid_original": 83,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Access the value associated with key \"name\" from `{\"name\": \"John\", \"age\": 25}`.",
+    "check_variable": ["name_value"],
+    "expected_value": ["John"],
+    "solution_code": "person = {\"name\": \"John\", \"age\": 25}\nname_value = person[\"name\"]",
+    "explanation": "Use `dict[key]` to access the value for a specific key."
+  },
+  {
+    "id": 84,
+    "qid_original": 84,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Add a new key-value pair \"country\": \"USA\" to `{ \"name\": \"John\", \"age\": 25 }`.",
+    "check_variable": ["person"],
+    "expected_value": [{"name": "John", "age": 25, "country": "USA"}],
+    "solution_code": "person = {\"name\": \"John\", \"age\": 25}\nperson[\"country\"] = \"USA\"",
+    "explanation": "Assigning a value to a new key adds it to the dictionary."
+  },
+  {
+    "id": 85,
+    "qid_original": 85,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Update the value of \"age\" to 26 in `{ \"name\": \"John\", \"age\": 25 }`.",
+    "check_variable": ["person"],
+    "expected_value": [{"name": "John", "age": 26}],
+    "solution_code": "person = {\"name\": \"John\", \"age\": 25}\nperson[\"age\"] = 26",
+    "explanation": "Reassigning a value to an existing key updates it."
+  },
+  {
+    "id": 86,
+    "qid_original": 86,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Remove the key \"age\" from `{ \"name\": \"John\", \"age\": 25, \"city\": \"NYC\" }`.",
+    "check_variable": ["person"],
+    "expected_value": [{"name": "John", "city": "NYC"}],
+    "solution_code": "person = {\"name\": \"John\", \"age\": 25, \"city\": \"NYC\"}\ndel person[\"age\"]",
+    "explanation": "The `del` statement deletes a key-value pair from a dictionary."
+  },
+  {
+    "id": 87,
+    "qid_original": 87,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Get all keys from the dictionary `{ \"a\": 1, \"b\": 2, \"c\": 3 }`.",
+    "check_variable": ["keys"],
+    "expected_value": [["a", "b", "c"]],
+    "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\nkeys = list(d.keys())",
+    "explanation": "`dict.keys()` returns a view of dictionary keys, which we convert to a list."
+  },
+  {
+    "id": 88,
+    "qid_original": 88,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Get all values from the dictionary `{ \"a\": 1, \"b\": 2, \"c\": 3 }`.",
+    "check_variable": ["values"],
+    "expected_value": [[1, 2, 3]],
+    "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\nvalues = list(d.values())",
+    "explanation": "`dict.values()` returns a view of values, which we convert to a list."
+  },
+  {
+    "id": 89,
+    "qid_original": 89,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Check if the key \"name\" exists in `{ \"name\": \"John\", \"age\": 25 }`.",
+    "check_variable": ["exists"],
+    "expected_value": [true],
+    "solution_code": "person = {\"name\": \"John\", \"age\": 25}\nexists = (\"name\" in person)",
+    "explanation": "The `in` operator checks whether a key exists in a dictionary."
+  },
+  {
+    "id": 90,
+    "qid_original": 90,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Get the number of key-value pairs in `{ \"a\": 1, \"b\": 2, \"c\": 3 }`.",
+    "check_variable": ["length"],
+    "expected_value": [3],
+    "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\nlength = len(d)",
+    "explanation": "`len(dictionary)` returns the number of key-value pairs."
+  },
+    {
+    "id": 91,
+    "qid_original": 91,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Merge two dictionaries: `{ \"a\": 1, \"b\": 2 }` and `{ \"c\": 3, \"d\": 4 }`.",
+    "check_variable": ["merged"],
+    "expected_value": [{"a": 1, "b": 2, "c": 3, "d": 4}],
+    "solution_code": "d1 = {\"a\": 1, \"b\": 2}\nd2 = {\"c\": 3, \"d\": 4}\nmerged = {**d1, **d2}",
+    "explanation": "Using `{**d1, **d2}` merges dictionaries by unpacking their key-value pairs."
+  },
+  {
+    "id": 92,
+    "qid_original": 92,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Create a dictionary from two lists: keys = [\"name\", \"age\", \"city\"], values = [\"John\", 25, \"NYC\"].",
+    "check_variable": ["info"],
+    "expected_value": [{"name": "John", "age": 25, "city": "NYC"}],
+    "solution_code": "keys = [\"name\", \"age\", \"city\"]\nvalues = [\"John\", 25, \"NYC\"]\ninfo = dict(zip(keys, values))",
+    "explanation": "`zip(keys, values)` pairs each key with its corresponding value, and `dict()` turns them into a dictionary."
+  },
+  {
+    "id": 93,
+    "qid_original": 93,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Get the value for key \"salary\" from `{ \"name\": \"John\", \"age\": 25 }`, return 0 if not found.",
+    "check_variable": ["salary"],
+    "expected_value": [0],
+    "solution_code": "person = {\"name\": \"John\", \"age\": 25}\nsalary = person.get(\"salary\", 0)",
+    "explanation": "`dict.get(key, default)` returns the default value if the key does not exist."
+  },
+  {
+    "id": 94,
+    "qid_original": 94,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Create a dictionary where keys are numbers 1-5 and values are their squares.",
+    "check_variable": ["squares"],
+    "expected_value": [{"1": 1, "2": 4, "3": 9, "4": 16, "5": 25}],
+    "solution_code": "squares = {str(x): x*x for x in range(1, 6)}",
+    "explanation": "A dictionary comprehension generates key-value pairs where each value is the square of the key."
+  },
+  {
+    "id": 95,
+    "qid_original": 95,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Iterate through the dictionary `{ \"a\": 1, \"b\": 2, \"c\": 3 }` and print each key-value pair.",
+    "check_variable": ["output"],
+    "expected_value": [["a:1", "b:2", "c:3"]],
+    "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\noutput = []\nfor k, v in d.items():\n    output.append(f\"{k}:{v}\")",
+    "explanation": "`dict.items()` allows iteration over key-value pairs."
+  },
+  {
+    "id": 96,
+    "qid_original": 96,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Count the frequency of each character in the string \"hello\" using a dictionary.",
+    "check_variable": ["freq"],
+    "expected_value": [{"h": 1, "e": 1, "l": 2, "o": 1}],
+    "solution_code": "freq = {}\nfor ch in \"hello\":\n    freq[ch] = freq.get(ch, 0) + 1",
+    "explanation": "Each character is counted by incrementing its value in the dictionary."
+  },
+  {
+    "id": 97,
+    "qid_original": 97,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Invert a dictionary (swap keys and values): `{ \"a\": 1, \"b\": 2, \"c\": 3 }`.",
+    "check_variable": ["inverted"],
+    "expected_value": [{1: "a", 2: "b", 3: "c"}],
+    "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\ninverted = {v: k for k, v in d.items()}",
+    "explanation": "Dictionary comprehension swaps each key with its value."
+  },
+  {
+    "id": 98,
+    "qid_original": 98,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Find the key with the maximum value in `{ \"a\": 10, \"b\": 25, \"c\": 15 }`.",
+    "check_variable": ["max_key"],
+    "expected_value": ["b"],
+    "solution_code": "d = {\"a\": 10, \"b\": 25, \"c\": 15}\nmax_key = max(d, key=d.get)",
+    "explanation": "`max(dictionary, key=d.get)` returns the key with the highest value."
+  },
+  {
+    "id": 99,
+    "qid_original": 99,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Create a nested dictionary for students with their subjects and grades.",
+    "check_variable": ["students"],
+    "expected_value": [
+      {
+        "Alice": {"math": 90, "english": 85},
+        "Bob": {"math": 78, "english": 92}
+      }
+    ],
+    "solution_code": "students = {\n    \"Alice\": {\"math\": 90, \"english\": 85},\n    \"Bob\": {\"math\": 78, \"english\": 92}\n}",
+    "explanation": "Nested dictionaries store structured data. Each student has a dictionary of subject-grade pairs."
+  },
+  {
+    "id": 100,
+    "qid_original": 100,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Filter a dictionary to keep only items where value > 50: `{ \"a\": 30, \"b\": 60, \"c\": 45, \"d\": 70 }`.",
+    "check_variable": ["filtered"],
+    "expected_value": [{"b": 60, "d": 70}],
+    "solution_code": "d = {\"a\": 30, \"b\": 60, \"c\": 45, \"d\": 70}\nfiltered = {k: v for k, v in d.items() if v > 50}",
+    "explanation": "A dictionary comprehension allows filtering based on conditions."
   }
 ]
