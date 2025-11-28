@@ -1117,9 +1117,10 @@
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Find the intersection of two sets: `{1, 2, 3}` and `{2, 3, 4}`.",
     "check_variable": ["intersect"],
-    "expected_value": [[2,3]],
-    "solution_code": "a = {1,2,3}\nb = {2,3,4}\nintersect = a & b",
-    "explanation": "`&` gives the intersection — elements present in both sets."
+    "expected_value": [[2, 3]],
+    "accepted_types": ["list", "set"],
+    "solution_code": "a = {1, 2, 3}\nb = {2, 3, 4}\nintersect = list(a & b)",
+    "explanation": "The intersection of two sets contains elements present in both. Converted to a list for compatibility."
   },
     {
     "id": 111,
