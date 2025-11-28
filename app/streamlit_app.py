@@ -83,7 +83,7 @@ with tabs[0]:
         # create user
         supabase.table("users").insert({"username": username}).execute()
 
-        # create empty progress record WITH DEBUG
+        # create empty progress record WITH FULL DEBUG
         try:
             res = supabase.table("users_progress").upsert({
                 "username": username,
@@ -94,14 +94,18 @@ with tabs[0]:
                     "timestamp": time.time(),
                 }
             }).execute()
-            st.write("UPSERT RESULT:", res)
+
+            st.write("RAW RESPONSE:", res)
+
+            if hasattr(res, "error") and res.error:
+                st.error("SUPABASE RESPONSE ERROR:")
+                st.write(res.error)
+                return False
+
         except Exception as e:
-            st.error("SUPABASE ERROR (RAW):")
+            st.error("SUPABASE EXCEPTION (RAW):")
             st.write(repr(e))
             return False
-
-        st.success(f"🎉 Username '{username}' created!")
-        return True
 
 
     def save_progress(username):
