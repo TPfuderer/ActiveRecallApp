@@ -1020,5 +1020,105 @@
     "expected_value": [{"b": 60, "d": 70}],
     "solution_code": "d = {\"a\": 30, \"b\": 60, \"c\": 45, \"d\": 70}\nfiltered = {k: v for k, v in d.items() if v > 50}",
     "explanation": "A dictionary comprehension allows filtering based on conditions."
+  },
+    {
+    "id": 101,
+    "qid_original": 101,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Sort a dictionary by its values in ascending order: `{ \"a\": 3, \"b\": 1, \"c\": 2 }`.",
+    "check_variable": ["sorted_dict"],
+    "expected_value": [{"b": 1, "c": 2, "a": 3}],
+    "solution_code": "d = {\"a\": 3, \"b\": 1, \"c\": 2}\nsorted_dict = dict(sorted(d.items(), key=lambda x: x[1]))",
+    "explanation": "Sorting dictionary items by value using `sorted()` and reconstructing a dict preserves ascending order."
+  },
+  {
+    "id": 102,
+    "qid_original": 102,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Create a dictionary comprehension to create {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}.",
+    "check_variable": ["squares"],
+    "expected_value": [{"1": 1, "2": 4, "3": 9, "4": 16, "5": 25}],
+    "solution_code": "squares = {i: i*i for i in range(1, 6)}",
+    "explanation": "Dictionary comprehension lets you build key-value pairs in one expression."
+  },
+  {
+    "id": 103,
+    "qid_original": 103,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Group a list of words by their first letter: [\"apple\", \"banana\", \"apricot\", \"blueberry\", \"cherry\"].",
+    "check_variable": ["grouped"],
+    "expected_value": [{"a": ["apple", "apricot"], "b": ["banana", "blueberry"], "c": ["cherry"]}],
+    "solution_code": "words = [\"apple\", \"banana\", \"apricot\", \"blueberry\", \"cherry\"]\ngrouped = {}\nfor w in words:\n    first = w[0]\n    grouped.setdefault(first, []).append(w)",
+    "explanation": "Using `setdefault`, words are grouped by the first character."
+  },
+  {
+    "id": 104,
+    "qid_original": 104,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Flatten a nested dictionary: `{ \"a\": {\"b\": 1, \"c\": 2}, \"d\": {\"e\": 3}}` to `{ \"a_b\": 1, \"a_c\": 2, \"d_e\": 3}`.",
+    "check_variable": ["flat"],
+    "expected_value": [{"a_b": 1, "a_c": 2, "d_e": 3}],
+    "solution_code": "d = {\"a\": {\"b\": 1, \"c\": 2}, \"d\": {\"e\": 3}}\nflat = {}\nfor outer, inner in d.items():\n    for k, v in inner.items():\n        flat[f\"{outer}_{k}\"] = v",
+    "explanation": "Nested loops build new compound keys combining parent and child keys."
+  },
+  {
+    "id": 105,
+    "qid_original": 105,
+    "category": "Dictionaries (25 Questions)",
+    "question_raw": "Find all keys that have the same value in `{ \"a\": 1, \"b\": 2, \"c\": 1, \"d\": 3, \"e\": 2 }`.",
+    "check_variable": ["groups"],
+    "expected_value": [{"1": ["a", "c"], "2": ["b", "e"], "3": ["d"]}],
+    "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 1, \"d\": 3, \"e\": 2}\ngroups = {}\nfor k, v in d.items():\n    groups.setdefault(str(v), []).append(k)",
+    "explanation": "Keys are grouped by value using `setdefault()` in a loop."
+  },
+  {
+    "id": 106,
+    "qid_original": 106,
+    "category": "Sets and Tuples (15 Questions)",
+    "question_raw": "Create an empty set called `my_set`.",
+    "check_variable": ["my_set"],
+    "expected_value": [ [] ],
+    "solution_code": "my_set = set()",
+    "explanation": "`set()` creates an empty set; `{}` would be a dictionary."
+  },
+  {
+    "id": 107,
+    "qid_original": 107,
+    "category": "Sets and Tuples (15 Questions)",
+    "question_raw": "Create a set with numbers 1, 2, 3, 4, 5.",
+    "check_variable": ["nums"],
+    "expected_value": [[1,2,3,4,5]],
+    "solution_code": "nums = {1, 2, 3, 4, 5}",
+    "explanation": "Sets use curly braces and contain unique elements."
+  },
+  {
+    "id": 108,
+    "qid_original": 108,
+    "category": "Sets and Tuples (15 Questions)",
+    "question_raw": "Add the number 6 to the set `{1, 2, 3, 4, 5}`.",
+    "check_variable": ["s"],
+    "expected_value": [[1,2,3,4,5,6]],
+    "solution_code": "s = {1, 2, 3, 4, 5}\ns.add(6)",
+    "explanation": "`set.add()` inserts a single new element."
+  },
+  {
+    "id": 109,
+    "qid_original": 109,
+    "category": "Sets and Tuples (15 Questions)",
+    "question_raw": "Find the union of two sets: `{1, 2, 3}` and `{3, 4, 5}`.",
+    "check_variable": ["union_set"],
+    "expected_value": [[1,2,3,4,5]],
+    "solution_code": "a = {1,2,3}\nb = {3,4,5}\nunion_set = a | b",
+    "explanation": "The union operator `|` merges elements from both sets."
+  },
+  {
+    "id": 110,
+    "qid_original": 110,
+    "category": "Sets and Tuples (15 Questions)",
+    "question_raw": "Find the intersection of two sets: `{1, 2, 3}` and `{2, 3, 4}`.",
+    "check_variable": ["intersect"],
+    "expected_value": [[2,3]],
+    "solution_code": "a = {1,2,3}\nb = {2,3,4}\nintersect = a & b",
+    "explanation": "`&` gives the intersection — elements present in both sets."
   }
 ]
