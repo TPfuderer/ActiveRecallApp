@@ -125,6 +125,28 @@ with tabs[0]:
     # 🔹 Show question
     st.markdown(f"### 📝 {task.get('question_raw', task.get('question'))}")
 
+    # ----------------------------------------
+    # 🔽 FILTER: Task-ID oder Kategorie
+    # ----------------------------------------
+
+    filter_mode = st.radio(
+        "Filtermodus wählen:",
+        ["Alle Aufgaben", "Nach Kategorie", "Direkte Task-ID"],
+        horizontal=True
+    )
+
+    filtered_tasks = tasks
+
+    if filter_mode == "Nach Kategorie":
+        all_categories = sorted({t["category"] for t in tasks})
+        selected_cat = st.selectbox("Kategorie wählen:", all_categories)
+        filtered_tasks = [t for t in tasks if t["category"] == selected_cat]
+
+    elif filter_mode == "Direkte Task-ID":
+        all_ids = [t["id"] for t in tasks]
+        selected_id = st.number_input("Task-ID wählen:", min_value=min(all_ids), max_value=max(all_ids), step=1)
+        filtered_tasks = [t for t in tasks if t["id"] == selected_id]
+
     # --- Ctrl+Enter triggers hidden run button ---
     run_trigger = st.button("___run_hidden___", key="run_hidden")
 
@@ -314,7 +336,7 @@ with tabs[0]:
         st.success("🟢 Markiert als **Einfach** – längere Wiederholungsintervalle.")
 
     if next_task:
-        next_t = pick_next_task(tasks)
+        next_t = pick_next_task(filtered_tasks)
         st.session_state["task_index"] = next_t["id"] - 1
         st.success(f"🕒 Nächste Aufgabe: #{next_t['id']}")
         st.rerun()
