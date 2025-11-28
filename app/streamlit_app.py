@@ -85,7 +85,9 @@ with tabs[0]:
 
         # create empty progress record WITH FULL DEBUG
         try:
-            res = supabase.table("users_progress").upsert({
+            st.write("📤 Sende Progress an Supabase …")
+
+            payload = {
                 "username": username,
                 "progress": {
                     "ratings": {},
@@ -93,14 +95,13 @@ with tabs[0]:
                     "review_data": {},
                     "timestamp": time.time(),
                 }
-            }).execute()
+            }
 
-            st.write("RAW RESPONSE:", res)
+            st.write("➡️ Payload:", payload)
 
-            if hasattr(res, "error") and res.error:
-                st.error("SUPABASE RESPONSE ERROR:")
-                st.write(res.error)
-                return False
+            res = supabase.table("users_progress").upsert(payload).execute()
+
+            st.write("⬅️ Supabase Antwort:", res)
 
         except Exception as e:
             st.error("SUPABASE EXCEPTION (RAW):")
