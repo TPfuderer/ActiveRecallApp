@@ -63,6 +63,41 @@ with tabs[0]:
         return tasks[st.session_state["task_index"]]
 
 
+    def username_exists(username):
+        res = supabase.table("users").select("username").eq("username", username).execute()
+        return len(res.data) > 0
+
+
+    def create_username(username):
+        # empty, trimmed, invalid string?
+        if not username or len(username.strip()) < 3:
+            st.error("🚨 Username must be at least 3 characters.")
+            return False
+
+        username = username.strip()
+
+        # check existence
+        if username_exists(username):
+            st.error("❌ Username already exists. Choose another one.")
+            return False
+
+        # create user in supabase
+        supabase.table("users").insert({"username": username}).execute()
+
+        # optionally create empty progress record
+        supabase.table("user_progress").upsert({
+            "username": username,
+            "progress": {
+                "ratings": {},
+                "attempts": {},
+                "review_data": {},
+                "timestamp": time.time(),
+            }
+        }).execute()
+
+        st.success(f"🎉 Username '{username}' created!")
+        return True
+
     def save_progress(username):
         export_data = {
             "ratings": st.session_state.get("ratings", {}),
@@ -157,9 +192,17 @@ with tabs[0]:
 
         return random.choice(due_tasks)
 
+
     st.sidebar.header("🔐 Login / Cloud-Speicher")
 
-    username = st.sidebar.text_input("Username (ohne Passwort)")
+    new_user = st.sidebar.text_input("Create Username", key="create_username_box")
+
+    if st.sidebar.button("➡️ Create Username"):
+        create_username(new_user)
+
+    st.sidebar.markdown("---")
+
+    username = st.sidebar.text_input("Enter Username", key="login_username")
 
     if st.sidebar.button("⬆ Load Progress"):
         if username:
