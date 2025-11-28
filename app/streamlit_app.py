@@ -115,7 +115,7 @@ with tabs[0]:
 
 
     def load_progress(username):
-        res = supabase.table("user_progress") \
+        res = supabase.table("users_progress") \
             .select("progress") \
             .eq("username", username) \
             .limit(1) \
