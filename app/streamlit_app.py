@@ -461,6 +461,10 @@ with tabs[1]:
 with tabs[2]:
     st.header("Questions by Category")
 
+    st.write("Selected:", selected_category)
+    st.write("All categories:", all_categories)
+    st.write("Sample:", tasks[0]["category"])
+
     all_categories = sorted({task["category"] for task in tasks})
     selected_category = st.selectbox("Choose a category:", ["All"] + all_categories)
 
