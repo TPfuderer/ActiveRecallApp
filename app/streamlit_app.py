@@ -69,34 +69,14 @@ with tabs[0]:
 
 
     def create_username(username):
-        # empty, trimmed, invalid string?
-        if not username or len(username.strip()) < 3:
-            st.error("🚨 Username must be at least 3 characters.")
-            return False
+        try:
+            res = supabase.table("users").upsert({"username": username}).execute()
+            return res
+        except Exception as e:
+            st.error("SUPABASE ERROR RAW:")
+            st.write(e)
+            raise
 
-        username = username.strip()
-
-        # check existence
-        if username_exists(username):
-            st.error("❌ Username already exists. Choose another one.")
-            return False
-
-        # create user in supabase
-        supabase.table("users").insert({"username": username}).execute()
-
-        # optionally create empty progress record
-        supabase.table("user_progress").upsert({
-            "username": username,
-            "progress": {
-                "ratings": {},
-                "attempts": {},
-                "review_data": {},
-                "timestamp": time.time(),
-            }
-        }).execute()
-
-        st.success(f"🎉 Username '{username}' created!")
-        return True
 
     def save_progress(username):
         export_data = {
