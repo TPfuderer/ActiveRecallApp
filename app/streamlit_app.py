@@ -106,7 +106,7 @@ with tabs[0]:
             "timestamp": time.time(),
         }
 
-        supabase.table("user_progress").upsert({
+        supabase.table("users_progress").upsert({
             "username": username,
             "progress": export_data
         }).execute()
