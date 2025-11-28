@@ -975,10 +975,17 @@
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Invert a dictionary (swap keys and values): `{ \"a\": 1, \"b\": 2, \"c\": 3 }`.",
     "check_variable": ["inverted"],
-    "expected_value": [{1: "a", 2: "b", 3: "c"}],
+    "expected_value": [
+      {
+        "1": "a",
+        "2": "b",
+        "3": "c"
+      }
+    ],
     "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\ninverted = {v: k for k, v in d.items()}",
     "explanation": "Dictionary comprehension swaps each key with its value."
-  },
+  }
+  ,
   {
     "id": 98,
     "qid_original": 98,
