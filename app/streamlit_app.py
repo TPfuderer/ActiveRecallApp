@@ -37,6 +37,48 @@ supabase = create_client(
     st.secrets["SUPABASE_ANON_KEY"]
 )
 
+# -------------------------------------------------------------
+# 🔍 DEBUG BLOCK — genau hier einfügen
+# -------------------------------------------------------------
+st.header("SUPABASE DEBUG")
+
+# 1) SELECT test
+debug = supabase.table("user_progress").select("*").limit(5).execute()
+st.write("DEBUG SELECT:", debug)
+
+# 2) SIMPLE UPSERT test
+try:
+    r = supabase.table("user_progress").upsert({
+        "username": "test_simple",
+        "progress": {"status": "ok"}
+    }).execute()
+    st.write("SIMPLE UPSERT:", r)
+except Exception as e:
+    st.error("SIMPLE ERROR:")
+    st.write(repr(e))
+
+# 3) FULL UPSERT test
+export_data = {
+    "ratings": {"1": "hard"},
+    "attempts": {},
+    "review_data": {},
+    "timestamp": time.time()
+}
+
+try:
+    r = supabase.table("user_progress").upsert({
+        "username": "test_full",
+        "progress": export_data
+    }).execute()
+    st.write("FULL UPSERT:", r)
+except Exception as e:
+    st.error("FULL ERROR:")
+    st.write(repr(e))
+
+# -------------------------------------------------------------
+# END DEBUG BLOCK
+# ----------------------------------------------------
+
 st.write("Supabase connected:", supabase is not None)
 
 
