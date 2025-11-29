@@ -149,6 +149,26 @@ with tabs[0]:
             "last_review": time.time(),
         }
 
+        def save_progress(username):
+            """Save the user's entire progress into Supabase."""
+            export_data = {
+                "ratings": st.session_state.get("ratings", {}),
+                "attempts": st.session_state.get("attempts", {}),
+                "review_data": st.session_state.get("review_data", {}),
+                "timestamp": time.time(),
+            }
+
+            try:
+                supabase.table("users_progress").upsert({
+                    "username": username,
+                    "progress": export_data
+                }).execute()
+
+                st.session_state["last_saved"] = time.time()
+            except Exception as e:
+                st.error("❌ Supabase Save Error")
+                st.write(repr(e))
+
 
     def upload_issue_to_gist(task_id, data):
         """Upload a single issue as a secret GitHub Gist."""
@@ -476,9 +496,18 @@ with tabs[0]:
         st.success("🟢 Markiert als **Einfach** – längere Wiederholungsintervalle.")
 
     if next_task:
-        next_t = pick_next_task(filtered_tasks)
+        # -------------------------------------------------
+        # 🔥 Auto-Save Progress BEFORE loading next question
+        # -------------------------------------------------
+        username = st.session_state.get("username", None)
+        if username:
+            save_progress(username)
+
+        next_t = pick_next_task(tasks)
         st.session_state["task_index"] = next_t["id"] - 1
+
         st.success(f"🕒 Nächste Aufgabe: #{next_t['id']}")
+
         st.rerun()
 
     # --- Fortschritt ---
