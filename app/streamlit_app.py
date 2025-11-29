@@ -374,22 +374,23 @@ with tabs[0]:
 
                     ALLOWED_TYPES = (list, set, dict, tuple)
 
-                    # Falls Nutzer andere Struktur liefert → Warnung
-                    if isinstance(user_val, ALLOWED_TYPES) and isinstance(exp, ALLOWED_TYPES):
-                        # Sets sortieren / normalisieren
-                        if isinstance(user_val, set):
-                            user_norm = sorted(user_val)
-                        elif isinstance(user_val, dict):
-                            user_norm = sorted(user_val.items())
-                        else:
-                            user_norm = user_val
 
-                        if isinstance(exp, set):
-                            exp_norm = sorted(exp)
-                        elif isinstance(exp, dict):
-                            exp_norm = sorted(exp.items())
-                        else:
-                            exp_norm = exp
+                    def normalize(v):
+                        if isinstance(v, set):
+                            return sorted(v)
+                        if isinstance(v, tuple):
+                            return list(v)
+                        if isinstance(v, dict):
+                            return sorted(v.items())
+                        if isinstance(v, list):
+                            return v
+                        return v
+
+
+                    # Falls einer der beiden Werte komplexer Typ → flexible Prüfung
+                    if isinstance(user_val, ALLOWED_TYPES) or isinstance(exp, ALLOWED_TYPES):
+                        user_norm = normalize(user_val)
+                        exp_norm = normalize(exp)
 
                         if user_norm == exp_norm:
                             results.append(f"✅ `{var}` = {user_val}")
@@ -397,7 +398,7 @@ with tabs[0]:
                             results.append(f"❌ `{var}` = {user_val} (expected {exp})")
 
                     else:
-                        # exact fallback (für ints, floats, strings, etc.)
+                        # exact fallback (ints, floats, bool, str, etc.)
                         if user_val == exp:
                             results.append(f"✅ `{var}` = {exp}")
                         else:
