@@ -367,14 +367,45 @@ with tabs[0]:
                             pass
                     # --------------------------------------------------
 
-                    # exact equality fallback
-                    if user_val == exp:
-                        results.append(f"✅ `{var}` = {exp}")
-                    else:
-                        if user_val is None:
-                            results.append(f"❌ `{var}` not found.")
+                    # ============================
+                    # 💡 TYPE-FLEXIBLE CHECK
+                    #   akzeptiert list, set, dict, tuple
+                    # ============================
+
+                    ALLOWED_TYPES = (list, set, dict, tuple)
+
+                    # Falls Nutzer andere Struktur liefert → Warnung
+                    if isinstance(user_val, ALLOWED_TYPES) and isinstance(exp, ALLOWED_TYPES):
+                        # Sets sortieren / normalisieren
+                        if isinstance(user_val, set):
+                            user_norm = sorted(user_val)
+                        elif isinstance(user_val, dict):
+                            user_norm = sorted(user_val.items())
+                        else:
+                            user_norm = user_val
+
+                        if isinstance(exp, set):
+                            exp_norm = sorted(exp)
+                        elif isinstance(exp, dict):
+                            exp_norm = sorted(exp.items())
+                        else:
+                            exp_norm = exp
+
+                        if user_norm == exp_norm:
+                            results.append(f"✅ `{var}` = {user_val}")
                         else:
                             results.append(f"❌ `{var}` = {user_val} (expected {exp})")
+
+                    else:
+                        # exact fallback (für ints, floats, strings, etc.)
+                        if user_val == exp:
+                            results.append(f"✅ `{var}` = {exp}")
+                        else:
+                            if user_val is None:
+                                results.append(f"❌ `{var}` not found.")
+                            else:
+                                results.append(f"❌ `{var}` = {user_val} (expected {exp})")
+
 
             elif isinstance(check_vars, str):
                 user_val = user_globals.get(check_vars, None)
