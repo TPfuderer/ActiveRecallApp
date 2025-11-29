@@ -526,6 +526,9 @@ with tabs[0]:
             st.write(
                 f"• Task {tid}: {rating.capitalize()} – {count}x durchgeführt | ⏳ ~{next_in} Tage"
             )
+    if "last_saved" in st.session_state:
+        ago = int(time.time() - st.session_state["last_saved"])
+        st.caption(f"💾 Auto-saved {ago} seconds ago")
 
     # ============================================================
     # 📦 Fortschritt Export / Import
