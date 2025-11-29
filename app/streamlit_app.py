@@ -149,26 +149,6 @@ with tabs[0]:
             "last_review": time.time(),
         }
 
-        def save_progress(username):
-            """Save the user's entire progress into Supabase."""
-            export_data = {
-                "ratings": st.session_state.get("ratings", {}),
-                "attempts": st.session_state.get("attempts", {}),
-                "review_data": st.session_state.get("review_data", {}),
-                "timestamp": time.time(),
-            }
-
-            try:
-                supabase.table("users_progress").upsert({
-                    "username": username,
-                    "progress": export_data
-                }).execute()
-
-                st.session_state["last_saved"] = time.time()
-            except Exception as e:
-                st.error("❌ Supabase Save Error")
-                st.write(repr(e))
-
 
     def upload_issue_to_gist(task_id, data):
         """Upload a single issue as a secret GitHub Gist."""
@@ -394,23 +374,22 @@ with tabs[0]:
 
                     ALLOWED_TYPES = (list, set, dict, tuple)
 
+                    # Falls Nutzer andere Struktur liefert → Warnung
+                    if isinstance(user_val, ALLOWED_TYPES) and isinstance(exp, ALLOWED_TYPES):
+                        # Sets sortieren / normalisieren
+                        if isinstance(user_val, set):
+                            user_norm = sorted(user_val)
+                        elif isinstance(user_val, dict):
+                            user_norm = sorted(user_val.items())
+                        else:
+                            user_norm = user_val
 
-                    def normalize(v):
-                        if isinstance(v, set):
-                            return sorted(v)
-                        if isinstance(v, tuple):
-                            return list(v)
-                        if isinstance(v, dict):
-                            return sorted(v.items())
-                        if isinstance(v, list):
-                            return v
-                        return v
-
-
-                    # Falls einer der beiden Werte komplexer Typ → flexible Prüfung
-                    if isinstance(user_val, ALLOWED_TYPES) or isinstance(exp, ALLOWED_TYPES):
-                        user_norm = normalize(user_val)
-                        exp_norm = normalize(exp)
+                        if isinstance(exp, set):
+                            exp_norm = sorted(exp)
+                        elif isinstance(exp, dict):
+                            exp_norm = sorted(exp.items())
+                        else:
+                            exp_norm = exp
 
                         if user_norm == exp_norm:
                             results.append(f"✅ `{var}` = {user_val}")
@@ -418,7 +397,7 @@ with tabs[0]:
                             results.append(f"❌ `{var}` = {user_val} (expected {exp})")
 
                     else:
-                        # exact fallback (ints, floats, bool, str, etc.)
+                        # exact fallback (für ints, floats, strings, etc.)
                         if user_val == exp:
                             results.append(f"✅ `{var}` = {exp}")
                         else:
@@ -496,22 +475,10 @@ with tabs[0]:
         st.success("🟢 Markiert als **Einfach** – längere Wiederholungsintervalle.")
 
     if next_task:
-        # -------------------------------------------------
-        # 🔥 Auto-Save Progress BEFORE loading next question
-        # -------------------------------------------------
-        username = st.session_state.get("username", None)
-        if username:
-            save_progress(username)
-
-        next_t = pick_next_task(tasks)
+        next_t = pick_next_task(filtered_tasks)
         st.session_state["task_index"] = next_t["id"] - 1
-
         st.success(f"🕒 Nächste Aufgabe: #{next_t['id']}")
-
         st.rerun()
-    if "last_saved" in st.session_state:
-        ago = int(time.time() - st.session_state["last_saved"])
-        st.caption(f"💾 Auto-saved {ago} seconds ago")
 
     # --- Fortschritt ---
     progress = (st.session_state["task_index"] + 1) / len(tasks)
