@@ -327,8 +327,6 @@ with tabs[0]:
         st.subheader("🖥️ Execution Result")
 
         tid = task["id"]
-        st.session_state["attempts"][tid] = st.session_state["attempts"].get(tid, 0) + 1
-
         stdout_buffer = io.StringIO()
         stderr_buffer = io.StringIO()
 
@@ -460,16 +458,19 @@ with tabs[0]:
             st.markdown(task["explanation"])
 
     if hard:
+        st.session_state["attempts"][tid] = st.session_state["attempts"].get(tid, 0) + 1
         st.session_state["ratings"][tid] = "hard"
         update_review(tid, "hard")
         st.warning("🔴 Markiert als **Schwer** – kürzere Wiederholungsintervalle.")
 
     if medium:
+        st.session_state["attempts"][tid] = st.session_state["attempts"].get(tid, 0) + 1
         st.session_state["ratings"][tid] = "medium"
         update_review(tid, "medium")
         st.info("🟡 Markiert als **Mittel** – normale Wiederholungsintervalle.")
 
     if easy:
+        st.session_state["attempts"][tid] = st.session_state["attempts"].get(tid, 0) + 1
         st.session_state["ratings"][tid] = "easy"
         update_review(tid, "easy")
         st.success("🟢 Markiert als **Einfach** – längere Wiederholungsintervalle.")
