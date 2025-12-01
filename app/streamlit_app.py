@@ -437,44 +437,75 @@ with tabs[0]:
 
     st.markdown("---")
 
-    # --- Buttons ---
+    # --- Buttons (persistent) ---
     col1, col2, col3, col4, col5 = st.columns(5)
+
     with col1:
         show_answer = st.button("💡 Antwort anzeigen")
+
     with col2:
-        hard = st.button("😤 Schwer")
+        pressed_hard = st.button("😤 Schwer", key=f"hard_btn_{tid}")
+
     with col3:
-        medium = st.button("🙂 Mittel")
+        pressed_medium = st.button("🙂 Mittel", key=f"medium_btn_{tid}")
+
     with col4:
-        easy = st.button("😎 Einfach")
+        pressed_easy = st.button("😎 Einfach", key=f"easy_btn_{tid}")
+
     with col5:
         next_task = st.button("➡️ Nächste Aufgabe")
 
-    tid = task["id"]
+    # -------------------------------------------------------
+    # 🔥 PERSISTENTES CLICK-EVENT FÜR RATINGS
+    # -------------------------------------------------------
 
+    # Button-Clicks speichern (nur 1 Frame)
+    if pressed_hard:
+        st.session_state["last_rating"] = ("hard", tid)
+
+    if pressed_medium:
+        st.session_state["last_rating"] = ("medium", tid)
+
+    if pressed_easy:
+        st.session_state["last_rating"] = ("easy", tid)
+
+    # -------------------------------------------------------
+    # 📌 WENN EIN RATING GESPEICHERT WURDE → VERARBEITEN
+    # -------------------------------------------------------
+    if "last_rating" in st.session_state:
+        rating, rid = st.session_state["last_rating"]
+
+        # Attempt Counter
+        st.session_state["attempts"][rid] = st.session_state["attempts"].get(rid, 0) + 1
+
+        # Rating speichern
+        st.session_state["ratings"][rid] = rating
+
+        # Spaced Repetition Interval aktualisieren
+        update_review(rid, rating)
+
+        # 🔔 Erfolgsmeldung anzeigen
+        if rating == "hard":
+            st.warning(f"🔴 Successfully counted as HARD — attempts now: {st.session_state['attempts'][rid]}")
+        elif rating == "medium":
+            st.info(f"🟡 Successfully counted as MEDIUM — attempts now: {st.session_state['attempts'][rid]}")
+        elif rating == "easy":
+            st.success(f"🟢 Successfully counted as EASY — attempts now: {st.session_state['attempts'][rid]}")
+
+        # Event löschen, damit es nicht erneut triggered wird
+        del st.session_state["last_rating"]
+
+    # -------------------------------------------------------
+    # SHOW ANSWER
+    # -------------------------------------------------------
     if show_answer:
         with st.expander("💡 Lösung & Erklärung"):
             st.code(task["solution_code"], language="python")
             st.markdown(task["explanation"])
 
-    if hard:
-        st.session_state["attempts"][tid] = st.session_state["attempts"].get(tid, 0) + 1
-        st.session_state["ratings"][tid] = "hard"
-        update_review(tid, "hard")
-        st.warning("🔴 Markiert als **Schwer** – kürzere Wiederholungsintervalle.")
-
-    if medium:
-        st.session_state["attempts"][tid] = st.session_state["attempts"].get(tid, 0) + 1
-        st.session_state["ratings"][tid] = "medium"
-        update_review(tid, "medium")
-        st.info("🟡 Markiert als **Mittel** – normale Wiederholungsintervalle.")
-
-    if easy:
-        st.session_state["attempts"][tid] = st.session_state["attempts"].get(tid, 0) + 1
-        st.session_state["ratings"][tid] = "easy"
-        update_review(tid, "easy")
-        st.success("🟢 Markiert als **Einfach** – längere Wiederholungsintervalle.")
-
+    # -------------------------------------------------------
+    # NEXT TASK
+    # -------------------------------------------------------
     if next_task:
         next_t = pick_next_task(filtered_tasks)
         st.session_state["task_index"] = next_t["id"] - 1
