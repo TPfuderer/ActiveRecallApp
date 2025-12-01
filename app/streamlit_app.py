@@ -578,75 +578,56 @@ with tabs[0]:
 with tabs[1]:
     st.header("❗ Fehler / Issue melden")
 
-    issue_id = st.number_input("Aufgaben-ID mit Fehler:", step=1, min_value=1)
+    # issue_id kann auch 0 sein (bei Start)
+    issue_id = st.number_input("Aufgaben-ID mit Fehler:", step=1, min_value=0)
 
-    if issue_id:
-        task = next((t for t in tasks if t["id"] == issue_id), None)
+    # Wenn keine ID eingegeben → Info anzeigen
+    if issue_id == 0:
+        st.info("Bitte eine gültige Aufgaben-ID eingeben.")
+        st.stop()  # Tab 2 endet hier, Tab 3 lädt trotzdem
+        # (st.stop() ist SAFE innerhalb eines Tabs!)
 
-        if task:
+    # Wenn eine ID eingegeben wurde (>0)
+    task = next((t for t in tasks if t["id"] == issue_id), None)
 
-            # ---- 1. Fixierter Teil (id + question) ----
-            st.subheader("🔒 Fixierte Felder (nicht editierbar)")
-            fixed = {
-                "id": task["id"],
-                "question": task.get("question_raw", task.get("question"))
-            }
-            st.json(fixed)
+    if task is None:
+        st.error("❌ Keine Aufgabe mit dieser ID gefunden.")
+        st.stop()
 
-            # ---- 2. Editierbarer Teil ----
-            st.subheader("✏️ Änderbarer JSON-Bereich")
+    # ---- 1. Fixierter Teil ----
+    st.subheader("🔒 Fixierte Felder (nicht editierbar)")
+    fixed = {
+        "id": task["id"],
+        "question": task.get("question_raw", task.get("question"))
+    }
+    st.json(fixed)
 
-            # Alles außer id + question extrahieren
-            editable = {
-                k: v for k, v in task.items()
-                if k not in ["id", "question"]
-            }
+    # ---- 2. Editierbarer JSON Teil ----
+    st.subheader("✏️ Änderbarer JSON-Bereich")
 
-            editable_str = json.dumps(editable, indent=2, ensure_ascii=False)
+    editable = {
+        k: v for k, v in task.items()
+        if k not in ["id", "question"]
+    }
 
-            editable_input = st.text_area(
-                "Bearbeite JSON:",
-                value=editable_str,
-                height=300
-            )
+    editable_str = json.dumps(editable, indent=2, ensure_ascii=False)
 
-            # ---- SPEICHERN ----
-            def save_issue(task_id, edited_json_str):
-                issues_path = Path(__file__).parent / "issues.json"
+    editable_input = st.text_area(
+        "Bearbeite JSON:",
+        value=editable_str,
+        height=300
+    )
 
-                try:
-                    edited_json = json.loads(edited_json_str)
-                except Exception as e:
-                    st.error(f"❌ JSON Fehler: {e}")
-                    return
+    # ---- Gist Upload Button ----
+    if st.button("💾 Issue als Gist speichern"):
+        try:
+            edited = json.loads(editable_input)
+            url = upload_issue_to_gist(issue_id, edited)
 
-                if issues_path.exists():
-                    data = json.loads(issues_path.read_text("utf-8"))
-                else:
-                    data = {"issues": []}
-
-                data["issues"].append({
-                    "task_id": task_id,
-                    "timestamp": time.time(),
-                    "changes": edited_json
-                })
-
-                issues_path.write_text(
-                    json.dumps(data, indent=2, ensure_ascii=False),
-                    encoding="utf-8",
-                )
-
-
-            if st.button("💾 Issue als Gist speichern"):
-                try:
-                    edited = json.loads(editable_input)
-                    url = upload_issue_to_gist(issue_id, edited)
-
-                    if url:
-                        st.success("🎉 Issue gespeichert!")
-
-                except Exception as e:
-                    st.error(f"❌ JSON Fehler: {e}")
+            if url:
+                st.success("🎉 Issue gespeichert!")
+        except Exception as e:
+            st.error(f"❌ JSON Fehler: {e}")
 
 # ============================================================
 # 📊 TAB 3: Progress Dashboard
