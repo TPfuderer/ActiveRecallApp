@@ -41,7 +41,7 @@ st.write("Supabase connected:", supabase is not None)
 
 
 # --- Tabs ----------------------------------------------------
-tabs = st.tabs(["🧠 Aufgaben", "❗ Issue melden"])
+tabs = st.tabs(["🧠 Aufgaben", "❗ Issue melden", "📊 Dashboard"])
 
 # ============================================================
 # 🧠 TAB 1: Aufgaben & Learning UI
@@ -647,3 +647,34 @@ with tabs[1]:
 
                 except Exception as e:
                     st.error(f"❌ JSON Fehler: {e}")
+
+# ============================================================
+# 📊 TAB 3: Progress Dashboard
+# ============================================================
+with tabs[2]:
+    st.header("📊 Progress Dashboard")
+
+    # Falls noch kein progress geladen/gemacht wurde
+    attempts = st.session_state.get("attempts", {})
+
+    total_tasks = len(tasks)
+    answered_once = sum(1 for t, c in attempts.items() if c >= 1)
+
+    st.subheader("🧮 Overview")
+
+    st.write(f"**Total Tasks:** {total_tasks}")
+    st.write(f"**Tasks answered at least once:** {answered_once}")
+
+    # Kleine Fortschrittsanzeige
+    st.progress(answered_once / total_tasks if total_tasks else 0)
+
+    st.markdown("---")
+
+    st.subheader("📋 Detailed Attempts per Task")
+
+    if attempts:
+        # Eine kleine Tabelle anzeigen
+        for tid, count in sorted(attempts.items()):
+            st.write(f"• **Task {tid}** → {count}× beantwortet")
+    else:
+        st.info("Noch keine Aufgaben beantwortet.")
