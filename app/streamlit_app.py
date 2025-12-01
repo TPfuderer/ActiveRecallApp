@@ -218,6 +218,7 @@ with tabs[0]:
 
     # --- Current task ---
     task = get_task()
+    tid = task["id"]
 
     # --- Display Header ---
     st.title(f"🧠 Task {task['id']}/{len(tasks)}")
@@ -326,7 +327,6 @@ with tabs[0]:
     if st.button("▶️ Run & Check"):
         st.subheader("🖥️ Execution Result")
 
-        tid = task["id"]
         stdout_buffer = io.StringIO()
         stderr_buffer = io.StringIO()
 
