@@ -220,7 +220,7 @@ with tabs[0]:
     task = get_task()
     tid = task["id"]
 
-    # --- Display Header ---
+    # --- Display Header ---F
     st.title(f"🧠 Task {task['id']}/{len(tasks)}")
 
     # 🔹 Show original QID
@@ -520,14 +520,23 @@ with tabs[0]:
     # --- Statistik ---
     if st.session_state["ratings"]:
         st.markdown("### 📊 Deine Bewertungen & Durchführungen:")
-        for tid, rating in st.session_state["ratings"].items():
-            count = st.session_state["attempts"].get(tid, 0)
-            data = st.session_state["review_data"].get(tid, {})
+
+        # 🔥 IDs sicher in INT konvertieren (LÖST dein Problem!)
+        normalized_ratings = {int(k): v for k, v in st.session_state["ratings"].items()}
+        normalized_attempts = {int(k): v for k, v in st.session_state["attempts"].items()}
+        normalized_review = {int(k): v for k, v in st.session_state["review_data"].items()}
+
+        for tid in sorted(normalized_ratings.keys()):
+            rating = normalized_ratings[tid]
+            count = normalized_attempts.get(tid, 0)
+            data = normalized_review.get(tid, {})
             interval = data.get("interval", 0)
             next_in = round(interval, 2)
+
             st.write(
                 f"• Task {tid}: {rating.capitalize()} – {count}x durchgeführt | ⏳ ~{next_in} Tage"
             )
+
 
     # ============================================================
     # 📦 Fortschritt Export / Import
