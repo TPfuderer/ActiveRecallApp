@@ -49,8 +49,11 @@ tabs = st.tabs(["🧠 Aufgaben", "❗ Issue melden", "📊 Dashboard"])
 with tabs[0]:
 
     # --- Session state initialization ---
+    # --- Session state initialization ---
     if "task_index" not in st.session_state:
-        st.session_state["task_index"] = 0
+        # 🎲 beim allerersten Laden: zufälligen Task auswählen
+        st.session_state["task_index"] = random.choice([t["id"] for t in tasks]) - 1
+
     if "ratings" not in st.session_state:
         st.session_state["ratings"] = {}
     if "attempts" not in st.session_state:
