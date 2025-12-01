@@ -593,8 +593,6 @@ with tabs[1]:
     # Wenn keine ID eingegeben → Info anzeigen
     if issue_id == 0:
         st.info("Bitte eine gültige Aufgaben-ID eingeben.")
-        st.stop()  # Tab 2 endet hier, Tab 3 lädt trotzdem
-        # (st.stop() ist SAFE innerhalb eines Tabs!)
 
     # Wenn eine ID eingegeben wurde (>0)
     task = next((t for t in tasks if t["id"] == issue_id), None)
