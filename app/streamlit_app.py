@@ -478,16 +478,16 @@ with tabs[0]:
     if "last_rating" in st.session_state:
         rating, rid = st.session_state["last_rating"]
 
-        # Attempt Counter
+        # 1) Attempt Counter aktualisieren
         st.session_state["attempts"][rid] = st.session_state["attempts"].get(rid, 0) + 1
 
-        # Rating speichern
+        # 2) Rating speichern
         st.session_state["ratings"][rid] = rating
 
-        # Spaced Repetition Interval aktualisieren
+        # 3) Spaced Repetition Interval aktualisieren
         update_review(rid, rating)
 
-        # 🔔 Erfolgsmeldung anzeigen
+        # 4) Feedback anzeigen
         if rating == "hard":
             st.warning(f"🔴 Successfully counted as HARD — attempts now: {st.session_state['attempts'][rid]}")
         elif rating == "medium":
@@ -495,7 +495,12 @@ with tabs[0]:
         elif rating == "easy":
             st.success(f"🟢 Successfully counted as EASY — attempts now: {st.session_state['attempts'][rid]}")
 
-        # Event löschen, damit es nicht erneut triggered wird
+        # 🆕 5) 🔥 Automatisch Supabase speichern (existierende Funktion!)
+        if username:
+            save_progress(username)
+            st.toast("💾 Fortschritt automatisch gespeichert!")
+
+        # 6) Event löschen, damit es nicht doppelt abgefeuert wird
         del st.session_state["last_rating"]
 
     # -------------------------------------------------------
