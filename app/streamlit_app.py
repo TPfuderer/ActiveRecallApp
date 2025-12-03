@@ -546,49 +546,6 @@ with tabs[0]:
             )
 
 
-    # ============================================================
-    # 📦 Fortschritt Export / Import
-    # ============================================================
-
-    st.markdown("## 📦 Fortschritt speichern / laden")
-
-    if st.button("⬇️ Fortschritt als JSON herunterladen"):
-        export_data = {
-            "ratings": st.session_state.get("ratings", {}),
-            "attempts": st.session_state.get("attempts", {}),
-            "review_data": st.session_state.get("review_data", {}),
-            "timestamp": time.time(),
-        }
-        export_str = json.dumps(export_data, indent=2, ensure_ascii=False)
-
-        st.download_button(
-            label="📥 JSON herunterladen",
-            data=export_str,
-            file_name="active_recall_progress.json",
-            mime="application/json",
-        )
-
-    uploaded = st.file_uploader("⬆️ JSON Fortschritt importieren", type="json")
-
-    if "import_done" not in st.session_state:
-        st.session_state["import_done"] = False
-
-    if uploaded and not st.session_state["import_done"]:
-        try:
-            imported = json.load(uploaded)
-
-            st.session_state["ratings"].update(imported.get("ratings", {}))
-            st.session_state["attempts"].update(imported.get("attempts", {}))
-            st.session_state["review_data"].update(imported.get("review_data", {}))
-
-            st.session_state["import_done"] = True
-
-            st.success("✅ Fortschritt erfolgreich importiert! Seite lädt neu…")
-            st.rerun()
-
-        except Exception as e:
-            st.error(f"❌ Fehler beim Import: {e}")
-
 # ============================================================
 # ❗ TAB 2: Issue melden
 # ============================================================
