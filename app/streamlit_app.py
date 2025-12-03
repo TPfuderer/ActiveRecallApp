@@ -552,56 +552,53 @@ with tabs[0]:
 with tabs[1]:
     st.header("❗ Fehler / Issue melden")
 
-    # issue_id kann auch 0 sein (bei Start)
-    issue_id = st.number_input("Aufgaben-ID mit Fehler:", step=1, min_value=1)
-
-    # Wenn keine ID eingegeben → Info anzeigen
-    if issue_id == 0:
-        st.info("Bitte eine gültige Aufgaben-ID eingeben.")
-        st.stop()  # Tab 2 endet hier, Tab 3 lädt trotzdem
-        # (st.stop() ist SAFE innerhalb eines Tabs!)
-
-    # Wenn eine ID eingegeben wurde (>0)
-    task = next((t for t in tasks if t["id"] == issue_id), None)
-
-    if task is None:
-        st.error("❌ Keine Aufgabe mit dieser ID gefunden.")
-        st.stop()
-
-    # ---- 1. Fixierter Teil ----
-    st.subheader("🔒 Fixierte Felder (nicht editierbar)")
-    fixed = {
-        "id": task["id"],
-        "question": task.get("question_raw", task.get("question"))
-    }
-    st.json(fixed)
-
-    # ---- 2. Editierbarer JSON Teil ----
-    st.subheader("✏️ Änderbarer JSON-Bereich")
-
-    editable = {
-        k: v for k, v in task.items()
-        if k not in ["id", "question"]
-    }
-
-    editable_str = json.dumps(editable, indent=2, ensure_ascii=False)
-
-    editable_input = st.text_area(
-        "Bearbeite JSON:",
-        value=editable_str,
-        height=300
+    st.write(
+        "Melde einen Fehler zu einer bestimmten Aufgabe **oder** ein "
+        "allgemeines Problem. Die Details werden als Gist gespeichert."
     )
 
-    # ---- Gist Upload Button ----
-    if st.button("💾 Issue als Gist speichern"):
-        try:
-            edited = json.loads(editable_input)
-            url = upload_issue_to_gist(issue_id, edited)
+    # ------------------------------------------------------
+    # OPTIONAL: Task ID
+    # ------------------------------------------------------
+    task_id_input = st.number_input(
+        "Aufgaben-ID (optional):",
+        min_value=0,
+        step=1,
+        help="0 lassen, wenn sich das Problem nicht auf eine spezifische Aufgabe bezieht."
+    )
 
+    # ------------------------------------------------------
+    # PROBLEM TEXT
+    # ------------------------------------------------------
+    description = st.text_area(
+        "📝 Fehlerbeschreibung:",
+        placeholder="Beschreibe, was nicht funktioniert hat, was falsch war oder verbessert werden soll...",
+        height=180
+    )
+
+    # ------------------------------------------------------
+    # UPLOAD BUTTON
+    # ------------------------------------------------------
+    if st.button("💾 Issue als Gist speichern"):
+        if not description.strip():
+            st.error("Bitte eine Fehlerbeschreibung eingeben.")
+            st.stop()
+
+        # Gist Payload vorbereiten
+        payload = {
+            "task_id": int(task_id_input) if task_id_input > 0 else None,
+            "description": description.strip()
+        }
+
+        # Upload durchführen (existierende Funktion)
+        try:
+            url = upload_issue_to_gist(task_id_input, payload)
             if url:
-                st.success("🎉 Issue gespeichert!")
+                st.success(f"🎉 Issue gespeichert!")
+                st.markdown(f"[🔗 Gist ansehen]({url})")
         except Exception as e:
-            st.error(f"❌ JSON Fehler: {e}")
+            st.error(f"❌ Fehler beim Speichern: {e}")
+
 
 # ============================================================
 # 📊 TAB 3: Progress Dashboard
