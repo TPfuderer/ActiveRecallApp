@@ -127,11 +127,12 @@ with tabs[0]:
         if res.data:
             progress = res.data[0]["progress"]
 
-            st.session_state["ratings"].update(progress.get("ratings", {}))
-            st.session_state["attempts"].update(progress.get("attempts", {}))
-            st.session_state["review_data"].update(progress.get("review_data", {}))
+            # 1) Session-State HARD RESET (aber core keys intakt lassen)
+            st.session_state["ratings"] = progress.get("ratings", {})
+            st.session_state["attempts"] = progress.get("attempts", {})
+            st.session_state["review_data"] = progress.get("review_data", {})
 
-            st.success("✔ Fortschritt geladen!")
+            st.success("✔ Fortschritt geladen! (Lokale Daten vollständig ersetzt)")
         else:
             st.warning("⚠ Kein Fortschritt für diesen Username gefunden.")
 
