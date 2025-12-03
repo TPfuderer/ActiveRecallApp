@@ -264,13 +264,13 @@ with tabs[0]:
         filtered_tasks = [t for t in tasks if t["id"] == selected_id]
 
     # --- Ctrl+Enter triggers hidden run button ---
-    run_trigger = st.button("___run_hidden___", key="run_hidden")
+    run_trigger = st.button("___run_hidden___", key="run_hidden", help="", type="secondary")
 
     # Hide the hidden button visually
     st.markdown("""
     <style>
-    button[k="run_hidden"] {
-        display: none;
+    button[data-testid="baseButton-secondary"]:has(span:contains("___run_hidden___")) {
+        display: none !important;
     }
     </style>
     """, unsafe_allow_html=True)
