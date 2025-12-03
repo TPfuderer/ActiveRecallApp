@@ -441,21 +441,18 @@ with tabs[0]:
     st.markdown("---")
 
     # --- Buttons (persistent) ---
-    col1, col2, col3, col4, col5 = st.columns(5)
+    col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        show_answer = st.button("💡 Antwort anzeigen")
-
-    with col2:
         pressed_hard = st.button("😤 Schwer", key=f"hard_btn_{tid}")
 
-    with col3:
+    with col2:
         pressed_medium = st.button("🙂 Mittel", key=f"medium_btn_{tid}")
 
-    with col4:
+    with col3:
         pressed_easy = st.button("😎 Einfach", key=f"easy_btn_{tid}")
 
-    with col5:
+    with col4:
         next_task = st.button("➡️ Nächste Aufgabe")
 
     # -------------------------------------------------------
@@ -504,12 +501,11 @@ with tabs[0]:
         del st.session_state["last_rating"]
 
     # -------------------------------------------------------
-    # SHOW ANSWER
+    # 💡 Lösung & Erklärung (immer sichtbar, aber eingeklappt)
     # -------------------------------------------------------
-    if show_answer:
-        with st.expander("💡 Lösung & Erklärung"):
-            st.code(task["solution_code"], language="python")
-            st.markdown(task["explanation"])
+    with st.expander("💡 Lösung & Erklärung", expanded=False):
+        st.code(task["solution_code"], language="python")
+        st.markdown(task["explanation"])
 
     # -------------------------------------------------------
     # NEXT TASK
