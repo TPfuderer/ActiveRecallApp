@@ -203,14 +203,13 @@ with tabs[0]:
     if st.sidebar.button("➡️ Create Username"):
         create_username(new_user)
 
-    st.sidebar.caption("ℹ️ Hover: Einen beliebigen Nutzernamen anlegen, um deinen Lernfortschritt zu speichern.")
+    st.sidebar.caption("ℹ️ Einen beliebigen Nutzernamen anlegen, um deinen Lernfortschritt zu speichern.")
 
     st.sidebar.markdown("---")
 
     username = st.sidebar.text_input("Enter Username", key="login_username")
 
-    with st.sidebar.popover("ℹ️ Info zu Enter Username"):
-        st.write("Gib deinen zuvor erstellten Nutzernamen ein, um deinen gespeicherten Fortschritt zu laden.")
+    st.sidebar.caption("ℹ️ Bereits erstellten Nutzernamen eingeben, um Fortschritt zu laden.")
 
     if st.sidebar.button("⬆ Load Progress from Previous"):
         if username:
