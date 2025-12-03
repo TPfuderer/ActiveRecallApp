@@ -213,7 +213,7 @@ with tabs[0]:
         else:
             st.error("Bitte Username eingeben.")
 
-    if st.sidebar.button("⬇ Save Progress for Later"):
+    if st.sidebar.button("⬇ Save/Upload Progress for Later"):
         if username:
             save_progress(username)
         else:
