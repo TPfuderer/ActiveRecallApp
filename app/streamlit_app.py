@@ -266,26 +266,11 @@ with tabs[0]:
     # --- Ctrl+Enter triggers hidden run button ---
     run_trigger = st.button("___run_hidden___", key="run_hidden", help="", type="secondary")
 
+    # Hide the hidden button visually
     st.markdown("""
     <style>
-    /* Versteckt DEN Button, der den Text "run_hidden" enthält */
-    button[data-testid="stBaseButton-secondary"] p em strong:contains("run_hidden") {
+    button[data-testid="baseButton-secondary"]:has(span:contains("___run_hidden___")) {
         display: none !important;
-    }
-
-    /* Versteckt den Eltern-Button, wenn er den Text run_hidden beinhaltet */
-    button[data-testid="stBaseButton-secondary"] div p em strong:contains("run_hidden") {
-        display: none !important;
-    }
-
-    /* Button komplett unsichtbar (ohne ihn zu deaktivieren) */
-    button[data-testid="stBaseButton-secondary"]:has(p em strong:contains("run_hidden")) {
-        opacity: 0 !important;
-        height: 0px !important;
-        width: 0px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow: hidden !important;
     }
     </style>
     """, unsafe_allow_html=True)
