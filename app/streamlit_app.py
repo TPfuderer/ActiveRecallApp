@@ -512,9 +512,16 @@ with tabs[0]:
         st.markdown(task["explanation"])
 
     with st.popover("ℹ️"):
-        st.write("Bewerte zuerst die Schwierigkeit (Schwer/Mittel/Einfach). "
-                "Die App speichert automatisch deinen Lernfortschritt. "
-                "Mit 'Next' geht es weiter zur nächsten Aufgabe.")
+        st.write(
+            """
+            **So funktionieren die Buttons:**
+
+            • **Schwer / Mittel / Einfach** → bestimmt das Intervall für die Wiederholung  
+            • Beim Klicken speichert die App **automatisch deinen Lernfortschritt**  
+            • Speicherung funktioniert **nur**, wenn ein **Nutzername existiert UND eingegeben ist**  
+            • **Next** → lädt direkt die nächste Aufgabe
+            """
+        )
 
 
     # -------------------------------------------------------
