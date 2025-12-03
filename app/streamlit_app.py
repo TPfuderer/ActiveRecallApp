@@ -207,13 +207,13 @@ with tabs[0]:
 
     username = st.sidebar.text_input("Enter Username", key="login_username")
 
-    if st.sidebar.button("⬆ Load Progress"):
+    if st.sidebar.button("⬆ Load Progress from Previous"):
         if username:
             load_progress(username)
         else:
             st.error("Bitte Username eingeben.")
 
-    if st.sidebar.button("⬇ Save Progress"):
+    if st.sidebar.button("⬇ Save Progress for Later"):
         if username:
             save_progress(username)
         else:
@@ -293,7 +293,7 @@ with tabs[0]:
     )
 
     # --- Unified run: manual button OR Ctrl+Enter ---
-    do_run = st.button("▶️ Run") or run_trigger
+    do_run = st.button("▶️ Run without Check") or run_trigger
 
     if do_run:
         st.subheader("🖥️ Execution Result")
