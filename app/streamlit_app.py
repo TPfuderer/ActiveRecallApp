@@ -511,10 +511,10 @@ with tabs[0]:
         st.code(task["solution_code"], language="python")
         st.markdown(task["explanation"])
 
-        with st.popover("ℹ️"):
-            st.write("Bewerte zuerst die Schwierigkeit (Schwer/Mittel/Einfach). "
-                     "Die App speichert automatisch deinen Lernfortschritt. "
-                     "Mit 'Next' geht es weiter zur nächsten Aufgabe.")
+    with st.popover("ℹ️"):
+        st.write("Bewerte zuerst die Schwierigkeit (Schwer/Mittel/Einfach). "
+                "Die App speichert automatisch deinen Lernfortschritt. "
+                "Mit 'Next' geht es weiter zur nächsten Aufgabe.")
 
 
     # -------------------------------------------------------
