@@ -579,7 +579,7 @@ with tabs[1]:
     # ------------------------------------------------------
     # UPLOAD BUTTON
     # ------------------------------------------------------
-    if st.button("💾 Issue als Gist speichern"):
+    if st.button("Issue Absenden"):
         if not description.strip():
             st.error("Bitte eine Fehlerbeschreibung eingeben.")
             st.stop()
