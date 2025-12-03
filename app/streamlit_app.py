@@ -554,7 +554,7 @@ with tabs[1]:
 
     st.write(
         "Melde einen Fehler zu einer bestimmten Aufgabe **oder** ein "
-        "allgemeines Problem. Die Details werden als Gist gespeichert."
+        "allgemeines Problem. Danke für die Hilfe!"
     )
 
     # ------------------------------------------------------
