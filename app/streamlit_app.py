@@ -459,11 +459,6 @@ with tabs[0]:
     with col4:
         next_task = st.button("➡️ Nächste Aufgabe")
 
-        with st.popover("ℹ️"):
-            st.write("Bewerte zuerst die Schwierigkeit (Schwer/Mittel/Einfach). "
-                     "Die App speichert automatisch deinen Lernfortschritt. "
-                     "Mit 'Next' geht es weiter zur nächsten Aufgabe.")
-
     # -------------------------------------------------------
     # 🔥 PERSISTENTES CLICK-EVENT FÜR RATINGS
     # -------------------------------------------------------
@@ -515,6 +510,12 @@ with tabs[0]:
     with st.expander("💡 Lösung & Erklärung", expanded=False):
         st.code(task["solution_code"], language="python")
         st.markdown(task["explanation"])
+
+        with st.popover("ℹ️"):
+            st.write("Bewerte zuerst die Schwierigkeit (Schwer/Mittel/Einfach). "
+                     "Die App speichert automatisch deinen Lernfortschritt. "
+                     "Mit 'Next' geht es weiter zur nächsten Aufgabe.")
+
 
     # -------------------------------------------------------
     # NEXT TASK
