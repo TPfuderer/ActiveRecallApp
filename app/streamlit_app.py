@@ -61,6 +61,17 @@ with tabs[0]:
     if "review_data" not in st.session_state:
         st.session_state["review_data"] = {}
 
+    # Track filter changes
+    if "filter_changed" not in st.session_state:
+        st.session_state["filter_changed"] = False
+    if "prev_filter_mode" not in st.session_state:
+        st.session_state["prev_filter_mode"] = None
+    if "prev_cat" not in st.session_state:
+        st.session_state["prev_cat"] = None
+    if "prev_id" not in st.session_state:
+        st.session_state["prev_id"] = None
+
+
     # --- Helper functions ---
     def get_task():
         return tasks[st.session_state["task_index"]]
@@ -252,17 +263,41 @@ with tabs[0]:
         horizontal=True
     )
 
+    # detect filter mode change
+    if st.session_state["prev_filter_mode"] != filter_mode:
+        st.session_state["filter_changed"] = True
+    st.session_state["prev_filter_mode"] = filter_mode
+
     filtered_tasks = tasks
 
     if filter_mode == "Nach Kategorie":
         all_categories = sorted({t["category"] for t in tasks})
         selected_cat = st.selectbox("Kategorie wählen:", all_categories)
+
+        # detect category change
+        if st.session_state["prev_cat"] != selected_cat:
+            st.session_state["filter_changed"] = True
+        st.session_state["prev_cat"] = selected_cat
+
         filtered_tasks = [t for t in tasks if t["category"] == selected_cat]
 
     elif filter_mode == "Direkte Task-ID":
         all_ids = [t["id"] for t in tasks]
         selected_id = st.number_input("Task-ID wählen:", min_value=min(all_ids), max_value=max(all_ids), step=1)
+
+        # detect ID change
+        if st.session_state["prev_id"] != selected_id:
+            st.session_state["filter_changed"] = True
+        st.session_state["prev_id"] = selected_id
+
         filtered_tasks = [t for t in tasks if t["id"] == selected_id]
+
+    # AUTO-NEXT if filter changed
+    if st.session_state["filter_changed"]:
+        next_t = pick_next_task(filtered_tasks)
+        st.session_state["task_index"] = next_t["id"] - 1
+        st.session_state["filter_changed"] = False
+        st.experimental_rerun()
 
     # --- Ctrl+Enter triggers hidden run button ---
     run_trigger = st.button("___run_hidden___", key="run_hidden", help="", type="secondary")
