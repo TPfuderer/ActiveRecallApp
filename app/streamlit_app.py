@@ -293,11 +293,16 @@ with tabs[0]:
         filtered_tasks = [t for t in tasks if t["id"] == selected_id]
 
     # AUTO-NEXT if filter changed
-    if st.session_state["filter_changed"]:
+    if st.session_state.get("filter_changed", False):
+        # Reset toggle BEFORE rerun (wichtig!)
+        st.session_state["filter_changed"] = False
+
+        # Pick next task
         next_t = pick_next_task(filtered_tasks)
         st.session_state["task_index"] = next_t["id"] - 1
-        st.session_state["filter_changed"] = False
-        st.experimental_rerun()
+
+        # Use new safe rerun method
+        st.rerun()
 
     # --- Ctrl+Enter triggers hidden run button ---
     run_trigger = st.button("___run_hidden___", key="run_hidden", help="", type="secondary")
