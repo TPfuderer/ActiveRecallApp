@@ -352,8 +352,9 @@ with tabs[0]:
                 import numpy as np
                 import pandas as pd
 
-                user_globals["np"] = np
-                user_globals["pd"] = pd
+                # 🔒 Unüberschreibbare Aliase
+                user_globals.setdefault("np", np)
+                user_globals.setdefault("pd", pd)
 
                 exec(content, user_globals)
 
@@ -391,8 +392,9 @@ with tabs[0]:
                 import numpy as np
                 import pandas as pd
 
-                user_globals["np"] = np
-                user_globals["pd"] = pd
+                # 🔒 Unüberschreibbare Aliase
+                user_globals.setdefault("np", np)
+                user_globals.setdefault("pd", pd)
 
                 exec(content, user_globals)
 
