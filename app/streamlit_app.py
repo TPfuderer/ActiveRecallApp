@@ -348,15 +348,21 @@ with tabs[0]:
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
                 user_globals = {}
 
-                # 🔥 Global always-available packages
-                import numpy as np
-                import pandas as pd
+                # --- echte libs vorher speichern ---
+                import numpy as _np_real
+                import pandas as _pd_real
 
-                # 🔒 Unüberschreibbare Aliase
-                user_globals.setdefault("np", np)
-                user_globals.setdefault("pd", pd)
+                # --- user bekommt initial Zugriff ---
+                user_globals["np"] = _np_real
+                user_globals["pd"] = _pd_real
 
+                # --- user-code ausführen ---
                 exec(content, user_globals)
+
+                # --- nachher np/pd AUTOMATISCH wiederherstellen ---
+                # Falls user np überschreibt → ersetzen wir es zurück
+                user_globals["np"] = _np_real
+                user_globals["pd"] = _pd_real
 
             # Output collection
             output = stdout_buffer.getvalue().strip()
@@ -388,15 +394,21 @@ with tabs[0]:
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
                 user_globals = {}
 
-                # 🔥 Global always-available packages
-                import numpy as np
-                import pandas as pd
+                # --- echte libs vorher speichern ---
+                import numpy as _np_real
+                import pandas as _pd_real
 
-                # 🔒 Unüberschreibbare Aliase
-                user_globals.setdefault("np", np)
-                user_globals.setdefault("pd", pd)
+                # --- user bekommt initial Zugriff ---
+                user_globals["np"] = _np_real
+                user_globals["pd"] = _pd_real
 
+                # --- user-code ausführen ---
                 exec(content, user_globals)
+
+                # --- nachher np/pd AUTOMATISCH wiederherstellen ---
+                # Falls user np überschreibt → ersetzen wir es zurück
+                user_globals["np"] = _np_real
+                user_globals["pd"] = _pd_real
 
             output = stdout_buffer.getvalue()
             errors = stderr_buffer.getvalue()
