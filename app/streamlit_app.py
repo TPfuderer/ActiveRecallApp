@@ -350,13 +350,7 @@ with tabs[0]:
             # Execute user code
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
                 user_globals = {}
-
-                # 🔥 Auto-imports (falls im Task definiert)
-                for lib in task.get("auto_imports", []):
-                    try:
-                        exec(f"import {lib}", user_globals)
-                    except:
-                        pass  # schützt vor syntaktischen Namen wie "pandas as pd"
+                user_globals["pd"] = __import__("pandas")  # 🔥 pandas immer importiert
 
                 exec(content, user_globals)
 
@@ -389,13 +383,7 @@ with tabs[0]:
         try:
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
                 user_globals = {}
-
-                # 🔥 Auto-imports (falls im Task definiert)
-                for lib in task.get("auto_imports", []):
-                    try:
-                        exec(f"import {lib}", user_globals)
-                    except:
-                        pass
+                user_globals["pd"] = __import__("pandas")  # 🔥 pandas immer importiert
 
                 exec(content, user_globals)
 
