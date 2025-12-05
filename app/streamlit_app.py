@@ -15,9 +15,6 @@ import json
 from supabase import create_client
 import json
 
-
-
-
 # --- Page setup ---
 st.set_page_config(page_title="Mini Python Playground!", page_icon="💻", layout="centered")
 
@@ -350,7 +347,13 @@ with tabs[0]:
             # Execute user code
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
                 user_globals = {}
-                user_globals["pd"] = __import__("pandas")  # 🔥 pandas immer importiert
+
+                # 🔥 Global always-available packages
+                import numpy as np
+                import pandas as pd
+
+                user_globals["np"] = np
+                user_globals["pd"] = pd
 
                 exec(content, user_globals)
 
@@ -383,7 +386,13 @@ with tabs[0]:
         try:
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
                 user_globals = {}
-                user_globals["pd"] = __import__("pandas")  # 🔥 pandas immer importiert
+
+                # 🔥 Global always-available packages
+                import numpy as np
+                import pandas as pd
+
+                user_globals["np"] = np
+                user_globals["pd"] = pd
 
                 exec(content, user_globals)
 
