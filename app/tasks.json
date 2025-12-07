@@ -1221,5 +1221,316 @@
     "expected_value": [["p", "r", "o", "g", "a", "m", "i", "n"]],
     "solution_code": "s = \"programming\"\nchars = set(s)",
     "explanation": "Converting a string to a set retains only unique characters."
+  },
+  {
+    "id": 120,
+    "qid_original": 120,
+    "category": "Sets and Tuples (15 Questions)",
+    "question_raw": "Create a set of all unique characters in the string \"programming\".",
+    "check_variable": ["unique_chars"],
+    "expected_value": [["p","r","o","g","a","m","i","n"]],
+    "solution_code": "s = \"programming\"\nunique_chars = set(s)",
+    "explanation": "A set keeps only unique characters from the string."
+  },
+  {
+    "id": 121,
+    "qid_original": 121,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write an if statement to check if a number `x = 10` is positive.",
+    "check_variable": ["is_positive"],
+    "expected_value": [[true]],
+    "solution_code": "x = 10\nif x > 0:\n    is_positive = True\nelse:\n    is_positive = False",
+    "explanation": "A number is positive if it is greater than zero."
+  },
+  {
+    "id": 122,
+    "qid_original": 122,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write an if-else statement to check if `x = 7` is even or odd.",
+    "check_variable": ["result"],
+    "expected_value": [["odd"]],
+    "solution_code": "x = 7\nif x % 2 == 0:\n    result = \"even\"\nelse:\n    result = \"odd\"",
+    "explanation": "Even numbers have remainder 0 when divided by 2; otherwise they are odd."
+  },
+  {
+    "id": 123,
+    "qid_original": 123,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write an if-elif-else statement to classify a number as positive, negative, or zero.",
+    "check_variable": ["classification"],
+    "expected_value": [["positive"]],
+    "solution_code": "x = 5\nif x > 0:\n    classification = \"positive\"\nelif x < 0:\n    classification = \"negative\"\nelse:\n    classification = \"zero\"",
+    "explanation": "Conditions are checked in sequence: >0, <0, else 0."
+  },
+  {
+    "id": 124,
+    "qid_original": 124,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Check if a number `x = 15` is divisible by both 3 and 5.",
+    "check_variable": ["divisible"],
+    "expected_value": [[true]],
+    "solution_code": "x = 15\nif x % 3 == 0 and x % 5 == 0:\n    divisible = True\nelse:\n    divisible = False",
+    "explanation": "Divisible by 3 and 5 means both remainders must be zero."
+  },
+  {
+    "id": 125,
+    "qid_original": 125,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write code to check if a variable `age = 25` qualifies for voting (age >= 18).",
+    "check_variable": ["can_vote"],
+    "expected_value": [[true]],
+    "solution_code": "age = 25\nif age >= 18:\n    can_vote = True\nelse:\n    can_vote = False",
+    "explanation": "In most systems, voting eligibility starts at age 18."
+  },
+  {
+    "id": 126,
+    "qid_original": 126,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write code to find the largest of three numbers: a=10, b=20, c=15.",
+    "check_variable": ["largest"],
+    "expected_value": [[20]],
+    "solution_code": "a, b, c = 10, 20, 15\nif a >= b and a >= c:\n    largest = a\nelif b >= a and b >= c:\n    largest = b\nelse:\n    largest = c",
+    "explanation": "Compare values pairwise to determine the largest."
+  },
+  {
+    "id": 127,
+    "qid_original": 127,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Check if a year `year = 2024` is a leap year (divisible by 4, but not 100 unless also by 400).",
+    "check_variable": ["leap"],
+    "expected_value": [[true]],
+    "solution_code": "year = 2024\nif (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):\n    leap = True\nelse:\n    leap = False",
+    "explanation": "Leap-year logic per Gregorian calendar rules."
+  },
+  {
+    "id": 128,
+    "qid_original": 128,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write code to assign a letter grade based on a score: A(>=90), B(>=80), C(>=70), D(>=60), F(<60).",
+    "check_variable": ["grade"],
+    "expected_value": [["B"]],
+    "solution_code": "score = 85\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelif score >= 60:\n    grade = \"D\"\nelse:\n    grade = \"F\"",
+    "explanation": "Score is checked from highest threshold downward."
+  },
+  {
+    "id": 129,
+    "qid_original": 129,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Check if a string `text = \"hello\"` has more than 3 characters.",
+    "check_variable": ["long_enough"],
+    "expected_value": [[true]],
+    "solution_code": "text = \"hello\"\nif len(text) > 3:\n    long_enough = True\nelse:\n    long_enough = False",
+    "explanation": "Length comparison determines if the string exceeds 3 characters."
+  },
+  {
+    "id": 130,
+    "qid_original": 130,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write code to check if a number is within a range (10-20).",
+    "check_variable": ["in_range"],
+    "expected_value": [[true]],
+    "solution_code": "x = 15\nif 10 <= x <= 20:\n    in_range = True\nelse:\n    in_range = False",
+    "explanation": "Python supports chained comparisons for range checks."
+  },
+  {
+    "id": 131,
+    "qid_original": 131,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Check if a string `password = \"abc123\"` is valid (length >= 6 and contains digits).",
+    "check_variable": ["valid"],
+    "expected_value": [[true]],
+    "solution_code": "password = \"abc123\"\nif len(password) >= 6 and any(ch.isdigit() for ch in password):\n    valid = True\nelse:\n    valid = False",
+    "explanation": "Password validity is based on minimum length and presence of digits."
+  },
+  {
+    "id": 132,
+    "qid_original": 132,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write nested if statements to check age category: child(<13), teen(13-19), adult(20-59), senior(>=60).",
+    "check_variable": ["category_result"],
+    "expected_value": [["adult"]],
+    "solution_code": "age = 25\nif age < 13:\n    category_result = \"child\"\nelse:\n    if age <= 19:\n        category_result = \"teen\"\n    else:\n        if age <= 59:\n            category_result = \"adult\"\n        else:\n            category_result = \"senior\"",
+    "explanation": "Nested checks enforce mutually exclusive age ranges."
+  },
+  {
+    "id": 133,
+    "qid_original": 133,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Check if a triangle with sides a=3, b=4, c=5 is valid (sum of any two sides > third side).",
+    "check_variable": ["valid_triangle"],
+    "expected_value": [[true]],
+    "solution_code": "a, b, c = 3, 4, 5\nif a + b > c and a + c > b and b + c > a:\n    valid_triangle = True\nelse:\n    valid_triangle = False",
+    "explanation": "Triangle inequality rule must hold for all three side combinations."
+  },
+  {
+    "id": 134,
+    "qid_original": 134,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write code to determine if a character `ch = 'a'` is a vowel or consonant.",
+    "check_variable": ["kind"],
+    "expected_value": [["vowel"]],
+    "solution_code": "ch = 'a'\nif ch.lower() in 'aeiou':\n    kind = \"vowel\"\nelse:\n    kind = \"consonant\"",
+    "explanation": "Vowels in English are a, e, i, o, u."
+  },
+  {
+    "id": 135,
+    "qid_original": 135,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Check if a number is a perfect square (e.g., 16 = 4*4).",
+    "check_variable": ["is_square"],
+    "expected_value": [[true]],
+    "solution_code": "n = 16\nroot = int(n ** 0.5)\nif root * root == n:\n    is_square = True\nelse:\n    is_square = False",
+    "explanation": "A perfect square has an integer square root whose square equals the number."
+  },
+  {
+    "id": 136,
+    "qid_original": 136,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a for loop to print numbers from 1 to 5.",
+    "check_variable": ["output"],
+    "expected_value": [[1, 2, 3, 4, 5]],
+    "solution_code": "output = []\nfor i in range(1, 6):\n    output.append(i)",
+    "explanation": "A simple for loop iterating from 1 to 5 using range(1,6)."
+  },
+  {
+    "id": 137,
+    "qid_original": 137,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a for loop to iterate through the list `[10, 20, 30, 40]` and print each element.",
+    "check_variable": ["output"],
+    "expected_value": [[10, 20, 30, 40]],
+    "solution_code": "lst = [10, 20, 30, 40]\noutput = []\nfor x in lst:\n    output.append(x)",
+    "explanation": "The loop accesses each element sequentially."
+  },
+  {
+    "id": 138,
+    "qid_original": 138,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a for loop to calculate the sum of numbers from 1 to 10.",
+    "check_variable": ["total"],
+    "expected_value": [[55]],
+    "solution_code": "total = 0\nfor i in range(1, 11):\n    total += i",
+    "explanation": "Summing integers 1 through 10 yields 55."
+  },
+  {
+    "id": 139,
+    "qid_original": 139,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a while loop to print numbers from 1 to 5.",
+    "check_variable": ["output"],
+    "expected_value": [[1, 2, 3, 4, 5]],
+    "solution_code": "output = []\ni = 1\nwhile i <= 5:\n    output.append(i)\n    i += 1",
+    "explanation": "A while loop continues until the condition becomes false."
+  },
+  {
+    "id": 140,
+    "qid_original": 140,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a for loop to print even numbers from 2 to 10.",
+    "check_variable": ["evens"],
+    "expected_value": [[2, 4, 6, 8, 10]],
+    "solution_code": "evens = []\nfor i in range(2, 11, 2):\n    evens.append(i)",
+    "explanation": "Using step 2 in range generates even numbers directly."
+  },
+  {
+    "id": 141,
+    "qid_original": 141,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a for loop to calculate the factorial of 5.",
+    "check_variable": ["fact"],
+    "expected_value": [[120]],
+    "solution_code": "fact = 1\nfor i in range(1, 6):\n    fact *= i",
+    "explanation": "Factorial multiplies numbers 1 through n."
+  },
+  {
+    "id": 142,
+    "qid_original": 142,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a loop to iterate through a dictionary and print key-value pairs.",
+    "check_variable": ["pairs"],
+    "expected_value": [[["a",1],["b",2],["c",3]]],
+    "solution_code": "d = {\"a\":1, \"b\":2, \"c\":3}\npairs = []\nfor k, v in d.items():\n    pairs.append([k, v])",
+    "explanation": "items() returns key-value pairs for iteration."
+  },
+  {
+    "id": 143,
+    "qid_original": 143,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write nested loops to print a 3x3 multiplication table.",
+    "check_variable": ["table"],
+    "expected_value": [[[1,2,3],[2,4,6],[3,6,9]]],
+    "solution_code": "table = []\nfor i in range(1, 4):\n    row = []\n    for j in range(1, 4):\n        row.append(i * j)\n    table.append(row)",
+    "explanation": "Nested loops generate each row and column multiplication."
+  },
+  {
+    "id": 144,
+    "qid_original": 144,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a loop with break to stop when finding the first number divisible by 7 in range(1, 50).",
+    "check_variable": ["first_div7"],
+    "expected_value": [[7]],
+    "solution_code": "first_div7 = None\nfor i in range(1, 50):\n    if i % 7 == 0:\n        first_div7 = i\n        break",
+    "explanation": "break exits the loop immediately after the first match."
+  },
+  {
+    "id": 145,
+    "qid_original": 145,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a loop with continue to print only odd numbers from 1 to 10.",
+    "check_variable": ["odds"],
+    "expected_value": [[1,3,5,7,9]],
+    "solution_code": "odds = []\nfor i in range(1, 11):\n    if i % 2 == 0:\n        continue\n    odds.append(i)",
+    "explanation": "continue skips even numbers, letting only odds pass through."
+  },
+  {
+    "id": 146,
+    "qid_original": 146,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a while loop to find the smallest power of 2 greater than 1000.",
+    "check_variable": ["power"],
+    "expected_value": [[1024]],
+    "solution_code": "power = 1\nwhile power <= 1000:\n    power *= 2",
+    "explanation": "Repeated doubling finds the first power exceeding 1000."
+  },
+  {
+    "id": 147,
+    "qid_original": 147,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write nested loops to create a pattern of stars (pyramid).",
+    "check_variable": ["pattern"],
+    "expected_value": [["*", "**", "***", "****", "*****"]],
+    "solution_code": "pattern = []\nfor i in range(1, 6):\n    stars = \"\"\n    for j in range(i):\n        stars += \"*\"\n    pattern.append(stars)",
+    "explanation": "Each row has one more star than the previous."
+  },
+  {
+    "id": 148,
+    "qid_original": 148,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a loop to check if a number `n = 29` is prime.",
+    "check_variable": ["is_prime"],
+    "expected_value": [[true]],
+    "solution_code": "n = 29\nis_prime = True\nfor i in range(2, int(n**0.5) + 1):\n    if n % i == 0:\n        is_prime = False\n        break",
+    "explanation": "A number is prime if no divisor exists up to its square root."
+  },
+  {
+    "id": 149,
+    "qid_original": 149,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a loop to reverse a list without using built-in methods.",
+    "check_variable": ["reversed_list"],
+    "expected_value": [[3,2,1]],
+    "solution_code": "lst = [1, 2, 3]\nreversed_list = []\nfor i in range(len(lst)-1, -1, -1):\n    reversed_list.append(lst[i])",
+    "explanation": "Manual index-based reverse iteration recreates the reversed list."
+  },
+  {
+    "id": 150,
+    "qid_original": 150,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write nested loops to find all pairs of numbers from two lists that sum to 10.",
+    "check_variable": ["pairs"],
+    "expected_value": [[ [1,9], [2,8], [3,7], [4,6] ]],
+    "solution_code": "list1 = [1, 2, 3, 4, 5]\nlist2 = [9, 8, 7, 6, 5]\npairs = []\nfor a in list1:\n    for b in list2:\n        if a + b == 10:\n            pairs.append([a, b])",
+    "explanation": "Nested loops compare each element from list1 with each from list2 and collect pairs summing to 10."
   }
 ]
+
