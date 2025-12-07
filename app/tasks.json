@@ -1531,6 +1531,106 @@
     "expected_value": [[ [1,9], [2,8], [3,7], [4,6] ]],
     "solution_code": "list1 = [1, 2, 3, 4, 5]\nlist2 = [9, 8, 7, 6, 5]\npairs = []\nfor a in list1:\n    for b in list2:\n        if a + b == 10:\n            pairs.append([a, b])",
     "explanation": "Nested loops compare each element from list1 with each from list2 and collect pairs summing to 10."
+  },
+  {
+    "id": 1,
+    "qid_original": 151,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Import NumPy with the standard alias `np`.",
+    "check_variable": ["np"],
+    "expected_value": [["numpy"]],
+    "solution_code": "import numpy as np",
+    "explanation": "NumPy is imported using the alias np by convention."
+  },
+  {
+    "id": 2,
+    "qid_original": 152,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create a NumPy array from the list `[1, 2, 3, 4, 5]`.",
+    "check_variable": ["arr"],
+    "expected_value": [[1, 2, 3, 4, 5]],
+    "solution_code": "arr = np.array([1, 2, 3, 4, 5])",
+    "explanation": "np.array() converts Python lists into NumPy arrays."
+  },
+  {
+    "id": 3,
+    "qid_original": 153,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create a 2D NumPy array: `[[1, 2, 3], [4, 5, 6]]`.",
+    "check_variable": ["mat"],
+    "expected_value": [[[1, 2, 3], [4, 5, 6]]],
+    "solution_code": "mat = np.array([[1, 2, 3], [4, 5, 6]])",
+    "explanation": "A 2D array is created by passing a list of lists to np.array()."
+  },
+  {
+    "id": 4,
+    "qid_original": 154,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create an array of zeros with shape (3, 4).",
+    "check_variable": ["zeros_arr"],
+    "expected_value": [[[0,0,0,0],[0,0,0,0],[0,0,0,0]]],
+    "solution_code": "zeros_arr = np.zeros((3, 4), dtype=int)",
+    "explanation": "np.zeros() creates an array filled with zeros."
+  },
+  {
+    "id": 5,
+    "qid_original": 155,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create an array of ones with shape (2, 3).",
+    "check_variable": ["ones_arr"],
+    "expected_value": [[[1,1,1],[1,1,1]]],
+    "solution_code": "ones_arr = np.ones((2, 3), dtype=int)",
+    "explanation": "np.ones() creates an array filled with ones."
+  },
+  {
+    "id": 6,
+    "qid_original": 156,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create an identity matrix of size 4x4.",
+    "check_variable": ["identity"],
+    "expected_value": [[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]],
+    "solution_code": "identity = np.eye(4, dtype=int)",
+    "explanation": "np.eye() creates an identity matrix with ones on the diagonal."
+  },
+  {
+    "id": 7,
+    "qid_original": 157,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create an array of 10 evenly spaced numbers between 0 and 1.",
+    "check_variable": ["vals"],
+    "expected_value": [[0.0,0.1111111111111111,0.2222222222222222,0.3333333333333333,0.4444444444444444,0.5555555555555556,0.6666666666666666,0.7777777777777778,0.8888888888888888,1.0]],
+    "solution_code": "vals = np.linspace(0, 1, 10)",
+    "explanation": "np.linspace() generates evenly spaced values between two numbers."
+  },
+  {
+    "id": 8,
+    "qid_original": 158,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create an array of random integers between 1 and 100, size 10.",
+    "check_variable": ["rand_arr"],
+    "expected_value": [[10, 27, 94, 63, 57, 40, 84, 44, 77, 99]],
+    "solution_code": "np.random.seed(42)\nrand_arr = np.random.randint(1, 101, size=10)",
+    "explanation": "We set a seed so the output is predictable and testable in your app."
+  },
+  {
+    "id": 9,
+    "qid_original": 159,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Get the shape of the array `np.array([[1,2,3], [4,5,6]])`.",
+    "check_variable": ["shape_val"],
+    "expected_value": [[2, 3]],
+    "solution_code": "arr = np.array([[1,2,3],[4,5,6]])\nshape_val = list(arr.shape)",
+    "explanation": "shape returns (rows, columns); we convert to list for JSON compatibility."
+  },
+  {
+    "id": 10,
+    "qid_original": 160,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create a 3D array with shape (2, 3, 4) using `np.arange(24)` and reshape it. Then get the number of dimensions.",
+    "check_variable": ["dims"],
+    "expected_value": [[3]],
+    "solution_code": "arr = np.arange(24).reshape(2, 3, 4)\ndims = arr.ndim",
+    "explanation": "A 3D array has ndim = 3 in NumPy."
   }
 ]
 
