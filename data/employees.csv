@@ -1,0 +1,16 @@
+employee_id,name,department,salary,years_experience,performance_score
+101,John Doe,Engineering,75000,5,4.2
+102,Jane Smith,Marketing,65000,3,4.5
+103,Mike Johnson,Engineering,82000,7,4.0
+104,Sarah Williams,HR,58000,4,4.3
+105,Tom Brown,Sales,70000,6,3.8
+106,Emily Davis,Engineering,78000,5,4.6
+107,Chris Wilson,Marketing,62000,2,4.1
+108,Anna Martinez,Engineering,95000,10,4.7
+109,David Garcia,HR,60000,3,4.0
+110,Lisa Rodriguez,Sales,72000,5,4.4
+111,James Lee,Engineering,80000,6,4.3
+112,Maria Hernandez,Marketing,68000,4,4.5
+113,Robert Taylor,Sales,75000,7,3.9
+114,Jennifer Thomas,Engineering,88000,8,4.8
+115,William Anderson,HR,62000,4,4.2

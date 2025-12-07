@@ -1,0 +1,21 @@
+student_id,name,age,grade,major,gpa,credits
+1,Alice Johnson,20,Sophomore,Computer Science,3.8,45
+2,Bob Smith,22,Senior,Mathematics,3.5,105
+3,Carol White,19,Freshman,Physics,3.9,28
+4,David Brown,21,Junior,Computer Science,3.2,75
+5,Eve Davis,23,Senior,Biology,3.7,112
+6,Frank Miller,20,Sophomore,Mathematics,3.4,52
+7,Grace Wilson,22,Senior,Computer Science,3.9,118
+8,Henry Moore,19,Freshman,Physics,3.1,30
+9,Iris Taylor,21,Junior,Biology,3.6,80
+10,Jack Anderson,20,Sophomore,Computer Science,3.3,48
+11,Kate Thomas,22,Senior,Mathematics,3.8,110
+12,Leo Jackson,19,Freshman,Physics,2.9,25
+13,Mia Martin,21,Junior,Computer Science,3.7,82
+14,Noah Lee,23,Senior,Biology,3.4,115
+15,Olivia Harris,20,Sophomore,Mathematics,3.5,50
+16,Paul Clark,22,Senior,Computer Science,3.6,120
+17,Quinn Lewis,19,Freshman,Physics,3.2,32
+18,Ruby Walker,21,Junior,Biology,3.8,78
+19,Sam Hall,20,Sophomore,Computer Science,3.1,46
+20,Tina Allen,22,Senior,Mathematics,3.9,108

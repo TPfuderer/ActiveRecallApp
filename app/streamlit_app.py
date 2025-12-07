@@ -15,9 +15,6 @@ import json
 from supabase import create_client
 import json
 
-
-
-
 # --- Page setup ---
 st.set_page_config(page_title="Mini Python Playground!", page_icon="💻", layout="centered")
 
@@ -41,7 +38,7 @@ st.write("Supabase connected:", supabase is not None)
 
 
 # --- Tabs ----------------------------------------------------
-tabs = st.tabs(["🧠 Aufgaben", "❗ Issue melden"])
+tabs = st.tabs(["🧠 Aufgaben", "❗ Issue melden", "📊 Dashboard"])
 
 # ============================================================
 # 🧠 TAB 1: Aufgaben & Learning UI
@@ -49,14 +46,28 @@ tabs = st.tabs(["🧠 Aufgaben", "❗ Issue melden"])
 with tabs[0]:
 
     # --- Session state initialization ---
+    # --- Session state initialization ---
     if "task_index" not in st.session_state:
-        st.session_state["task_index"] = 0
+        # 🎲 beim allerersten Laden: zufälligen Task auswählen
+        st.session_state["task_index"] = random.choice([t["id"] for t in tasks]) - 1
+
     if "ratings" not in st.session_state:
         st.session_state["ratings"] = {}
     if "attempts" not in st.session_state:
         st.session_state["attempts"] = {}
     if "review_data" not in st.session_state:
         st.session_state["review_data"] = {}
+
+    # Track filter changes
+    if "filter_changed" not in st.session_state:
+        st.session_state["filter_changed"] = False
+    if "prev_filter_mode" not in st.session_state:
+        st.session_state["prev_filter_mode"] = None
+    if "prev_cat" not in st.session_state:
+        st.session_state["prev_cat"] = None
+    if "prev_id" not in st.session_state:
+        st.session_state["prev_id"] = None
+
 
     # --- Helper functions ---
     def get_task():
@@ -124,11 +135,12 @@ with tabs[0]:
         if res.data:
             progress = res.data[0]["progress"]
 
-            st.session_state["ratings"].update(progress.get("ratings", {}))
-            st.session_state["attempts"].update(progress.get("attempts", {}))
-            st.session_state["review_data"].update(progress.get("review_data", {}))
+            # 1) Session-State HARD RESET (aber core keys intakt lassen)
+            st.session_state["ratings"] = progress.get("ratings", {})
+            st.session_state["attempts"] = progress.get("attempts", {})
+            st.session_state["review_data"] = progress.get("review_data", {})
 
-            st.success("✔ Fortschritt geladen!")
+            st.success("✔ Fortschritt geladen! (Lokale Daten vollständig ersetzt)")
         else:
             st.warning("⚠ Kein Fortschritt für diesen Username gefunden.")
 
@@ -200,17 +212,21 @@ with tabs[0]:
     if st.sidebar.button("➡️ Create Username"):
         create_username(new_user)
 
+    st.sidebar.caption("ℹ️ Einen beliebigen Nutzernamen anlegen, um deinen Lernfortschritt zu speichern.")
+
     st.sidebar.markdown("---")
 
     username = st.sidebar.text_input("Enter Username", key="login_username")
 
-    if st.sidebar.button("⬆ Load Progress"):
+    st.sidebar.caption("ℹ️ Bereits erstellten Nutzernamen eingeben, um Fortschritt zu laden.")
+
+    if st.sidebar.button("⬆ Load Progress from Previous"):
         if username:
             load_progress(username)
         else:
             st.error("Bitte Username eingeben.")
 
-    if st.sidebar.button("⬇ Save Progress"):
+    if st.sidebar.button("⬇ Save/Upload Progress for Later"):
         if username:
             save_progress(username)
         else:
@@ -218,8 +234,9 @@ with tabs[0]:
 
     # --- Current task ---
     task = get_task()
+    tid = task["id"]
 
-    # --- Display Header ---
+    # --- Display Header ---F
     st.title(f"🧠 Task {task['id']}/{len(tasks)}")
 
     # 🔹 Show original QID
@@ -243,26 +260,55 @@ with tabs[0]:
         horizontal=True
     )
 
+    # detect filter mode change
+    if st.session_state["prev_filter_mode"] != filter_mode:
+        st.session_state["filter_changed"] = True
+    st.session_state["prev_filter_mode"] = filter_mode
+
     filtered_tasks = tasks
 
     if filter_mode == "Nach Kategorie":
         all_categories = sorted({t["category"] for t in tasks})
         selected_cat = st.selectbox("Kategorie wählen:", all_categories)
+
+        # detect category change
+        if st.session_state["prev_cat"] != selected_cat:
+            st.session_state["filter_changed"] = True
+        st.session_state["prev_cat"] = selected_cat
+
         filtered_tasks = [t for t in tasks if t["category"] == selected_cat]
 
     elif filter_mode == "Direkte Task-ID":
         all_ids = [t["id"] for t in tasks]
         selected_id = st.number_input("Task-ID wählen:", min_value=min(all_ids), max_value=max(all_ids), step=1)
+
+        # detect ID change
+        if st.session_state["prev_id"] != selected_id:
+            st.session_state["filter_changed"] = True
+        st.session_state["prev_id"] = selected_id
+
         filtered_tasks = [t for t in tasks if t["id"] == selected_id]
 
+    # AUTO-NEXT if filter changed
+    if st.session_state.get("filter_changed", False):
+        # Reset toggle BEFORE rerun (wichtig!)
+        st.session_state["filter_changed"] = False
+
+        # Pick next task
+        next_t = pick_next_task(filtered_tasks)
+        st.session_state["task_index"] = next_t["id"] - 1
+
+        # Use new safe rerun method
+        st.rerun()
+
     # --- Ctrl+Enter triggers hidden run button ---
-    run_trigger = st.button("___run_hidden___", key="run_hidden")
+    run_trigger = st.button("___run_hidden___", key="run_hidden", help="", type="secondary")
 
     # Hide the hidden button visually
     st.markdown("""
     <style>
-    button[k="run_hidden"] {
-        display: none;
+    button[data-testid="baseButton-secondary"]:has(span:contains("___run_hidden___")) {
+        display: none !important;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -289,7 +335,7 @@ with tabs[0]:
     )
 
     # --- Unified run: manual button OR Ctrl+Enter ---
-    do_run = st.button("▶️ Run") or run_trigger
+    do_run = st.button("▶️ Run without Check") or run_trigger
 
     if do_run:
         st.subheader("🖥️ Execution Result")
@@ -301,7 +347,22 @@ with tabs[0]:
             # Execute user code
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
                 user_globals = {}
+
+                # --- echte libs vorher speichern ---
+                import numpy as _np_real
+                import pandas as _pd_real
+
+                # --- user bekommt initial Zugriff ---
+                user_globals["np"] = _np_real
+                user_globals["pd"] = _pd_real
+
+                # --- user-code ausführen ---
                 exec(content, user_globals)
+
+                # --- nachher np/pd AUTOMATISCH wiederherstellen ---
+                # Falls user np überschreibt → ersetzen wir es zurück
+                user_globals["np"] = _np_real
+                user_globals["pd"] = _pd_real
 
             # Output collection
             output = stdout_buffer.getvalue().strip()
@@ -326,16 +387,28 @@ with tabs[0]:
     if st.button("▶️ Run & Check"):
         st.subheader("🖥️ Execution Result")
 
-        tid = task["id"]
-        st.session_state["attempts"][tid] = st.session_state["attempts"].get(tid, 0) + 1
-
         stdout_buffer = io.StringIO()
         stderr_buffer = io.StringIO()
 
         try:
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
                 user_globals = {}
+
+                # --- echte libs vorher speichern ---
+                import numpy as _np_real
+                import pandas as _pd_real
+
+                # --- user bekommt initial Zugriff ---
+                user_globals["np"] = _np_real
+                user_globals["pd"] = _pd_real
+
+                # --- user-code ausführen ---
                 exec(content, user_globals)
+
+                # --- nachher np/pd AUTOMATISCH wiederherstellen ---
+                # Falls user np überschreibt → ersetzen wir es zurück
+                user_globals["np"] = _np_real
+                user_globals["pd"] = _pd_real
 
             output = stdout_buffer.getvalue()
             errors = stderr_buffer.getvalue()
@@ -439,41 +512,89 @@ with tabs[0]:
 
     st.markdown("---")
 
-    # --- Buttons ---
-    col1, col2, col3, col4, col5 = st.columns(5)
+    # --- Buttons (persistent) ---
+    col1, col2, col3, col4 = st.columns(4)
+
     with col1:
-        show_answer = st.button("💡 Antwort anzeigen")
+        pressed_hard = st.button("😤 Schwer", key=f"hard_btn_{tid}")
+
     with col2:
-        hard = st.button("😤 Schwer")
+        pressed_medium = st.button("🙂 Mittel", key=f"medium_btn_{tid}")
+
     with col3:
-        medium = st.button("🙂 Mittel")
+        pressed_easy = st.button("😎 Einfach", key=f"easy_btn_{tid}")
+
     with col4:
-        easy = st.button("😎 Einfach")
-    with col5:
         next_task = st.button("➡️ Nächste Aufgabe")
 
-    tid = task["id"]
+    # -------------------------------------------------------
+    # 🔥 PERSISTENTES CLICK-EVENT FÜR RATINGS
+    # -------------------------------------------------------
 
-    if show_answer:
-        with st.expander("💡 Lösung & Erklärung"):
-            st.code(task["solution_code"], language="python")
-            st.markdown(task["explanation"])
+    # Button-Clicks speichern (nur 1 Frame)
+    if pressed_hard:
+        st.session_state["last_rating"] = ("hard", tid)
 
-    if hard:
-        st.session_state["ratings"][tid] = "hard"
-        update_review(tid, "hard")
-        st.warning("🔴 Markiert als **Schwer** – kürzere Wiederholungsintervalle.")
+    if pressed_medium:
+        st.session_state["last_rating"] = ("medium", tid)
 
-    if medium:
-        st.session_state["ratings"][tid] = "medium"
-        update_review(tid, "medium")
-        st.info("🟡 Markiert als **Mittel** – normale Wiederholungsintervalle.")
+    if pressed_easy:
+        st.session_state["last_rating"] = ("easy", tid)
 
-    if easy:
-        st.session_state["ratings"][tid] = "easy"
-        update_review(tid, "easy")
-        st.success("🟢 Markiert als **Einfach** – längere Wiederholungsintervalle.")
+    # -------------------------------------------------------
+    # 📌 WENN EIN RATING GESPEICHERT WURDE → VERARBEITEN
+    # -------------------------------------------------------
+    if "last_rating" in st.session_state:
+        rating, rid = st.session_state["last_rating"]
 
+        # 1) Attempt Counter aktualisieren
+        st.session_state["attempts"][rid] = st.session_state["attempts"].get(rid, 0) + 1
+
+        # 2) Rating speichern
+        st.session_state["ratings"][rid] = rating
+
+        # 3) Spaced Repetition Interval aktualisieren
+        update_review(rid, rating)
+
+        # 4) Feedback anzeigen
+        if rating == "hard":
+            st.warning(f"🔴 Successfully counted as HARD — attempts now: {st.session_state['attempts'][rid]}")
+        elif rating == "medium":
+            st.info(f"🟡 Successfully counted as MEDIUM — attempts now: {st.session_state['attempts'][rid]}")
+        elif rating == "easy":
+            st.success(f"🟢 Successfully counted as EASY — attempts now: {st.session_state['attempts'][rid]}")
+
+        # 🆕 5) 🔥 Automatisch Supabase speichern (existierende Funktion!)
+        if username:
+            save_progress(username)
+            st.toast("💾 Fortschritt automatisch gespeichert!")
+
+        # 6) Event löschen, damit es nicht doppelt abgefeuert wird
+        del st.session_state["last_rating"]
+
+    # -------------------------------------------------------
+    # 💡 Lösung & Erklärung (immer sichtbar, aber eingeklappt)
+    # -------------------------------------------------------
+    with st.expander("💡 Lösung & Erklärung", expanded=False):
+        st.code(task["solution_code"], language="python")
+        st.markdown(task["explanation"])
+
+    with st.popover("ℹ️"):
+        st.write(
+            """
+            **So funktionieren die Buttons:**
+
+            • **Schwer / Mittel / Einfach** → bestimmt das Intervall für die Wiederholung  
+            • Beim Klicken speichert die App **automatisch deinen Lernfortschritt**  
+            • Speicherung funktioniert **nur**, wenn ein **Nutzername existiert UND eingegeben ist**  
+            • **Next** → lädt direkt die nächste Aufgabe
+            """
+        )
+
+
+    # -------------------------------------------------------
+    # NEXT TASK
+    # -------------------------------------------------------
     if next_task:
         next_t = pick_next_task(filtered_tasks)
         st.session_state["task_index"] = next_t["id"] - 1
@@ -488,57 +609,23 @@ with tabs[0]:
     # --- Statistik ---
     if st.session_state["ratings"]:
         st.markdown("### 📊 Deine Bewertungen & Durchführungen:")
-        for tid, rating in st.session_state["ratings"].items():
-            count = st.session_state["attempts"].get(tid, 0)
-            data = st.session_state["review_data"].get(tid, {})
+
+        # 🔥 IDs sicher in INT konvertieren (LÖST dein Problem!)
+        normalized_ratings = {int(k): v for k, v in st.session_state["ratings"].items()}
+        normalized_attempts = {int(k): v for k, v in st.session_state["attempts"].items()}
+        normalized_review = {int(k): v for k, v in st.session_state["review_data"].items()}
+
+        for tid in sorted(normalized_ratings.keys()):
+            rating = normalized_ratings[tid]
+            count = normalized_attempts.get(tid, 0)
+            data = normalized_review.get(tid, {})
             interval = data.get("interval", 0)
             next_in = round(interval, 2)
+
             st.write(
                 f"• Task {tid}: {rating.capitalize()} – {count}x durchgeführt | ⏳ ~{next_in} Tage"
             )
 
-    # ============================================================
-    # 📦 Fortschritt Export / Import
-    # ============================================================
-
-    st.markdown("## 📦 Fortschritt speichern / laden")
-
-    if st.button("⬇️ Fortschritt als JSON herunterladen"):
-        export_data = {
-            "ratings": st.session_state.get("ratings", {}),
-            "attempts": st.session_state.get("attempts", {}),
-            "review_data": st.session_state.get("review_data", {}),
-            "timestamp": time.time(),
-        }
-        export_str = json.dumps(export_data, indent=2, ensure_ascii=False)
-
-        st.download_button(
-            label="📥 JSON herunterladen",
-            data=export_str,
-            file_name="active_recall_progress.json",
-            mime="application/json",
-        )
-
-    uploaded = st.file_uploader("⬆️ JSON Fortschritt importieren", type="json")
-
-    if "import_done" not in st.session_state:
-        st.session_state["import_done"] = False
-
-    if uploaded and not st.session_state["import_done"]:
-        try:
-            imported = json.load(uploaded)
-
-            st.session_state["ratings"].update(imported.get("ratings", {}))
-            st.session_state["attempts"].update(imported.get("attempts", {}))
-            st.session_state["review_data"].update(imported.get("review_data", {}))
-
-            st.session_state["import_done"] = True
-
-            st.success("✅ Fortschritt erfolgreich importiert! Seite lädt neu…")
-            st.rerun()
-
-        except Exception as e:
-            st.error(f"❌ Fehler beim Import: {e}")
 
 # ============================================================
 # ❗ TAB 2: Issue melden
@@ -546,72 +633,87 @@ with tabs[0]:
 with tabs[1]:
     st.header("❗ Fehler / Issue melden")
 
-    issue_id = st.number_input("Aufgaben-ID mit Fehler:", step=1, min_value=1)
+    st.write(
+        "Melde einen Fehler zu einer bestimmten Aufgabe **oder** ein "
+        "allgemeines Problem. Danke für die Hilfe!"
+    )
 
-    if issue_id:
-        task = next((t for t in tasks if t["id"] == issue_id), None)
+    # ------------------------------------------------------
+    # OPTIONAL: Task ID
+    # ------------------------------------------------------
+    task_id_input = st.number_input(
+        "Aufgaben-ID (optional):",
+        min_value=0,
+        step=1,
+        help="0 lassen, wenn sich das Problem nicht auf eine spezifische Aufgabe bezieht."
+    )
 
-        if task:
+    # ------------------------------------------------------
+    # PROBLEM TEXT
+    # ------------------------------------------------------
+    description = st.text_area(
+        "📝 Fehlerbeschreibung:",
+        placeholder="Beschreibe, was nicht funktioniert hat, was falsch war oder verbessert werden soll...",
+        height=180
+    )
 
-            # ---- 1. Fixierter Teil (id + question) ----
-            st.subheader("🔒 Fixierte Felder (nicht editierbar)")
-            fixed = {
-                "id": task["id"],
-                "question": task.get("question_raw", task.get("question"))
-            }
-            st.json(fixed)
+    # ------------------------------------------------------
+    # UPLOAD BUTTON
+    # ------------------------------------------------------
+    if st.button("Issue Absenden"):
+        if not description.strip():
+            st.error("Bitte eine Fehlerbeschreibung eingeben.")
+            st.stop()
 
-            # ---- 2. Editierbarer Teil ----
-            st.subheader("✏️ Änderbarer JSON-Bereich")
+        # Gist Payload vorbereiten
+        payload = {
+            "task_id": int(task_id_input) if task_id_input > 0 else None,
+            "description": description.strip()
+        }
 
-            # Alles außer id + question extrahieren
-            editable = {
-                k: v for k, v in task.items()
-                if k not in ["id", "question"]
-            }
-
-            editable_str = json.dumps(editable, indent=2, ensure_ascii=False)
-
-            editable_input = st.text_area(
-                "Bearbeite JSON:",
-                value=editable_str,
-                height=300
-            )
-
-            # ---- SPEICHERN ----
-            def save_issue(task_id, edited_json_str):
-                issues_path = Path(__file__).parent / "issues.json"
-
-                try:
-                    edited_json = json.loads(edited_json_str)
-                except Exception as e:
-                    st.error(f"❌ JSON Fehler: {e}")
-                    return
-
-                if issues_path.exists():
-                    data = json.loads(issues_path.read_text("utf-8"))
-                else:
-                    data = {"issues": []}
-
-                data["issues"].append({
-                    "task_id": task_id,
-                    "timestamp": time.time(),
-                    "changes": edited_json
-                })
-
-                issues_path.write_text(
-                    json.dumps(data, indent=2, ensure_ascii=False),
-                    encoding="utf-8",
-                )
+        # Upload durchführen (existierende Funktion)
+        try:
+            url = upload_issue_to_gist(task_id_input, payload)
+            if url:
+                st.success(f"🎉 Issue gespeichert!")
+                st.markdown(f"[🔗 Gist ansehen]({url})")
+        except Exception as e:
+            st.error(f"❌ Fehler beim Speichern: {e}")
 
 
-            if st.button("💾 Issue als Gist speichern"):
-                try:
-                    edited = json.loads(editable_input)
-                    url = upload_issue_to_gist(issue_id, edited)
+# ============================================================
+# 📊 TAB 3: Progress Dashboard
+# ============================================================
+with tabs[2]:
+    st.header("📊 Progress Dashboard")
 
-                    if url:
-                        st.success("🎉 Issue gespeichert!")
+    # --- Attempts sicher normalisieren ---
+    attempts_raw = st.session_state.get("attempts", {})
 
-                except Exception as e:
-                    st.error(f"❌ JSON Fehler: {e}")
+    # attempts kann None, list, str, usw. sein → IMMER in dict casten!
+    if isinstance(attempts_raw, dict):
+        # Keys in int konvertieren
+        attempts = {int(k): v for k, v in attempts_raw.items()}
+    else:
+        attempts = {}
+
+    total_tasks = len(tasks)
+    answered_once = sum(1 for t, c in attempts.items() if c >= 1)
+
+    # --- Overview ---
+    st.subheader("🧮 Overview")
+    st.write(f"**Total Tasks:** {total_tasks}")
+    st.write(f"**Tasks answered at least once:** {answered_once}")
+
+    st.progress(answered_once / total_tasks if total_tasks else 0)
+
+    st.markdown("---")
+
+    # --- Detailed attempts ---
+    st.subheader("📋 Detailed Attempts per Task")
+
+    if attempts:
+        for tid, count in sorted(attempts.items()):
+            st.write(f"• **Task {tid}** → {count}× durchgeführt")
+    else:
+        st.info("Noch keine Aufgaben beantwortet.")
