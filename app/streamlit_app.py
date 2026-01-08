@@ -376,7 +376,8 @@ with tabs[0]:
                 st.error(errors)
 
             if not output and not errors:
-                st.info("ℹ️ Code executed without output.")
+                st.info("ℹ️ No output shown — `print()` is required, just like in regular Python.")
+
 
         except Exception as e:
             st.error(f"❌ Exception during execution:\n{e}")
@@ -591,7 +592,6 @@ with tabs[0]:
             • **Next** → lädt direkt die nächste Aufgabe
             """
         )
-
 
     # -------------------------------------------------------
     # NEXT TASK
