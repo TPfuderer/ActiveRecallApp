@@ -255,22 +255,7 @@ with tabs[0]:
     # 🔽 FILTER: Task-ID oder Kategorie
     # ----------------------------------------
 
-    with st.popover("ℹ️ Filter-Hilfe"):
-        st.markdown(
-            """
-            **Alle Aufgaben**  
-            → Freies Lernen ohne Einschränkungen. Die App wählt automatisch fällige Aufgaben
-            basierend auf deinem Wiederholungsintervall.
 
-            **Nach Kategorie**  
-            → Fokussiertes Lernen zu einem Themenbereich  
-            (z. B. Listen, Dictionaries, Pandas, NumPy).
-
-            **Direkte Task-ID**  
-            → Ermöglicht **chronologisches Vorgehen** oder das gezielte Aufrufen
-            einer bestimmten Aufgabe (z. B. nach Empfehlung oder zum Wiederholen).
-            """
-        )
 
     filter_mode = st.radio(
         "Filtermodus wählen:",
@@ -318,6 +303,23 @@ with tabs[0]:
 
         # Use new safe rerun method
         st.rerun()
+
+    with st.popover("ℹ️ Filter-Hilfe"):
+        st.markdown(
+            """
+            **Alle Aufgaben**  
+            → Freies Lernen ohne Einschränkungen. Die App wählt automatisch fällige Aufgaben
+            basierend auf deinem Wiederholungsintervall.
+
+            **Nach Kategorie**  
+            → Fokussiertes Lernen zu einem Themenbereich  
+            (z. B. Listen, Dictionaries, Pandas, NumPy).
+
+            **Direkte Task-ID**  
+            → Ermöglicht **chronologisches Vorgehen** oder das gezielte Aufrufen
+            einer bestimmten Aufgabe (z. B. nach Empfehlung oder zum Wiederholen).
+            """
+        )
 
     # --- Ctrl+Enter triggers hidden run button ---
     run_trigger = st.button("___run_hidden___", key="run_hidden", help="", type="secondary")
