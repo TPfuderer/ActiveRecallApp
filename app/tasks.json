@@ -3084,5 +3084,288 @@
     ],
     "solution_code": "arr1 = np.array([[1, 2], [3, 4]])\narr2 = np.array([[5, 6], [7, 8]])\nconcat_arr = np.concatenate((arr1, arr2), axis=0)",
     "explanation": "Setting axis=0 stacks the arrays row-wise (vertical concatenation)."
+  },
+  {
+    "id": 191,
+    "qid_original": 191,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Import Pandas with the standard alias `pd`.",
+    "check_variable": [
+      "pd"
+    ],
+    "expected_value": [
+      ["module"]
+    ],
+    "solution_code": "import pandas as pd",
+    "explanation": "Pandas is conventionally imported using the alias pd."
+  },
+  {
+    "id": 192,
+    "qid_original": 192,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Create a Pandas Series from the list `[10, 20, 30, 40, 50]`.",
+    "check_variable": [
+      "s"
+    ],
+    "expected_value": [
+      [10, 20, 30, 40, 50]
+    ],
+    "solution_code": "s = pd.Series([10, 20, 30, 40, 50])",
+    "explanation": "pd.Series creates a one-dimensional labeled array."
+  },
+  {
+    "id": 193,
+    "qid_original": 193,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Create a DataFrame from a dictionary: `{\"name\": [\"Alice\", \"Bob\"], \"age\": [25, 30]}` and display it.",
+    "check_variable": [
+      "df"
+    ],
+    "expected_value": [
+      [
+        ["Alice", 25],
+        ["Bob", 30]
+      ]
+    ],
+    "solution_code": "df = pd.DataFrame({\"name\": [\"Alice\", \"Bob\"], \"age\": [25, 30]})",
+    "explanation": "pd.DataFrame converts a dictionary of lists into tabular form."
+  },
+  {
+    "id": 194,
+    "qid_original": 194,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Read the CSV file `data/students.csv` into a DataFrame named `students`.",
+    "check_variable": [
+      "students"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")",
+    "explanation": "pd.read_csv loads a CSV file into a DataFrame."
+  },
+  {
+    "id": 195,
+    "qid_original": 195,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and display the first 5 rows using `.head()`.",
+    "check_variable": [
+      "head_df"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nhead_df = students.head()",
+    "explanation": "head() returns the first 5 rows by default."
+  },
+  {
+    "id": 196,
+    "qid_original": 196,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/employees.csv` and display the last 3 rows using `.tail()`.",
+    "check_variable": [
+      "tail_df"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\ntail_df = employees.tail(3)",
+    "explanation": "tail(n) returns the last n rows of a DataFrame."
+  },
+  {
+    "id": 197,
+    "qid_original": 197,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/sales.csv` and get the shape (number of rows and columns).",
+    "check_variable": [
+      "shape_val"
+    ],
+    "expected_value": [
+      ["tuple"]
+    ],
+    "solution_code": "sales = pd.read_csv(\"data/sales.csv\")\nshape_val = sales.shape",
+    "explanation": "shape returns a tuple of (rows, columns)."
+  },
+  {
+    "id": 198,
+    "qid_original": 198,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/weather.csv` and print all column names.",
+    "check_variable": [
+      "columns"
+    ],
+    "expected_value": [
+      ["Index"]
+    ],
+    "solution_code": "weather = pd.read_csv(\"data/weather.csv\")\ncolumns = weather.columns",
+    "explanation": "columns returns the column labels of the DataFrame."
+  },
+  {
+    "id": 199,
+    "qid_original": 199,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/employees.csv` and get basic information using `.info()` (data types, non-null counts).",
+    "check_variable": [
+      "info_val"
+    ],
+    "expected_value": [
+      ["None"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\ninfo_val = employees.info()",
+    "explanation": "info() prints a summary and returns None."
+  },
+  {
+    "id": 200,
+    "qid_original": 200,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and get descriptive statistics using `.describe()` for numerical columns.",
+    "check_variable": [
+      "desc"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\ndesc = students.describe()",
+    "explanation": "describe() computes summary statistics for numerical columns."
+  },
+  {
+    "id": 201,
+    "qid_original": 201,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and select only the \"name\" column as a Series.",
+    "check_variable": [
+      "names"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nnames = students[\"name\"]",
+    "explanation": "Selecting a single column returns a Series."
+  },
+  {
+    "id": 202,
+    "qid_original": 202,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and select columns [\"name\", \"age\", \"gpa\"] as a DataFrame.",
+    "check_variable": [
+      "subset"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nsubset = students[[\"name\", \"age\", \"gpa\"]]",
+    "explanation": "Passing a list of columns returns a DataFrame."
+  },
+  {
+    "id": 203,
+    "qid_original": 203,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/employees.csv` and select rows 2-5 (inclusive) using `.iloc`.",
+    "check_variable": [
+      "rows"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\nrows = employees.iloc[2:6]",
+    "explanation": "iloc slicing is end-exclusive, so 2:6 selects rows 2–5."
+  },
+  {
+    "id": 204,
+    "qid_original": 204,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and filter rows where age > 20.",
+    "check_variable": [
+      "filtered"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nfiltered = students[students[\"age\"] > 20]",
+    "explanation": "Boolean indexing filters rows based on conditions."
+  },
+  {
+    "id": 205,
+    "qid_original": 205,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and select rows where major is \"Computer Science\" AND gpa > 3.5.",
+    "check_variable": [
+      "filtered"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nfiltered = students[(students[\"major\"] == \"Computer Science\") & (students[\"gpa\"] > 3.5)]",
+    "explanation": "Multiple conditions are combined using & and parentheses."
+  },
+  {
+    "id": 206,
+    "qid_original": 206,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and add a new column \"graduated\" with all values set to False.",
+    "check_variable": [
+      "students"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nstudents[\"graduated\"] = False",
+    "explanation": "Assigning a scalar value creates a new column with repeated values."
+  },
+  {
+    "id": 207,
+    "qid_original": 207,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and rename the column \"name\" to \"student_name\".",
+    "check_variable": [
+      "students"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nstudents = students.rename(columns={\"name\": \"student_name\"})",
+    "explanation": "rename(columns=...) changes column names."
+  },
+  {
+    "id": 208,
+    "qid_original": 208,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and drop the column \"credits\". Display the remaining columns.",
+    "check_variable": [
+      "cols"
+    ],
+    "expected_value": [
+      ["Index"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nstudents = students.drop(columns=[\"credits\"])\ncols = students.columns",
+    "explanation": "drop(columns=...) removes a column from the DataFrame."
+  },
+  {
+    "id": 209,
+    "qid_original": 209,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and sort by the \"gpa\" column in descending order. Display top 5.",
+    "check_variable": [
+      "top5"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\ntop5 = students.sort_values(by=\"gpa\", ascending=False).head()",
+    "explanation": "sort_values with ascending=False sorts in descending order."
+  },
+  {
+    "id": 210,
+    "qid_original": 210,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and sort by \"major\" (ascending) then \"gpa\" (descending).",
+    "check_variable": [
+      "sorted_df"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nsorted_df = students.sort_values(by=[\"major\", \"gpa\"], ascending=[True, False])",
+    "explanation": "Multiple columns can be sorted with different orders using a list."
   }
 ]
