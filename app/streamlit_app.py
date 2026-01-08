@@ -721,7 +721,7 @@ with tabs[1]:
             url = upload_issue_to_gist(task_id_input, payload)
             if url:
                 st.success(f"🎉 Issue gespeichert!")
-                st.markdown(f"[🔗 Gist ansehen]({url})")
+                #st.markdown(f"[🔗 Gist ansehen]({url})")
         except Exception as e:
             st.error(f"❌ Fehler beim Speichern: {e}")
 
