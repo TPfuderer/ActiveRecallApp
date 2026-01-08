@@ -3085,6 +3085,168 @@
     "solution_code": "arr1 = np.array([[1, 2], [3, 4]])\narr2 = np.array([[5, 6], [7, 8]])\nconcat_arr = np.concatenate((arr1, arr2), axis=0)",
     "explanation": "Setting axis=0 stacks the arrays row-wise (vertical concatenation)."
   },
+    {
+    "id": 181,
+    "qid_original": 181,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create two arrays: `arr1 = np.array([[1, 2], [3, 4]])` and `arr2 = np.array([[5, 6], [7, 8]])`, then concatenate them horizontally using `np.concatenate()` with the appropriate axis.",
+    "check_variable": [
+      "concat_arr"
+    ],
+    "expected_value": [
+      [
+        [1, 2, 5, 6],
+        [3, 4, 7, 8]
+      ]
+    ],
+    "solution_code": "arr1 = np.array([[1, 2], [3, 4]])\narr2 = np.array([[5, 6], [7, 8]])\nconcat_arr = np.concatenate((arr1, arr2), axis=1)",
+    "explanation": "axis=1 concatenates arrays column-wise (horizontal concatenation)."
+  },
+  {
+    "id": 182,
+    "qid_original": 182,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.arange(15)` and split it into 3 equal parts using `np.array_split()`.",
+    "check_variable": [
+      "split_arr"
+    ],
+    "expected_value": [
+      [
+        [0, 1, 2, 3, 4],
+        [5, 6, 7, 8, 9],
+        [10, 11, 12, 13, 14]
+      ]
+    ],
+    "solution_code": "arr = np.arange(15)\nsplit_arr = np.array_split(arr, 3)",
+    "explanation": "array_split divides the array into the specified number of equal-sized subarrays."
+  },
+  {
+    "id": 183,
+    "qid_original": 183,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create two 1D arrays: `arr1 = np.array([1, 2, 3])` and `arr2 = np.array([4, 5, 6])`, then stack them vertically using `np.vstack()`.",
+    "check_variable": [
+      "stacked_arr"
+    ],
+    "expected_value": [
+      [
+        [1, 2, 3],
+        [4, 5, 6]
+      ]
+    ],
+    "solution_code": "arr1 = np.array([1, 2, 3])\narr2 = np.array([4, 5, 6])\nstacked_arr = np.vstack((arr1, arr2))",
+    "explanation": "vstack stacks 1D arrays as rows into a 2D array."
+  },
+  {
+    "id": 184,
+    "qid_original": 184,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create a 5x5 array with random values and normalize it (subtract mean, divide by std).",
+    "check_variable": [
+      "norm_arr"
+    ],
+    "expected_value": [
+      [
+        [-0.211, 0.734, 0.112, -0.196, -0.655],
+        [0.392, -0.570, 1.060, 1.246, -0.844],
+        [-0.966, 0.706, -0.060, 0.173, -0.570],
+        [-0.354, 1.554, -1.518, -1.290, 0.086],
+        [1.327, -0.873, -0.329, -0.036, 0.060]
+      ]
+    ],
+    "solution_code": "np.random.seed(0)\narr = np.random.rand(5, 5)\nnorm_arr = (arr - arr.mean()) / arr.std()",
+    "explanation": "Normalization centers data to mean 0 and scales it to unit standard deviation."
+  },
+  {
+    "id": 185,
+    "qid_original": 185,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([3, 1, 2, 3, 5, 1, 2, 5, 8, 1])` and find the unique values.",
+    "check_variable": [
+      "unique_vals"
+    ],
+    "expected_value": [
+      [1, 2, 3, 5, 8]
+    ],
+    "solution_code": "arr = np.array([3, 1, 2, 3, 5, 1, 2, 5, 8, 1])\nunique_vals = np.unique(arr)",
+    "explanation": "np.unique returns sorted unique elements from the array."
+  },
+  {
+    "id": 186,
+    "qid_original": 186,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create two arrays: `arr1 = np.array([1, 2, 3, 4, 5])` and `arr2 = np.array([2, 4, 6, 8, 10])`, then calculate the correlation coefficient using `np.corrcoef()`.",
+    "check_variable": [
+      "corr_val"
+    ],
+    "expected_value": [
+      [1.0]
+    ],
+    "solution_code": "arr1 = np.array([1, 2, 3, 4, 5])\narr2 = np.array([2, 4, 6, 8, 10])\ncorr_val = np.corrcoef(arr1, arr2)[0, 1]",
+    "explanation": "Perfect linear scaling results in a correlation coefficient of 1.0."
+  },
+  {
+    "id": 187,
+    "qid_original": 187,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([5, 12, 8, 25, 15, 18, 30, 11])` and create a boolean mask for values between 10 and 20 (inclusive).",
+    "check_variable": [
+      "mask"
+    ],
+    "expected_value": [
+      [false, true, false, false, true, true, false, true]
+    ],
+    "solution_code": "arr = np.array([5, 12, 8, 25, 15, 18, 30, 11])\nmask = (arr >= 10) & (arr <= 20)",
+    "explanation": "Boolean conditions combined with & create the desired mask."
+  },
+  {
+    "id": 188,
+    "qid_original": 188,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([1, 2, 3, 4, 5])` and calculate its cumulative sum using `np.cumsum()`.",
+    "check_variable": [
+      "cumsum_arr"
+    ],
+    "expected_value": [
+      [1, 3, 6, 10, 15]
+    ],
+    "solution_code": "arr = np.array([1, 2, 3, 4, 5])\ncumsum_arr = np.cumsum(arr)",
+    "explanation": "cumsum computes the cumulative sum of array elements."
+  },
+  {
+    "id": 189,
+    "qid_original": 189,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the 2D array `arr = np.array([[1, 2, 3], [4, 5, 6]])` and transpose it.",
+    "check_variable": [
+      "transposed_arr"
+    ],
+    "expected_value": [
+      [
+        [1, 4],
+        [2, 5],
+        [3, 6]
+      ]
+    ],
+    "solution_code": "arr = np.array([[1, 2, 3], [4, 5, 6]])\ntransposed_arr = arr.T",
+    "explanation": "The transpose swaps rows and columns."
+  },
+  {
+    "id": 190,
+    "qid_original": 190,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the 2D array `arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])` and calculate both row-wise sums (sum along axis 1) and column-wise sums (sum along axis 0).",
+    "check_variable": [
+      "row_sums",
+      "col_sums"
+    ],
+    "expected_value": [
+      [6, 15, 24],
+      [12, 15, 18]
+    ],
+    "solution_code": "arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nrow_sums = arr.sum(axis=1)\ncol_sums = arr.sum(axis=0)",
+    "explanation": "axis=1 sums across columns (rows), axis=0 sums across rows (columns)."
+  },
   {
     "id": 191,
     "qid_original": 191,
