@@ -25,6 +25,7 @@ TASKS_PATH = Path(__file__).parent / "tasks.json"
 try:
     with open(TASKS_PATH, "r", encoding="utf-8") as f:
         tasks = json.load(f)
+
 except Exception as e:
     st.error(f"❌ Could not load tasks.json: {e}")
     st.stop()

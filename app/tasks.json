@@ -4,8 +4,12 @@
     "qid_original": 1,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a variable `x` and assign it the value 42.",
-    "check_variable": ["x"],
-    "expected_value": [42],
+    "check_variable": [
+      "x"
+    ],
+    "expected_value": [
+      42
+    ],
     "solution_code": "x = 42",
     "explanation": "We assign the integer 42 to the variable `x` using the assignment operator `=`."
   },
@@ -14,8 +18,12 @@
     "qid_original": 2,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a variable `name` and assign it your name as a string.",
-    "check_variable": ["name"],
-    "expected_value": ["David"],
+    "check_variable": [
+      "name"
+    ],
+    "expected_value": [
+      "David"
+    ],
     "solution_code": "name = 'David'",
     "explanation": "Strings in Python are written with quotes. Here we assign a string value to the variable `name`."
   },
@@ -24,8 +32,12 @@
     "qid_original": 3,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a variable `pi` with the value 3.14159 and print its type.",
-    "check_variable": ["pi"],
-    "expected_value": [3.14159],
+    "check_variable": [
+      "pi"
+    ],
+    "expected_value": [
+      3.14159
+    ],
     "expected_output": "<class 'float'>\n",
     "solution_code": "pi = 3.14159\nprint(type(pi))",
     "explanation": "`pi` stores the float value 3.14159. Using `print(type(pi))` shows the variable's data type."
@@ -35,8 +47,12 @@
     "qid_original": 4,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create three variables in one line: `a = 10`, `b = 20`, `c = 30`.",
-    "check_variable": ["c"],
-    "expected_value": [30],
+    "check_variable": [
+      "c"
+    ],
+    "expected_value": [
+      30
+    ],
     "solution_code": "a, b, c = 10, 20, 30",
     "explanation": "We assign multiple values to multiple variables using tuple unpacking."
   },
@@ -45,8 +61,12 @@
     "qid_original": 5,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Convert the string `\"123\"` to an integer and store it in a variable `num`.",
-    "check_variable": ["num"],
-    "expected_value": [123],
+    "check_variable": [
+      "num"
+    ],
+    "expected_value": [
+      123
+    ],
     "solution_code": "num = int('123')",
     "explanation": "The `int()` function converts numeric strings into integer values."
   },
@@ -55,8 +75,12 @@
     "qid_original": 6,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a boolean variable `is_student` set to `True` and print it.",
-    "check_variable": ["is_student"],
-    "expected_value": [true],
+    "check_variable": [
+      "is_student"
+    ],
+    "expected_value": [
+      true
+    ],
     "expected_output": "True\n",
     "solution_code": "is_student = True\nprint(is_student)",
     "explanation": "`True` is a Boolean literal in Python. We assign it to `is_student` and print the value."
@@ -66,8 +90,12 @@
     "qid_original": 7,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Calculate `5 ** 3` and store the result in a variable `power_result`.",
-    "check_variable": ["power_result"],
-    "expected_value": [125],
+    "check_variable": [
+      "power_result"
+    ],
+    "expected_value": [
+      125
+    ],
     "solution_code": "power_result = 5 ** 3",
     "explanation": "`**` is the exponent operator. `5 ** 3` evaluates to 125."
   },
@@ -76,8 +104,12 @@
     "qid_original": 8,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a variable `temp_celsius = 25` and convert it to Fahrenheit using the formula `F = C * 9/5 + 32`.",
-    "check_variable": ["temp_fahrenheit"],
-    "expected_value": [77.0],
+    "check_variable": [
+      "temp_fahrenheit"
+    ],
+    "expected_value": [
+      77.0
+    ],
     "solution_code": "temp_celsius = 25\ntemp_fahrenheit = temp_celsius * 9/5 + 32",
     "explanation": "We apply the Celsius-to-Fahrenheit formula: F = C × 9/5 + 32."
   },
@@ -86,8 +118,12 @@
     "qid_original": 9,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Check the type of the following values and store them in variables: `100`, `100.0`, `\"100\"`, `True`.",
-    "check_variable": ["type_bool"],
-    "expected_value": ["bool"],
+    "check_variable": [
+      "type_bool"
+    ],
+    "expected_value": [
+      "bool"
+    ],
     "solution_code": "type_int = type(100).__name__\ntype_float = type(100.0).__name__\ntype_str = type('100').__name__\ntype_bool = type(True).__name__",
     "explanation": "We extract type names via `type(x).__name__` which returns 'int', 'float', 'str', or 'bool'."
   },
@@ -96,8 +132,12 @@
     "qid_original": 10,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create variables `x = 5` and `y = 2`. Calculate and store: sum, difference, product, division, integer division, and modulo.",
-    "check_variable": ["modulo_result"],
-    "expected_value": [1],
+    "check_variable": [
+      "modulo_result"
+    ],
+    "expected_value": [
+      1
+    ],
     "solution_code": "x, y = 5, 2\nsum_result = x + y\ndiff_result = x - y\nprod_result = x * y\ndiv_result = x / y\nint_div_result = x // y\nmodulo_result = x % y",
     "explanation": "We compute several arithmetic operations using +, -, *, /, //, and %."
   },
@@ -106,8 +146,12 @@
     "qid_original": 11,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a variable `message` with the text \"Hello, World!\" and print it.",
-    "check_variable": ["message"],
-    "expected_value": ["Hello, World!"],
+    "check_variable": [
+      "message"
+    ],
+    "expected_value": [
+      "Hello, World!"
+    ],
     "expected_output": "Hello, World!\n",
     "solution_code": "message = 'Hello, World!'\nprint(message)",
     "explanation": "We store a string in `message` and print it with `print()`."
@@ -117,8 +161,12 @@
     "qid_original": 12,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create two variables `first_name = \"John\"` and `last_name = \"Doe\"`. Concatenate them with a space in between.",
-    "check_variable": ["full_name"],
-    "expected_value": ["John Doe"],
+    "check_variable": [
+      "full_name"
+    ],
+    "expected_value": [
+      "John Doe"
+    ],
     "solution_code": "first_name, last_name = 'John', 'Doe'\nfull_name = first_name + ' ' + last_name",
     "explanation": "We join the two strings using `+` and a space to form the full name."
   },
@@ -127,8 +175,12 @@
     "qid_original": 13,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a variable `age = 25` and use an f-string to print \"I am 25 years old\".",
-    "check_variable": ["age"],
-    "expected_value": [25],
+    "check_variable": [
+      "age"
+    ],
+    "expected_value": [
+      25
+    ],
     "expected_output": "I am 25 years old\n",
     "solution_code": "age = 25\nprint(f'I am {age} years old')",
     "explanation": "We assign 25 to `age` and embed it in an f-string to print the message."
@@ -138,8 +190,12 @@
     "qid_original": 14,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Calculate the area of a circle with radius 5 (use pi = 3.14159).",
-    "check_variable": ["area"],
-    "expected_value": [78.53975],
+    "check_variable": [
+      "area"
+    ],
+    "expected_value": [
+      78.53975
+    ],
     "solution_code": "pi = 3.14159\nradius = 5\narea = pi * radius ** 2",
     "explanation": "We compute a circle's area using A = π × r²."
   },
@@ -148,8 +204,12 @@
     "qid_original": 15,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a variable `price = 19.99` and calculate the price after 20% discount.",
-    "check_variable": ["discounted_price"],
-    "expected_value": [15.992],
+    "check_variable": [
+      "discounted_price"
+    ],
+    "expected_value": [
+      15.992
+    ],
     "check_type": "float_tolerance",
     "tolerance": 0.01,
     "solution_code": "price = 19.99\ndiscounted_price = price * 0.8",
@@ -160,8 +220,12 @@
     "qid_original": 16,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Swap the values of two variables `a = 10` and `b = 20` without using a third variable.",
-    "check_variable": ["a"],
-    "expected_value": [20],
+    "check_variable": [
+      "a"
+    ],
+    "expected_value": [
+      20
+    ],
     "solution_code": "a, b = 10, 20\na, b = b, a",
     "explanation": "Python allows swapping two variables using tuple unpacking."
   },
@@ -170,8 +234,12 @@
     "qid_original": 17,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create variables for a rectangle's length (5) and width (3), then calculate both area and perimeter.",
-    "check_variable": ["perimeter"],
-    "expected_value": [16],
+    "check_variable": [
+      "perimeter"
+    ],
+    "expected_value": [
+      16
+    ],
     "solution_code": "length, width = 5, 3\narea = length * width\nperimeter = 2 * (length + width)",
     "explanation": "Area = length × width. Perimeter = 2 × (length + width)."
   },
@@ -180,8 +248,12 @@
     "qid_original": 18,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Check if the variable `x = 10` is an integer using the `type()` function.",
-    "check_variable": ["is_int"],
-    "expected_value": [true],
+    "check_variable": [
+      "is_int"
+    ],
+    "expected_value": [
+      true
+    ],
     "solution_code": "x = 10\nis_int = (type(x) == int)",
     "explanation": "`type(x) == int` evaluates to True if x is an integer."
   },
@@ -190,8 +262,12 @@
     "qid_original": 19,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a variable with a multi-line string using triple quotes.",
-    "check_variable": ["multi_text"],
-    "expected_value": ["Line1\nLine2"],
+    "check_variable": [
+      "multi_text"
+    ],
+    "expected_value": [
+      "Line1\nLine2"
+    ],
     "solution_code": "multi_text = '''Line1\nLine2'''",
     "explanation": "Triple quotes allow defining multi-line string values across several lines."
   },
@@ -200,18 +276,26 @@
     "qid_original": 20,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a variable `num = 17` and check if it's even or odd using the modulo operator.",
-    "check_variable": ["is_even"],
-    "expected_value": [false],
+    "check_variable": [
+      "is_even"
+    ],
+    "expected_value": [
+      false
+    ],
     "solution_code": "num = 17\nis_even = (num % 2 == 0)",
     "explanation": "A number is even if `num % 2` equals 0; otherwise it is odd."
   },
-    {
+  {
     "id": 21,
     "qid_original": 21,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Convert the float `3.7` to an integer and observe what happens.",
-    "check_variable": ["result"],
-    "expected_value": [3],
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      3
+    ],
     "solution_code": "x = 3.7\nresult = int(x)",
     "explanation": "Converting a float to an integer using `int()` truncates the decimal part rather than rounding."
   },
@@ -220,8 +304,12 @@
     "qid_original": 22,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create variables for the three sides of a triangle (3, 4, 5) and calculate its perimeter and area using Heron's formula.",
-    "check_variable": ["area"],
-    "expected_value": [6.0],
+    "check_variable": [
+      "area"
+    ],
+    "expected_value": [
+      6.0
+    ],
     "solution_code": "a, b, c = 3, 4, 5\nperimeter = a + b + c\ns = perimeter / 2\narea = (s * (s - a) * (s - b) * (s - c)) ** 0.5",
     "explanation": "For a 3–4–5 triangle, Heron's formula gives area = 6.0. Perimeter is a + b + c."
   },
@@ -230,8 +318,12 @@
     "qid_original": 23,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a variable `text = \"Python\"` and repeat it 3 times using the `*` operator.",
-    "check_variable": ["result"],
-    "expected_value": ["PythonPythonPython"],
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      "PythonPythonPython"
+    ],
     "solution_code": "text = 'Python'\nresult = text * 3",
     "explanation": "Repeating a string using `*` concatenates it multiple times."
   },
@@ -240,8 +332,12 @@
     "qid_original": 24,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Calculate compound interest: Principal = 1000, Rate = 5%, Time = 2 years. Formula: A = P(1 + r)^t",
-    "check_variable": ["amount"],
-    "expected_value": [1102.5],
+    "check_variable": [
+      "amount"
+    ],
+    "expected_value": [
+      1102.5
+    ],
     "check_type": "float_tolerance",
     "tolerance": 0.001,
     "solution_code": "P = 1000\nr = 0.05\nt = 2\namount = P * (1 + r) ** t",
@@ -252,8 +348,12 @@
     "qid_original": 25,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create variables for hours (2) and minutes (30), then convert the total time to seconds.",
-    "check_variable": ["seconds"],
-    "expected_value": [9000],
+    "check_variable": [
+      "seconds"
+    ],
+    "expected_value": [
+      9000
+    ],
     "solution_code": "hours = 2\nminutes = 30\nseconds = hours * 3600 + minutes * 60",
     "explanation": "We convert hours and minutes into seconds: 2h = 7200s, +30m = 1800s → total 9000 seconds."
   },
@@ -262,8 +362,12 @@
     "qid_original": 26,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Check if a variable `value = None` is None using the `is` operator.",
-    "check_variable": ["is_none"],
-    "expected_value": [true],
+    "check_variable": [
+      "is_none"
+    ],
+    "expected_value": [
+      true
+    ],
     "solution_code": "value = None\nis_none = (value is None)",
     "explanation": "The `is` operator checks identity. `value is None` evaluates to True."
   },
@@ -272,8 +376,12 @@
     "qid_original": 27,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Calculate the average of five numbers: 10, 20, 30, 40, 50.",
-    "check_variable": ["avg"],
-    "expected_value": [30.0],
+    "check_variable": [
+      "avg"
+    ],
+    "expected_value": [
+      30.0
+    ],
     "solution_code": "nums = [10, 20, 30, 40, 50]\navg = sum(nums) / len(nums)",
     "explanation": "The mean is total sum divided by count: (10+20+30+40+50)/5 = 30."
   },
@@ -282,8 +390,12 @@
     "qid_original": 28,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a variable `score = 85` and use `//` to find how many tens are in the score.",
-    "check_variable": ["tens"],
-    "expected_value": [8],
+    "check_variable": [
+      "tens"
+    ],
+    "expected_value": [
+      8
+    ],
     "solution_code": "score = 85\ntens = score // 10",
     "explanation": "Floor division by 10 gives the number of tens in a number: 85 // 10 = 8."
   },
@@ -292,8 +404,12 @@
     "qid_original": 29,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Calculate the Body Mass Index (BMI) given weight = 70 kg and height = 1.75 m. Formula: BMI = weight / height^2",
-    "check_variable": ["bmi"],
-    "expected_value": [22.857142857142858],
+    "check_variable": [
+      "bmi"
+    ],
+    "expected_value": [
+      22.857142857142858
+    ],
     "check_type": "float_tolerance",
     "tolerance": 0.001,
     "solution_code": "weight = 70\nheight = 1.75\nbmi = weight / (height ** 2)",
@@ -304,18 +420,26 @@
     "qid_original": 30,
     "category": "Variables and Data Types (30 Questions)",
     "question_raw": "Create a variable representing seconds (3665) and convert it to hours, minutes, and remaining seconds.",
-    "check_variable": ["minutes"],
-    "expected_value": [1],
+    "check_variable": [
+      "minutes"
+    ],
+    "expected_value": [
+      1
+    ],
     "solution_code": "seconds = 3665\nhours = seconds // 3600\nremaining = seconds % 3600\nminutes = remaining // 60\nsecs_left = remaining % 60",
     "explanation": "3665 seconds = 1 hour, 1 minute, and 5 seconds. We focus on checking the minutes value."
   },
-    {
+  {
     "id": 31,
     "qid_original": 31,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Convert the string `\"python\"` to uppercase.",
-    "check_variable": ["result"],
-    "expected_value": ["PYTHON"],
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      "PYTHON"
+    ],
     "solution_code": "text = 'python'\nresult = text.upper()",
     "explanation": "The `.upper()` method converts all characters in a string to uppercase."
   },
@@ -324,8 +448,12 @@
     "qid_original": 32,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Get the length of the string `\"Data Analysis\"`.",
-    "check_variable": ["length"],
-    "expected_value": [13],
+    "check_variable": [
+      "length"
+    ],
+    "expected_value": [
+      13
+    ],
     "solution_code": "s = 'Data Analysis'\nlength = len(s)",
     "explanation": "`len()` returns the number of characters in a string, including spaces."
   },
@@ -334,8 +462,12 @@
     "qid_original": 33,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Extract the first character from the string `\"Hello\"`.",
-    "check_variable": ["first_char"],
-    "expected_value": ["H"],
+    "check_variable": [
+      "first_char"
+    ],
+    "expected_value": [
+      "H"
+    ],
     "solution_code": "s = 'Hello'\nfirst_char = s[0]",
     "explanation": "String indexing starts at 0, so the first character is s[0]."
   },
@@ -344,8 +476,12 @@
     "qid_original": 34,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Extract the last character from the string `\"World\"` using negative indexing.",
-    "check_variable": ["last_char"],
-    "expected_value": ["d"],
+    "check_variable": [
+      "last_char"
+    ],
+    "expected_value": [
+      "d"
+    ],
     "solution_code": "s = 'World'\nlast_char = s[-1]",
     "explanation": "Negative indexing lets you index from the end. -1 refers to the last character."
   },
@@ -354,8 +490,12 @@
     "qid_original": 35,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Extract characters from index 2 to 5 from the string `\"Programming\"`.",
-    "check_variable": ["substring"],
-    "expected_value": ["ogra"],
+    "check_variable": [
+      "substring"
+    ],
+    "expected_value": [
+      "ogra"
+    ],
     "solution_code": "s = 'Programming'\nsubstring = s[2:6]",
     "explanation": "Slicing s[2:6] includes characters at indices 2,3,4,5."
   },
@@ -364,8 +504,12 @@
     "qid_original": 36,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Replace \"cat\" with \"dog\" in the string `\"I have a cat\"`.",
-    "check_variable": ["result"],
-    "expected_value": ["I have a dog"],
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      "I have a dog"
+    ],
     "solution_code": "s = 'I have a cat'\nresult = s.replace('cat', 'dog')",
     "explanation": "`replace(old, new)` substitutes occurrences of a substring."
   },
@@ -374,8 +518,16 @@
     "qid_original": 37,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Split the string `\"apple,banana,orange\"` by comma into a list.",
-    "check_variable": ["items"],
-    "expected_value": [["apple", "banana", "orange"]],
+    "check_variable": [
+      "items"
+    ],
+    "expected_value": [
+      [
+        "apple",
+        "banana",
+        "orange"
+      ]
+    ],
     "solution_code": "s = 'apple,banana,orange'\nitems = s.split(',')",
     "explanation": "`.split(',')` divides the string into a list based on commas."
   },
@@ -384,8 +536,12 @@
     "qid_original": 38,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Remove leading and trailing spaces from `\"  hello  \"`.",
-    "check_variable": ["cleaned"],
-    "expected_value": ["hello"],
+    "check_variable": [
+      "cleaned"
+    ],
+    "expected_value": [
+      "hello"
+    ],
     "solution_code": "s = '  hello  '\ncleaned = s.strip()",
     "explanation": "`.strip()` removes whitespace from both ends of the string."
   },
@@ -394,8 +550,12 @@
     "qid_original": 39,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Count how many times the letter \"l\" appears in `\"Hello World\"`.",
-    "check_variable": ["count_l"],
-    "expected_value": [3],
+    "check_variable": [
+      "count_l"
+    ],
+    "expected_value": [
+      3
+    ],
     "solution_code": "s = 'Hello World'\ncount_l = s.count('l')",
     "explanation": "`.count()` returns how many times a substring appears."
   },
@@ -404,8 +564,12 @@
     "qid_original": 40,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Check if the string `\"Python\"` starts with \"Py\".",
-    "check_variable": ["starts"],
-    "expected_value": [true],
+    "check_variable": [
+      "starts"
+    ],
+    "expected_value": [
+      true
+    ],
     "solution_code": "s = 'Python'\nstarts = s.startswith('Py')",
     "explanation": "`.startswith(prefix)` returns True if the string begins with the given prefix."
   },
@@ -414,8 +578,12 @@
     "qid_original": 41,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Check if the string `\"example@email.com\"` ends with \".com\".",
-    "check_variable": ["ends"],
-    "expected_value": [true],
+    "check_variable": [
+      "ends"
+    ],
+    "expected_value": [
+      true
+    ],
     "solution_code": "s = 'example@email.com'\nends = s.endswith('.com')",
     "explanation": "`.endswith(suffix)` returns True if the string ends with the given text."
   },
@@ -424,8 +592,12 @@
     "qid_original": 42,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Reverse the string `\"Python\"` using slicing.",
-    "check_variable": ["reversed_text"],
-    "expected_value": ["nohtyP"],
+    "check_variable": [
+      "reversed_text"
+    ],
+    "expected_value": [
+      "nohtyP"
+    ],
     "solution_code": "s = 'Python'\nreversed_text = s[::-1]",
     "explanation": "Slicing with step -1 reverses the string."
   },
@@ -434,8 +606,12 @@
     "qid_original": 43,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Convert the string `\"Hello World\"` to title case.",
-    "check_variable": ["titled"],
-    "expected_value": ["Hello World"],
+    "check_variable": [
+      "titled"
+    ],
+    "expected_value": [
+      "Hello World"
+    ],
     "solution_code": "s = 'Hello World'\ntitled = s.title()",
     "explanation": "`.title()` capitalizes the first letter of each word."
   },
@@ -444,8 +620,12 @@
     "qid_original": 44,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Check if the string `\"12345\"` contains only digits.",
-    "check_variable": ["is_digits"],
-    "expected_value": [true],
+    "check_variable": [
+      "is_digits"
+    ],
+    "expected_value": [
+      true
+    ],
     "solution_code": "s = '12345'\nis_digits = s.isdigit()",
     "explanation": "`.isdigit()` returns True if all characters are numeric."
   },
@@ -454,8 +634,12 @@
     "qid_original": 45,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Join the list `[\"Python\", \"is\", \"fun\"]` into a single string with spaces.",
-    "check_variable": ["joined"],
-    "expected_value": ["Python is fun"],
+    "check_variable": [
+      "joined"
+    ],
+    "expected_value": [
+      "Python is fun"
+    ],
     "solution_code": "words = ['Python', 'is', 'fun']\njoined = ' '.join(words)",
     "explanation": "`' '.join(list)` creates a single string by joining elements with spaces."
   },
@@ -464,8 +648,12 @@
     "qid_original": 46,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Extract every second character from the string `\"abcdefgh\"`.",
-    "check_variable": ["result"],
-    "expected_value": ["aceg"],
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      "aceg"
+    ],
     "solution_code": "s = 'abcdefgh'\nresult = s[0::2]",
     "explanation": "Slicing with step 2 selects every second character."
   },
@@ -474,8 +662,12 @@
     "qid_original": 47,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Find the index of the substring \"world\" in `\"Hello world\"`.",
-    "check_variable": ["index"],
-    "expected_value": [6],
+    "check_variable": [
+      "index"
+    ],
+    "expected_value": [
+      6
+    ],
     "solution_code": "s = 'Hello world'\nindex = s.find('world')",
     "explanation": "`.find()` returns the starting index of the substring or -1 if not found."
   },
@@ -484,8 +676,12 @@
     "qid_original": 48,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Check if the string `\"racecar\"` is a palindrome.",
-    "check_variable": ["is_palindrome"],
-    "expected_value": [true],
+    "check_variable": [
+      "is_palindrome"
+    ],
+    "expected_value": [
+      true
+    ],
     "solution_code": "s = 'racecar'\nis_palindrome = (s == s[::-1])",
     "explanation": "A string is a palindrome if it reads the same forward and backward."
   },
@@ -494,8 +690,12 @@
     "qid_original": 49,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Remove all vowels from the string `\"Hello World\"`.",
-    "check_variable": ["result"],
-    "expected_value": ["Hll Wrld"],
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      "Hll Wrld"
+    ],
     "solution_code": "s = 'Hello World'\nvowels = 'aeiouAEIOU'\nresult = ''.join(ch for ch in s if ch not in vowels)",
     "explanation": "We filter out all vowel characters by checking membership in a vowel string."
   },
@@ -504,8 +704,12 @@
     "qid_original": 50,
     "category": "String Manipulation (20 Questions)",
     "question_raw": "Count the number of words in the string `\"Python is a great programming language\"`.",
-    "check_variable": ["word_count"],
-    "expected_value": [6],
+    "check_variable": [
+      "word_count"
+    ],
+    "expected_value": [
+      6
+    ],
     "solution_code": "s = 'Python is a great programming language'\nword_count = len(s.split())",
     "explanation": "Splitting by spaces gives the individual words; using len() counts them."
   },
@@ -514,8 +718,12 @@
     "qid_original": 51,
     "category": "Lists (30 Questions)",
     "question_raw": "Create an empty list called `my_list`.",
-    "check_variable": ["my_list"],
-    "expected_value": [[]],
+    "check_variable": [
+      "my_list"
+    ],
+    "expected_value": [
+      []
+    ],
     "solution_code": "my_list = []",
     "explanation": "An empty list is created using square brackets: `[]`."
   },
@@ -524,8 +732,18 @@
     "qid_original": 52,
     "category": "Lists (30 Questions)",
     "question_raw": "Create a list with numbers 1 through 5.",
-    "check_variable": ["nums"],
-    "expected_value": [[1, 2, 3, 4, 5]],
+    "check_variable": [
+      "nums"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
     "solution_code": "nums = [1, 2, 3, 4, 5]",
     "explanation": "Lists are defined using square brackets containing comma-separated values."
   },
@@ -534,8 +752,12 @@
     "qid_original": 53,
     "category": "Lists (30 Questions)",
     "question_raw": "Access the third element of the list `[10, 20, 30, 40, 50]`.",
-    "check_variable": ["third"],
-    "expected_value": [30],
+    "check_variable": [
+      "third"
+    ],
+    "expected_value": [
+      30
+    ],
     "solution_code": "lst = [10, 20, 30, 40, 50]\nthird = lst[2]",
     "explanation": "List indexing starts at 0, so index 2 corresponds to the third element."
   },
@@ -544,8 +766,12 @@
     "qid_original": 54,
     "category": "Lists (30 Questions)",
     "question_raw": "Get the last element of `[1, 2, 3, 4, 5]` using negative indexing.",
-    "check_variable": ["last"],
-    "expected_value": [5],
+    "check_variable": [
+      "last"
+    ],
+    "expected_value": [
+      5
+    ],
     "solution_code": "lst = [1, 2, 3, 4, 5]\nlast = lst[-1]",
     "explanation": "Negative index -1 refers to the last element of a list."
   },
@@ -554,8 +780,19 @@
     "qid_original": 55,
     "category": "Lists (30 Questions)",
     "question_raw": "Append the number 6 to the list `[1, 2, 3, 4, 5]`.",
-    "check_variable": ["lst"],
-    "expected_value": [[1, 2, 3, 4, 5, 6]],
+    "check_variable": [
+      "lst"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    ],
     "solution_code": "lst = [1, 2, 3, 4, 5]\nlst.append(6)",
     "explanation": "The `.append()` method adds an element to the end of a list."
   },
@@ -564,8 +801,17 @@
     "qid_original": 56,
     "category": "Lists (30 Questions)",
     "question_raw": "Insert the number 0 at the beginning of the list `[1, 2, 3]`.",
-    "check_variable": ["lst"],
-    "expected_value": [[0, 1, 2, 3]],
+    "check_variable": [
+      "lst"
+    ],
+    "expected_value": [
+      [
+        0,
+        1,
+        2,
+        3
+      ]
+    ],
     "solution_code": "lst = [1, 2, 3]\nlst.insert(0, 0)",
     "explanation": "`insert(index, value)` places an element at a specific position in the list."
   },
@@ -574,8 +820,16 @@
     "qid_original": 57,
     "category": "Lists (30 Questions)",
     "question_raw": "Remove the last element from the list `[10, 20, 30, 40]`.",
-    "check_variable": ["lst"],
-    "expected_value": [[10, 20, 30]],
+    "check_variable": [
+      "lst"
+    ],
+    "expected_value": [
+      [
+        10,
+        20,
+        30
+      ]
+    ],
     "solution_code": "lst = [10, 20, 30, 40]\nlst.pop()",
     "explanation": "`.pop()` removes and returns the last element of a list."
   },
@@ -584,8 +838,16 @@
     "qid_original": 58,
     "category": "Lists (30 Questions)",
     "question_raw": "Extract elements from index 1 to 3 from `[0, 1, 2, 3, 4, 5]`.",
-    "check_variable": ["subset"],
-    "expected_value": [[1, 2, 3]],
+    "check_variable": [
+      "subset"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3
+      ]
+    ],
     "solution_code": "lst = [0, 1, 2, 3, 4, 5]\nsubset = lst[1:4]",
     "explanation": "Slicing `[start:end]` includes start index but excludes end index."
   },
@@ -594,8 +856,12 @@
     "qid_original": 59,
     "category": "Lists (30 Questions)",
     "question_raw": "Get the length of the list `[\"a\", \"b\", \"c\", \"d\"]`.",
-    "check_variable": ["length"],
-    "expected_value": [4],
+    "check_variable": [
+      "length"
+    ],
+    "expected_value": [
+      4
+    ],
     "solution_code": "lst = ['a', 'b', 'c', 'd']\nlength = len(lst)",
     "explanation": "`len()` returns the number of items in a list."
   },
@@ -604,18 +870,44 @@
     "qid_original": 60,
     "category": "Lists (30 Questions)",
     "question_raw": "Concatenate two lists: `[1, 2, 3]` and `[4, 5, 6]`.",
-    "check_variable": ["combined"],
-    "expected_value": [[1, 2, 3, 4, 5, 6]],
+    "check_variable": [
+      "combined"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    ],
     "solution_code": "a = [1, 2, 3]\nb = [4, 5, 6]\ncombined = a + b",
     "explanation": "Using `+` merges two lists into a single list."
   },
-    {
+  {
     "id": 61,
     "qid_original": 61,
     "category": "Lists (30 Questions)",
     "question_raw": "Create a list of numbers from 0 to 9 using `range()`.",
-    "check_variable": ["numbers"],
-    "expected_value": [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]],
+    "check_variable": [
+      "numbers"
+    ],
+    "expected_value": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    ],
     "solution_code": "numbers = list(range(10))",
     "explanation": "`range(10)` generates 0–9. Wrapping it with `list()` converts it to a list."
   },
@@ -624,8 +916,18 @@
     "qid_original": 62,
     "category": "Lists (30 Questions)",
     "question_raw": "Reverse the list `[1, 2, 3, 4, 5]`.",
-    "check_variable": ["reversed_list"],
-    "expected_value": [[5, 4, 3, 2, 1]],
+    "check_variable": [
+      "reversed_list"
+    ],
+    "expected_value": [
+      [
+        5,
+        4,
+        3,
+        2,
+        1
+      ]
+    ],
     "solution_code": "lst = [1, 2, 3, 4, 5]\nreversed_list = lst[::-1]",
     "explanation": "Using slicing with `[::-1]` reverses a list."
   },
@@ -634,8 +936,18 @@
     "qid_original": 63,
     "category": "Lists (30 Questions)",
     "question_raw": "Sort the list `[5, 2, 8, 1, 9]` in ascending order.",
-    "check_variable": ["sorted_list"],
-    "expected_value": [[1, 2, 5, 8, 9]],
+    "check_variable": [
+      "sorted_list"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        5,
+        8,
+        9
+      ]
+    ],
     "solution_code": "lst = [5, 2, 8, 1, 9]\nsorted_list = sorted(lst)",
     "explanation": "`sorted()` returns a new sorted list without modifying the original."
   },
@@ -644,8 +956,12 @@
     "qid_original": 64,
     "category": "Lists (30 Questions)",
     "question_raw": "Find the maximum value in the list `[23, 67, 12, 89, 45]`.",
-    "check_variable": ["max_value"],
-    "expected_value": [89],
+    "check_variable": [
+      "max_value"
+    ],
+    "expected_value": [
+      89
+    ],
     "solution_code": "lst = [23, 67, 12, 89, 45]\nmax_value = max(lst)",
     "explanation": "`max()` returns the largest element in the list."
   },
@@ -654,8 +970,12 @@
     "qid_original": 65,
     "category": "Lists (30 Questions)",
     "question_raw": "Find the minimum value in the list `[23, 67, 12, 89, 45]`.",
-    "check_variable": ["min_value"],
-    "expected_value": [12],
+    "check_variable": [
+      "min_value"
+    ],
+    "expected_value": [
+      12
+    ],
     "solution_code": "lst = [23, 67, 12, 89, 45]\nmin_value = min(lst)",
     "explanation": "`min()` returns the smallest element in the list."
   },
@@ -664,8 +984,12 @@
     "qid_original": 66,
     "category": "Lists (30 Questions)",
     "question_raw": "Calculate the sum of all elements in `[10, 20, 30, 40, 50]`.",
-    "check_variable": ["total"],
-    "expected_value": [150],
+    "check_variable": [
+      "total"
+    ],
+    "expected_value": [
+      150
+    ],
     "solution_code": "lst = [10, 20, 30, 40, 50]\ntotal = sum(lst)",
     "explanation": "`sum()` adds all elements in an iterable."
   },
@@ -674,8 +998,12 @@
     "qid_original": 67,
     "category": "Lists (30 Questions)",
     "question_raw": "Count how many times the number 3 appears in `[1, 2, 3, 3, 4, 3, 5]`.",
-    "check_variable": ["count_three"],
-    "expected_value": [3],
+    "check_variable": [
+      "count_three"
+    ],
+    "expected_value": [
+      3
+    ],
     "solution_code": "lst = [1, 2, 3, 3, 4, 3, 5]\ncount_three = lst.count(3)",
     "explanation": "`list.count(x)` counts occurrences of `x`."
   },
@@ -684,8 +1012,12 @@
     "qid_original": 68,
     "category": "Lists (30 Questions)",
     "question_raw": "Find the index of the first occurrence of 7 in `[2, 4, 7, 9, 7, 11]`.",
-    "check_variable": ["index_first"],
-    "expected_value": [2],
+    "check_variable": [
+      "index_first"
+    ],
+    "expected_value": [
+      2
+    ],
     "solution_code": "lst = [2, 4, 7, 9, 7, 11]\nindex_first = lst.index(7)",
     "explanation": "`list.index(x)` returns the index of the first occurrence of `x`."
   },
@@ -694,8 +1026,18 @@
     "qid_original": 69,
     "category": "Lists (30 Questions)",
     "question_raw": "Remove all duplicates from the list `[1, 2, 2, 3, 4, 4, 5]`.",
-    "check_variable": ["unique_list"],
-    "expected_value": [[1, 2, 3, 4, 5]],
+    "check_variable": [
+      "unique_list"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
     "solution_code": "lst = [1, 2, 2, 3, 4, 4, 5]\nunique_list = list(dict.fromkeys(lst))",
     "explanation": "Converting to a dict removes duplicates while preserving order."
   },
@@ -704,8 +1046,23 @@
     "qid_original": 70,
     "category": "Lists (30 Questions)",
     "question_raw": "Create a list of squares of numbers from 1 to 10 using list comprehension.",
-    "check_variable": ["squares"],
-    "expected_value": [[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]],
+    "check_variable": [
+      "squares"
+    ],
+    "expected_value": [
+      [
+        1,
+        4,
+        9,
+        16,
+        25,
+        36,
+        49,
+        64,
+        81,
+        100
+      ]
+    ],
     "solution_code": "squares = [x*x for x in range(1, 11)]",
     "explanation": "List comprehensions allow concise generation of lists."
   },
@@ -714,8 +1071,12 @@
     "qid_original": 71,
     "category": "Lists (30 Questions)",
     "question_raw": "Check if the number 5 exists in the list `[1, 2, 3, 4, 5]`.",
-    "check_variable": ["exists"],
-    "expected_value": [true],
+    "check_variable": [
+      "exists"
+    ],
+    "expected_value": [
+      true
+    ],
     "solution_code": "lst = [1, 2, 3, 4, 5]\nexists = (5 in lst)",
     "explanation": "`x in list` returns True if x is an element of the list."
   },
@@ -724,8 +1085,18 @@
     "qid_original": 72,
     "category": "Lists (30 Questions)",
     "question_raw": "Filter even numbers from the list `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`.",
-    "check_variable": ["evens"],
-    "expected_value": [[2, 4, 6, 8, 10]],
+    "check_variable": [
+      "evens"
+    ],
+    "expected_value": [
+      [
+        2,
+        4,
+        6,
+        8,
+        10
+      ]
+    ],
     "solution_code": "lst = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nevens = [x for x in lst if x % 2 == 0]",
     "explanation": "A list comprehension with a condition filters elements."
   },
@@ -734,8 +1105,18 @@
     "qid_original": 73,
     "category": "Lists (30 Questions)",
     "question_raw": "Create a new list by multiplying each element by 2 in `[1, 2, 3, 4, 5]`.",
-    "check_variable": ["doubled"],
-    "expected_value": [[2, 4, 6, 8, 10]],
+    "check_variable": [
+      "doubled"
+    ],
+    "expected_value": [
+      [
+        2,
+        4,
+        6,
+        8,
+        10
+      ]
+    ],
     "solution_code": "lst = [1, 2, 3, 4, 5]\ndoubled = [x*2 for x in lst]",
     "explanation": "Element-wise transformations are easy with list comprehension."
   },
@@ -744,8 +1125,19 @@
     "qid_original": 74,
     "category": "Lists (30 Questions)",
     "question_raw": "Flatten the nested list `[[1, 2], [3, 4], [5, 6]]` into a single list.",
-    "check_variable": ["flat"],
-    "expected_value": [[1, 2, 3, 4, 5, 6]],
+    "check_variable": [
+      "flat"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    ],
     "solution_code": "nested = [[1, 2], [3, 4], [5, 6]]\nflat = [x for sub in nested for x in sub]",
     "explanation": "Double list comprehension flattens nested lists."
   },
@@ -754,8 +1146,12 @@
     "qid_original": 75,
     "category": "Lists (30 Questions)",
     "question_raw": "Find the second largest number in `[23, 67, 12, 89, 45]`.",
-    "check_variable": ["second_largest"],
-    "expected_value": [67],
+    "check_variable": [
+      "second_largest"
+    ],
+    "expected_value": [
+      67
+    ],
     "solution_code": "lst = [23, 67, 12, 89, 45]\nsorted_lst = sorted(lst, reverse=True)\nsecond_largest = sorted_lst[1]",
     "explanation": "Sort descending and take index 1."
   },
@@ -764,8 +1160,23 @@
     "qid_original": 76,
     "category": "Lists (30 Questions)",
     "question_raw": "Create a list of all even numbers between 1 and 20 using list comprehension.",
-    "check_variable": ["evens"],
-    "expected_value": [[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]],
+    "check_variable": [
+      "evens"
+    ],
+    "expected_value": [
+      [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20
+      ]
+    ],
     "solution_code": "evens = [x for x in range(1, 21) if x % 2 == 0]",
     "explanation": "Filter even numbers inside the comprehension."
   },
@@ -774,8 +1185,19 @@
     "qid_original": 77,
     "category": "Lists (30 Questions)",
     "question_raw": "Extend the list `[1, 2, 3]` with another list `[4, 5, 6]` using the extend method.",
-    "check_variable": ["lst"],
-    "expected_value": [[1, 2, 3, 4, 5, 6]],
+    "check_variable": [
+      "lst"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    ],
     "solution_code": "lst = [1, 2, 3]\nlst.extend([4, 5, 6])",
     "explanation": "`extend()` appends each element of another list."
   },
@@ -784,8 +1206,18 @@
     "qid_original": 78,
     "category": "Lists (30 Questions)",
     "question_raw": "Sort the list `[5, 2, 8, 1, 9]` in descending order.",
-    "check_variable": ["sorted_desc"],
-    "expected_value": [[9, 8, 5, 2, 1]],
+    "check_variable": [
+      "sorted_desc"
+    ],
+    "expected_value": [
+      [
+        9,
+        8,
+        5,
+        2,
+        1
+      ]
+    ],
     "solution_code": "lst = [5, 2, 8, 1, 9]\nsorted_desc = sorted(lst, reverse=True)",
     "explanation": "`reverse=True` sorts the list in descending order."
   },
@@ -794,8 +1226,23 @@
     "qid_original": 79,
     "category": "Lists (30 Questions)",
     "question_raw": "Create a list containing the first 10 Fibonacci numbers.",
-    "check_variable": ["fib"],
-    "expected_value": [[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]],
+    "check_variable": [
+      "fib"
+    ],
+    "expected_value": [
+      [
+        0,
+        1,
+        1,
+        2,
+        3,
+        5,
+        8,
+        13,
+        21,
+        34
+      ]
+    ],
     "solution_code": "fib = [0, 1]\nfor _ in range(8):\n    fib.append(fib[-1] + fib[-2])",
     "explanation": "Each Fibonacci number is the sum of the two previous ones."
   },
@@ -804,18 +1251,33 @@
     "qid_original": 80,
     "category": "Lists (30 Questions)",
     "question_raw": "Find all numbers divisible by 3 and 5 from 1 to 100 using list comprehension.",
-    "check_variable": ["divisible"],
-    "expected_value": [[15, 30, 45, 60, 75, 90]],
+    "check_variable": [
+      "divisible"
+    ],
+    "expected_value": [
+      [
+        15,
+        30,
+        45,
+        60,
+        75,
+        90
+      ]
+    ],
     "solution_code": "divisible = [x for x in range(1, 101) if x % 3 == 0 and x % 5 == 0]",
     "explanation": "Numbers divisible by both 3 and 5 satisfy both modulo conditions."
   },
-    {
+  {
     "id": 81,
     "qid_original": 81,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Create an empty dictionary called `my_dict`.",
-    "check_variable": ["my_dict"],
-    "expected_value": [{}],
+    "check_variable": [
+      "my_dict"
+    ],
+    "expected_value": [
+      {}
+    ],
     "solution_code": "my_dict = {}",
     "explanation": "An empty dictionary is created using `{}`."
   },
@@ -824,8 +1286,16 @@
     "qid_original": 82,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Create a dictionary with keys \"name\", \"age\", and \"city\" with your information.",
-    "check_variable": ["info"],
-    "expected_value": [{"name": "Tristan", "age": 24, "city": "Bamberg"}],
+    "check_variable": [
+      "info"
+    ],
+    "expected_value": [
+      {
+        "name": "Tristan",
+        "age": 24,
+        "city": "Bamberg"
+      }
+    ],
     "solution_code": "info = {\n    \"name\": \"Tristan\",\n    \"age\": 24,\n    \"city\": \"Bamberg\"\n}",
     "explanation": "Dictionaries store key-value pairs. The values can be any data type."
   },
@@ -834,8 +1304,12 @@
     "qid_original": 83,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Access the value associated with key \"name\" from `{\"name\": \"John\", \"age\": 25}`.",
-    "check_variable": ["name_value"],
-    "expected_value": ["John"],
+    "check_variable": [
+      "name_value"
+    ],
+    "expected_value": [
+      "John"
+    ],
     "solution_code": "person = {\"name\": \"John\", \"age\": 25}\nname_value = person[\"name\"]",
     "explanation": "Use `dict[key]` to access the value for a specific key."
   },
@@ -844,8 +1318,16 @@
     "qid_original": 84,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Add a new key-value pair \"country\": \"USA\" to `{ \"name\": \"John\", \"age\": 25 }`.",
-    "check_variable": ["person"],
-    "expected_value": [{"name": "John", "age": 25, "country": "USA"}],
+    "check_variable": [
+      "person"
+    ],
+    "expected_value": [
+      {
+        "name": "John",
+        "age": 25,
+        "country": "USA"
+      }
+    ],
     "solution_code": "person = {\"name\": \"John\", \"age\": 25}\nperson[\"country\"] = \"USA\"",
     "explanation": "Assigning a value to a new key adds it to the dictionary."
   },
@@ -854,8 +1336,15 @@
     "qid_original": 85,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Update the value of \"age\" to 26 in `{ \"name\": \"John\", \"age\": 25 }`.",
-    "check_variable": ["person"],
-    "expected_value": [{"name": "John", "age": 26}],
+    "check_variable": [
+      "person"
+    ],
+    "expected_value": [
+      {
+        "name": "John",
+        "age": 26
+      }
+    ],
     "solution_code": "person = {\"name\": \"John\", \"age\": 25}\nperson[\"age\"] = 26",
     "explanation": "Reassigning a value to an existing key updates it."
   },
@@ -864,8 +1353,15 @@
     "qid_original": 86,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Remove the key \"age\" from `{ \"name\": \"John\", \"age\": 25, \"city\": \"NYC\" }`.",
-    "check_variable": ["person"],
-    "expected_value": [{"name": "John", "city": "NYC"}],
+    "check_variable": [
+      "person"
+    ],
+    "expected_value": [
+      {
+        "name": "John",
+        "city": "NYC"
+      }
+    ],
     "solution_code": "person = {\"name\": \"John\", \"age\": 25, \"city\": \"NYC\"}\ndel person[\"age\"]",
     "explanation": "The `del` statement deletes a key-value pair from a dictionary."
   },
@@ -874,8 +1370,16 @@
     "qid_original": 87,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Get all keys from the dictionary `{ \"a\": 1, \"b\": 2, \"c\": 3 }`.",
-    "check_variable": ["keys"],
-    "expected_value": [["a", "b", "c"]],
+    "check_variable": [
+      "keys"
+    ],
+    "expected_value": [
+      [
+        "a",
+        "b",
+        "c"
+      ]
+    ],
     "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\nkeys = list(d.keys())",
     "explanation": "`dict.keys()` returns a view of dictionary keys, which we convert to a list."
   },
@@ -884,8 +1388,16 @@
     "qid_original": 88,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Get all values from the dictionary `{ \"a\": 1, \"b\": 2, \"c\": 3 }`.",
-    "check_variable": ["values"],
-    "expected_value": [[1, 2, 3]],
+    "check_variable": [
+      "values"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3
+      ]
+    ],
     "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\nvalues = list(d.values())",
     "explanation": "`dict.values()` returns a view of values, which we convert to a list."
   },
@@ -894,8 +1406,12 @@
     "qid_original": 89,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Check if the key \"name\" exists in `{ \"name\": \"John\", \"age\": 25 }`.",
-    "check_variable": ["exists"],
-    "expected_value": [true],
+    "check_variable": [
+      "exists"
+    ],
+    "expected_value": [
+      true
+    ],
     "solution_code": "person = {\"name\": \"John\", \"age\": 25}\nexists = (\"name\" in person)",
     "explanation": "The `in` operator checks whether a key exists in a dictionary."
   },
@@ -904,18 +1420,31 @@
     "qid_original": 90,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Get the number of key-value pairs in `{ \"a\": 1, \"b\": 2, \"c\": 3 }`.",
-    "check_variable": ["length"],
-    "expected_value": [3],
+    "check_variable": [
+      "length"
+    ],
+    "expected_value": [
+      3
+    ],
     "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\nlength = len(d)",
     "explanation": "`len(dictionary)` returns the number of key-value pairs."
   },
-    {
+  {
     "id": 91,
     "qid_original": 91,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Merge two dictionaries: `{ \"a\": 1, \"b\": 2 }` and `{ \"c\": 3, \"d\": 4 }`.",
-    "check_variable": ["merged"],
-    "expected_value": [{"a": 1, "b": 2, "c": 3, "d": 4}],
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      {
+        "a": 1,
+        "b": 2,
+        "c": 3,
+        "d": 4
+      }
+    ],
     "solution_code": "d1 = {\"a\": 1, \"b\": 2}\nd2 = {\"c\": 3, \"d\": 4}\nmerged = {**d1, **d2}",
     "explanation": "Using `{**d1, **d2}` merges dictionaries by unpacking their key-value pairs."
   },
@@ -924,8 +1453,16 @@
     "qid_original": 92,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Create a dictionary from two lists: keys = [\"name\", \"age\", \"city\"], values = [\"John\", 25, \"NYC\"].",
-    "check_variable": ["info"],
-    "expected_value": [{"name": "John", "age": 25, "city": "NYC"}],
+    "check_variable": [
+      "info"
+    ],
+    "expected_value": [
+      {
+        "name": "John",
+        "age": 25,
+        "city": "NYC"
+      }
+    ],
     "solution_code": "keys = [\"name\", \"age\", \"city\"]\nvalues = [\"John\", 25, \"NYC\"]\ninfo = dict(zip(keys, values))",
     "explanation": "`zip(keys, values)` pairs each key with its corresponding value, and `dict()` turns them into a dictionary."
   },
@@ -934,8 +1471,12 @@
     "qid_original": 93,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Get the value for key \"salary\" from `{ \"name\": \"John\", \"age\": 25 }`, return 0 if not found.",
-    "check_variable": ["salary"],
-    "expected_value": [0],
+    "check_variable": [
+      "salary"
+    ],
+    "expected_value": [
+      0
+    ],
     "solution_code": "person = {\"name\": \"John\", \"age\": 25}\nsalary = person.get(\"salary\", 0)",
     "explanation": "`dict.get(key, default)` returns the default value if the key does not exist."
   },
@@ -944,8 +1485,18 @@
     "qid_original": 94,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Create a dictionary where keys are numbers 1-5 and values are their squares.",
-    "check_variable": ["squares"],
-    "expected_value": [{"1": 1, "2": 4, "3": 9, "4": 16, "5": 25}],
+    "check_variable": [
+      "squares"
+    ],
+    "expected_value": [
+      {
+        "1": 1,
+        "2": 4,
+        "3": 9,
+        "4": 16,
+        "5": 25
+      }
+    ],
     "solution_code": "squares = {str(x): x*x for x in range(1, 6)}",
     "explanation": "A dictionary comprehension generates key-value pairs where each value is the square of the key."
   },
@@ -954,8 +1505,16 @@
     "qid_original": 95,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Iterate through the dictionary `{ \"a\": 1, \"b\": 2, \"c\": 3 }` and print each key-value pair.",
-    "check_variable": ["output"],
-    "expected_value": [["a:1", "b:2", "c:3"]],
+    "check_variable": [
+      "output"
+    ],
+    "expected_value": [
+      [
+        "a:1",
+        "b:2",
+        "c:3"
+      ]
+    ],
     "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\noutput = []\nfor k, v in d.items():\n    output.append(f\"{k}:{v}\")",
     "explanation": "`dict.items()` allows iteration over key-value pairs."
   },
@@ -964,8 +1523,17 @@
     "qid_original": 96,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Count the frequency of each character in the string \"hello\" using a dictionary.",
-    "check_variable": ["freq"],
-    "expected_value": [{"h": 1, "e": 1, "l": 2, "o": 1}],
+    "check_variable": [
+      "freq"
+    ],
+    "expected_value": [
+      {
+        "h": 1,
+        "e": 1,
+        "l": 2,
+        "o": 1
+      }
+    ],
     "solution_code": "freq = {}\nfor ch in \"hello\":\n    freq[ch] = freq.get(ch, 0) + 1",
     "explanation": "Each character is counted by incrementing its value in the dictionary."
   },
@@ -974,7 +1542,9 @@
     "qid_original": 97,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Invert a dictionary (swap keys and values): `{ \"a\": 1, \"b\": 2, \"c\": 3 }`.",
-    "check_variable": ["inverted"],
+    "check_variable": [
+      "inverted"
+    ],
     "expected_value": [
       {
         "1": "a",
@@ -984,15 +1554,18 @@
     ],
     "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 3}\ninverted = {v: k for k, v in d.items()}",
     "explanation": "Dictionary comprehension swaps each key with its value."
-  }
-  ,
+  },
   {
     "id": 98,
     "qid_original": 98,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Find the key with the maximum value in `{ \"a\": 10, \"b\": 25, \"c\": 15 }`.",
-    "check_variable": ["max_key"],
-    "expected_value": ["b"],
+    "check_variable": [
+      "max_key"
+    ],
+    "expected_value": [
+      "b"
+    ],
     "solution_code": "d = {\"a\": 10, \"b\": 25, \"c\": 15}\nmax_key = max(d, key=d.get)",
     "explanation": "`max(dictionary, key=d.get)` returns the key with the highest value."
   },
@@ -1001,11 +1574,19 @@
     "qid_original": 99,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Create a nested dictionary for students with their subjects and grades.",
-    "check_variable": ["students"],
+    "check_variable": [
+      "students"
+    ],
     "expected_value": [
       {
-        "Alice": {"math": 90, "english": 85},
-        "Bob": {"math": 78, "english": 92}
+        "Alice": {
+          "math": 90,
+          "english": 85
+        },
+        "Bob": {
+          "math": 78,
+          "english": 92
+        }
       }
     ],
     "solution_code": "students = {\n    \"Alice\": {\"math\": 90, \"english\": 85},\n    \"Bob\": {\"math\": 78, \"english\": 92}\n}",
@@ -1016,18 +1597,33 @@
     "qid_original": 100,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Filter a dictionary to keep only items where value > 50: `{ \"a\": 30, \"b\": 60, \"c\": 45, \"d\": 70 }`.",
-    "check_variable": ["filtered"],
-    "expected_value": [{"b": 60, "d": 70}],
+    "check_variable": [
+      "filtered"
+    ],
+    "expected_value": [
+      {
+        "b": 60,
+        "d": 70
+      }
+    ],
     "solution_code": "d = {\"a\": 30, \"b\": 60, \"c\": 45, \"d\": 70}\nfiltered = {k: v for k, v in d.items() if v > 50}",
     "explanation": "A dictionary comprehension allows filtering based on conditions."
   },
-    {
+  {
     "id": 101,
     "qid_original": 101,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Sort a dictionary by its values in ascending order: `{ \"a\": 3, \"b\": 1, \"c\": 2 }`.",
-    "check_variable": ["sorted_dict"],
-    "expected_value": [{"b": 1, "c": 2, "a": 3}],
+    "check_variable": [
+      "sorted_dict"
+    ],
+    "expected_value": [
+      {
+        "b": 1,
+        "c": 2,
+        "a": 3
+      }
+    ],
     "solution_code": "d = {\"a\": 3, \"b\": 1, \"c\": 2}\nsorted_dict = dict(sorted(d.items(), key=lambda x: x[1]))",
     "explanation": "Sorting dictionary items by value using `sorted()` and reconstructing a dict preserves ascending order."
   },
@@ -1036,8 +1632,18 @@
     "qid_original": 102,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Create a dictionary comprehension to create {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}.",
-    "check_variable": ["squares"],
-    "expected_value": [{"1": 1, "2": 4, "3": 9, "4": 16, "5": 25}],
+    "check_variable": [
+      "squares"
+    ],
+    "expected_value": [
+      {
+        "1": 1,
+        "2": 4,
+        "3": 9,
+        "4": 16,
+        "5": 25
+      }
+    ],
     "solution_code": "squares = {i: i*i for i in range(1, 6)}",
     "explanation": "Dictionary comprehension lets you build key-value pairs in one expression."
   },
@@ -1046,8 +1652,24 @@
     "qid_original": 103,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Group a list of words by their first letter: [\"apple\", \"banana\", \"apricot\", \"blueberry\", \"cherry\"].",
-    "check_variable": ["grouped"],
-    "expected_value": [{"a": ["apple", "apricot"], "b": ["banana", "blueberry"], "c": ["cherry"]}],
+    "check_variable": [
+      "grouped"
+    ],
+    "expected_value": [
+      {
+        "a": [
+          "apple",
+          "apricot"
+        ],
+        "b": [
+          "banana",
+          "blueberry"
+        ],
+        "c": [
+          "cherry"
+        ]
+      }
+    ],
     "solution_code": "words = [\"apple\", \"banana\", \"apricot\", \"blueberry\", \"cherry\"]\ngrouped = {}\nfor w in words:\n    first = w[0]\n    grouped.setdefault(first, []).append(w)",
     "explanation": "Using `setdefault`, words are grouped by the first character."
   },
@@ -1056,8 +1678,16 @@
     "qid_original": 104,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Flatten a nested dictionary: `{ \"a\": {\"b\": 1, \"c\": 2}, \"d\": {\"e\": 3}}` to `{ \"a_b\": 1, \"a_c\": 2, \"d_e\": 3}`.",
-    "check_variable": ["flat"],
-    "expected_value": [{"a_b": 1, "a_c": 2, "d_e": 3}],
+    "check_variable": [
+      "flat"
+    ],
+    "expected_value": [
+      {
+        "a_b": 1,
+        "a_c": 2,
+        "d_e": 3
+      }
+    ],
     "solution_code": "d = {\"a\": {\"b\": 1, \"c\": 2}, \"d\": {\"e\": 3}}\nflat = {}\nfor outer, inner in d.items():\n    for k, v in inner.items():\n        flat[f\"{outer}_{k}\"] = v",
     "explanation": "Nested loops build new compound keys combining parent and child keys."
   },
@@ -1066,8 +1696,24 @@
     "qid_original": 105,
     "category": "Dictionaries (25 Questions)",
     "question_raw": "Find all keys that have the same value in `{ \"a\": 1, \"b\": 2, \"c\": 1, \"d\": 3, \"e\": 2 }`.",
-    "check_variable": ["groups"],
-    "expected_value": [{"1": ["a", "c"], "2": ["b", "e"], "3": ["d"]}],
+    "check_variable": [
+      "groups"
+    ],
+    "expected_value": [
+      {
+        "1": [
+          "a",
+          "c"
+        ],
+        "2": [
+          "b",
+          "e"
+        ],
+        "3": [
+          "d"
+        ]
+      }
+    ],
     "solution_code": "d = {\"a\": 1, \"b\": 2, \"c\": 1, \"d\": 3, \"e\": 2}\ngroups = {}\nfor k, v in d.items():\n    groups.setdefault(str(v), []).append(k)",
     "explanation": "Keys are grouped by value using `setdefault()` in a loop."
   },
@@ -1076,8 +1722,12 @@
     "qid_original": 106,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Create an empty set called `my_set`.",
-    "check_variable": ["my_set"],
-    "expected_value": [ [] ],
+    "check_variable": [
+      "my_set"
+    ],
+    "expected_value": [
+      []
+    ],
     "solution_code": "my_set = set()",
     "explanation": "`set()` creates an empty set; `{}` would be a dictionary."
   },
@@ -1086,8 +1736,18 @@
     "qid_original": 107,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Create a set with numbers 1, 2, 3, 4, 5.",
-    "check_variable": ["nums"],
-    "expected_value": [[1,2,3,4,5]],
+    "check_variable": [
+      "nums"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
     "solution_code": "nums = {1, 2, 3, 4, 5}",
     "explanation": "Sets use curly braces and contain unique elements."
   },
@@ -1096,8 +1756,19 @@
     "qid_original": 108,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Add the number 6 to the set `{1, 2, 3, 4, 5}`.",
-    "check_variable": ["s"],
-    "expected_value": [[1,2,3,4,5,6]],
+    "check_variable": [
+      "s"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    ],
     "solution_code": "s = {1, 2, 3, 4, 5}\ns.add(6)",
     "explanation": "`set.add()` inserts a single new element."
   },
@@ -1106,8 +1777,18 @@
     "qid_original": 109,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Find the union of two sets: `{1, 2, 3}` and `{3, 4, 5}`.",
-    "check_variable": ["union_set"],
-    "expected_value": [[1,2,3,4,5]],
+    "check_variable": [
+      "union_set"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
     "solution_code": "a = {1,2,3}\nb = {3,4,5}\nunion_set = a | b",
     "explanation": "The union operator `|` merges elements from both sets."
   },
@@ -1116,19 +1797,36 @@
     "qid_original": 110,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Find the intersection of two sets: `{1, 2, 3}` and `{2, 3, 4}`.",
-    "check_variable": ["intersect"],
-    "expected_value": [[2, 3]],
-    "accepted_types": ["list", "set"],
+    "check_variable": [
+      "intersect"
+    ],
+    "expected_value": [
+      [
+        2,
+        3
+      ]
+    ],
+    "accepted_types": [
+      "list",
+      "set"
+    ],
     "solution_code": "a = {1, 2, 3}\nb = {2, 3, 4}\nintersect = list(a & b)",
     "explanation": "The intersection of two sets contains elements present in both. Converted to a list for compatibility."
   },
-    {
+  {
     "id": 111,
     "qid_original": 111,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Find the difference between `{1, 2, 3, 4}` and `{3, 4, 5, 6}`.",
-    "check_variable": ["diff"],
-    "expected_value": [[1, 2]],
+    "check_variable": [
+      "diff"
+    ],
+    "expected_value": [
+      [
+        1,
+        2
+      ]
+    ],
     "solution_code": "a = {1, 2, 3, 4}\nb = {3, 4, 5, 6}\ndiff = a - b",
     "explanation": "`set_a - set_b` returns all elements only in the first set."
   },
@@ -1137,8 +1835,18 @@
     "qid_original": 112,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Remove duplicates from the list `[1, 2, 2, 3, 4, 4, 5]` using a set.",
-    "check_variable": ["unique_list"],
-    "expected_value": [[1, 2, 3, 4, 5]],
+    "check_variable": [
+      "unique_list"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
     "solution_code": "lst = [1, 2, 2, 3, 4, 4, 5]\nunique_list = list(set(lst))",
     "explanation": "A set removes duplicates; converting back to list restores list form."
   },
@@ -1147,8 +1855,16 @@
     "qid_original": 113,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Create a tuple with three elements: \"a\", \"b\", \"c\".",
-    "check_variable": ["t"],
-    "expected_value": [["a", "b", "c"]],
+    "check_variable": [
+      "t"
+    ],
+    "expected_value": [
+      [
+        "a",
+        "b",
+        "c"
+      ]
+    ],
     "solution_code": "t = (\"a\", \"b\", \"c\")",
     "explanation": "Tuples are defined with parentheses and hold ordered elements."
   },
@@ -1157,8 +1873,12 @@
     "qid_original": 114,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Access the second element of the tuple `(10, 20, 30, 40)`.",
-    "check_variable": ["second"],
-    "expected_value": [20],
+    "check_variable": [
+      "second"
+    ],
+    "expected_value": [
+      20
+    ],
     "solution_code": "t = (10, 20, 30, 40)\nsecond = t[1]",
     "explanation": "Tuples use zero-based indexing."
   },
@@ -1167,8 +1887,12 @@
     "qid_original": 115,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Count how many times \"a\" appears in the tuple `(\"a\", \"b\", \"a\", \"c\", \"a\")`.",
-    "check_variable": ["count_a"],
-    "expected_value": [3],
+    "check_variable": [
+      "count_a"
+    ],
+    "expected_value": [
+      3
+    ],
     "solution_code": "t = (\"a\", \"b\", \"a\", \"c\", \"a\")\ncount_a = t.count(\"a\")",
     "explanation": "The `.count()` method counts occurrences of a value in a tuple."
   },
@@ -1177,8 +1901,12 @@
     "qid_original": 116,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Find the index of \"python\" in the tuple `(\"java\", \"python\", \"c++\")`.",
-    "check_variable": ["idx"],
-    "expected_value": [1],
+    "check_variable": [
+      "idx"
+    ],
+    "expected_value": [
+      1
+    ],
     "solution_code": "t = (\"java\", \"python\", \"c++\")\nidx = t.index(\"python\")",
     "explanation": "The `.index()` method returns the position of the given element."
   },
@@ -1187,8 +1915,12 @@
     "qid_original": 117,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Check if `{1, 2, 3}` is a subset of `{1, 2, 3, 4, 5}`.",
-    "check_variable": ["is_subset"],
-    "expected_value": [true],
+    "check_variable": [
+      "is_subset"
+    ],
+    "expected_value": [
+      true
+    ],
     "solution_code": "a = {1, 2, 3}\nb = {1, 2, 3, 4, 5}\nis_subset = a.issubset(b)",
     "explanation": "`set.issubset()` checks if all elements of one set are inside another."
   },
@@ -1197,8 +1929,17 @@
     "qid_original": 118,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Find the symmetric difference between `{1, 2, 3}` and `{3, 4, 5}`.",
-    "check_variable": ["sym_diff"],
-    "expected_value": [[1, 2, 4, 5]],
+    "check_variable": [
+      "sym_diff"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        4,
+        5
+      ]
+    ],
     "solution_code": "a = {1, 2, 3}\nb = {3, 4, 5}\nsym_diff = a ^ b",
     "explanation": "`^` gives elements in either set but not both."
   },
@@ -1207,8 +1948,16 @@
     "qid_original": 119,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Unpack a tuple `(1, 2, 3)` into three variables a, b, c.",
-    "check_variable": ["a", "b", "c"],
-    "expected_value": [1, 2, 3],
+    "check_variable": [
+      "a",
+      "b",
+      "c"
+    ],
+    "expected_value": [
+      1,
+      2,
+      3
+    ],
     "solution_code": "t = (1, 2, 3)\na, b, c = t",
     "explanation": "Tuple unpacking assigns each element to a separate variable."
   },
@@ -1217,9 +1966,831 @@
     "qid_original": 120,
     "category": "Sets and Tuples (15 Questions)",
     "question_raw": "Create a set of all unique characters in the string \"programming\".",
-    "check_variable": ["chars"],
-    "expected_value": [["p", "r", "o", "g", "a", "m", "i", "n"]],
+    "check_variable": [
+      "chars"
+    ],
+    "expected_value": [
+      [
+        "p",
+        "r",
+        "o",
+        "g",
+        "a",
+        "m",
+        "i",
+        "n"
+      ]
+    ],
     "solution_code": "s = \"programming\"\nchars = set(s)",
     "explanation": "Converting a string to a set retains only unique characters."
+  },
+  {
+    "id": 120,
+    "qid_original": 120,
+    "category": "Sets and Tuples (15 Questions)",
+    "question_raw": "Create a set of all unique characters in the string \"programming\".",
+    "check_variable": [
+      "unique_chars"
+    ],
+    "expected_value": [
+      [
+        "p",
+        "r",
+        "o",
+        "g",
+        "a",
+        "m",
+        "i",
+        "n"
+      ]
+    ],
+    "solution_code": "s = \"programming\"\nunique_chars = set(s)",
+    "explanation": "A set keeps only unique characters from the string."
+  },
+  {
+    "id": 121,
+    "qid_original": 121,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write an if statement to check if a number `x = 10` is positive.",
+    "check_variable": [
+      "is_positive"
+    ],
+    "expected_value": [
+      [
+        true
+      ]
+    ],
+    "solution_code": "x = 10\nif x > 0:\n    is_positive = True\nelse:\n    is_positive = False",
+    "explanation": "A number is positive if it is greater than zero."
+  },
+  {
+    "id": 122,
+    "qid_original": 122,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write an if-else statement to check if `x = 7` is even or odd.",
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      [
+        "odd"
+      ]
+    ],
+    "solution_code": "x = 7\nif x % 2 == 0:\n    result = \"even\"\nelse:\n    result = \"odd\"",
+    "explanation": "Even numbers have remainder 0 when divided by 2; otherwise they are odd."
+  },
+  {
+    "id": 123,
+    "qid_original": 123,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write an if-elif-else statement to classify a number as positive, negative, or zero.",
+    "check_variable": [
+      "classification"
+    ],
+    "expected_value": [
+      [
+        "positive"
+      ]
+    ],
+    "solution_code": "x = 5\nif x > 0:\n    classification = \"positive\"\nelif x < 0:\n    classification = \"negative\"\nelse:\n    classification = \"zero\"",
+    "explanation": "Conditions are checked in sequence: >0, <0, else 0."
+  },
+  {
+    "id": 124,
+    "qid_original": 124,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Check if a number `x = 15` is divisible by both 3 and 5.",
+    "check_variable": [
+      "divisible"
+    ],
+    "expected_value": [
+      [
+        true
+      ]
+    ],
+    "solution_code": "x = 15\nif x % 3 == 0 and x % 5 == 0:\n    divisible = True\nelse:\n    divisible = False",
+    "explanation": "Divisible by 3 and 5 means both remainders must be zero."
+  },
+  {
+    "id": 125,
+    "qid_original": 125,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write code to check if a variable `age = 25` qualifies for voting (age >= 18).",
+    "check_variable": [
+      "can_vote"
+    ],
+    "expected_value": [
+      [
+        true
+      ]
+    ],
+    "solution_code": "age = 25\nif age >= 18:\n    can_vote = True\nelse:\n    can_vote = False",
+    "explanation": "In most systems, voting eligibility starts at age 18."
+  },
+  {
+    "id": 126,
+    "qid_original": 126,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write code to find the largest of three numbers: a=10, b=20, c=15.",
+    "check_variable": [
+      "largest"
+    ],
+    "expected_value": [
+      [
+        20
+      ]
+    ],
+    "solution_code": "a, b, c = 10, 20, 15\nif a >= b and a >= c:\n    largest = a\nelif b >= a and b >= c:\n    largest = b\nelse:\n    largest = c",
+    "explanation": "Compare values pairwise to determine the largest."
+  },
+  {
+    "id": 127,
+    "qid_original": 127,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Check if a year `year = 2024` is a leap year (divisible by 4, but not 100 unless also by 400).",
+    "check_variable": [
+      "leap"
+    ],
+    "expected_value": [
+      [
+        true
+      ]
+    ],
+    "solution_code": "year = 2024\nif (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):\n    leap = True\nelse:\n    leap = False",
+    "explanation": "Leap-year logic per Gregorian calendar rules."
+  },
+  {
+    "id": 128,
+    "qid_original": 128,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write code to assign a letter grade based on a score: A(>=90), B(>=80), C(>=70), D(>=60), F(<60).",
+    "check_variable": [
+      "grade"
+    ],
+    "expected_value": [
+      [
+        "B"
+      ]
+    ],
+    "solution_code": "score = 85\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelif score >= 60:\n    grade = \"D\"\nelse:\n    grade = \"F\"",
+    "explanation": "Score is checked from highest threshold downward."
+  },
+  {
+    "id": 129,
+    "qid_original": 129,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Check if a string `text = \"hello\"` has more than 3 characters.",
+    "check_variable": [
+      "long_enough"
+    ],
+    "expected_value": [
+      [
+        true
+      ]
+    ],
+    "solution_code": "text = \"hello\"\nif len(text) > 3:\n    long_enough = True\nelse:\n    long_enough = False",
+    "explanation": "Length comparison determines if the string exceeds 3 characters."
+  },
+  {
+    "id": 130,
+    "qid_original": 130,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write code to check if a number is within a range (10-20).",
+    "check_variable": [
+      "in_range"
+    ],
+    "expected_value": [
+      [
+        true
+      ]
+    ],
+    "solution_code": "x = 15\nif 10 <= x <= 20:\n    in_range = True\nelse:\n    in_range = False",
+    "explanation": "Python supports chained comparisons for range checks."
+  },
+  {
+    "id": 131,
+    "qid_original": 131,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Check if a string `password = \"abc123\"` is valid (length >= 6 and contains digits).",
+    "check_variable": [
+      "valid"
+    ],
+    "expected_value": [
+      [
+        true
+      ]
+    ],
+    "solution_code": "password = \"abc123\"\nif len(password) >= 6 and any(ch.isdigit() for ch in password):\n    valid = True\nelse:\n    valid = False",
+    "explanation": "Password validity is based on minimum length and presence of digits."
+  },
+  {
+    "id": 132,
+    "qid_original": 132,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write nested if statements to check age category: child(<13), teen(13-19), adult(20-59), senior(>=60).",
+    "check_variable": [
+      "category_result"
+    ],
+    "expected_value": [
+      [
+        "adult"
+      ]
+    ],
+    "solution_code": "age = 25\nif age < 13:\n    category_result = \"child\"\nelse:\n    if age <= 19:\n        category_result = \"teen\"\n    else:\n        if age <= 59:\n            category_result = \"adult\"\n        else:\n            category_result = \"senior\"",
+    "explanation": "Nested checks enforce mutually exclusive age ranges."
+  },
+  {
+    "id": 133,
+    "qid_original": 133,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Check if a triangle with sides a=3, b=4, c=5 is valid (sum of any two sides > third side).",
+    "check_variable": [
+      "valid_triangle"
+    ],
+    "expected_value": [
+      [
+        true
+      ]
+    ],
+    "solution_code": "a, b, c = 3, 4, 5\nif a + b > c and a + c > b and b + c > a:\n    valid_triangle = True\nelse:\n    valid_triangle = False",
+    "explanation": "Triangle inequality rule must hold for all three side combinations."
+  },
+  {
+    "id": 134,
+    "qid_original": 134,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Write code to determine if a character `ch = 'a'` is a vowel or consonant.",
+    "check_variable": [
+      "kind"
+    ],
+    "expected_value": [
+      [
+        "vowel"
+      ]
+    ],
+    "solution_code": "ch = 'a'\nif ch.lower() in 'aeiou':\n    kind = \"vowel\"\nelse:\n    kind = \"consonant\"",
+    "explanation": "Vowels in English are a, e, i, o, u."
+  },
+  {
+    "id": 135,
+    "qid_original": 135,
+    "category": "Control Flow - If Statements (15 Questions)",
+    "question_raw": "Check if a number is a perfect square (e.g., 16 = 4*4).",
+    "check_variable": [
+      "is_square"
+    ],
+    "expected_value": [
+      [
+        true
+      ]
+    ],
+    "solution_code": "n = 16\nroot = int(n ** 0.5)\nif root * root == n:\n    is_square = True\nelse:\n    is_square = False",
+    "explanation": "A perfect square has an integer square root whose square equals the number."
+  },
+  {
+    "id": 136,
+    "qid_original": 136,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a for loop to print numbers from 1 to 5.",
+    "check_variable": [
+      "output"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
+    "solution_code": "output = []\nfor i in range(1, 6):\n    output.append(i)",
+    "explanation": "A simple for loop iterating from 1 to 5 using range(1,6)."
+  },
+  {
+    "id": 137,
+    "qid_original": 137,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a for loop to iterate through the list `[10, 20, 30, 40]` and print each element.",
+    "check_variable": [
+      "output"
+    ],
+    "expected_value": [
+      [
+        10,
+        20,
+        30,
+        40
+      ]
+    ],
+    "solution_code": "lst = [10, 20, 30, 40]\noutput = []\nfor x in lst:\n    output.append(x)",
+    "explanation": "The loop accesses each element sequentially."
+  },
+  {
+    "id": 138,
+    "qid_original": 138,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a for loop to calculate the sum of numbers from 1 to 10.",
+    "check_variable": [
+      "total"
+    ],
+    "expected_value": [
+      [
+        55
+      ]
+    ],
+    "solution_code": "total = 0\nfor i in range(1, 11):\n    total += i",
+    "explanation": "Summing integers 1 through 10 yields 55."
+  },
+  {
+    "id": 139,
+    "qid_original": 139,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a while loop to print numbers from 1 to 5.",
+    "check_variable": [
+      "output"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
+    "solution_code": "output = []\ni = 1\nwhile i <= 5:\n    output.append(i)\n    i += 1",
+    "explanation": "A while loop continues until the condition becomes false."
+  },
+  {
+    "id": 140,
+    "qid_original": 140,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a for loop to print even numbers from 2 to 10.",
+    "check_variable": [
+      "evens"
+    ],
+    "expected_value": [
+      [
+        2,
+        4,
+        6,
+        8,
+        10
+      ]
+    ],
+    "solution_code": "evens = []\nfor i in range(2, 11, 2):\n    evens.append(i)",
+    "explanation": "Using step 2 in range generates even numbers directly."
+  },
+  {
+    "id": 141,
+    "qid_original": 141,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a for loop to calculate the factorial of 5.",
+    "check_variable": [
+      "fact"
+    ],
+    "expected_value": [
+      [
+        120
+      ]
+    ],
+    "solution_code": "fact = 1\nfor i in range(1, 6):\n    fact *= i",
+    "explanation": "Factorial multiplies numbers 1 through n."
+  },
+  {
+    "id": 142,
+    "qid_original": 142,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a loop to iterate through a dictionary and print key-value pairs.",
+    "check_variable": [
+      "pairs"
+    ],
+    "expected_value": [
+      [
+        [
+          "a",
+          1
+        ],
+        [
+          "b",
+          2
+        ],
+        [
+          "c",
+          3
+        ]
+      ]
+    ],
+    "solution_code": "d = {\"a\":1, \"b\":2, \"c\":3}\npairs = []\nfor k, v in d.items():\n    pairs.append([k, v])",
+    "explanation": "items() returns key-value pairs for iteration."
+  },
+  {
+    "id": 143,
+    "qid_original": 143,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write nested loops to print a 3x3 multiplication table.",
+    "check_variable": [
+      "table"
+    ],
+    "expected_value": [
+      [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          4,
+          6
+        ],
+        [
+          3,
+          6,
+          9
+        ]
+      ]
+    ],
+    "solution_code": "table = []\nfor i in range(1, 4):\n    row = []\n    for j in range(1, 4):\n        row.append(i * j)\n    table.append(row)",
+    "explanation": "Nested loops generate each row and column multiplication."
+  },
+  {
+    "id": 144,
+    "qid_original": 144,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a loop with break to stop when finding the first number divisible by 7 in range(1, 50).",
+    "check_variable": [
+      "first_div7"
+    ],
+    "expected_value": [
+      [
+        7
+      ]
+    ],
+    "solution_code": "first_div7 = None\nfor i in range(1, 50):\n    if i % 7 == 0:\n        first_div7 = i\n        break",
+    "explanation": "break exits the loop immediately after the first match."
+  },
+  {
+    "id": 145,
+    "qid_original": 145,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a loop with continue to print only odd numbers from 1 to 10.",
+    "check_variable": [
+      "odds"
+    ],
+    "expected_value": [
+      [
+        1,
+        3,
+        5,
+        7,
+        9
+      ]
+    ],
+    "solution_code": "odds = []\nfor i in range(1, 11):\n    if i % 2 == 0:\n        continue\n    odds.append(i)",
+    "explanation": "continue skips even numbers, letting only odds pass through."
+  },
+  {
+    "id": 146,
+    "qid_original": 146,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a while loop to find the smallest power of 2 greater than 1000.",
+    "check_variable": [
+      "power"
+    ],
+    "expected_value": [
+      [
+        1024
+      ]
+    ],
+    "solution_code": "power = 1\nwhile power <= 1000:\n    power *= 2",
+    "explanation": "Repeated doubling finds the first power exceeding 1000."
+  },
+  {
+    "id": 147,
+    "qid_original": 147,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write nested loops to create a pattern of stars (pyramid).",
+    "check_variable": [
+      "pattern"
+    ],
+    "expected_value": [
+      [
+        "*",
+        "**",
+        "***",
+        "****",
+        "*****"
+      ]
+    ],
+    "solution_code": "pattern = []\nfor i in range(1, 6):\n    stars = \"\"\n    for j in range(i):\n        stars += \"*\"\n    pattern.append(stars)",
+    "explanation": "Each row has one more star than the previous."
+  },
+  {
+    "id": 148,
+    "qid_original": 148,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a loop to check if a number `n = 29` is prime.",
+    "check_variable": [
+      "is_prime"
+    ],
+    "expected_value": [
+      [
+        true
+      ]
+    ],
+    "solution_code": "n = 29\nis_prime = True\nfor i in range(2, int(n**0.5) + 1):\n    if n % i == 0:\n        is_prime = False\n        break",
+    "explanation": "A number is prime if no divisor exists up to its square root."
+  },
+  {
+    "id": 149,
+    "qid_original": 149,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write a loop to reverse a list without using built-in methods.",
+    "check_variable": [
+      "reversed_list"
+    ],
+    "expected_value": [
+      [
+        3,
+        2,
+        1
+      ]
+    ],
+    "solution_code": "lst = [1, 2, 3]\nreversed_list = []\nfor i in range(len(lst)-1, -1, -1):\n    reversed_list.append(lst[i])",
+    "explanation": "Manual index-based reverse iteration recreates the reversed list."
+  },
+  {
+    "id": 150,
+    "qid_original": 150,
+    "category": "Control Flow - Loops (15 Questions)",
+    "question_raw": "Write nested loops to find all pairs of numbers from two lists that sum to 10.",
+    "check_variable": [
+      "pairs"
+    ],
+    "expected_value": [
+      [
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          6
+        ]
+      ]
+    ],
+    "solution_code": "list1 = [1, 2, 3, 4, 5]\nlist2 = [9, 8, 7, 6, 5]\npairs = []\nfor a in list1:\n    for b in list2:\n        if a + b == 10:\n            pairs.append([a, b])",
+    "explanation": "Nested loops compare each element from list1 with each from list2 and collect pairs summing to 10."
+  },
+  {
+    "id": 151,
+    "qid_original": 151,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Import NumPy with the standard alias `np`.",
+    "check_variable": [
+      "np"
+    ],
+    "expected_value": [
+      [
+        "numpy"
+      ]
+    ],
+    "solution_code": "import numpy as np",
+    "explanation": "NumPy is imported using the alias np by convention."
+  },
+  {
+    "id": 152,
+    "qid_original": 152,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create a NumPy array from the list `[1, 2, 3, 4, 5]`.",
+    "check_variable": [
+      "arr"
+    ],
+    "expected_value": [
+      [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    ],
+    "solution_code": "arr = np.array([1, 2, 3, 4, 5])",
+    "explanation": "np.array() converts Python lists into NumPy arrays."
+  },
+  {
+    "id": 153,
+    "qid_original": 153,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create a 2D NumPy array: `[[1, 2, 3], [4, 5, 6]]`.",
+    "check_variable": [
+      "mat"
+    ],
+    "expected_value": [
+      [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ]
+    ],
+    "solution_code": "mat = np.array([[1, 2, 3], [4, 5, 6]])",
+    "explanation": "A 2D array is created by passing a list of lists to np.array()."
+  },
+  {
+    "id": 154,
+    "qid_original": 154,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create an array of zeros with shape (3, 4).",
+    "check_variable": [
+      "zeros_arr"
+    ],
+    "expected_value": [
+      [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    ],
+    "solution_code": "zeros_arr = np.zeros((3, 4), dtype=int)",
+    "explanation": "np.zeros() creates an array filled with zeros."
+  },
+  {
+    "id": 155,
+    "qid_original": 155,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create an array of ones with shape (2, 3).",
+    "check_variable": [
+      "ones_arr"
+    ],
+    "expected_value": [
+      [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    ],
+    "solution_code": "ones_arr = np.ones((2, 3), dtype=int)",
+    "explanation": "np.ones() creates an array filled with ones."
+  },
+  {
+    "id": 156,
+    "qid_original": 156,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create an identity matrix of size 4x4.",
+    "check_variable": [
+      "identity"
+    ],
+    "expected_value": [
+      [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    ],
+    "solution_code": "identity = np.eye(4, dtype=int)",
+    "explanation": "np.eye() creates an identity matrix with ones on the diagonal."
+  },
+  {
+    "id": 157,
+    "qid_original": 157,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create an array of 10 evenly spaced numbers between 0 and 1.",
+    "check_variable": [
+      "vals"
+    ],
+    "expected_value": [
+      [
+        0.0,
+        0.1111111111111111,
+        0.2222222222222222,
+        0.3333333333333333,
+        0.4444444444444444,
+        0.5555555555555556,
+        0.6666666666666666,
+        0.7777777777777778,
+        0.8888888888888888,
+        1.0
+      ]
+    ],
+    "solution_code": "vals = np.linspace(0, 1, 10)",
+    "explanation": "np.linspace() generates evenly spaced values between two numbers."
+  },
+  {
+    "id": 158,
+    "qid_original": 158,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create an array of random integers between 1 and 100, size 10.",
+    "check_variable": [
+      "rand_arr"
+    ],
+    "expected_value": [
+      [
+        10,
+        27,
+        94,
+        63,
+        57,
+        40,
+        84,
+        44,
+        77,
+        99
+      ]
+    ],
+    "solution_code": "np.random.seed(42)\nrand_arr = np.random.randint(1, 101, size=10)",
+    "explanation": "We set a seed so the output is predictable and testable in your app."
+  },
+  {
+    "id": 159,
+    "qid_original": 159,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Get the shape of the array `np.array([[1,2,3], [4,5,6]])`.",
+    "check_variable": [
+      "shape_val"
+    ],
+    "expected_value": [
+      [
+        2,
+        3
+      ]
+    ],
+    "solution_code": "arr = np.array([[1,2,3],[4,5,6]])\nshape_val = list(arr.shape)",
+    "explanation": "shape returns (rows, columns); we convert to list for JSON compatibility."
+  },
+  {
+    "id": 160,
+    "qid_original": 160,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create a 3D array with shape (2, 3, 4) using `np.arange(24)` and reshape it. Then get the number of dimensions.",
+    "check_variable": [
+      "dims"
+    ],
+    "expected_value": [
+      [
+        3
+      ]
+    ],
+    "solution_code": "arr = np.arange(24).reshape(2, 3, 4)\ndims = arr.ndim",
+    "explanation": "A 3D array has ndim = 3 in NumPy."
   }
 ]
