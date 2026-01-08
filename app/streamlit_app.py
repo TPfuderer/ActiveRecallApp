@@ -252,11 +252,11 @@ with tabs[0]:
 
     # 🔹 Show original QID
     if "qid_original" in task:
-        st.markdown(f"**🧩 Original ID:** `{task['qid_original']}`")
+        st.markdown(f"**Original ID:** `{task['qid_original']}`")
 
     # 🔹 Show category
     if "category" in task:
-        st.markdown(f"**📚 Category:** *{task['category']}*")
+        st.markdown(f"**Category:** *{task['category']}*")
 
     # 🔹 Show question
     st.markdown(f"### 📝 {task.get('question_raw', task.get('question'))}")
@@ -264,8 +264,6 @@ with tabs[0]:
     # ----------------------------------------
     # 🔽 FILTER: Task-ID oder Kategorie
     # ----------------------------------------
-
-
 
     filter_mode = st.radio(
         "Filtermodus wählen:",
