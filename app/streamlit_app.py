@@ -335,7 +335,8 @@ with tabs[0]:
     # Hide the hidden button visually
     st.markdown("""
     <style>
-    button[k="run_hidden"] {
+    /* hide the entire button that contains ___run_hidden___ */
+    div[data-testid="stMarkdownContainer"] em strong:contains("run_hidden") {
         display: none !important;
     }
     </style>
