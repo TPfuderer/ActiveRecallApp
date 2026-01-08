@@ -2,7 +2,7 @@ import re
 import json
 from pathlib import Path
 
-BASE_DIR = Path(r"C:\Users\Tristan\PycharmProjects\ActiveRecallApp\AufgabenMühlbauer")
+BASE_DIR = Path(r"C:\Users\pfudi\PycharmProjects\ActiveRecallApp\AufgabenMühlbauer")
 
 def extract_questions(text):
     results = []

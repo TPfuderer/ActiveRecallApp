@@ -3529,5 +3529,1098 @@
     ],
     "solution_code": "students = pd.read_csv(\"data/students.csv\")\nsorted_df = students.sort_values(by=[\"major\", \"gpa\"], ascending=[True, False])",
     "explanation": "Multiple columns can be sorted with different orders using a list."
+  },
+    {
+    "id": 211,
+    "qid_original": 211,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and get the unique values in the \"major\" column.",
+    "check_variable": [
+      "unique_majors"
+    ],
+    "expected_value": [
+      ["Index"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nunique_majors = students[\"major\"].unique()",
+    "explanation": "unique() returns the distinct values present in the column."
+  },
+  {
+    "id": 212,
+    "qid_original": 212,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and count the number of students in each major using `.value_counts()`.",
+    "check_variable": [
+      "major_counts"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nmajor_counts = students[\"major\"].value_counts()",
+    "explanation": "value_counts() counts occurrences of each category."
+  },
+  {
+    "id": 213,
+    "qid_original": 213,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and filter students who are either \"Senior\" grade OR have gpa > 3.7.",
+    "check_variable": [
+      "filtered"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nfiltered = students[(students[\"grade\"] == \"Senior\") | (students[\"gpa\"] > 3.7)]",
+    "explanation": "Logical OR (|) selects rows meeting either condition."
+  },
+  {
+    "id": 214,
+    "qid_original": 214,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and create a new column \"gpa_category\": \"High\" if gpa>=3.5, \"Medium\" if gpa>=3.0, else \"Low\".",
+    "check_variable": [
+      "students"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nstudents[\"gpa_category\"] = pd.cut(students[\"gpa\"], bins=[-float('inf'), 3.0, 3.5, float('inf')], labels=[\"Low\", \"Medium\", \"High\"])",
+    "explanation": "pd.cut bins continuous values into categorical labels."
+  },
+  {
+    "id": 215,
+    "qid_original": 215,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and replace all \"Freshman\" values with \"First Year\" in the grade column.",
+    "check_variable": [
+      "students"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nstudents[\"grade\"] = students[\"grade\"].replace(\"Freshman\", \"First Year\")",
+    "explanation": "replace() substitutes specified values in a column."
+  },
+  {
+    "id": 216,
+    "qid_original": 216,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and check for missing values in each column using `.isnull().sum()`.",
+    "check_variable": [
+      "missing_counts"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nmissing_counts = students.isnull().sum()",
+    "explanation": "isnull().sum() counts missing values per column."
+  },
+  {
+    "id": 217,
+    "qid_original": 217,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/employees.csv`, check for missing values, and drop all rows with any missing values.",
+    "check_variable": [
+      "clean_employees"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\nclean_employees = employees.dropna()",
+    "explanation": "dropna() removes rows containing any missing values."
+  },
+  {
+    "id": 218,
+    "qid_original": 218,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/employees.csv` and fill missing values in the \"salary\" column with the mean salary.",
+    "check_variable": [
+      "employees"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\nemployees[\"salary\"] = employees[\"salary\"].fillna(employees[\"salary\"].mean())",
+    "explanation": "fillna replaces missing values with a specified value."
+  },
+  {
+    "id": 219,
+    "qid_original": 219,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and create a pivot table showing average gpa with \"major\" as rows and \"grade\" as columns.",
+    "check_variable": [
+      "pivot"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\npivot = pd.pivot_table(students, values=\"gpa\", index=\"major\", columns=\"grade\", aggfunc=\"mean\")",
+    "explanation": "pivot_table summarizes data across two categorical dimensions."
+  },
+  {
+    "id": 220,
+    "qid_original": 220,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv`, group by \"major\", and calculate mean gpa and total credits for each major.",
+    "check_variable": [
+      "grouped"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\ngrouped = students.groupby(\"major\").agg(mean_gpa=(\"gpa\", \"mean\"), total_credits=(\"credits\", \"sum\"))",
+    "explanation": "groupby with agg computes multiple summaries per group."
+  },
+  {
+    "id": 221,
+    "qid_original": 221,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv`, set \"name\" as index, then reset the index back to default.",
+    "check_variable": [
+      "students"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nstudents = students.set_index(\"name\").reset_index()",
+    "explanation": "set_index assigns an index; reset_index restores the default index."
+  },
+  {
+    "id": 222,
+    "qid_original": 222,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and set the \"student_id\" column as the DataFrame index. Display first 3 rows.",
+    "check_variable": [
+      "head_df"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nhead_df = students.set_index(\"student_id\").head(3)",
+    "explanation": "set_index changes the index; head(3) shows the first three rows."
+  },
+  {
+    "id": 223,
+    "qid_original": 223,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and apply a function to convert the \"gpa\" column to percentages (gpa * 25). Create new column \"gpa_percent\".",
+    "check_variable": [
+      "students"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nstudents[\"gpa_percent\"] = students[\"gpa\"].apply(lambda x: x * 25)",
+    "explanation": "apply applies a function element-wise to a column."
+  },
+  {
+    "id": 224,
+    "qid_original": 224,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and create a filtered DataFrame with only Computer Science majors who are Juniors OR Seniors.",
+    "check_variable": [
+      "filtered"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nfiltered = students[(students[\"major\"] == \"Computer Science\") & (students[\"grade\"].isin([\"Junior\", \"Senior\"]))]",
+    "explanation": "isin checks membership in a list; conditions are combined with &."
+  },
+  {
+    "id": 225,
+    "qid_original": 225,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and find the row with the highest gpa. Display all information for that student.",
+    "check_variable": [
+      "top_student"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\ntop_student = students.loc[students[\"gpa\"].idxmax()]",
+    "explanation": "idxmax returns the index of the maximum value."
+  },
+  {
+    "id": 226,
+    "qid_original": 226,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and calculate the correlation matrix for columns: age, gpa, and credits.",
+    "check_variable": [
+      "corr"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\ncorr = students[[\"age\", \"gpa\", \"credits\"]].corr()",
+    "explanation": "corr computes pairwise correlations between numeric columns."
+  },
+  {
+    "id": 227,
+    "qid_original": 227,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv`, create age bins (18-20, 21-22, 23+) using `pd.cut()`, and count students in each bin.",
+    "check_variable": [
+      "age_bins"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nbins = [17, 20, 22, float('inf')]\nlabels = [\"18-20\", \"21-22\", \"23+\"]\nage_bins = pd.cut(students[\"age\"], bins=bins, labels=labels).value_counts()",
+    "explanation": "pd.cut bins ages; value_counts counts per bin."
+  },
+  {
+    "id": 228,
+    "qid_original": 228,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv`, filter students with gpa > 3.5, and export to \"high_performers.csv\" without index.",
+    "check_variable": [
+      "filtered"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nfiltered = students[students[\"gpa\"] > 3.5]\nfiltered.to_csv(\"high_performers.csv\", index=False)",
+    "explanation": "to_csv exports a DataFrame; index=False omits the index."
+  },
+  {
+    "id": 229,
+    "qid_original": 229,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/employees.csv` and randomly sample 5 rows using `.sample()` with random_state=42.",
+    "check_variable": [
+      "sample_df"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\nsample_df = employees.sample(n=5, random_state=42)",
+    "explanation": "sample selects random rows; random_state ensures reproducibility."
+  },
+  {
+    "id": 230,
+    "qid_original": 230,
+    "category": "Pandas Basics (40 Questions)",
+    "question_raw": "Load `data/students.csv` and find all students whose names contain the letter \"a\" (case insensitive) using `.str.contains()`.",
+    "check_variable": [
+      "filtered"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nfiltered = students[students[\"name\"].str.contains(\"a\", case=False, na=False)]",
+    "explanation": "str.contains performs vectorized string matching with optional case-insensitivity."
+  },
+    {
+    "id": 231,
+    "qid_original": 231,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Load `data/sales.csv` into a DataFrame named `sales` and convert the \"date\" column to datetime format using `pd.to_datetime()`.",
+    "check_variable": [
+      "sales"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "sales = pd.read_csv(\"data/sales.csv\")\nsales[\"date\"] = pd.to_datetime(sales[\"date\"])",
+    "explanation": "pd.to_datetime converts string dates into pandas datetime objects."
+  },
+  {
+    "id": 232,
+    "qid_original": 232,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Using the sales DataFrame, group by \"category\" and calculate the total revenue (sum) for each category.",
+    "check_variable": [
+      "category_revenue"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "category_revenue = sales.groupby(\"category\")[\"revenue\"].sum()",
+    "explanation": "groupby with sum aggregates total revenue per category."
+  },
+  {
+    "id": 233,
+    "qid_original": 233,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Using the sales DataFrame, group by \"product\", sum the revenue, and find which product has the highest total revenue.",
+    "check_variable": [
+      "top_product"
+    ],
+    "expected_value": [
+      ["str"]
+    ],
+    "solution_code": "product_revenue = sales.groupby(\"product\")[\"revenue\"].sum()\ntop_product = product_revenue.idxmax()",
+    "explanation": "idxmax returns the label of the maximum value."
+  },
+  {
+    "id": 234,
+    "qid_original": 234,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Using the sales DataFrame, group by \"region\", sum the revenue, sort in descending order, and display the top 3 regions.",
+    "check_variable": [
+      "top_regions"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "top_regions = sales.groupby(\"region\")[\"revenue\"].sum().sort_values(ascending=False).head(3)",
+    "explanation": "Sorting aggregated revenue identifies the top regions."
+  },
+  {
+    "id": 235,
+    "qid_original": 235,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Using the sales DataFrame, create a new column \"price_per_unit\" by dividing \"price\" by \"quantity\" for each transaction.",
+    "check_variable": [
+      "sales"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "sales[\"price_per_unit\"] = sales[\"price\"] / sales[\"quantity\"]",
+    "explanation": "Element-wise division creates a derived column."
+  },
+  {
+    "id": 236,
+    "qid_original": 236,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Using the sales DataFrame, extract month and year from the date column, then group by both month and year to calculate total revenue per month across all years.",
+    "check_variable": [
+      "monthly_revenue"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "sales[\"year\"] = sales[\"date\"].dt.year\nsales[\"month\"] = sales[\"date\"].dt.month\nmonthly_revenue = sales.groupby([\"year\", \"month\"])[\"revenue\"].sum().reset_index()",
+    "explanation": "Datetime accessors extract components for grouped aggregation."
+  },
+  {
+    "id": 237,
+    "qid_original": 237,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Using the sales DataFrame, create a pivot table showing total revenue with \"category\" as rows and \"region\" as columns.",
+    "check_variable": [
+      "pivot"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "pivot = pd.pivot_table(sales, values=\"revenue\", index=\"category\", columns=\"region\", aggfunc=\"sum\")",
+    "explanation": "pivot_table summarizes revenue across two categorical dimensions."
+  },
+  {
+    "id": 238,
+    "qid_original": 238,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Using the sales DataFrame, find products that have generated revenue in all regions. Use groupby and filtering to identify products present in every unique region.",
+    "check_variable": [
+      "products_all_regions"
+    ],
+    "expected_value": [
+      ["Index"]
+    ],
+    "solution_code": "region_count = sales[\"region\"].nunique()\nproducts_all_regions = sales.groupby(\"product\")[\"region\"].nunique()\nproducts_all_regions = products_all_regions[products_all_regions == region_count].index",
+    "explanation": "Products present in all regions have counts equal to total unique regions."
+  },
+  {
+    "id": 241,
+    "qid_original": 241,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Read `data/weather.csv` into a DataFrame.",
+    "check_variable": [
+      "weather"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "weather = pd.read_csv(\"data/weather.csv\")",
+    "explanation": "pd.read_csv loads the CSV file into a DataFrame."
+  },
+  {
+    "id": 242,
+    "qid_original": 242,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Find the average temperature for each city.",
+    "check_variable": [
+      "avg_temp"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "avg_temp = weather.groupby(\"city\")[\"temperature\"].mean()",
+    "explanation": "groupby with mean computes average temperature per city."
+  },
+  {
+    "id": 243,
+    "qid_original": 243,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Find the day with the highest temperature across all cities.",
+    "check_variable": [
+      "hottest_day"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "hottest_day = weather.loc[weather[\"temperature\"].idxmax()]",
+    "explanation": "idxmax finds the row index of the maximum temperature."
+  },
+  {
+    "id": 244,
+    "qid_original": 244,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Filter days where precipitation > 0.",
+    "check_variable": [
+      "rainy_days"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "rainy_days = weather[weather[\"precipitation\"] > 0]",
+    "explanation": "Boolean indexing filters rows meeting the condition."
+  },
+  {
+    "id": 245,
+    "qid_original": 245,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Calculate the temperature range (max - min) for each city.",
+    "check_variable": [
+      "temp_range"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "temp_range = weather.groupby(\"city\")[\"temperature\"].max() - weather.groupby(\"city\")[\"temperature\"].min()",
+    "explanation": "Max minus min gives the temperature range per city."
+  },
+  {
+    "id": 246,
+    "qid_original": 246,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Find which city had the most rainy days (precipitation > 0).",
+    "check_variable": [
+      "rainiest_city"
+    ],
+    "expected_value": [
+      ["str"]
+    ],
+    "solution_code": "rainy_counts = weather[weather[\"precipitation\"] > 0].groupby(\"city\").size()\nrainiest_city = rainy_counts.idxmax()",
+    "explanation": "The city with the highest count of rainy days is selected."
+  },
+  {
+    "id": 247,
+    "qid_original": 247,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Read `data/employees.csv` into a DataFrame and calculate average salary by department.",
+    "check_variable": [
+      "avg_salary"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\navg_salary = employees.groupby(\"department\")[\"salary\"].mean()",
+    "explanation": "groupby computes average salary per department."
+  },
+  {
+    "id": 248,
+    "qid_original": 248,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Calculate the correlation between years_experience and salary.",
+    "check_variable": [
+      "corr_val"
+    ],
+    "expected_value": [
+      ["float"]
+    ],
+    "solution_code": "corr_val = employees[[\"years_experience\", \"salary\"]].corr().iloc[0, 1]",
+    "explanation": "corr computes the Pearson correlation coefficient."
+  },
+  {
+    "id": 249,
+    "qid_original": 249,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Group by department and find the employee with max salary in each department.",
+    "check_variable": [
+      "top_earners"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "idx = employees.groupby(\"department\")[\"salary\"].idxmax()\ntop_earners = employees.loc[idx]",
+    "explanation": "idxmax finds the index of highest salary per department."
+  },
+  {
+    "id": 250,
+    "qid_original": 250,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Create experience categories using `pd.cut()`: Junior (<5 years), Mid (5-10), Senior (>10).",
+    "check_variable": [
+      "employees"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees[\"experience_level\"] = pd.cut(employees[\"years_experience\"], bins=[-float('inf'), 5, 10, float('inf')], labels=[\"Junior\", \"Mid\", \"Senior\"])",
+    "explanation": "pd.cut bins numeric values into categorical experience levels."
+  },
+    {
+    "id": 251,
+    "qid_original": 251,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Calculate the salary percentile rank for each employee within their department using `.rank()`.",
+    "check_variable": [
+      "employees"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\nemployees[\"salary_percentile\"] = employees.groupby(\"department\")[\"salary\"].rank(pct=True)",
+    "explanation": "rank(pct=True) computes the percentile rank within each department."
+  },
+  {
+    "id": 252,
+    "qid_original": 252,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Find employees whose salary is above their department's average salary (hint: use transform or merge).",
+    "check_variable": [
+      "above_avg"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\nmean_salary = employees.groupby(\"department\")[\"salary\"].transform(\"mean\")\nabove_avg = employees[employees[\"salary\"] > mean_salary]",
+    "explanation": "transform broadcasts the department mean salary back to each row for comparison."
+  },
+  {
+    "id": 253,
+    "qid_original": 253,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Create a crosstab showing count of employees by department (rows) and experience category (columns).",
+    "check_variable": [
+      "crosstab"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\ncrosstab = pd.crosstab(employees[\"department\"], employees[\"experience_level\"])",
+    "explanation": "pd.crosstab computes frequency tables across two categorical variables."
+  },
+  {
+    "id": 254,
+    "qid_original": 254,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Normalize salaries within each department to a 0-1 scale using min-max normalization.",
+    "check_variable": [
+      "employees"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\nemployees[\"salary_norm\"] = employees.groupby(\"department\")[\"salary\"].transform(lambda x: (x - x.min()) / (x.max() - x.min()))",
+    "explanation": "Min-max normalization rescales values to the [0,1] range within each group."
+  },
+  {
+    "id": 255,
+    "qid_original": 255,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Find the top 3 highest paid employees in each department using groupby and `.head()`.",
+    "check_variable": [
+      "top_paid"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\ntop_paid = employees.sort_values([\"department\", \"salary\"], ascending=[True, False]).groupby(\"department\").head(3)",
+    "explanation": "Sorting by salary then using groupby().head(3) selects the top earners per department."
+  },
+  {
+    "id": 256,
+    "qid_original": 256,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Calculate multiple aggregations by department: mean salary, median salary, and standard deviation of performance scores, all in one operation.",
+    "check_variable": [
+      "agg_df"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\nagg_df = employees.groupby(\"department\").agg(mean_salary=(\"salary\", \"mean\"), median_salary=(\"salary\", \"median\"), perf_std=(\"performance_score\", \"std\"))",
+    "explanation": "agg allows multiple aggregations on different columns in one step."
+  },
+  {
+    "id": 257,
+    "qid_original": 257,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Identify employees who are both in the top 25% of salary AND top 25% of performance score within their department.",
+    "check_variable": [
+      "top_employees"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\nsalary_q = employees.groupby(\"department\")[\"salary\"].transform(lambda x: x.quantile(0.75))\nperf_q = employees.groupby(\"department\")[\"performance_score\"].transform(lambda x: x.quantile(0.75))\ntop_employees = employees[(employees[\"salary\"] >= salary_q) & (employees[\"performance_score\"] >= perf_q)]",
+    "explanation": "Department-level 75th percentiles identify top performers on both dimensions."
+  },
+  {
+    "id": 258,
+    "qid_original": 258,
+    "category": "Data Manipulation (26 Questions)",
+    "question_raw": "Create a new column \"salary_growth_potential\" that shows the difference between the department's max salary and the employee's current salary, then find employees with the highest growth potential.",
+    "check_variable": [
+      "growth_potential"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.read_csv(\"data/employees.csv\")\nmax_salary = employees.groupby(\"department\")[\"salary\"].transform(\"max\")\nemployees[\"salary_growth_potential\"] = max_salary - employees[\"salary\"]\ngrowth_potential = employees.sort_values(\"salary_growth_potential\", ascending=False)",
+    "explanation": "Subtracting current salary from department max estimates growth potential."
+  },
+  {
+    "id": 259,
+    "qid_original": 259,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `df1 = pd.DataFrame({\"id\": [1, 2, 3], \"name\": [\"Alice\", \"Bob\", \"Charlie\"]})` and `df2 = pd.DataFrame({\"id\": [1, 2, 4], \"score\": [85, 90, 78]})`. Display both.",
+    "check_variable": [
+      "df1",
+      "df2"
+    ],
+    "expected_value": [
+      ["DataFrame", "DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"id\": [1, 2, 3], \"name\": [\"Alice\", \"Bob\", \"Charlie\"]})\ndf2 = pd.DataFrame({\"id\": [1, 2, 4], \"score\": [85, 90, 78]})",
+    "explanation": "Two DataFrames are created from dictionaries."
+  },
+  {
+    "id": 260,
+    "qid_original": 260,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Using the DataFrames from Q259, perform an inner join on the \"id\" column using `pd.merge()`.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "merged = pd.merge(df1, df2, on=\"id\", how=\"inner\")",
+    "explanation": "Inner join keeps only matching keys in both DataFrames."
+  },
+  {
+    "id": 261,
+    "qid_original": 261,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Using the DataFrames from Q259, perform a left join (keep all rows from df1) on the \"id\" column.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "merged = pd.merge(df1, df2, on=\"id\", how=\"left\")",
+    "explanation": "Left join preserves all rows from df1."
+  },
+  {
+    "id": 262,
+    "qid_original": 262,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Using the DataFrames from Q259, perform a right join (keep all rows from df2) on the \"id\" column.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "merged = pd.merge(df1, df2, on=\"id\", how=\"right\")",
+    "explanation": "Right join preserves all rows from df2."
+  },
+  {
+    "id": 263,
+    "qid_original": 263,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Using the DataFrames from Q259, perform an outer join (keep all rows from both DataFrames) on the \"id\" column.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "merged = pd.merge(df1, df2, on=\"id\", how=\"outer\")",
+    "explanation": "Outer join keeps all keys from both DataFrames."
+  },
+  {
+    "id": 264,
+    "qid_original": 264,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames with the same columns: `df1 = pd.DataFrame({\"name\": [\"Alice\", \"Bob\"], \"age\": [25, 30]})` and `df2 = pd.DataFrame({\"name\": [\"Charlie\", \"David\"], \"age\": [35, 28]})`. Concatenate them vertically using `pd.concat()`.",
+    "check_variable": [
+      "concat_df"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"name\": [\"Alice\", \"Bob\"], \"age\": [25, 30]})\ndf2 = pd.DataFrame({\"name\": [\"Charlie\", \"David\"], \"age\": [35, 28]})\nconcat_df = pd.concat([df1, df2], axis=0)",
+    "explanation": "Vertical concatenation stacks rows."
+  },
+  {
+    "id": 265,
+    "qid_original": 265,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `df1 = pd.DataFrame({\"name\": [\"Alice\", \"Bob\"], \"age\": [25, 30]})` and `df2 = pd.DataFrame({\"city\": [\"NYC\", \"LA\"], \"country\": [\"USA\", \"USA\"]})`. Concatenate them horizontally using `pd.concat()` with `axis=1`.",
+    "check_variable": [
+      "concat_df"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"name\": [\"Alice\", \"Bob\"], \"age\": [25, 30]})\ndf2 = pd.DataFrame({\"city\": [\"NYC\", \"LA\"], \"country\": [\"USA\", \"USA\"]})\nconcat_df = pd.concat([df1, df2], axis=1)",
+    "explanation": "Horizontal concatenation combines columns side by side."
+  },
+  {
+    "id": 266,
+    "qid_original": 266,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `df1 = pd.DataFrame({\"year\": [2023, 2024], \"month\": [1, 1], \"sales\": [100, 150]})` and `df2 = pd.DataFrame({\"year\": [2023, 2024], \"month\": [1, 1], \"costs\": [60, 80]})`. Merge them on both \"year\" and \"month\" columns.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"year\": [2023, 2024], \"month\": [1, 1], \"sales\": [100, 150]})\ndf2 = pd.DataFrame({\"year\": [2023, 2024], \"month\": [1, 1], \"costs\": [60, 80]})\nmerged = pd.merge(df1, df2, on=[\"year\", \"month\"])",
+    "explanation": "Merging on multiple keys aligns rows by year and month."
+  },
+  {
+    "id": 267,
+    "qid_original": 267,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames with different key column names: `df1 = pd.DataFrame({\"student_id\": [1, 2, 3], \"name\": [\"Alice\", \"Bob\", \"Charlie\"]})` and `df2 = pd.DataFrame({\"id\": [1, 2, 3], \"grade\": [\"A\", \"B\", \"A\"]})`. Merge using `left_on=\"student_id\"` and `right_on=\"id\"`.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"student_id\": [1, 2, 3], \"name\": [\"Alice\", \"Bob\", \"Charlie\"]})\ndf2 = pd.DataFrame({\"id\": [1, 2, 3], \"grade\": [\"A\", \"B\", \"A\"]})\nmerged = pd.merge(df1, df2, left_on=\"student_id\", right_on=\"id\")",
+    "explanation": "left_on and right_on allow merging with different key names."
+  },
+  {
+    "id": 268,
+    "qid_original": 268,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `df1 = pd.DataFrame({\"x\": [1, 2]})` and `df2 = pd.DataFrame({\"x\": [3, 4]})`. Append df2 to df1 using `pd.concat()` and reset the index.",
+    "check_variable": [
+      "appended"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"x\": [1, 2]})\ndf2 = pd.DataFrame({\"x\": [3, 4]})\nappended = pd.concat([df1, df2], ignore_index=True)",
+    "explanation": "ignore_index=True resets the index after concatenation."
+  },
+  {
+    "id": 269,
+    "qid_original": 269,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create `scores = pd.DataFrame({\"student_id\": [101, 102, 103], \"score\": [88, 92, 85]})` and `info = pd.DataFrame({\"student_id\": [101, 102, 103], \"name\": [\"Emma\", \"Liam\", \"Olivia\"], \"major\": [\"CS\", \"Math\", \"Physics\"]})`. Merge them on \"student_id\".",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "scores = pd.DataFrame({\"student_id\": [101, 102, 103], \"score\": [88, 92, 85]})\ninfo = pd.DataFrame({\"student_id\": [101, 102, 103], \"name\": [\"Emma\", \"Liam\", \"Olivia\"], \"major\": [\"CS\", \"Math\", \"Physics\"]})\nmerged = pd.merge(scores, info, on=\"student_id\")",
+    "explanation": "Merging on a common key combines related information."
+  },
+  {
+    "id": 270,
+    "qid_original": 270,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `df1 = pd.DataFrame({\"id\": [1, 2, 3, 4], \"val_a\": [10, 20, 30, 40]})` and `df2 = pd.DataFrame({\"id\": [2, 3, 5], \"val_b\": [200, 300, 500]})`. Perform an inner merge to keep only rows that exist in both.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"id\": [1, 2, 3, 4], \"val_a\": [10, 20, 30, 40]})\ndf2 = pd.DataFrame({\"id\": [2, 3, 5], \"val_b\": [200, 300, 500]})\nmerged = pd.merge(df1, df2, on=\"id\", how=\"inner\")",
+    "explanation": "Inner merge keeps only IDs present in both DataFrames."
+  },
+    {
+    "id": 301,
+    "qid_original": 301,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `greet()` that prints \"Hello, World!\".",
+    "check_variable": [
+      "greet"
+    ],
+    "expected_value": [
+      ["function"]
+    ],
+    "solution_code": "def greet():\n    print(\"Hello, World!\")",
+    "explanation": "The function prints a fixed greeting when called."
+  },
+  {
+    "id": 302,
+    "qid_original": 302,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `add_numbers(a, b)` that returns the sum of two numbers.",
+    "check_variable": [
+      "add_numbers"
+    ],
+    "expected_value": [
+      [7]
+    ],
+    "solution_code": "def add_numbers(a, b):\n    return a + b\n\nresult = add_numbers(3, 4)",
+    "explanation": "The function returns the arithmetic sum of its two arguments."
+  },
+  {
+    "id": 303,
+    "qid_original": 303,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `is_even(n)` that returns `True` if n is even, `False` otherwise.",
+    "check_variable": [
+      "is_even"
+    ],
+    "expected_value": [
+      [true]
+    ],
+    "solution_code": "def is_even(n):\n    return n % 2 == 0\n\nresult = is_even(4)",
+    "explanation": "Even numbers have a remainder of 0 when divided by 2."
+  },
+  {
+    "id": 304,
+    "qid_original": 304,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `square(x)` that returns the square of x. Test it with `square(5)`.",
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      [25]
+    ],
+    "solution_code": "def square(x):\n    return x ** 2\n\nresult = square(5)",
+    "explanation": "Squaring multiplies the number by itself."
+  },
+  {
+    "id": 305,
+    "qid_original": 305,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `greet_person(name=\"Guest\")` with a default parameter that returns a greeting string (e.g., \"Hello, Guest!\").",
+    "check_variable": [
+      "greet_person"
+    ],
+    "expected_value": [
+      ["Hello, Guest!"]
+    ],
+    "solution_code": "def greet_person(name=\"Guest\"):\n    return f\"Hello, {name}!\"\n\nresult = greet_person()",
+    "explanation": "Default parameters are used when no argument is provided."
+  },
+  {
+    "id": 306,
+    "qid_original": 306,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `get_max(a, b, c)` that returns the largest of three numbers using `if-elif-else`.",
+    "check_variable": [
+      "get_max"
+    ],
+    "expected_value": [
+      [7]
+    ],
+    "solution_code": "def get_max(a, b, c):\n    if a >= b and a >= c:\n        return a\n    elif b >= a and b >= c:\n        return b\n    else:\n        return c\n\nresult = get_max(3, 7, 5)",
+    "explanation": "Conditional logic compares values to find the maximum."
+  },
+  {
+    "id": 307,
+    "qid_original": 307,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `calculate_rectangle_area(length, width)` that returns the area. Include a docstring.",
+    "check_variable": [
+      "calculate_rectangle_area"
+    ],
+    "expected_value": [
+      [20]
+    ],
+    "solution_code": "def calculate_rectangle_area(length, width):\n    \"\"\"Calculate the area of a rectangle.\"\"\"\n    return length * width\n\nresult = calculate_rectangle_area(4, 5)",
+    "explanation": "The area of a rectangle is length multiplied by width."
+  },
+  {
+    "id": 308,
+    "qid_original": 308,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `multiply_all(*args)` that accepts any number of arguments and returns their product and a string `\"no arguments provided\"` if no arguments are given.",
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      [24]
+    ],
+    "solution_code": "def multiply_all(*args):\n    if not args:\n        return \"no arguments provided\"\n    product = 1\n    for x in args:\n        product *= x\n    return product\n\nresult = multiply_all(2, 3, 4)",
+    "explanation": "*args collects a variable number of positional arguments."
+  },
+  {
+    "id": 309,
+    "qid_original": 309,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `print_info(**kwargs)` that prints all keyword arguments in the format \"key: value\".",
+    "check_variable": [
+      "print_info"
+    ],
+    "expected_value": [
+      ["function"]
+    ],
+    "solution_code": "def print_info(**kwargs):\n    for k, v in kwargs.items():\n        print(f\"{k}: {v}\")",
+    "explanation": "**kwargs collects keyword arguments into a dictionary."
+  },
+  {
+    "id": 310,
+    "qid_original": 310,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `celsius_to_fahrenheit(celsius)` that converts Celsius to Fahrenheit using the formula: F = C × 9/5 + 32.",
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      [68.0]
+    ],
+    "solution_code": "def celsius_to_fahrenheit(celsius):\n    return celsius * 9 / 5 + 32\n\nresult = celsius_to_fahrenheit(20)",
+    "explanation": "The formula converts temperature units from Celsius to Fahrenheit."
+  },
+  {
+    "id": 311,
+    "qid_original": 311,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `get_grade(score)` that returns:\n- \"A\" if score >= 90\n- \"B\" if score >= 80\n- \"C\" if score >= 70\n- \"D\" if score >= 60\n- \"F\" otherwise",
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      ["A"]
+    ],
+    "solution_code": "def get_grade(score):\n    if score >= 90:\n        return \"A\"\n    elif score >= 80:\n        return \"B\"\n    elif score >= 70:\n        return \"C\"\n    elif score >= 60:\n        return \"D\"\n    else:\n        return \"F\"\n\nresult = get_grade(92)",
+    "explanation": "The function maps score ranges to letter grades."
+  },
+  {
+    "id": 312,
+    "qid_original": 312,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `divide_with_remainder(a, b)` that returns both the quotient and remainder as a tuple.",
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      [3, 1]
+    ],
+    "solution_code": "def divide_with_remainder(a, b):\n    return a // b, a % b\n\nresult = divide_with_remainder(10, 3)",
+    "explanation": "Integer division and modulo return quotient and remainder."
+  },
+  {
+    "id": 313,
+    "qid_original": 313,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `count_vowels(text)` that counts the number of vowels (a, e, i, o, u) in a string. Make it case-insensitive.",
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      [5]
+    ],
+    "solution_code": "def count_vowels(text):\n    vowels = \"aeiou\"\n    return sum(1 for c in text.lower() if c in vowels)\n\nresult = count_vowels(\"Education\")",
+    "explanation": "The string is lowercased to make the check case-insensitive."
+  },
+  {
+    "id": 314,
+    "qid_original": 314,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `is_palindrome(text)` that checks if a string is a palindrome (reads the same forwards and backwards). Ignore spaces and case.",
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      [true]
+    ],
+    "solution_code": "def is_palindrome(text):\n    cleaned = text.replace(\" \", \"\").lower()\n    return cleaned == cleaned[::-1]\n\nresult = is_palindrome(\"Never odd or even\")",
+    "explanation": "Spaces are removed and the string is compared to its reverse."
+  },
+  {
+    "id": 315,
+    "qid_original": 315,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function with type hints: `def multiply(a: int, b: int) -> int` that multiplies two integers.",
+    "check_variable": [
+      "multiply"
+    ],
+    "expected_value": [
+      [12]
+    ],
+    "solution_code": "def multiply(a: int, b: int) -> int:\n    return a * b\n\nresult = multiply(3, 4)",
+    "explanation": "Type hints document expected argument and return types."
+  },
+  {
+    "id": 316,
+    "qid_original": 316,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Create a lambda function that squares a number and assign it to variable `square_lambda`. Test it with `square_lambda(4)`.",
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      [16]
+    ],
+    "solution_code": "square_lambda = lambda x: x ** 2\nresult = square_lambda(4)",
+    "explanation": "Lambda functions define small anonymous functions."
+  },
+  {
+    "id": 317,
+    "qid_original": 317,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Given the list `numbers = [1, 2, 3, 4, 5]`, use `map()` with a lambda function to create a list of squares.",
+    "check_variable": [
+      "squares"
+    ],
+    "expected_value": [
+      [1, 4, 9, 16, 25]
+    ],
+    "solution_code": "numbers = [1, 2, 3, 4, 5]\nsquares = list(map(lambda x: x ** 2, numbers))",
+    "explanation": "map applies a function to each element of an iterable."
+  },
+  {
+    "id": 318,
+    "qid_original": 318,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Given the list `numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`, use `filter()` with a lambda to get only even numbers.",
+    "check_variable": [
+      "evens"
+    ],
+    "expected_value": [
+      [2, 4, 6, 8, 10]
+    ],
+    "solution_code": "numbers = [1,2,3,4,5,6,7,8,9,10]\nevans = list(filter(lambda x: x % 2 == 0, numbers))\nevens = evans",
+    "explanation": "filter keeps elements where the condition is True."
+  },
+  {
+    "id": 319,
+    "qid_original": 319,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Write a function `calculate_statistics(numbers)` that takes a list of numbers and returns a dictionary with keys 'mean', 'min', 'max', 'sum'. Include a comprehensive docstring.",
+    "check_variable": [
+      "stats"
+    ],
+    "expected_value": [
+      ["dict"]
+    ],
+    "solution_code": "def calculate_statistics(numbers):\n    \"\"\"\n    Calculate basic statistics for a list of numbers.\n    Returns a dictionary with mean, min, max, and sum.\n    \"\"\"\n    return {\n        \"mean\": sum(numbers) / len(numbers),\n        \"min\": min(numbers),\n        \"max\": max(numbers),\n        \"sum\": sum(numbers)\n    }\n\nstats = calculate_statistics([1, 2, 3, 4, 5])",
+    "explanation": "The function computes multiple summary statistics at once."
+  },
+  {
+    "id": 320,
+    "qid_original": 320,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Define a function `create_multiplier(n)` that returns another function. The returned function should multiply its argument by n (closure example).",
+    "check_variable": [
+      "result"
+    ],
+    "expected_value": [
+      [15]
+    ],
+    "solution_code": "def create_multiplier(n):\n    def multiplier(x):\n        return x * n\n    return multiplier\n\ntriple = create_multiplier(3)\nresult = triple(5)",
+    "explanation": "The inner function remembers the value of n via a closure."
   }
 ]

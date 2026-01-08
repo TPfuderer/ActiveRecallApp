@@ -1,0 +1,1270 @@
+---
+title: "nb3 questions"
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    toc: true
+    toc-depth: 2
+    number-sections: true
+---
+
+# Instructions
+
+These practice questions cover the topics from Notebook 3: functions, object-oriented programming (OOP), loops, conditionals, debugging, and regular expressions. Questions progressively increase in difficulty and integrate concepts from Notebooks 1 and 2 (data types, collections, NumPy, Pandas).
+
+**Datasets:** Several CSV files in the `data/questions/` directory are used throughout:
+
+- `students.csv` - Student information (name, age, gpa, major, grade, credits)
+- `sales.csv` - Sales transactions (date, product, category, region, price, quantity, revenue)
+- `weather.csv` - Weather data (date, city, temperature, precipitation)
+- `employees.csv` - Employee records (name, department, salary, years_experience, performance_score)
+
+**Important:** Work through these questions yourself without using AI tools. The goal is to practice and strengthen your Python skills through hands-on problem-solving.
+
+---
+
+## Functions: Basics (Questions 301-315)
+
+### Question 301
+Define a function `greet()` that prints "Hello, World!".
+
+```{python}
+# Your code here
+
+```
+
+### Question 302
+Define a function `add_numbers(a, b)` that returns the sum of two numbers.
+
+```{python}
+# Your code here
+
+```
+
+### Question 303
+Define a function `is_even(n)` that returns `True` if n is even, `False` otherwise.
+
+```{python}
+# Your code here
+
+```
+
+### Question 304
+Define a function `square(x)` that returns the square of x. Test it with `square(5)`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 305
+Define a function `greet_person(name="Guest")` with a default parameter that returns a greeting string (e.g., "Hello, Guest!").
+
+```{python}
+# Your code here
+
+```
+
+### Question 306
+Define a function `get_max(a, b, c)` that returns the largest of three numbers using `if-elif-else`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 307
+Define a function `calculate_rectangle_area(length, width)` that returns the area. Include a docstring.
+
+```{python}
+# Your code here
+
+```
+
+### Question 308
+Define a function `multiply_all(*args)` that accepts any number of arguments and returns their product and a string `"no arguments provided"` if no arguments are given.
+
+```{python}
+# Your code here
+
+```
+
+### Question 309
+Define a function `print_info(**kwargs)` that prints all keyword arguments in the format "key: value".
+
+```{python}
+# Your code here
+
+```
+
+### Question 310
+Define a function `celsius_to_fahrenheit(celsius)` that converts Celsius to Fahrenheit using the formula: F = C × 9/5 + 32.
+
+```{python}
+# Your code here
+
+```
+
+### Question 311
+Define a function `get_grade(score)` that returns:
+- "A" if score >= 90
+- "B" if score >= 80
+- "C" if score >= 70
+- "D" if score >= 60
+- "F" otherwise
+
+```{python}
+# Your code here
+
+```
+
+### Question 312
+Define a function `divide_with_remainder(a, b)` that returns both the quotient and remainder as a tuple.
+
+```{python}
+# Your code here
+
+```
+
+### Question 313
+Define a function `count_vowels(text)` that counts the number of vowels (a, e, i, o, u) in a string. Make it case-insensitive.
+
+```{python}
+# Your code here
+
+```
+
+### Question 314
+Define a function `is_palindrome(text)` that checks if a string is a palindrome (reads the same forwards and backwards). Ignore spaces and case.
+
+```{python}
+# Your code here
+
+```
+
+### Question 315
+Define a function with type hints: `def multiply(a: int, b: int) -> int` that multiplies two integers.
+
+```{python}
+# Your code here
+
+```
+
+## Functions: Intermediate (Questions 316-330)
+
+### Question 316
+Create a lambda function that squares a number and assign it to variable `square_lambda`. Test it with `square_lambda(4)`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 317
+Given the list `numbers = [1, 2, 3, 4, 5]`, use `map()` with a lambda function to create a list of squares.
+
+```{python}
+# Your code here
+
+```
+
+### Question 318
+Given the list `numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`, use `filter()` with a lambda to get only even numbers.
+
+```{python}
+# Your code here
+
+```
+
+### Question 319
+Write a function `calculate_statistics(numbers)` that takes a list of numbers and returns a dictionary with keys 'mean', 'min', 'max', 'sum'. Include a comprehensive docstring.
+
+```{python}
+# Your code here
+
+```
+
+### Question 320
+Define a function `create_multiplier(n)` that returns another function. The returned function should multiply its argument by n (closure example).
+
+```{python}
+# Your code here
+
+```
+
+### Question 321
+Define a function `make_adder(n)` that returns a nested function. The returned function should add n to its argument. For example, `add_5 = make_adder(5)` should create a function that adds 5 to any number.
+
+```{python}
+# Your code here
+
+```
+
+### Question 322
+Define a function `factorial(n)` that calculates n! using recursion. Add a base case for n = 0 or n = 1.
+
+```{python}
+# Your code here
+
+```
+
+### Question 323
+Write a function `fibonacci(n)` that returns the nth Fibonacci number using recursion.
+
+```{python}
+# Your code here
+
+```
+
+### Question 324
+Create a function `validate_age(age)` that uses `assert` to check that age is between 0 and 120. If not, raise an AssertionError with a descriptive message.
+
+```{python}
+# Your code here
+
+```
+
+### Question 325
+Define a function `safe_divide(a, b)` that handles `ZeroDivisionError` with try-except and returns `None` if division by zero occurs.
+
+```{python}
+# Your code here
+
+```
+
+### Question 326
+Write a function `list_sum(numbers)` that takes a list of numbers and returns their sum. Handle the case where the list might be empty.
+
+```{python}
+# Your code here
+
+```
+
+### Question 327
+Create a function `apply_to_list(func, data)` that applies a given function to each element in a list and returns the results as a new list.
+
+```{python}
+# Your code here
+
+```
+
+### Question 328
+Write a function `filter_by_length(words, min_length)` that takes a list of strings and returns only those with length >= min_length.
+
+```{python}
+# Your code here
+
+```
+
+### Question 329
+Define a function `is_prime(n)` that checks if a number is prime. A prime number is only divisible by 1 and itself.
+
+```{python}
+# Your code here
+
+```
+
+### Question 330
+Create a function `average(*args)` that calculates the average of any number of arguments. Handle the case of no arguments.
+
+```{python}
+# Your code here
+
+```
+
+## Functions: Advanced with Data (Questions 331-340)
+
+### Question 331
+Write a function `filter_by_gpa(students_df, min_gpa)` that takes a Pandas DataFrame and returns rows where gpa >= min_gpa. Load `data/questions/students.csv` first.
+
+```{python}
+# Your code here
+
+```
+
+### Question 332
+Write a function `calculate_total_revenue(sales_df, product_name)` that filters the sales DataFrame for a specific product and returns the sum of revenue. Use `data/questions/sales.csv`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 333
+Create a function `temperature_stats(weather_df, city_name)` that returns a dictionary with 'mean_temp', 'max_temp', 'min_temp' for a specific city. Use `data/questions/weather.csv`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 334
+Write a function `normalize_list(numbers)` that takes a list of numbers and returns a normalized list where each value is scaled to [0, 1]. Use the formula: (x - min) / (max - min).
+
+```{python}
+# Your code here
+
+```
+
+### Question 335
+Create a function `z_score(numbers)` that calculates the z-score for each number in a list. Z-score formula: (x - mean) / std_dev. Return empty list if len(numbers) <= 1.
+
+```{python}
+# Your code here
+
+```
+
+### Question 336
+Write a function `group_by_category(sales_df)` that groups the sales DataFrame by 'category' and returns the total revenue per category as a dictionary. Use `data/questions/sales.csv`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 337
+Create a function `get_top_students(students_df, n=5)` that returns the top n students by GPA. Use `data/questions/students.csv`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 338
+Write a function `salary_by_department(employees_df)` that returns a dictionary where keys are departments and values are lists of salaries in that department. Use `data/questions/employees.csv`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 339
+Create a function `memoize(func)` decorator that caches function results. When the function is called with the same arguments, return the cached result instead of recalculating.
+
+```{python}
+# Your code here
+
+```
+
+### Question 340
+Write a function `flatten_list(nested_list)` that takes a nested list (list of lists) and returns a flat list. Example: [[1,2], [3,4]] → [1,2,3,4].
+
+```{python}
+# Your code here
+
+```
+
+## Object-Oriented Programming: Basics (Questions 341-355)
+
+### Question 341
+Define a class `Person` with attributes `name` and `age` set in the `__init__` method.
+
+```{python}
+# Your code here
+
+```
+
+### Question 342
+Add a method `introduce(self)` to the Person class that prints "Hi, I'm {name} and I'm {age} years old."
+
+```{python}
+# Your code here
+
+```
+
+### Question 343
+Create an instance of the Person class with your name and age, then call the `introduce()` method.
+
+```{python}
+# Your code here
+
+```
+
+### Question 344
+Define a class `Rectangle` with attributes `length` and `width`. Add methods `area()` and `perimeter()`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 345
+Add a `__str__()` method to the Rectangle class that returns "Rectangle(length={length}, width={width})".
+
+```{python}
+# Your code here
+
+```
+
+### Question 346
+Define a class `BankAccount` with attributes `account_number` and `balance` (default 0). Add methods `deposit(amount)` and `withdraw(amount)`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 347
+Add validation to the BankAccount class: `withdraw()` should only allow withdrawal if balance is sufficient. Print an error message if not.
+
+```{python}
+# Your code here
+
+```
+
+### Question 348
+Create a class `Counter` with a class variable `total_count = 0` that increments each time an instance is created. Add a class method `get_count()` that returns `total_count`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 349
+Define a class `Circle` with attribute `radius`. Add methods `area()` and `circumference()`. Use `math.pi`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 350
+Add a `__repr__()` method to the Circle class that returns "Circle(radius={radius})".
+
+```{python}
+# Your code here
+
+```
+
+### Question 351
+Create a class `Student` with private attribute `_grade` (using underscore convention). Add a method `get_grade()` to access it.
+
+```{python}
+# Your code here
+
+```
+
+### Question 352
+Add a `@property` decorator to the Student class to make `grade` accessible as `student.grade` (read-only).
+
+```{python}
+# Your code here
+
+```
+
+### Question 353
+Extend the Student class with a `@grade.setter` to allow setting the grade with validation (must be between 0-100).
+
+```{python}
+# Your code here
+
+```
+
+### Question 354
+Create a class `Temperature` with attribute `celsius`. Add a `@property` for `fahrenheit` that calculates and returns the Fahrenheit value.
+
+```{python}
+# Your code here
+
+```
+
+### Question 355
+Define a class `MathOperations` with static methods `add(x, y)`, `subtract(x, y)`, and `multiply(x, y)`.
+
+```{python}
+# Your code here
+
+```
+
+## Object-Oriented Programming: Inheritance (Questions 356-370)
+
+### Question 356
+Create a base class `Animal` with attribute `name` and method `speak()` that prints "Some generic animal sound".
+
+```{python}
+# Your code here
+
+```
+
+### Question 357
+Create a class `Dog` that inherits from `Animal` and overrides `speak()` to print "Woof!".
+
+```{python}
+# Your code here
+
+```
+
+### Question 358
+Create a class `Cat` that inherits from `Animal` and overrides `speak()` to print "Meow!".
+
+```{python}
+# Your code here
+
+```
+
+### Question 359
+Create instances of Dog and Cat, then call `speak()` on each to demonstrate polymorphism.
+
+```{python}
+# Your code here
+
+```
+
+### Question 360
+Create a class `Employee` with attributes `name` and `salary`. Add a method `get_info()` that returns employee information.
+
+```{python}
+# Your code here
+
+```
+
+### Question 361
+Create a class `Manager` that inherits from `Employee` and adds attribute `department`. Override `get_info()` to include department info. Use `super()` to call the parent's `get_info()`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 362
+Create a class `Vehicle` with attributes `brand` and `year`. Add a method `info()`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 363
+Create a class `Car` that inherits from `Vehicle` and adds attribute `num_doors`. Override `__init__()` using `super()`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 364
+Create a class `ElectricCar` that inherits from `Car` and adds attribute `battery_capacity`. Use `super().__init__()` to initialize parent attributes.
+
+```{python}
+# Your code here
+
+```
+
+### Question 365
+Add a class variable `species = "Canis familiaris"` to the Dog class. Create two dogs and verify they share the same species.
+
+```{python}
+# Your code here
+
+```
+
+### Question 366
+Create a class `Product` with attributes `name` and `price`. Add an `__add__()` method to allow adding two products' prices using the `+` operator.
+
+```{python}
+# Your code here
+
+```
+
+### Question 367
+Create a class `Book` with attributes `title`, `author`, and `pages`. Add an `__eq__()` method to compare books by title.
+
+```{python}
+# Your code here
+
+```
+
+### Question 368
+Create a class `Playlist` with a list attribute `songs`. Implement `__len__()` to return the number of songs.
+
+```{python}
+# Your code here
+
+```
+
+### Question 369
+Add `__getitem__()` to the Playlist class to support indexing (e.g., `playlist[0]`).
+
+```{python}
+# Your code here
+
+```
+
+### Question 370
+Create a class `ShoppingCart` with a list of items. Add methods `add_item(item)`, `remove_item(item)`, and `total_items()`.
+
+```{python}
+# Your code here
+
+```
+
+## OOP: Advanced & Integration with Data (Questions 371-385)
+
+### Question 371
+Create a class `StudentRecord` with attributes from the students dataset (name, age, gpa, major, grade, credits). Add a method `is_honors()` that returns True if gpa >= 3.5.
+
+```{python}
+# Your code here
+
+```
+
+### Question 372
+Add a class method `from_dict(cls, data_dict)` to StudentRecord that creates an instance from a dictionary.
+
+```{python}
+# Your code here
+
+```
+
+### Question 373
+Create a class `StudentManager` that loads `data/questions/students.csv` and stores StudentRecord objects in a list. Add a method `get_honors_students()`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 374
+Create a class `SalesTransaction` with attributes matching the sales dataset. Add a method `calculate_profit(cost_ratio=0.6)` that estimates profit as revenue × (1 - cost_ratio).
+
+```{python}
+# Your code here
+
+```
+
+### Question 375
+Create a class `DataAnalyzer` with a method `load_csv(filepath)` that loads data into a Pandas DataFrame. Add methods `get_summary()` and `get_column_stats(column_name)`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 376
+Create a class `EmployeeDatabase` that loads `data/questions/employees.csv`. Add methods: `get_by_department(dept)`, `average_salary()`, and `top_performers(n=5)` based on performance_score.
+
+```{python}
+# Your code here
+
+```
+
+### Question 377
+Add a method `give_raise(name, percentage)` to EmployeeDatabase that increases an employee's salary by the given percentage.
+
+```{python}
+# Your code here
+
+```
+
+### Question 378
+Create a class `WeatherStation` that loads `data/questions/weather.csv`. Add methods `get_city_data(city)` and `coldest_day()` that returns the date with the lowest temperature.
+
+```{python}
+# Your code here
+
+```
+
+### Question 379
+Create a class `Validator` with static methods `is_valid_email(email)`, `is_valid_phone(phone)`, and `is_valid_age(age)` using appropriate validation logic.
+
+```{python}
+# Your code here
+
+```
+
+### Question 380
+Create a class `Logger` that implements a context manager (`__enter__` and `__exit__`). It should log start and end times when used with the `with` statement.
+
+```{python}
+# Your code here
+
+```
+
+### Question 381
+Create a class `RangeIterator` that implements the iterator protocol (`__iter__` and `__next__`) to generate numbers from start to end.
+
+```{python}
+# Your code here
+
+```
+
+### Question 382
+Create a class `DataProcessor` with a `__call__()` method that processes a DataFrame (e.g., removes null values). Make instances callable.
+
+```{python}
+# Your code here
+
+```
+
+### Question 383
+Create a class `Point` with attributes `x` and `y`. Add a method `distance_from_origin()` that calculates the distance from (0, 0) using the formula: sqrt(x² + y²). Also add a method `distance_to(other_point)` that calculates the distance to another Point.
+
+```{python}
+# Your code here
+
+```
+
+### Question 384
+Create a class `Shape` with a method `describe()` that prints "I am a shape". Then create two subclasses: `Square` (with attribute `side`) and `Triangle` (with attributes `a`, `b`, `c` for the three sides). Both should implement `area()` and `perimeter()` methods and override `describe()` with specific messages.
+
+```{python}
+# Your code here
+
+```
+
+### Question 385
+Create a class `Portfolio` that has a composition relationship with multiple `Stock` objects. The Stock class should have attributes `symbol`, `shares`, and `price`. Portfolio should have a method `total_value()`.
+
+```{python}
+# Your code here
+
+```
+
+## Loops and Conditionals (Questions 386-400)
+
+### Question 386
+Use a for loop with `range(10)` to print numbers 0 through 9.
+
+```{python}
+# Your code here
+
+```
+
+### Question 387
+Use a for loop with `range(1, 11)` to calculate and print the sum of numbers 1 through 10.
+
+```{python}
+# Your code here
+
+```
+
+### Question 388
+Given the list `fruits = ['apple', 'banana', 'cherry']`, use a for loop with `enumerate()` to print each fruit with its index.
+
+```{python}
+# Your code here
+
+```
+
+### Question 389
+Use a for loop to iterate through the dictionary `{'a': 1, 'b': 2, 'c': 3}` and print each key-value pair using `.items()`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 390
+Use a for loop with `break` to find and print the first number divisible by 7 in range(1, 50).
+
+```{python}
+# Your code here
+
+```
+
+### Question 391
+Use a for loop with `continue` to print all odd numbers from 1 to 20 (skip even numbers).
+
+```{python}
+# Your code here
+
+```
+
+### Question 392
+Load `data/questions/students.csv` and use a for loop to count how many students have a GPA above 3.0.
+
+```{python}
+# Your code here
+
+```
+
+### Question 393
+Load `data/questions/sales.csv` and use a for loop to calculate the total revenue for the "Electronics" category.
+
+```{python}
+# Your code here
+
+```
+
+### Question 394
+Use nested for loops to create a 5×5 multiplication table and print it.
+
+```{python}
+# Your code here
+
+```
+
+### Question 395
+Use a list comprehension to create a list of squares for numbers 1 through 10.
+
+```{python}
+# Your code here
+
+```
+
+### Question 396
+Load `data/questions/employees.csv` and use a list comprehension to create a list of names for employees in the "Engineering" department.
+
+```{python}
+# Your code here
+
+```
+
+### Question 397
+Use a dictionary comprehension to create a dictionary where keys are numbers 1-5 and values are their cubes.
+
+```{python}
+# Your code here
+
+```
+
+### Question 398
+Write a function `fizzbuzz(n)` that prints numbers 1 to n, but for multiples of 3 print "Fizz", for multiples of 5 print "Buzz", and for multiples of both print "FizzBuzz".
+
+```{python}
+# Your code here
+
+```
+
+### Question 399
+Load `data/questions/weather.csv` and use a for loop with conditionals to categorize each temperature: "Cold" (<50), "Mild" (50-75), "Hot" (>75). Count each category.
+
+```{python}
+# Your code here
+
+```
+
+### Question 400
+Create a function `process_grades(students_df)` that adds a new column "letter_grade" to the students DataFrame based on GPA: A (>=3.5), B (>=3.0), C (>=2.5), D (>=2.0), F (<2.0).
+
+```{python}
+# Your code here
+
+```
+
+## Regular Expressions (Questions 401-420)
+
+### Question 401
+Import the `re` module and use `re.search()` to check if the word "python" exists in the string "I love python programming".
+
+```{python}
+# Your code here
+
+```
+
+### Question 402
+Use `re.match()` to check if a string starts with "Hello". Test with "Hello, world!" and "Hi there!".
+
+```{python}
+# Your code here
+
+```
+
+### Question 403
+Use `re.findall()` to find all digits in the string "My phone is 123-456-7890 and my zip is 12345".
+
+```{python}
+# Your code here
+
+```
+
+### Question 404
+Use `re.sub()` to replace all digits in "Order 12345 ships on 2024-01-15" with "X".
+
+```{python}
+# Your code here
+
+```
+
+### Question 405
+Create a pattern that matches email addresses and use it to extract emails from "Contact us at info@example.com or support@test.org".
+
+```{python}
+# Your code here
+
+```
+
+### Question 406
+Write a regex pattern to match phone numbers in format XXX-XXX-XXXX. Test with "Call me at 555-123-4567".
+
+```{python}
+# Your code here
+
+```
+
+### Question 407
+Use regex to validate if a string is a valid date in format YYYY-MM-DD. Test with "2024-01-15" and "2024/01/15".
+
+```{python}
+# Your code here
+
+```
+
+### Question 408
+Create a pattern that matches URLs (starting with http:// or https://). Extract all URLs from a text string.
+
+```{python}
+# Your code here
+
+```
+
+### Question 409
+Use `\b` word boundaries to match the whole word "cat" but not "category" in "The cat is in the category".
+
+```{python}
+# Your code here
+
+```
+
+### Question 410
+Write a regex pattern to extract hashtags (words starting with #) from "I love #python and #datascience!".
+
+```{python}
+# Your code here
+
+```
+
+### Question 411
+Use capturing groups to extract the area code, exchange, and number from phone number "555-123-4567".
+
+```{python}
+# Your code here
+
+```
+
+### Question 412
+Use `re.compile()` to create a reusable pattern for matching email addresses, then use it to find emails in multiple strings.
+
+```{python}
+# Your code here
+
+```
+
+### Question 413
+Write a function `clean_text(text)` that uses regex to remove all special characters (keep only letters, numbers, and spaces).
+
+```{python}
+# Your code here
+
+```
+
+### Question 414
+Use regex to validate password strength: at least 8 characters, one uppercase, one lowercase, one digit.
+
+```{python}
+# Your code here
+
+```
+
+### Question 415
+Use `re.split()` to split a string on multiple delimiters (comma, semicolon, or pipe). Test with "a,b;c|d".
+
+```{python}
+# Your code here
+
+```
+
+### Question 416
+Load `data/questions/employees.csv` and use regex to extract just the first name from the "name" column (assuming format "First Last").
+
+```{python}
+# Your code here
+
+```
+
+### Question 417
+Write a regex pattern that matches U.S. ZIP codes (5 digits or 5+4 format: 12345-6789).
+
+```{python}
+# Your code here
+
+```
+
+### Question 418
+Use lookahead assertions `(?=...)` to check if a password contains at least one digit without consuming characters.
+
+```{python}
+# Your code here
+
+```
+
+### Question 419
+Write a function `extract_prices(text)` that uses regex to find all prices in format $XX.XX or $XXX.XX.
+
+```{python}
+# Your code here
+
+```
+
+### Question 420
+Create a function `anonymize_email(email)` that uses regex to replace the username part of an email with asterisks (e.g., "user@example.com" → "****@example.com").
+
+```{python}
+# Your code here
+
+```
+
+## Debugging and Error Handling (Questions 421-440)
+
+### Question 421
+Write code that attempts to divide 10 by 0. Use try-except to catch the `ZeroDivisionError` and print "Error: Cannot divide by zero!".
+
+**Expected output:** `Error: Cannot divide by zero!`
+
+```{python}
+# Your code here
+
+```
+
+### Question 422
+Write code using try-except-else that:
+1. Tries to convert the string `"42"` to an integer
+2. If successful, prints "Success! The number is: 42" in the else block
+3. If it fails, prints "Conversion failed" in the except block
+
+Test it with both `"42"` and `"abc"`.
+
+```{python}
+# Test case 1: valid input
+# Your code here
+
+```
+
+```{python}
+# Test case 2: invalid input
+# Your code here
+
+```
+
+### Question 423
+Write code using try-except-finally that:
+1. Creates a variable `file_opened = False`
+2. In the try block, attempts to open the file `"data/questions/students.csv"` and set `file_opened = True`
+3. In the finally block, prints "File opened: True" or "File opened: False" depending on success
+
+```{python}
+# Your code here
+
+```
+
+### Question 424
+Write a function `check_positive(number)` that:
+- Raises a `ValueError` with message "Number must be positive!" if number < 0
+- Returns the number if it's positive
+
+Test with `check_positive(5)` and `check_positive(-3)`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 425
+Write code that:
+1. Creates a list `numbers = [1, 2, 3]` and a string `text = "abc"`
+2. Tries to convert `text` to int AND access `numbers[10]`
+3. Catches `ValueError` separately (print "Cannot convert to integer")
+4. Catches `IndexError` separately (print "Index out of range")
+
+```{python}
+# Your code here
+
+```
+
+### Question 426
+**Step 1:** Create a custom exception class `InsufficientFundsError` that inherits from `Exception`.
+
+```{python}
+# Your code here
+
+```
+
+**Step 2:** Create a function `withdraw(balance, amount)` that:
+- Raises `InsufficientFundsError` with message "Insufficient funds: need ${amount} but only have ${balance}" if amount > balance
+- Returns the new balance (balance - amount) if withdrawal is successful
+
+**Step 3:** Test with `withdraw(100, 50)` and `withdraw(100, 150)` using try-except.
+
+```{python}
+# Your code here
+
+```
+
+### Question 427
+Write a function `validate_age(age)` that uses `assert` to check:
+- `age >= 0` (message: "Age cannot be negative")
+- `age <= 120` (message: "Age cannot exceed 120")
+
+Test with ages: 25, -5, 150.
+
+```{python}
+# Your code here
+
+```
+
+### Question 428
+Write code that tries to open the file `"nonexistent_file.csv"`. Catch `FileNotFoundError` and print: "Error: The file 'nonexistent_file.csv' was not found."
+
+```{python}
+# Your code here
+
+```
+
+### Question 429
+Write a function `safe_int_convert(value)` that:
+- Tries to convert value to int and return it
+- If conversion fails (ValueError), returns `None`
+
+Test with: `"42"`, `"abc"`, `3.14`, `[1, 2, 3]`
+
+```{python}
+# Your code here
+
+```
+
+### Question 430
+Write code that:
+1. Creates a list `fruits = ["apple", "banana", "cherry"]`
+2. Tries to access `fruits[10]`
+3. Catches `IndexError` and prints "Index out of range. List has only X items." (where X is the actual length)
+
+```{python}
+# Your code here
+
+```
+
+### Question 431
+**Method 1:** Use try-except to handle KeyError when accessing `person["email"]` from `person = {"name": "Alice", "age": 30}`. Print "Email not found" if the key doesn't exist.
+
+```{python}
+# Your code here
+
+```
+
+**Method 2:** Use `.get()` method to safely retrieve the email with default value "No email provided".
+
+```{python}
+# Your code here
+
+```
+
+### Question 432
+Use a context manager (with statement) to open `"data/questions/students.csv"`, read the first line, and print it. The file will automatically close even if an error occurs.
+
+```{python}
+# Your code here
+
+```
+
+### Question 433
+Write a function `parse_config(config_dict)` that:
+1. Tries to extract required keys: 'host', 'port', and 'database' from a dictionary
+2. Converts 'port' to an integer
+3. Returns a formatted string: "Connecting to {database} at {host}:{port}"
+4. Handles `KeyError` if a required key is missing (print "Missing required key: {key_name}")
+5. Handles `ValueError` if port cannot be converted to int (print "Port must be a valid number")
+
+Test with valid and invalid configurations.
+
+```{python}
+# Your code here
+
+```
+
+### Question 434
+Write code that tries to add `"Hello"` and `5`. Catch the `TypeError` and print: "Cannot add string and integer. Attempted to add 'Hello' + 5"
+
+```{python}
+# Your code here
+
+```
+
+### Question 435
+Write a function `validate_input(data)` that:
+- Raises `TypeError` with message "Input must be a string" if data is not a string
+- Raises `ValueError` with message "Input cannot be empty" if string is empty
+- Uses `assert` to check `len(data) >= 5` with message "Input must be at least 5 characters"
+- Returns `True` if all checks pass
+
+Test with: `"Hello"`, `""`, `123`, `"Hi"`
+
+```{python}
+# Your code here
+
+```
+
+### Question 436
+**Step 1:** Create a decorator `error_handler` that wraps a function in try-except and prints "Error occurred: {exception message}" if an exception occurs.
+
+```{python}
+# Your code here
+
+```
+
+**Step 2:** Apply the decorator to a function that divides two numbers. Test with valid and invalid inputs.
+
+```{python}
+# Your code here
+
+```
+
+### Question 437
+**Step 1:** Import the logging module and configure it with `logging.basicConfig(level=logging.ERROR)`.
+
+**Step 2:** Write code that tries to divide 10 by 0, catches the exception, and logs it using `logging.error("Division error: " + str(e))`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 438
+Write a function `load_and_process(filename)` that:
+1. Tries to open and read a file
+2. If `FileNotFoundError` occurs, logs "File not found: {filename}" using print
+3. Re-raises the exception using `raise` (without arguments to preserve traceback)
+
+Test with a non-existent file.
+
+```{python}
+# Your code here
+
+```
+
+### Question 439
+Write a function `safe_load_students(filepath)` that tries to load `data/questions/students.csv` and handles:
+- `FileNotFoundError`: print "Error: File not found at {filepath}"
+- `pd.errors.EmptyDataError`: print "Error: The CSV file is empty"
+- `KeyError` (missing expected column): print "Error: Required column 'gpa' not found"
+
+Return the DataFrame if successful, `None` if any error occurs.
+
+```{python}
+import pandas as pd
+
+# Your code here
+
+```
+
+### Question 440
+Write a comprehensive function `process_student_data(filepath)` that:
+
+**Step 1:** Tries to load the CSV file (handle `FileNotFoundError`)
+
+**Step 2:** Checks if the DataFrame is empty (handle empty data)
+
+**Step 3:** Verifies required columns exist: 'name', 'age', 'gpa' (handle `KeyError`)
+
+**Step 4:** Tries to calculate average GPA (handle potential `ValueError` if gpa contains non-numeric values)
+
+**Step 5:** Returns a dictionary: `{"success": True, "avg_gpa": X, "num_students": Y}` or `{"success": False, "error": "error message"}`
+
+Test with `"data/questions/students.csv"` and a non-existent file.
+
+```{python}
+import pandas as pd
+
+# Your code here
+
+```

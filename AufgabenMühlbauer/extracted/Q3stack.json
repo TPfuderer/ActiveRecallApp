@@ -1,0 +1,842 @@
+[
+  {
+    "id": 1,
+    "qid_original": 301,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `greet()` that prints \"Hello, World!\"."
+  },
+  {
+    "id": 2,
+    "qid_original": 302,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `add_numbers(a, b)` that returns the sum of two numbers."
+  },
+  {
+    "id": 3,
+    "qid_original": 303,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `is_even(n)` that returns `True` if n is even, `False` otherwise."
+  },
+  {
+    "id": 4,
+    "qid_original": 304,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `square(x)` that returns the square of x. Test it with `square(5)`."
+  },
+  {
+    "id": 5,
+    "qid_original": 305,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `greet_person(name=\"Guest\")` with a default parameter that returns a greeting string (e.g., \"Hello, Guest!\")."
+  },
+  {
+    "id": 6,
+    "qid_original": 306,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `get_max(a, b, c)` that returns the largest of three numbers using `if-elif-else`."
+  },
+  {
+    "id": 7,
+    "qid_original": 307,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `calculate_rectangle_area(length, width)` that returns the area. Include a docstring."
+  },
+  {
+    "id": 8,
+    "qid_original": 308,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `multiply_all(*args)` that accepts any number of arguments and returns their product and a string `\"no arguments provided\"` if no arguments are given."
+  },
+  {
+    "id": 9,
+    "qid_original": 309,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `print_info(**kwargs)` that prints all keyword arguments in the format \"key: value\"."
+  },
+  {
+    "id": 10,
+    "qid_original": 310,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `celsius_to_fahrenheit(celsius)` that converts Celsius to Fahrenheit using the formula: F = C × 9/5 + 32."
+  },
+  {
+    "id": 11,
+    "qid_original": 311,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `get_grade(score)` that returns:\n- \"A\" if score >= 90\n- \"B\" if score >= 80\n- \"C\" if score >= 70\n- \"D\" if score >= 60\n- \"F\" otherwise"
+  },
+  {
+    "id": 12,
+    "qid_original": 312,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `divide_with_remainder(a, b)` that returns both the quotient and remainder as a tuple."
+  },
+  {
+    "id": 13,
+    "qid_original": 313,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `count_vowels(text)` that counts the number of vowels (a, e, i, o, u) in a string. Make it case-insensitive."
+  },
+  {
+    "id": 14,
+    "qid_original": 314,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function `is_palindrome(text)` that checks if a string is a palindrome (reads the same forwards and backwards). Ignore spaces and case."
+  },
+  {
+    "id": 15,
+    "qid_original": 315,
+    "category": "Functions: Basics (Questions 301-315)",
+    "question_raw": "Define a function with type hints: `def multiply(a: int, b: int) -> int` that multiplies two integers."
+  },
+  {
+    "id": 16,
+    "qid_original": 316,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Create a lambda function that squares a number and assign it to variable `square_lambda`. Test it with `square_lambda(4)`."
+  },
+  {
+    "id": 17,
+    "qid_original": 317,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Given the list `numbers = [1, 2, 3, 4, 5]`, use `map()` with a lambda function to create a list of squares."
+  },
+  {
+    "id": 18,
+    "qid_original": 318,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Given the list `numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`, use `filter()` with a lambda to get only even numbers."
+  },
+  {
+    "id": 19,
+    "qid_original": 319,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Write a function `calculate_statistics(numbers)` that takes a list of numbers and returns a dictionary with keys 'mean', 'min', 'max', 'sum'. Include a comprehensive docstring."
+  },
+  {
+    "id": 20,
+    "qid_original": 320,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Define a function `create_multiplier(n)` that returns another function. The returned function should multiply its argument by n (closure example)."
+  },
+  {
+    "id": 21,
+    "qid_original": 321,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Define a function `make_adder(n)` that returns a nested function. The returned function should add n to its argument. For example, `add_5 = make_adder(5)` should create a function that adds 5 to any number."
+  },
+  {
+    "id": 22,
+    "qid_original": 322,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Define a function `factorial(n)` that calculates n! using recursion. Add a base case for n = 0 or n = 1."
+  },
+  {
+    "id": 23,
+    "qid_original": 323,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Write a function `fibonacci(n)` that returns the nth Fibonacci number using recursion."
+  },
+  {
+    "id": 24,
+    "qid_original": 324,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Create a function `validate_age(age)` that uses `assert` to check that age is between 0 and 120. If not, raise an AssertionError with a descriptive message."
+  },
+  {
+    "id": 25,
+    "qid_original": 325,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Define a function `safe_divide(a, b)` that handles `ZeroDivisionError` with try-except and returns `None` if division by zero occurs."
+  },
+  {
+    "id": 26,
+    "qid_original": 326,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Write a function `list_sum(numbers)` that takes a list of numbers and returns their sum. Handle the case where the list might be empty."
+  },
+  {
+    "id": 27,
+    "qid_original": 327,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Create a function `apply_to_list(func, data)` that applies a given function to each element in a list and returns the results as a new list."
+  },
+  {
+    "id": 28,
+    "qid_original": 328,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Write a function `filter_by_length(words, min_length)` that takes a list of strings and returns only those with length >= min_length."
+  },
+  {
+    "id": 29,
+    "qid_original": 329,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Define a function `is_prime(n)` that checks if a number is prime. A prime number is only divisible by 1 and itself."
+  },
+  {
+    "id": 30,
+    "qid_original": 330,
+    "category": "Functions: Intermediate (Questions 316-330)",
+    "question_raw": "Create a function `average(*args)` that calculates the average of any number of arguments. Handle the case of no arguments."
+  },
+  {
+    "id": 31,
+    "qid_original": 331,
+    "category": "Functions: Advanced with Data (Questions 331-340)",
+    "question_raw": "Write a function `filter_by_gpa(students_df, min_gpa)` that takes a Pandas DataFrame and returns rows where gpa >= min_gpa. Load `data/questions/students.csv` first."
+  },
+  {
+    "id": 32,
+    "qid_original": 332,
+    "category": "Functions: Advanced with Data (Questions 331-340)",
+    "question_raw": "Write a function `calculate_total_revenue(sales_df, product_name)` that filters the sales DataFrame for a specific product and returns the sum of revenue. Use `data/questions/sales.csv`."
+  },
+  {
+    "id": 33,
+    "qid_original": 333,
+    "category": "Functions: Advanced with Data (Questions 331-340)",
+    "question_raw": "Create a function `temperature_stats(weather_df, city_name)` that returns a dictionary with 'mean_temp', 'max_temp', 'min_temp' for a specific city. Use `data/questions/weather.csv`."
+  },
+  {
+    "id": 34,
+    "qid_original": 334,
+    "category": "Functions: Advanced with Data (Questions 331-340)",
+    "question_raw": "Write a function `normalize_list(numbers)` that takes a list of numbers and returns a normalized list where each value is scaled to [0, 1]. Use the formula: (x - min) / (max - min)."
+  },
+  {
+    "id": 35,
+    "qid_original": 335,
+    "category": "Functions: Advanced with Data (Questions 331-340)",
+    "question_raw": "Create a function `z_score(numbers)` that calculates the z-score for each number in a list. Z-score formula: (x - mean) / std_dev. Return empty list if len(numbers) <= 1."
+  },
+  {
+    "id": 36,
+    "qid_original": 336,
+    "category": "Functions: Advanced with Data (Questions 331-340)",
+    "question_raw": "Write a function `group_by_category(sales_df)` that groups the sales DataFrame by 'category' and returns the total revenue per category as a dictionary. Use `data/questions/sales.csv`."
+  },
+  {
+    "id": 37,
+    "qid_original": 337,
+    "category": "Functions: Advanced with Data (Questions 331-340)",
+    "question_raw": "Create a function `get_top_students(students_df, n=5)` that returns the top n students by GPA. Use `data/questions/students.csv`."
+  },
+  {
+    "id": 38,
+    "qid_original": 338,
+    "category": "Functions: Advanced with Data (Questions 331-340)",
+    "question_raw": "Write a function `salary_by_department(employees_df)` that returns a dictionary where keys are departments and values are lists of salaries in that department. Use `data/questions/employees.csv`."
+  },
+  {
+    "id": 39,
+    "qid_original": 339,
+    "category": "Functions: Advanced with Data (Questions 331-340)",
+    "question_raw": "Create a function `memoize(func)` decorator that caches function results. When the function is called with the same arguments, return the cached result instead of recalculating."
+  },
+  {
+    "id": 40,
+    "qid_original": 340,
+    "category": "Functions: Advanced with Data (Questions 331-340)",
+    "question_raw": "Write a function `flatten_list(nested_list)` that takes a nested list (list of lists) and returns a flat list. Example: [[1,2], [3,4]] → [1,2,3,4]."
+  },
+  {
+    "id": 41,
+    "qid_original": 341,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Define a class `Person` with attributes `name` and `age` set in the `__init__` method."
+  },
+  {
+    "id": 42,
+    "qid_original": 342,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Add a method `introduce(self)` to the Person class that prints \"Hi, I'm {name} and I'm {age} years old.\""
+  },
+  {
+    "id": 43,
+    "qid_original": 343,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Create an instance of the Person class with your name and age, then call the `introduce()` method."
+  },
+  {
+    "id": 44,
+    "qid_original": 344,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Define a class `Rectangle` with attributes `length` and `width`. Add methods `area()` and `perimeter()`."
+  },
+  {
+    "id": 45,
+    "qid_original": 345,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Add a `__str__()` method to the Rectangle class that returns \"Rectangle(length={length}, width={width})\"."
+  },
+  {
+    "id": 46,
+    "qid_original": 346,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Define a class `BankAccount` with attributes `account_number` and `balance` (default 0). Add methods `deposit(amount)` and `withdraw(amount)`."
+  },
+  {
+    "id": 47,
+    "qid_original": 347,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Add validation to the BankAccount class: `withdraw()` should only allow withdrawal if balance is sufficient. Print an error message if not."
+  },
+  {
+    "id": 48,
+    "qid_original": 348,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Create a class `Counter` with a class variable `total_count = 0` that increments each time an instance is created. Add a class method `get_count()` that returns `total_count`."
+  },
+  {
+    "id": 49,
+    "qid_original": 349,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Define a class `Circle` with attribute `radius`. Add methods `area()` and `circumference()`. Use `math.pi`."
+  },
+  {
+    "id": 50,
+    "qid_original": 350,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Add a `__repr__()` method to the Circle class that returns \"Circle(radius={radius})\"."
+  },
+  {
+    "id": 51,
+    "qid_original": 351,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Create a class `Student` with private attribute `_grade` (using underscore convention). Add a method `get_grade()` to access it."
+  },
+  {
+    "id": 52,
+    "qid_original": 352,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Add a `@property` decorator to the Student class to make `grade` accessible as `student.grade` (read-only)."
+  },
+  {
+    "id": 53,
+    "qid_original": 353,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Extend the Student class with a `@grade.setter` to allow setting the grade with validation (must be between 0-100)."
+  },
+  {
+    "id": 54,
+    "qid_original": 354,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Create a class `Temperature` with attribute `celsius`. Add a `@property` for `fahrenheit` that calculates and returns the Fahrenheit value."
+  },
+  {
+    "id": 55,
+    "qid_original": 355,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Define a class `MathOperations` with static methods `add(x, y)`, `subtract(x, y)`, and `multiply(x, y)`."
+  },
+  {
+    "id": 56,
+    "qid_original": 356,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a base class `Animal` with attribute `name` and method `speak()` that prints \"Some generic animal sound\"."
+  },
+  {
+    "id": 57,
+    "qid_original": 357,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Dog` that inherits from `Animal` and overrides `speak()` to print \"Woof!\"."
+  },
+  {
+    "id": 58,
+    "qid_original": 358,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Cat` that inherits from `Animal` and overrides `speak()` to print \"Meow!\"."
+  },
+  {
+    "id": 59,
+    "qid_original": 359,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create instances of Dog and Cat, then call `speak()` on each to demonstrate polymorphism."
+  },
+  {
+    "id": 60,
+    "qid_original": 360,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Employee` with attributes `name` and `salary`. Add a method `get_info()` that returns employee information."
+  },
+  {
+    "id": 61,
+    "qid_original": 361,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Manager` that inherits from `Employee` and adds attribute `department`. Override `get_info()` to include department info. Use `super()` to call the parent's `get_info()`."
+  },
+  {
+    "id": 62,
+    "qid_original": 362,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Vehicle` with attributes `brand` and `year`. Add a method `info()`."
+  },
+  {
+    "id": 63,
+    "qid_original": 363,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Car` that inherits from `Vehicle` and adds attribute `num_doors`. Override `__init__()` using `super()`."
+  },
+  {
+    "id": 64,
+    "qid_original": 364,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `ElectricCar` that inherits from `Car` and adds attribute `battery_capacity`. Use `super().__init__()` to initialize parent attributes."
+  },
+  {
+    "id": 65,
+    "qid_original": 365,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Add a class variable `species = \"Canis familiaris\"` to the Dog class. Create two dogs and verify they share the same species."
+  },
+  {
+    "id": 66,
+    "qid_original": 366,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Product` with attributes `name` and `price`. Add an `__add__()` method to allow adding two products' prices using the `+` operator."
+  },
+  {
+    "id": 67,
+    "qid_original": 367,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Book` with attributes `title`, `author`, and `pages`. Add an `__eq__()` method to compare books by title."
+  },
+  {
+    "id": 68,
+    "qid_original": 368,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Playlist` with a list attribute `songs`. Implement `__len__()` to return the number of songs."
+  },
+  {
+    "id": 69,
+    "qid_original": 369,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Add `__getitem__()` to the Playlist class to support indexing (e.g., `playlist[0]`)."
+  },
+  {
+    "id": 70,
+    "qid_original": 370,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `ShoppingCart` with a list of items. Add methods `add_item(item)`, `remove_item(item)`, and `total_items()`."
+  },
+  {
+    "id": 71,
+    "qid_original": 371,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `StudentRecord` with attributes from the students dataset (name, age, gpa, major, grade, credits). Add a method `is_honors()` that returns True if gpa >= 3.5."
+  },
+  {
+    "id": 72,
+    "qid_original": 372,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Add a class method `from_dict(cls, data_dict)` to StudentRecord that creates an instance from a dictionary."
+  },
+  {
+    "id": 73,
+    "qid_original": 373,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `StudentManager` that loads `data/questions/students.csv` and stores StudentRecord objects in a list. Add a method `get_honors_students()`."
+  },
+  {
+    "id": 74,
+    "qid_original": 374,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `SalesTransaction` with attributes matching the sales dataset. Add a method `calculate_profit(cost_ratio=0.6)` that estimates profit as revenue × (1 - cost_ratio)."
+  },
+  {
+    "id": 75,
+    "qid_original": 375,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `DataAnalyzer` with a method `load_csv(filepath)` that loads data into a Pandas DataFrame. Add methods `get_summary()` and `get_column_stats(column_name)`."
+  },
+  {
+    "id": 76,
+    "qid_original": 376,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `EmployeeDatabase` that loads `data/questions/employees.csv`. Add methods: `get_by_department(dept)`, `average_salary()`, and `top_performers(n=5)` based on performance_score."
+  },
+  {
+    "id": 77,
+    "qid_original": 377,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Add a method `give_raise(name, percentage)` to EmployeeDatabase that increases an employee's salary by the given percentage."
+  },
+  {
+    "id": 78,
+    "qid_original": 378,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `WeatherStation` that loads `data/questions/weather.csv`. Add methods `get_city_data(city)` and `coldest_day()` that returns the date with the lowest temperature."
+  },
+  {
+    "id": 79,
+    "qid_original": 379,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `Validator` with static methods `is_valid_email(email)`, `is_valid_phone(phone)`, and `is_valid_age(age)` using appropriate validation logic."
+  },
+  {
+    "id": 80,
+    "qid_original": 380,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `Logger` that implements a context manager (`__enter__` and `__exit__`). It should log start and end times when used with the `with` statement."
+  },
+  {
+    "id": 81,
+    "qid_original": 381,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `RangeIterator` that implements the iterator protocol (`__iter__` and `__next__`) to generate numbers from start to end."
+  },
+  {
+    "id": 82,
+    "qid_original": 382,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `DataProcessor` with a `__call__()` method that processes a DataFrame (e.g., removes null values). Make instances callable."
+  },
+  {
+    "id": 83,
+    "qid_original": 383,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `Point` with attributes `x` and `y`. Add a method `distance_from_origin()` that calculates the distance from (0, 0) using the formula: sqrt(x² + y²). Also add a method `distance_to(other_point)` that calculates the distance to another Point."
+  },
+  {
+    "id": 84,
+    "qid_original": 384,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `Shape` with a method `describe()` that prints \"I am a shape\". Then create two subclasses: `Square` (with attribute `side`) and `Triangle` (with attributes `a`, `b`, `c` for the three sides). Both should implement `area()` and `perimeter()` methods and override `describe()` with specific messages."
+  },
+  {
+    "id": 85,
+    "qid_original": 385,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `Portfolio` that has a composition relationship with multiple `Stock` objects. The Stock class should have attributes `symbol`, `shares`, and `price`. Portfolio should have a method `total_value()`."
+  },
+  {
+    "id": 86,
+    "qid_original": 386,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Use a for loop with `range(10)` to print numbers 0 through 9."
+  },
+  {
+    "id": 87,
+    "qid_original": 387,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Use a for loop with `range(1, 11)` to calculate and print the sum of numbers 1 through 10."
+  },
+  {
+    "id": 88,
+    "qid_original": 388,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Given the list `fruits = ['apple', 'banana', 'cherry']`, use a for loop with `enumerate()` to print each fruit with its index."
+  },
+  {
+    "id": 89,
+    "qid_original": 389,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Use a for loop to iterate through the dictionary `{'a': 1, 'b': 2, 'c': 3}` and print each key-value pair using `.items()`."
+  },
+  {
+    "id": 90,
+    "qid_original": 390,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Use a for loop with `break` to find and print the first number divisible by 7 in range(1, 50)."
+  },
+  {
+    "id": 91,
+    "qid_original": 391,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Use a for loop with `continue` to print all odd numbers from 1 to 20 (skip even numbers)."
+  },
+  {
+    "id": 92,
+    "qid_original": 392,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Load `data/questions/students.csv` and use a for loop to count how many students have a GPA above 3.0."
+  },
+  {
+    "id": 93,
+    "qid_original": 393,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Load `data/questions/sales.csv` and use a for loop to calculate the total revenue for the \"Electronics\" category."
+  },
+  {
+    "id": 94,
+    "qid_original": 394,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Use nested for loops to create a 5×5 multiplication table and print it."
+  },
+  {
+    "id": 95,
+    "qid_original": 395,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Use a list comprehension to create a list of squares for numbers 1 through 10."
+  },
+  {
+    "id": 96,
+    "qid_original": 396,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Load `data/questions/employees.csv` and use a list comprehension to create a list of names for employees in the \"Engineering\" department."
+  },
+  {
+    "id": 97,
+    "qid_original": 397,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Use a dictionary comprehension to create a dictionary where keys are numbers 1-5 and values are their cubes."
+  },
+  {
+    "id": 98,
+    "qid_original": 398,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Write a function `fizzbuzz(n)` that prints numbers 1 to n, but for multiples of 3 print \"Fizz\", for multiples of 5 print \"Buzz\", and for multiples of both print \"FizzBuzz\"."
+  },
+  {
+    "id": 99,
+    "qid_original": 399,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Load `data/questions/weather.csv` and use a for loop with conditionals to categorize each temperature: \"Cold\" (<50), \"Mild\" (50-75), \"Hot\" (>75). Count each category."
+  },
+  {
+    "id": 100,
+    "qid_original": 400,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Create a function `process_grades(students_df)` that adds a new column \"letter_grade\" to the students DataFrame based on GPA: A (>=3.5), B (>=3.0), C (>=2.5), D (>=2.0), F (<2.0)."
+  },
+  {
+    "id": 101,
+    "qid_original": 401,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Import the `re` module and use `re.search()` to check if the word \"python\" exists in the string \"I love python programming\"."
+  },
+  {
+    "id": 102,
+    "qid_original": 402,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use `re.match()` to check if a string starts with \"Hello\". Test with \"Hello, world!\" and \"Hi there!\"."
+  },
+  {
+    "id": 103,
+    "qid_original": 403,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use `re.findall()` to find all digits in the string \"My phone is 123-456-7890 and my zip is 12345\"."
+  },
+  {
+    "id": 104,
+    "qid_original": 404,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use `re.sub()` to replace all digits in \"Order 12345 ships on 2024-01-15\" with \"X\"."
+  },
+  {
+    "id": 105,
+    "qid_original": 405,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Create a pattern that matches email addresses and use it to extract emails from \"Contact us at info@example.com or support@test.org\"."
+  },
+  {
+    "id": 106,
+    "qid_original": 406,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Write a regex pattern to match phone numbers in format XXX-XXX-XXXX. Test with \"Call me at 555-123-4567\"."
+  },
+  {
+    "id": 107,
+    "qid_original": 407,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use regex to validate if a string is a valid date in format YYYY-MM-DD. Test with \"2024-01-15\" and \"2024/01/15\"."
+  },
+  {
+    "id": 108,
+    "qid_original": 408,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Create a pattern that matches URLs (starting with http:// or https://). Extract all URLs from a text string."
+  },
+  {
+    "id": 109,
+    "qid_original": 409,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use `\\b` word boundaries to match the whole word \"cat\" but not \"category\" in \"The cat is in the category\"."
+  },
+  {
+    "id": 110,
+    "qid_original": 410,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Write a regex pattern to extract hashtags (words starting with #) from \"I love #python and #datascience!\"."
+  },
+  {
+    "id": 111,
+    "qid_original": 411,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use capturing groups to extract the area code, exchange, and number from phone number \"555-123-4567\"."
+  },
+  {
+    "id": 112,
+    "qid_original": 412,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use `re.compile()` to create a reusable pattern for matching email addresses, then use it to find emails in multiple strings."
+  },
+  {
+    "id": 113,
+    "qid_original": 413,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Write a function `clean_text(text)` that uses regex to remove all special characters (keep only letters, numbers, and spaces)."
+  },
+  {
+    "id": 114,
+    "qid_original": 414,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use regex to validate password strength: at least 8 characters, one uppercase, one lowercase, one digit."
+  },
+  {
+    "id": 115,
+    "qid_original": 415,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use `re.split()` to split a string on multiple delimiters (comma, semicolon, or pipe). Test with \"a,b;c|d\"."
+  },
+  {
+    "id": 116,
+    "qid_original": 416,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Load `data/questions/employees.csv` and use regex to extract just the first name from the \"name\" column (assuming format \"First Last\")."
+  },
+  {
+    "id": 117,
+    "qid_original": 417,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Write a regex pattern that matches U.S. ZIP codes (5 digits or 5+4 format: 12345-6789)."
+  },
+  {
+    "id": 118,
+    "qid_original": 418,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use lookahead assertions `(?=...)` to check if a password contains at least one digit without consuming characters."
+  },
+  {
+    "id": 119,
+    "qid_original": 419,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Write a function `extract_prices(text)` that uses regex to find all prices in format $XX.XX or $XXX.XX."
+  },
+  {
+    "id": 120,
+    "qid_original": 420,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Create a function `anonymize_email(email)` that uses regex to replace the username part of an email with asterisks (e.g., \"user@example.com\" → \"****@example.com\")."
+  },
+  {
+    "id": 121,
+    "qid_original": 421,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write code that attempts to divide 10 by 0. Use try-except to catch the `ZeroDivisionError` and print \"Error: Cannot divide by zero!\".\n\n**Expected output:** `Error: Cannot divide by zero!`"
+  },
+  {
+    "id": 122,
+    "qid_original": 422,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write code using try-except-else that:\n1. Tries to convert the string `\"42\"` to an integer\n2. If successful, prints \"Success! The number is: 42\" in the else block\n3. If it fails, prints \"Conversion failed\" in the except block\n\nTest it with both `\"42\"` and `\"abc\"`."
+  },
+  {
+    "id": 123,
+    "qid_original": 423,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write code using try-except-finally that:\n1. Creates a variable `file_opened = False`\n2. In the try block, attempts to open the file `\"data/questions/students.csv\"` and set `file_opened = True`\n3. In the finally block, prints \"File opened: True\" or \"File opened: False\" depending on success"
+  },
+  {
+    "id": 124,
+    "qid_original": 424,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write a function `check_positive(number)` that:\n- Raises a `ValueError` with message \"Number must be positive!\" if number < 0\n- Returns the number if it's positive\n\nTest with `check_positive(5)` and `check_positive(-3)`."
+  },
+  {
+    "id": 125,
+    "qid_original": 425,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write code that:\n1. Creates a list `numbers = [1, 2, 3]` and a string `text = \"abc\"`\n2. Tries to convert `text` to int AND access `numbers[10]`\n3. Catches `ValueError` separately (print \"Cannot convert to integer\")\n4. Catches `IndexError` separately (print \"Index out of range\")"
+  },
+  {
+    "id": 126,
+    "qid_original": 426,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "**Step 1:** Create a custom exception class `InsufficientFundsError` that inherits from `Exception`.\n\n\n\n**Step 2:** Create a function `withdraw(balance, amount)` that:\n- Raises `InsufficientFundsError` with message \"Insufficient funds: need ${amount} but only have ${balance}\" if amount > balance\n- Returns the new balance (balance - amount) if withdrawal is successful\n\n**Step 3:** Test with `withdraw(100, 50)` and `withdraw(100, 150)` using try-except."
+  },
+  {
+    "id": 127,
+    "qid_original": 427,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write a function `validate_age(age)` that uses `assert` to check:\n- `age >= 0` (message: \"Age cannot be negative\")\n- `age <= 120` (message: \"Age cannot exceed 120\")\n\nTest with ages: 25, -5, 150."
+  },
+  {
+    "id": 128,
+    "qid_original": 428,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write code that tries to open the file `\"nonexistent_file.csv\"`. Catch `FileNotFoundError` and print: \"Error: The file 'nonexistent_file.csv' was not found.\""
+  },
+  {
+    "id": 129,
+    "qid_original": 429,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write a function `safe_int_convert(value)` that:\n- Tries to convert value to int and return it\n- If conversion fails (ValueError), returns `None`\n\nTest with: `\"42\"`, `\"abc\"`, `3.14`, `[1, 2, 3]`"
+  },
+  {
+    "id": 130,
+    "qid_original": 430,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write code that:\n1. Creates a list `fruits = [\"apple\", \"banana\", \"cherry\"]`\n2. Tries to access `fruits[10]`\n3. Catches `IndexError` and prints \"Index out of range. List has only X items.\" (where X is the actual length)"
+  },
+  {
+    "id": 131,
+    "qid_original": 431,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "**Method 1:** Use try-except to handle KeyError when accessing `person[\"email\"]` from `person = {\"name\": \"Alice\", \"age\": 30}`. Print \"Email not found\" if the key doesn't exist.\n\n\n\n**Method 2:** Use `.get()` method to safely retrieve the email with default value \"No email provided\"."
+  },
+  {
+    "id": 132,
+    "qid_original": 432,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Use a context manager (with statement) to open `\"data/questions/students.csv\"`, read the first line, and print it. The file will automatically close even if an error occurs."
+  },
+  {
+    "id": 133,
+    "qid_original": 433,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write a function `parse_config(config_dict)` that:\n1. Tries to extract required keys: 'host', 'port', and 'database' from a dictionary\n2. Converts 'port' to an integer\n3. Returns a formatted string: \"Connecting to {database} at {host}:{port}\"\n4. Handles `KeyError` if a required key is missing (print \"Missing required key: {key_name}\")\n5. Handles `ValueError` if port cannot be converted to int (print \"Port must be a valid number\")\n\nTest with valid and invalid configurations."
+  },
+  {
+    "id": 134,
+    "qid_original": 434,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write code that tries to add `\"Hello\"` and `5`. Catch the `TypeError` and print: \"Cannot add string and integer. Attempted to add 'Hello' + 5\""
+  },
+  {
+    "id": 135,
+    "qid_original": 435,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write a function `validate_input(data)` that:\n- Raises `TypeError` with message \"Input must be a string\" if data is not a string\n- Raises `ValueError` with message \"Input cannot be empty\" if string is empty\n- Uses `assert` to check `len(data) >= 5` with message \"Input must be at least 5 characters\"\n- Returns `True` if all checks pass\n\nTest with: `\"Hello\"`, `\"\"`, `123`, `\"Hi\"`"
+  },
+  {
+    "id": 136,
+    "qid_original": 436,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "**Step 1:** Create a decorator `error_handler` that wraps a function in try-except and prints \"Error occurred: {exception message}\" if an exception occurs.\n\n\n\n**Step 2:** Apply the decorator to a function that divides two numbers. Test with valid and invalid inputs."
+  },
+  {
+    "id": 137,
+    "qid_original": 437,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "**Step 1:** Import the logging module and configure it with `logging.basicConfig(level=logging.ERROR)`.\n\n**Step 2:** Write code that tries to divide 10 by 0, catches the exception, and logs it using `logging.error(\"Division error: \" + str(e))`."
+  },
+  {
+    "id": 138,
+    "qid_original": 438,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write a function `load_and_process(filename)` that:\n1. Tries to open and read a file\n2. If `FileNotFoundError` occurs, logs \"File not found: {filename}\" using print\n3. Re-raises the exception using `raise` (without arguments to preserve traceback)\n\nTest with a non-existent file."
+  },
+  {
+    "id": 139,
+    "qid_original": 439,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write a function `safe_load_students(filepath)` that tries to load `data/questions/students.csv` and handles:\n- `FileNotFoundError`: print \"Error: File not found at {filepath}\"\n- `pd.errors.EmptyDataError`: print \"Error: The CSV file is empty\"\n- `KeyError` (missing expected column): print \"Error: Required column 'gpa' not found\"\n\nReturn the DataFrame if successful, `None` if any error occurs."
+  },
+  {
+    "id": 140,
+    "qid_original": 440,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Write a comprehensive function `process_student_data(filepath)` that:\n\n**Step 1:** Tries to load the CSV file (handle `FileNotFoundError`)\n\n**Step 2:** Checks if the DataFrame is empty (handle empty data)\n\n**Step 3:** Verifies required columns exist: 'name', 'age', 'gpa' (handle `KeyError`)\n\n**Step 4:** Tries to calculate average GPA (handle potential `ValueError` if gpa contains non-numeric values)\n\n**Step 5:** Returns a dictionary: `{\"success\": True, \"avg_gpa\": X, \"num_students\": Y}` or `{\"success\": False, \"error\": \"error message\"}`\n\nTest with `\"data/questions/students.csv\"` and a non-existent file."
+  }
+]
