@@ -607,6 +607,9 @@ with tabs[0]:
     st.progress(progress)
     st.caption(f"Aufgabe {st.session_state['task_index'] + 1} von {len(tasks)}")
 
+    # =======================================================
+    # 📊 Progress Dashboard (RENDERED)
+    # =======================================================
     st.header("📊 Progress Dashboard")
 
     # --- Attempts sicher normalisieren ---
@@ -614,13 +617,29 @@ with tabs[0]:
 
     # attempts kann None, list, str, usw. sein → IMMER in dict casten!
     if isinstance(attempts_raw, dict):
-        # Keys in int konvertieren
         attempts = {int(k): v for k, v in attempts_raw.items()}
     else:
         attempts = {}
 
     total_tasks = len(tasks)
-    answered_once = sum(1 for t, c in attempts.items() if c >= 1)
+    answered_once = sum(1 for c in attempts.values() if c >= 1)
+
+    # --- Overview ---
+    st.subheader("🧮 Overview")
+    st.write(f"**Total Tasks:** {total_tasks}")
+    st.write(f"**Tasks answered at least once:** {answered_once}")
+    st.progress(answered_once / total_tasks if total_tasks else 0)
+
+    st.markdown("---")
+
+    # --- Detailed attempts ---
+    st.subheader("📋 Detailed Attempts per Task")
+
+    if attempts:
+        for tid, count in sorted(attempts.items()):
+            st.write(f"• **Task {tid}** → {count}× durchgeführt")
+    else:
+        st.info("Noch keine Aufgaben beantwortet.")
 
 
 
