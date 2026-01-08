@@ -632,14 +632,6 @@ with tabs[0]:
 
     st.markdown("---")
 
-    # --- Detailed attempts ---
-    st.subheader("📋 Detailed Attempts per Task")
-
-    if attempts:
-        for tid, count in sorted(attempts.items()):
-            st.write(f"• **Task {tid}** → {count}× durchgeführt")
-    else:
-        st.info("Noch keine Aufgaben beantwortet.")
 
 
 
