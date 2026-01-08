@@ -334,14 +334,6 @@ with tabs[0]:
 
     # Hide the hidden button visually
     st.markdown("""
-    <style>
-    /* hide the entire button that contains ___run_hidden___ */
-    div[data-testid="stMarkdownContainer"] em strong:contains("run_hidden") {
-        display: none !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-    st.markdown("""
     <script>
     document.querySelectorAll('div[data-testid="stButton"]').forEach(btn => {
         if (btn.innerText.trim() === "run_hidden") {
