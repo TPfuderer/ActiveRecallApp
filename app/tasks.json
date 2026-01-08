@@ -4665,7 +4665,6 @@
     "solution_code": "employees = pd.DataFrame({\"emp_id\": [1, 2, 3, 4], \"name\": [\"Alice\", \"Bob\", \"Charlie\", \"David\"], \"manager_id\": [3, 3, 4, None]})\nself_join = pd.merge(employees, employees, left_on=\"manager_id\", right_on=\"emp_id\", how=\"left\", suffixes=(\"_emp\", \"_mgr\"))[[\"emp_id_emp\", \"name_emp\", \"name_mgr\"]]",
     "explanation": "A self-join links employees to their managers via matching IDs."
   },
-  [
   {
     "id": 301,
     "qid_original": 301,
@@ -4948,5 +4947,3 @@
   }
 ]
 
-
-]
