@@ -341,6 +341,15 @@ with tabs[0]:
     }
     </style>
     """, unsafe_allow_html=True)
+    st.markdown("""
+    <script>
+    document.querySelectorAll('div[data-testid="stButton"]').forEach(btn => {
+        if (btn.innerText.trim() === "run_hidden") {
+            btn.remove();
+        }
+    });
+    </script>
+    """, unsafe_allow_html=True)
 
     # JS: Ctrl+Enter triggers the hidden button
     st.markdown("""
