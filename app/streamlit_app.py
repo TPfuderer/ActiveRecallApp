@@ -335,7 +335,7 @@ with tabs[0]:
     # Hide the hidden button visually
     st.markdown("""
     <style>
-    button[data-testid="baseButton-secondary"]:has(span:contains("___run_hidden___")) {
+    button[k="run_hidden"] {
         display: none !important;
     }
     </style>
