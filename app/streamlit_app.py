@@ -240,6 +240,16 @@ with tabs[0]:
     # --- Display Header ---F
     st.title(f"🧠 Task {task['id']}/{len(tasks)}")
 
+    from datetime import date
+
+    exam_date = date(2026, 2, 12)
+    days_left = (exam_date - date.today()).days
+
+    if days_left >= 0:
+        st.info(f"⏳ **Prüfung in {days_left} Tagen** (12. Februar)")
+    else:
+        st.success("🎉 Prüfung vorbei – stark durchgezogen!")
+
     # 🔹 Show original QID
     if "qid_original" in task:
         st.markdown(f"**🧩 Original ID:** `{task['qid_original']}`")
