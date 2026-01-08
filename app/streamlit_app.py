@@ -335,11 +335,21 @@ with tabs[0]:
     # Hide the hidden button visually
     st.markdown("""
     <script>
-    document.querySelectorAll('div[data-testid="stButton"]').forEach(btn => {
-        if (btn.innerText.trim() === "run_hidden") {
-            btn.remove();
-        }
-    });
+    function hideRunHiddenButton() {
+        document.querySelectorAll('div[data-testid="stButton"]').forEach(wrapper => {
+            const text = wrapper.innerText?.trim();
+            if (text === "run_hidden") {
+                wrapper.style.display = "none";
+            }
+        });
+    }
+
+    // run once
+    hideRunHiddenButton();
+
+    // run again after Streamlit rerenders
+    setTimeout(hideRunHiddenButton, 50);
+    setTimeout(hideRunHiddenButton, 150);
     </script>
     """, unsafe_allow_html=True)
 
