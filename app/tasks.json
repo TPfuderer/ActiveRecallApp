@@ -4344,6 +4344,329 @@
     "explanation": "Inner merge keeps only IDs present in both DataFrames."
   },
     {
+    "id": 271,
+    "qid_original": 271,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Using the DataFrames from Q270, perform an outer merge and fill any missing values with the string \"Unknown\" using `.fillna()`.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "merged = pd.merge(df1, df2, on=\"id\", how=\"outer\").fillna(\"Unknown\")",
+    "explanation": "An outer merge keeps all rows from both DataFrames; fillna replaces missing values."
+  },
+  {
+    "id": 272,
+    "qid_original": 272,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `df1 = pd.DataFrame({\"id\": [1, 2, 3], \"name\": [\"A\", \"B\", \"C\"]})` and `df2 = pd.DataFrame({\"id\": [2, 3, 4], \"value\": [20, 30, 40]})`. Merge with `indicator=True` to show the source of each row.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"id\": [1, 2, 3], \"name\": [\"A\", \"B\", \"C\"]})\ndf2 = pd.DataFrame({\"id\": [2, 3, 4], \"value\": [20, 30, 40]})\nmerged = pd.merge(df1, df2, on=\"id\", how=\"outer\", indicator=True)",
+    "explanation": "indicator=True adds a column showing the source of each row."
+  },
+  {
+    "id": 273,
+    "qid_original": 273,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames with matching indices: `df1 = pd.DataFrame({\"A\": [1, 2, 3]}, index=[\"a\", \"b\", \"c\"])` and `df2 = pd.DataFrame({\"B\": [4, 5, 6]}, index=[\"a\", \"b\", \"c\"])`. Join them using `.join()` method.",
+    "check_variable": [
+      "joined"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"A\": [1, 2, 3]}, index=[\"a\", \"b\", \"c\"])\ndf2 = pd.DataFrame({\"B\": [4, 5, 6]}, index=[\"a\", \"b\", \"c\"])\njoined = df1.join(df2)",
+    "explanation": "join aligns DataFrames based on their indices."
+  },
+  {
+    "id": 274,
+    "qid_original": 274,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create `sales = pd.DataFrame({\"product_id\": [1, 2, 3], \"quantity\": [10, 20, 15]})` and `products = pd.DataFrame({\"product_id\": [1, 2, 3], \"name\": [\"Laptop\", \"Mouse\", \"Keyboard\"], \"price\": [1200, 25, 80]})`. Merge them on \"product_id\" and calculate total revenue (quantity × price).",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "sales = pd.DataFrame({\"product_id\": [1, 2, 3], \"quantity\": [10, 20, 15]})\nproducts = pd.DataFrame({\"product_id\": [1, 2, 3], \"name\": [\"Laptop\", \"Mouse\", \"Keyboard\"], \"price\": [1200, 25, 80]})\nmerged = pd.merge(sales, products, on=\"product_id\")\nmerged[\"revenue\"] = merged[\"quantity\"] * merged[\"price\"]",
+    "explanation": "After merging, revenue is computed via element-wise multiplication."
+  },
+  {
+    "id": 275,
+    "qid_original": 275,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create three DataFrames: `df1 = pd.DataFrame({\"id\": [1, 2], \"a\": [10, 20]})`, `df2 = pd.DataFrame({\"id\": [1, 2], \"b\": [30, 40]})`, and `df3 = pd.DataFrame({\"id\": [1, 2], \"c\": [50, 60]})`. Merge all three sequentially on \"id\".",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"id\": [1, 2], \"a\": [10, 20]})\ndf2 = pd.DataFrame({\"id\": [1, 2], \"b\": [30, 40]})\ndf3 = pd.DataFrame({\"id\": [1, 2], \"c\": [50, 60]})\nmerged = pd.merge(pd.merge(df1, df2, on=\"id\"), df3, on=\"id\")",
+    "explanation": "Sequential merges combine multiple DataFrames on the same key."
+  },
+  {
+    "id": 276,
+    "qid_original": 276,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two small DataFrames: `df1 = pd.DataFrame({\"color\": [\"red\", \"blue\"]})` and `df2 = pd.DataFrame({\"size\": [\"S\", \"M\", \"L\"]})`. Create a cross join (Cartesian product) using `pd.merge()` with `how=\"cross\"`.",
+    "check_variable": [
+      "cross_join"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"color\": [\"red\", \"blue\"]})\ndf2 = pd.DataFrame({\"size\": [\"S\", \"M\", \"L\"]})\ncross_join = pd.merge(df1, df2, how=\"cross\")",
+    "explanation": "A cross join produces the Cartesian product of both DataFrames."
+  },
+  {
+    "id": 277,
+    "qid_original": 277,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames with overlapping column names: `df1 = pd.DataFrame({\"id\": [1, 2], \"value\": [10, 20], \"name\": [\"A\", \"B\"]})` and `df2 = pd.DataFrame({\"id\": [1, 2], \"value\": [100, 200], \"code\": [\"X\", \"Y\"]})`. Merge on \"id\" using suffixes `_left` and `_right`.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"id\": [1, 2], \"value\": [10, 20], \"name\": [\"A\", \"B\"]})\ndf2 = pd.DataFrame({\"id\": [1, 2], \"value\": [100, 200], \"code\": [\"X\", \"Y\"]})\nmerged = pd.merge(df1, df2, on=\"id\", suffixes=(\"_left\", \"_right\"))",
+    "explanation": "Suffixes disambiguate overlapping column names."
+  },
+  {
+    "id": 278,
+    "qid_original": 278,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `df1 = pd.DataFrame({\"id\": [1, 1, 2], \"val\": [10, 15, 20]})` and `df2 = pd.DataFrame({\"id\": [1, 2, 3], \"score\": [100, 200, 300]})`. Merge with `validate=\"1:m\"` to ensure one-to-many relationship.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"id\": [1, 1, 2], \"val\": [10, 15, 20]})\ndf2 = pd.DataFrame({\"id\": [1, 2, 3], \"score\": [100, 200, 300]})\nmerged = pd.merge(df2, df1, on=\"id\", validate=\"1:m\")",
+    "explanation": "validate checks that the merge follows a one-to-many relationship."
+  },
+  {
+    "id": 279,
+    "qid_original": 279,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `df1 = pd.DataFrame({\"x\": [1, 2]})` and `df2 = pd.DataFrame({\"x\": [3, 4]})`. Concatenate them with keys [\"first\", \"second\"] to create a hierarchical MultiIndex using `pd.concat()`.",
+    "check_variable": [
+      "concat_df"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"x\": [1, 2]})\ndf2 = pd.DataFrame({\"x\": [3, 4]})\nconcat_df = pd.concat([df1, df2], keys=[\"first\", \"second\"])",
+    "explanation": "Keys create a hierarchical MultiIndex during concatenation."
+  },
+  {
+    "id": 280,
+    "qid_original": 280,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create `df1 = pd.DataFrame({\"A\": [1, 2]}, index=[0, 1])` and `df2 = pd.DataFrame({\"key\": [0, 1], \"B\": [10, 20]})`. Merge df1's index with df2's \"key\" column using `left_index=True` and `right_on=\"key\"`.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"A\": [1, 2]}, index=[0, 1])\ndf2 = pd.DataFrame({\"key\": [0, 1], \"B\": [10, 20]})\nmerged = pd.merge(df1, df2, left_index=True, right_on=\"key\")",
+    "explanation": "Merging can align an index with a column key."
+  },
+  {
+    "id": 281,
+    "qid_original": 281,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `df1 = pd.DataFrame({\"id\": [1, 2, 3, 4], \"name\": [\"A\", \"B\", \"C\", \"D\"]})` and `df2 = pd.DataFrame({\"id\": [2, 3]})`. Perform an anti-join to find rows in df1 that are NOT in df2 (use indicator and filter).",
+    "check_variable": [
+      "anti_join"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"id\": [1, 2, 3, 4], \"name\": [\"A\", \"B\", \"C\", \"D\"]})\ndf2 = pd.DataFrame({\"id\": [2, 3]})\nmerged = pd.merge(df1, df2, on=\"id\", how=\"left\", indicator=True)\nanti_join = merged[merged[\"_merge\"] == \"left_only\"]",
+    "explanation": "Filtering on left_only yields rows exclusive to df1."
+  },
+  {
+    "id": 282,
+    "qid_original": 282,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames with timestamps: `df1 = pd.DataFrame({\"time\": pd.to_datetime([\"2024-01-01 10:00\", \"2024-01-01 10:05\"]), \"value\": [1, 2]})` and `df2 = pd.DataFrame({\"time\": pd.to_datetime([\"2024-01-01 10:01\", \"2024-01-01 10:06\"]), \"price\": [100, 200]})`. Use `pd.merge_asof()` to merge with closest timestamps.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"time\": pd.to_datetime([\"2024-01-01 10:00\", \"2024-01-01 10:05\"]), \"value\": [1, 2]})\ndf2 = pd.DataFrame({\"time\": pd.to_datetime([\"2024-01-01 10:01\", \"2024-01-01 10:06\"]), \"price\": [100, 200]})\nmerged = pd.merge_asof(df1.sort_values(\"time\"), df2.sort_values(\"time\"), on=\"time\")",
+    "explanation": "merge_asof matches rows by nearest earlier timestamp."
+  },
+  {
+    "id": 283,
+    "qid_original": 283,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames with different columns: `df1 = pd.DataFrame({\"A\": [1, 2], \"B\": [3, 4]})` and `df2 = pd.DataFrame({\"C\": [5, 6], \"D\": [7, 8]})`. Concatenate horizontally along axis=1 to combine all columns.",
+    "check_variable": [
+      "concat_df"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "df1 = pd.DataFrame({\"A\": [1, 2], \"B\": [3, 4]})\ndf2 = pd.DataFrame({\"C\": [5, 6], \"D\": [7, 8]})\nconcat_df = pd.concat([df1, df2], axis=1)",
+    "explanation": "axis=1 concatenates DataFrames column-wise."
+  },
+  {
+    "id": 284,
+    "qid_original": 284,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create three DataFrames for different semesters: `fall = pd.DataFrame({\"student_id\": [1, 2, 3], \"fall_grade\": [\"A\", \"B\", \"A\"]})`, `spring = pd.DataFrame({\"student_id\": [1, 3, 4], \"spring_grade\": [\"B\", \"A\", \"C\"]})`, and `summer = pd.DataFrame({\"student_id\": [2, 3, 5], \"summer_grade\": [\"A\", \"B\", \"B\"]})`. Merge all three with outer joins and fill missing grades with \"Not Enrolled\".",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "fall = pd.DataFrame({\"student_id\": [1, 2, 3], \"fall_grade\": [\"A\", \"B\", \"A\"]})\nspring = pd.DataFrame({\"student_id\": [1, 3, 4], \"spring_grade\": [\"B\", \"A\", \"C\"]})\nsummer = pd.DataFrame({\"student_id\": [2, 3, 5], \"summer_grade\": [\"A\", \"B\", \"B\"]})\nmerged = pd.merge(pd.merge(fall, spring, on=\"student_id\", how=\"outer\"), summer, on=\"student_id\", how=\"outer\").fillna(\"Not Enrolled\")",
+    "explanation": "Outer joins preserve all students; fillna labels missing semesters."
+  },
+  {
+    "id": 285,
+    "qid_original": 285,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create three DataFrames: `students = pd.DataFrame({\"student_id\": [1, 2], \"name\": [\"Alice\", \"Bob\"]})`, `courses = pd.DataFrame({\"course_id\": [101, 102], \"course_name\": [\"Math\", \"Physics\"]})`, and `grades = pd.DataFrame({\"student_id\": [1, 1, 2], \"course_id\": [101, 102, 101], \"grade\": [\"A\", \"B\", \"A\"]})`. Merge all three to create a master dataset showing student names, course names, and grades.",
+    "check_variable": [
+      "master"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "students = pd.DataFrame({\"student_id\": [1, 2], \"name\": [\"Alice\", \"Bob\"]})\ncourses = pd.DataFrame({\"course_id\": [101, 102], \"course_name\": [\"Math\", \"Physics\"]})\ngrades = pd.DataFrame({\"student_id\": [1, 1, 2], \"course_id\": [101, 102, 101], \"grade\": [\"A\", \"B\", \"A\"]})\nmaster = pd.merge(pd.merge(grades, students, on=\"student_id\"), courses, on=\"course_id\")",
+    "explanation": "Multiple merges combine relational tables into a master dataset."
+  },
+  {
+    "id": 286,
+    "qid_original": 286,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `left = pd.DataFrame({\"id\": [1, 2, 3], \"x\": [10, 20, 30]})` and `right = pd.DataFrame({\"id\": [2, 3, 4], \"y\": [200, 300, 400]})`. Merge with `indicator=True`, then filter to show only rows that exist in both DataFrames.",
+    "check_variable": [
+      "intersection"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "left = pd.DataFrame({\"id\": [1, 2, 3], \"x\": [10, 20, 30]})\nright = pd.DataFrame({\"id\": [2, 3, 4], \"y\": [200, 300, 400]})\nmerged = pd.merge(left, right, on=\"id\", how=\"outer\", indicator=True)\nintersection = merged[merged[\"_merge\"] == \"both\"]",
+    "explanation": "Rows marked as both exist in both DataFrames."
+  },
+  {
+    "id": 287,
+    "qid_original": 287,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames with unique IDs: `users = pd.DataFrame({\"user_id\": [1, 2, 3], \"name\": [\"Alice\", \"Bob\", \"Charlie\"]})` and `profiles = pd.DataFrame({\"user_id\": [1, 2, 3], \"bio\": [\"...\", \"...\", \"...\"]})`. Merge with `validate=\"1:1\"` to ensure one-to-one relationship.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "users = pd.DataFrame({\"user_id\": [1, 2, 3], \"name\": [\"Alice\", \"Bob\", \"Charlie\"]})\nprofiles = pd.DataFrame({\"user_id\": [1, 2, 3], \"bio\": [\"...\", \"...\", \"...\"]})\nmerged = pd.merge(users, profiles, on=\"user_id\", validate=\"1:1\")",
+    "explanation": "validate=\"1:1\" enforces a one-to-one merge."
+  },
+  {
+    "id": 288,
+    "qid_original": 288,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two time-series DataFrames with different frequencies: `trades = pd.DataFrame({\"time\": pd.to_datetime([\"2024-01-01 09:00\", \"2024-01-01 09:05\", \"2024-01-01 09:12\"]), \"trade_price\": [100, 102, 101]})` and `quotes = pd.DataFrame({\"time\": pd.to_datetime([\"2024-01-01 09:01\", \"2024-01-01 09:07\", \"2024-01-01 09:10\"]), \"quote_price\": [99, 101, 100]})`. Use `pd.merge_asof()` to match each trade with the most recent quote.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "trades = pd.DataFrame({\"time\": pd.to_datetime([\"2024-01-01 09:00\", \"2024-01-01 09:05\", \"2024-01-01 09:12\"]), \"trade_price\": [100, 102, 101]})\nquotes = pd.DataFrame({\"time\": pd.to_datetime([\"2024-01-01 09:01\", \"2024-01-01 09:07\", \"2024-01-01 09:10\"]), \"quote_price\": [99, 101, 100]})\nmerged = pd.merge_asof(trades.sort_values(\"time\"), quotes.sort_values(\"time\"), on=\"time\", direction=\"backward\")",
+    "explanation": "direction=\"backward\" matches each trade with the most recent prior quote."
+  },
+  {
+    "id": 289,
+    "qid_original": 289,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `employees = pd.DataFrame({\"emp_id\": [1, 2, 3, 4], \"name\": [\"Alice\", \"Bob\", \"Charlie\", \"David\"], \"dept_id\": [10, 20, 10, 20], \"salary\": [60000, 70000, 65000, 75000]})` and `departments = pd.DataFrame({\"dept_id\": [10, 20], \"dept_name\": [\"Engineering\", \"Marketing\"]})`. Merge them, then calculate average salary per department.",
+    "check_variable": [
+      "avg_salary"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "employees = pd.DataFrame({\"emp_id\": [1, 2, 3, 4], \"name\": [\"Alice\", \"Bob\", \"Charlie\", \"David\"], \"dept_id\": [10, 20, 10, 20], \"salary\": [60000, 70000, 65000, 75000]})\ndepartments = pd.DataFrame({\"dept_id\": [10, 20], \"dept_name\": [\"Engineering\", \"Marketing\"]})\nmerged = pd.merge(employees, departments, on=\"dept_id\")\navg_salary = merged.groupby(\"dept_name\")[\"salary\"].mean()",
+    "explanation": "After merging, groupby computes average salary per department."
+  },
+  {
+    "id": 290,
+    "qid_original": 290,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `sales = pd.DataFrame({\"product\": [\"Laptop\", \"Mouse\", \"Laptop\", \"Keyboard\"], \"revenue\": [1200, 25, 1100, 80], \"category_id\": [1, 2, 1, 2]})` and `categories = pd.DataFrame({\"category_id\": [1, 2], \"category\": [\"Electronics\", \"Accessories\"]})`. Merge them and calculate total revenue per category.",
+    "check_variable": [
+      "category_revenue"
+    ],
+    "expected_value": [
+      ["Series"]
+    ],
+    "solution_code": "sales = pd.DataFrame({\"product\": [\"Laptop\", \"Mouse\", \"Laptop\", \"Keyboard\"], \"revenue\": [1200, 25, 1100, 80], \"category_id\": [1, 2, 1, 2]})\ncategories = pd.DataFrame({\"category_id\": [1, 2], \"category\": [\"Electronics\", \"Accessories\"]})\nmerged = pd.merge(sales, categories, on=\"category_id\")\ncategory_revenue = merged.groupby(\"category\")[\"revenue\"].sum()",
+    "explanation": "Grouping after merge aggregates revenue per category."
+  },
+  {
+    "id": 291,
+    "qid_original": 291,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `sales = pd.DataFrame({\"date\": [\"2024-01-01\", \"2024-01-02\", \"2024-01-03\"], \"region\": [\"North\", \"South\", \"North\"], \"revenue\": [1000, 1500, 1200]})` and `weather = pd.DataFrame({\"date\": [\"2024-01-01\", \"2024-01-02\", \"2024-01-03\"], \"region\": [\"North\", \"North\", \"South\"], \"temperature\": [20, 22, 30]})`. Merge on both \"date\" and \"region\" to analyze if weather affects sales.",
+    "check_variable": [
+      "merged"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "sales = pd.DataFrame({\"date\": [\"2024-01-01\", \"2024-01-02\", \"2024-01-03\"], \"region\": [\"North\", \"South\", \"North\"], \"revenue\": [1000, 1500, 1200]})\nweather = pd.DataFrame({\"date\": [\"2024-01-01\", \"2024-01-02\", \"2024-01-03\"], \"region\": [\"North\", \"North\", \"South\"], \"temperature\": [20, 22, 30]})\nsales[\"date\"] = pd.to_datetime(sales[\"date\"])\nweather[\"date\"] = pd.to_datetime(weather[\"date\"])\nmerged = pd.merge(sales, weather, on=[\"date\", \"region\"])",
+    "explanation": "Merging on date and region aligns sales with weather data."
+  },
+  {
+    "id": 292,
+    "qid_original": 292,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create two DataFrames: `orders = pd.DataFrame({\"order_id\": [1, 2, 3], \"customer_id\": [101, 102, 101], \"region\": [\"East\", \"West\", \"East\"], \"amount\": [250, 300, 150]})` and `customers = pd.DataFrame({\"customer_id\": [101, 102, 103], \"region\": [\"East\", \"West\", \"North\"], \"vip\": [True, False, True]})`. Merge on both \"customer_id\" and \"region\", then filter to show only VIP customer orders.",
+    "check_variable": [
+      "vip_orders"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "orders = pd.DataFrame({\"order_id\": [1, 2, 3], \"customer_id\": [101, 102, 101], \"region\": [\"East\", \"West\", \"East\"], \"amount\": [250, 300, 150]})\ncustomers = pd.DataFrame({\"customer_id\": [101, 102, 103], \"region\": [\"East\", \"West\", \"North\"], \"vip\": [True, False, True]})\nmerged = pd.merge(orders, customers, on=[\"customer_id\", \"region\"])\nvip_orders = merged[merged[\"vip\"]]",
+    "explanation": "Filtering after merge selects only VIP customer orders."
+  },
+  {
+    "id": 293,
+    "qid_original": 293,
+    "category": "Merging and Joining (35 Questions)",
+    "question_raw": "Create a DataFrame of employees and their managers: `employees = pd.DataFrame({\"emp_id\": [1, 2, 3, 4], \"name\": [\"Alice\", \"Bob\", \"Charlie\", \"David\"], \"manager_id\": [3, 3, 4, None]})`. Perform a self-join to match each employee with their manager's name.",
+    "check_variable": [
+      "self_join"
+    ],
+    "expected_value": [
+      ["DataFrame"]
+    ],
+    "solution_code": "employees = pd.DataFrame({\"emp_id\": [1, 2, 3, 4], \"name\": [\"Alice\", \"Bob\", \"Charlie\", \"David\"], \"manager_id\": [3, 3, 4, None]})\nself_join = pd.merge(employees, employees, left_on=\"manager_id\", right_on=\"emp_id\", how=\"left\", suffixes=(\"_emp\", \"_mgr\"))[[\"emp_id_emp\", \"name_emp\", \"name_mgr\"]]",
+    "explanation": "A self-join links employees to their managers via matching IDs."
+  },
+  [
+  {
     "id": 301,
     "qid_original": 301,
     "category": "Functions: Basics (Questions 301-315)",
@@ -4623,4 +4946,7 @@
     "solution_code": "def create_multiplier(n):\n    def multiplier(x):\n        return x * n\n    return multiplier\n\ntriple = create_multiplier(3)\nresult = triple(5)",
     "explanation": "The inner function remembers the value of n via a closure."
   }
+]
+
+
 ]
