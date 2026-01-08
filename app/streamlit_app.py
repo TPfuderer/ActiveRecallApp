@@ -344,14 +344,12 @@ with tabs[0]:
 
     # JS: Ctrl+Enter triggers the hidden button
     st.markdown("""
-    <script>
-    document.addEventListener("keydown", function(e) {
-        if (e.ctrlKey && e.key === "Enter") {
-            const btn = window.parent.document.querySelector('button[k="run_hidden"]');
-            if(btn){ btn.click(); }
-        }
-    });
-    </script>
+    <style>
+    /* Hide the whole Streamlit button that contains 'run_hidden' */
+    div[data-testid="stButton"]:has(strong:contains("run_hidden")) {
+        display: none !important;
+    }
+    </style>
     """, unsafe_allow_html=True)
 
     # --- Code editor ---
