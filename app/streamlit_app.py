@@ -606,25 +606,21 @@ with tabs[0]:
     st.progress(progress)
     st.caption(f"Aufgabe {st.session_state['task_index'] + 1} von {len(tasks)}")
 
-    # --- Statistik ---
-    if st.session_state["ratings"]:
-        st.markdown("### 📊 Deine Bewertungen & Durchführungen:")
+    st.header("📊 Progress Dashboard")
 
-        # 🔥 IDs sicher in INT konvertieren (LÖST dein Problem!)
-        normalized_ratings = {int(k): v for k, v in st.session_state["ratings"].items()}
-        normalized_attempts = {int(k): v for k, v in st.session_state["attempts"].items()}
-        normalized_review = {int(k): v for k, v in st.session_state["review_data"].items()}
+    # --- Attempts sicher normalisieren ---
+    attempts_raw = st.session_state.get("attempts", {})
 
-        for tid in sorted(normalized_ratings.keys()):
-            rating = normalized_ratings[tid]
-            count = normalized_attempts.get(tid, 0)
-            data = normalized_review.get(tid, {})
-            interval = data.get("interval", 0)
-            next_in = round(interval, 2)
+    # attempts kann None, list, str, usw. sein → IMMER in dict casten!
+    if isinstance(attempts_raw, dict):
+        # Keys in int konvertieren
+        attempts = {int(k): v for k, v in attempts_raw.items()}
+    else:
+        attempts = {}
 
-            st.write(
-                f"• Task {tid}: {rating.capitalize()} – {count}x durchgeführt | ⏳ ~{next_in} Tage"
-            )
+    total_tasks = len(tasks)
+    answered_once = sum(1 for t, c in attempts.items() if c >= 1)
+
 
 
 # ============================================================
