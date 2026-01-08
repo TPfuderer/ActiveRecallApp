@@ -2792,5 +2792,297 @@
     ],
     "solution_code": "arr = np.arange(24).reshape(2, 3, 4)\ndims = arr.ndim",
     "explanation": "A 3D array has ndim = 3 in NumPy."
+  },
+  {
+    "id": 161,
+    "qid_original": 161,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Reshape the array `np.arange(12)` to shape (3, 4).",
+    "check_variable": [
+      "reshaped_arr"
+    ],
+    "expected_value": [
+      [
+        [0, 1, 2, 3],
+        [4, 5, 6, 7],
+        [8, 9, 10, 11]
+      ]
+    ],
+    "solution_code": "arr = np.arange(12)\nreshaped_arr = arr.reshape(3, 4)",
+    "explanation": "np.arange(12) creates values from 0 to 11, which are reshaped into 3 rows and 4 columns."
+  },
+  {
+    "id": 162,
+    "qid_original": 162,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Flatten a 2D array `[[1,2,3], [4,5,6]]` to 1D.",
+    "check_variable": [
+      "flat_arr"
+    ],
+    "expected_value": [
+      [1, 2, 3, 4, 5, 6]
+    ],
+    "solution_code": "arr = np.array([[1, 2, 3], [4, 5, 6]])\nflat_arr = arr.flatten()",
+    "explanation": "flatten() converts a multi-dimensional array into a 1D array."
+  },
+  {
+    "id": 163,
+    "qid_original": 163,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([[1,2,3], [4,5,6]])` and access the element in the second row, third column.",
+    "check_variable": [
+      "value"
+    ],
+    "expected_value": [
+      [6]
+    ],
+    "solution_code": "arr = np.array([[1, 2, 3], [4, 5, 6]])\nvalue = arr[1, 2]",
+    "explanation": "NumPy uses zero-based indexing, so row index 1 and column index 2 access the value 6."
+  },
+  {
+    "id": 164,
+    "qid_original": 164,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([[10, 20, 30], [40, 50, 60], [70, 80, 90]])` and extract the first row.",
+    "check_variable": [
+      "first_row"
+    ],
+    "expected_value": [
+      [10, 20, 30]
+    ],
+    "solution_code": "arr = np.array([[10, 20, 30], [40, 50, 60], [70, 80, 90]])\nfirst_row = arr[0]",
+    "explanation": "Indexing with arr[0] returns the first row of the array."
+  },
+  {
+    "id": 165,
+    "qid_original": 165,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])` and extract the last column.",
+    "check_variable": [
+      "last_col"
+    ],
+    "expected_value": [
+      [3, 6, 9]
+    ],
+    "solution_code": "arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nlast_col = arr[:, -1]",
+    "explanation": "Using arr[:, -1] selects all rows from the last column."
+  },
+  {
+    "id": 166,
+    "qid_original": 166,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create a 3x3 array with values from 1 to 9 using `np.arange(1, 10).reshape(3, 3)`, then slice to get rows at indices 1-2 and columns at indices 0-1.",
+    "check_variable": [
+      "slice_arr"
+    ],
+    "expected_value": [
+      [
+        [4, 5],
+        [7, 8]
+      ]
+    ],
+    "solution_code": "arr = np.arange(1, 10).reshape(3, 3)\nslice_arr = arr[1:3, 0:2]",
+    "explanation": "Row slice 1:3 selects rows 1 and 2; column slice 0:2 selects the first two columns."
+  },
+  {
+    "id": 167,
+    "qid_original": 167,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Add two arrays element-wise: `[1, 2, 3]` and `[4, 5, 6]`.",
+    "check_variable": [
+      "sum_arr"
+    ],
+    "expected_value": [
+      [5, 7, 9]
+    ],
+    "solution_code": "a = np.array([1, 2, 3])\nb = np.array([4, 5, 6])\nsum_arr = a + b",
+    "explanation": "NumPy performs element-wise addition when adding arrays of the same shape."
+  },
+  {
+    "id": 168,
+    "qid_original": 168,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Multiply an array by a scalar: `[1, 2, 3, 4, 5] * 2`.",
+    "check_variable": [
+      "scaled_arr"
+    ],
+    "expected_value": [
+      [2, 4, 6, 8, 10]
+    ],
+    "solution_code": "arr = np.array([1, 2, 3, 4, 5])\nscaled_arr = arr * 2",
+    "explanation": "Multiplying an array by a scalar scales each element by that value."
+  },
+  {
+    "id": 169,
+    "qid_original": 169,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Calculate the square of each element in `[1, 2, 3, 4, 5]`.",
+    "check_variable": [
+      "squared_arr"
+    ],
+    "expected_value": [
+      [1, 4, 9, 16, 25]
+    ],
+    "solution_code": "arr = np.array([1, 2, 3, 4, 5])\nsquared_arr = arr ** 2",
+    "explanation": "The ** operator applies element-wise exponentiation in NumPy."
+  },
+  {
+    "id": 170,
+    "qid_original": 170,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Calculate the dot product of two arrays: `[1, 2, 3]` and `[4, 5, 6]`.",
+    "check_variable": [
+      "dot_val"
+    ],
+    "expected_value": [
+      [32]
+    ],
+    "solution_code": "a = np.array([1, 2, 3])\nb = np.array([4, 5, 6])\ndot_val = np.dot(a, b)",
+    "explanation": "The dot product is calculated as 1×4 + 2×5 + 3×6 = 32."
+  },
+  {
+    "id": 171,
+    "qid_original": 171,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([12, 5, 8, 130, 44])` and find the sum of all elements.",
+    "check_variable": [
+      "sum_val"
+    ],
+    "expected_value": [
+      [199]
+    ],
+    "solution_code": "arr = np.array([12, 5, 8, 130, 44])\nsum_val = arr.sum()",
+    "explanation": "sum() adds all elements of the array together."
+  },
+  {
+    "id": 172,
+    "qid_original": 172,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([23, 45, 12, 67, 34, 89])` and find the mean.",
+    "check_variable": [
+      "mean_val"
+    ],
+    "expected_value": [
+      [45.0]
+    ],
+    "solution_code": "arr = np.array([23, 45, 12, 67, 34, 89])\nmean_val = arr.mean()",
+    "explanation": "mean() computes the arithmetic average of the array values."
+  },
+  {
+    "id": 173,
+    "qid_original": 173,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([10, 15, 20, 25, 30, 35])` and find the standard deviation.",
+    "check_variable": [
+      "std_val"
+    ],
+    "expected_value": [
+      [8.539125638299666]
+    ],
+    "solution_code": "arr = np.array([10, 15, 20, 25, 30, 35])\nstd_val = arr.std()",
+    "explanation": "std() computes the population standard deviation (ddof=0 by default in NumPy)."
+  },
+  {
+    "id": 174,
+    "qid_original": 174,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([45, 23, 78, 12, 90, 56])` and find the maximum value.",
+    "check_variable": [
+      "max_val"
+    ],
+    "expected_value": [
+      [90]
+    ],
+    "solution_code": "arr = np.array([45, 23, 78, 12, 90, 56])\nmax_val = arr.max()",
+    "explanation": "max() returns the largest value in the array."
+  },
+  {
+    "id": 175,
+    "qid_original": 175,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([45, 23, 78, 12, 90, 56])` and find the index of the maximum value.",
+    "check_variable": [
+      "max_idx"
+    ],
+    "expected_value": [
+      [4]
+    ],
+    "solution_code": "arr = np.array([45, 23, 78, 12, 90, 56])\nmax_idx = arr.argmax()",
+    "explanation": "argmax() returns the index of the maximum element in the array."
+  },
+  {
+    "id": 176,
+    "qid_original": 176,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([64, 25, 12, 90, 45, 33])` and sort it in ascending order.",
+    "check_variable": [
+      "sorted_arr"
+    ],
+    "expected_value": [
+      [12, 25, 33, 45, 64, 90]
+    ],
+    "solution_code": "arr = np.array([64, 25, 12, 90, 45, 33])\nsorted_arr = np.sort(arr)",
+    "explanation": "np.sort() returns a new array sorted in ascending order."
+  },
+  {
+    "id": 177,
+    "qid_original": 177,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([64, 25, 12, 90, 45, 33])` and get the indices that would sort this array.",
+    "check_variable": [
+      "sort_idx"
+    ],
+    "expected_value": [
+      [2, 1, 5, 4, 0, 3]
+    ],
+    "solution_code": "arr = np.array([64, 25, 12, 90, 45, 33])\nsort_idx = np.argsort(arr)",
+    "explanation": "argsort() returns the indices that would sort the array."
+  },
+  {
+    "id": 178,
+    "qid_original": 178,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Filter elements greater than 5 from an array `[1, 3, 5, 7, 9, 11]`.",
+    "check_variable": [
+      "filtered_arr"
+    ],
+    "expected_value": [
+      [7, 9, 11]
+    ],
+    "solution_code": "arr = np.array([1, 3, 5, 7, 9, 11])\nfiltered_arr = arr[arr > 5]",
+    "explanation": "Boolean indexing keeps only elements that satisfy the condition."
+  },
+  {
+    "id": 179,
+    "qid_original": 179,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create the array `arr = np.array([2, 8, 3, 9, 1, 6, 4])` and replace all elements greater than 5 with 5.",
+    "check_variable": [
+      "clipped_arr"
+    ],
+    "expected_value": [
+      [2, 5, 3, 5, 1, 5, 4]
+    ],
+    "solution_code": "arr = np.array([2, 8, 3, 9, 1, 6, 4])\nclipped_arr = np.where(arr > 5, 5, arr)",
+    "explanation": "np.where() conditionally replaces values based on a boolean expression."
+  },
+  {
+    "id": 180,
+    "qid_original": 180,
+    "category": "NumPy Basics (40 Questions)",
+    "question_raw": "Create two arrays: `arr1 = np.array([[1, 2], [3, 4]])` and `arr2 = np.array([[5, 6], [7, 8]])`, then concatenate them vertically using `np.concatenate()`.",
+    "check_variable": [
+      "concat_arr"
+    ],
+    "expected_value": [
+      [
+        [1, 2],
+        [3, 4],
+        [5, 6],
+        [7, 8]
+      ]
+    ],
+    "solution_code": "arr1 = np.array([[1, 2], [3, 4]])\narr2 = np.array([[5, 6], [7, 8]])\nconcat_arr = np.concatenate((arr1, arr2), axis=0)",
+    "explanation": "Setting axis=0 stacks the arrays row-wise (vertical concatenation)."
   }
 ]
