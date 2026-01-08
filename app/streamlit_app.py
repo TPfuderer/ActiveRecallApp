@@ -255,6 +255,23 @@ with tabs[0]:
     # 🔽 FILTER: Task-ID oder Kategorie
     # ----------------------------------------
 
+    with st.popover("ℹ️ Filter-Hilfe"):
+        st.markdown(
+            """
+            **Alle Aufgaben**  
+            → Freies Lernen ohne Einschränkungen. Die App wählt automatisch fällige Aufgaben
+            basierend auf deinem Wiederholungsintervall.
+
+            **Nach Kategorie**  
+            → Fokussiertes Lernen zu einem Themenbereich  
+            (z. B. Listen, Dictionaries, Pandas, NumPy).
+
+            **Direkte Task-ID**  
+            → Ermöglicht **chronologisches Vorgehen** oder das gezielte Aufrufen
+            einer bestimmten Aufgabe (z. B. nach Empfehlung oder zum Wiederholen).
+            """
+        )
+
     filter_mode = st.radio(
         "Filtermodus wählen:",
         ["Alle Aufgaben", "Nach Kategorie", "Direkte Task-ID"],
