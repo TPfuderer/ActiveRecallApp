@@ -4665,6 +4665,76 @@
     "solution_code": "employees = pd.DataFrame({\"emp_id\": [1, 2, 3, 4], \"name\": [\"Alice\", \"Bob\", \"Charlie\", \"David\"], \"manager_id\": [3, 3, 4, None]})\nself_join = pd.merge(employees, employees, left_on=\"manager_id\", right_on=\"emp_id\", how=\"left\", suffixes=(\"_emp\", \"_mgr\"))[[\"emp_id_emp\", \"name_emp\", \"name_mgr\"]]",
     "explanation": "A self-join links employees to their managers via matching IDs."
   },
+    {
+    "id": 294,
+    "qid_original": 294,
+    "category": "For Fun (Optional)",
+    "question_raw": "Print the text \"Python is fun! 🐍\".",
+    "check_variable": ["output"],
+    "expected_value": [["Python is fun! 🐍"]],
+    "solution_code": "output = \"Python is fun! 🐍\"\nprint(output)",
+    "explanation": "A simple print statement with text and an emoji."
+  },
+  {
+    "id": 295,
+    "qid_original": 295,
+    "category": "For Fun (Optional)",
+    "question_raw": "Create a variable `answer` and assign it the value 42.",
+    "check_variable": ["answer"],
+    "expected_value": [[42]],
+    "solution_code": "answer = 42",
+    "explanation": "42 is a classic reference known as the answer to life, the universe, and everything."
+  },
+  {
+    "id": 296,
+    "qid_original": 296,
+    "category": "For Fun (Optional)",
+    "question_raw": "Create a string that repeats \"ha\" three times (result: \"hahaha\").",
+    "check_variable": ["result"],
+    "expected_value": [["hahaha"]],
+    "solution_code": "result = \"ha\" * 3",
+    "explanation": "Strings can be multiplied to repeat them."
+  },
+  {
+    "id": 297,
+    "qid_original": 297,
+    "category": "For Fun (Optional)",
+    "question_raw": "Check if the number 7 is greater than 3 and store the result in `is_true`.",
+    "check_variable": ["is_true"],
+    "expected_value": [[true]],
+    "solution_code": "is_true = 7 > 3",
+    "explanation": "Comparison operators return boolean values."
+  },
+  {
+    "id": 298,
+    "qid_original": 298,
+    "category": "For Fun (Optional)",
+    "question_raw": "Create a list with three emojis: 😀, 🚀, 🐍.",
+    "check_variable": ["emojis"],
+    "expected_value": [["😀", "🚀", "🐍"]],
+    "solution_code": "emojis = [\"😀\", \"🚀\", \"🐍\"]",
+    "explanation": "Lists can store any type of object, including emojis."
+  },
+  {
+    "id": 299,
+    "qid_original": 299,
+    "category": "For Fun (Optional)",
+    "question_raw": "Calculate 123 + 456 and store the result in `result`.",
+    "check_variable": ["result"],
+    "expected_value": [[579]],
+    "solution_code": "result = 123 + 456",
+    "explanation": "Basic arithmetic in Python."
+  },
+  {
+    "id": 300,
+    "qid_original": 300,
+    "category": "For Fun (Optional)",
+    "question_raw": "Create a variable `message` with the value \"You made it to 300! 🎉\".",
+    "check_variable": ["message"],
+    "expected_value": [["You made it to 300! 🎉"]],
+    "solution_code": "message = \"You made it to 300! 🎉\"",
+    "explanation": "A celebratory milestone message."
+  },
   {
     "id": 301,
     "qid_original": 301,
