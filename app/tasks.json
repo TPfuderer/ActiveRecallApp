@@ -5219,6 +5219,206 @@
     "expected_value": [[1, 2, 3, 4]],
     "solution_code": "def flatten_list(nested_list):\n    return [item for sublist in nested_list for item in sublist]\n\nresult = flatten_list([[1, 2], [3, 4]])",
     "explanation": "Nested list comprehensions flatten one level of nesting."
+  },
+    {
+    "id": 341,
+    "qid_original": 341,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Define a class `Person` with attributes `name` and `age` set in the `__init__` method.",
+    "check_variable": ["person"],
+    "expected_value": [["object"]],
+    "solution_code": "class Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n\nperson = Person(\"Alice\", 30)",
+    "explanation": "The __init__ method initializes instance attributes when an object is created."
+  },
+  {
+    "id": 342,
+    "qid_original": 342,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Add a method `introduce(self)` to the Person class that prints \"Hi, I'm {name} and I'm {age} years old.\"",
+    "check_variable": ["output"],
+    "expected_value": [["string"]],
+    "solution_code": "class Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n    def introduce(self):\n        return f\"Hi, I'm {self.name} and I'm {self.age} years old.\"\n\np = Person(\"Alice\", 30)\noutput = p.introduce()",
+    "explanation": "Instance methods can access object attributes using self."
+  },
+  {
+    "id": 343,
+    "qid_original": 343,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Create an instance of the Person class with your name and age, then call the `introduce()` method.",
+    "check_variable": ["output"],
+    "expected_value": [["string"]],
+    "solution_code": "class Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n    def introduce(self):\n        return f\"Hi, I'm {self.name} and I'm {self.age} years old.\"\n\np = Person(\"Tristan\", 25)\noutput = p.introduce()",
+    "explanation": "Objects are created from classes and can call their methods."
+  },
+  {
+    "id": 344,
+    "qid_original": 344,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Define a class `Rectangle` with attributes `length` and `width`. Add methods `area()` and `perimeter()`.",
+    "check_variable": ["rect"],
+    "expected_value": [["object"]],
+    "solution_code": "class Rectangle:\n    def __init__(self, length, width):\n        self.length = length\n        self.width = width\n    def area(self):\n        return self.length * self.width\n    def perimeter(self):\n        return 2 * (self.length + self.width)\n\nrect = Rectangle(4, 5)",
+    "explanation": "Methods encapsulate behavior related to the class."
+  },
+  {
+    "id": 345,
+    "qid_original": 345,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Add a `__str__()` method to the Rectangle class that returns \"Rectangle(length={length}, width={width})\".",
+    "check_variable": ["text"],
+    "expected_value": [["string"]],
+    "solution_code": "class Rectangle:\n    def __init__(self, length, width):\n        self.length = length\n        self.width = width\n    def __str__(self):\n        return f\"Rectangle(length={self.length}, width={self.width})\"\n\nrect = Rectangle(4, 5)\ntext = str(rect)",
+    "explanation": "__str__ defines the human-readable string representation."
+  },
+  {
+    "id": 346,
+    "qid_original": 346,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Define a class `BankAccount` with attributes `account_number` and `balance` (default 0). Add methods `deposit(amount)` and `withdraw(amount)`.",
+    "check_variable": ["account"],
+    "expected_value": [["object"]],
+    "solution_code": "class BankAccount:\n    def __init__(self, account_number, balance=0):\n        self.account_number = account_number\n        self.balance = balance\n    def deposit(self, amount):\n        self.balance += amount\n    def withdraw(self, amount):\n        self.balance -= amount\n\naccount = BankAccount(\"123\")",
+    "explanation": "Default parameters allow optional arguments in constructors."
+  },
+  {
+    "id": 347,
+    "qid_original": 347,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Add validation to the BankAccount class: `withdraw()` should only allow withdrawal if balance is sufficient. Print an error message if not.",
+    "check_variable": ["balance"],
+    "expected_value": [[100]],
+    "solution_code": "class BankAccount:\n    def __init__(self, account_number, balance=0):\n        self.account_number = account_number\n        self.balance = balance\n    def deposit(self, amount):\n        self.balance += amount\n    def withdraw(self, amount):\n        if amount <= self.balance:\n            self.balance -= amount\n        else:\n            print(\"Insufficient funds\")\n\nacc = BankAccount(\"123\", 100)\nacc.withdraw(200)\nbalance = acc.balance",
+    "explanation": "Validation prevents invalid state changes."
+  },
+  {
+    "id": 348,
+    "qid_original": 348,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Create a class `Counter` with a class variable `total_count = 0` that increments each time an instance is created. Add a class method `get_count()` that returns `total_count`.",
+    "check_variable": ["count"],
+    "expected_value": [[2]],
+    "solution_code": "class Counter:\n    total_count = 0\n    def __init__(self):\n        Counter.total_count += 1\n    @classmethod\n    def get_count(cls):\n        return cls.total_count\n\nc1 = Counter()\nc2 = Counter()\ncount = Counter.get_count()",
+    "explanation": "Class variables are shared across all instances."
+  },
+  {
+    "id": 349,
+    "qid_original": 349,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Define a class `Circle` with attribute `radius`. Add methods `area()` and `circumference()`. Use `math.pi`.",
+    "check_variable": ["circle"],
+    "expected_value": [["object"]],
+    "solution_code": "import math\nclass Circle:\n    def __init__(self, radius):\n        self.radius = radius\n    def area(self):\n        return math.pi * self.radius ** 2\n    def circumference(self):\n        return 2 * math.pi * self.radius\n\ncircle = Circle(3)",
+    "explanation": "math.pi provides an accurate constant for calculations."
+  },
+  {
+    "id": 350,
+    "qid_original": 350,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Add a `__repr__()` method to the Circle class that returns \"Circle(radius={radius})\".",
+    "check_variable": ["text"],
+    "expected_value": [["string"]],
+    "solution_code": "class Circle:\n    def __init__(self, radius):\n        self.radius = radius\n    def __repr__(self):\n        return f\"Circle(radius={self.radius})\"\n\nc = Circle(5)\ntext = repr(c)",
+    "explanation": "__repr__ is meant for unambiguous representations."
+  },
+  {
+    "id": 351,
+    "qid_original": 351,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Create a class `Student` with private attribute `_grade` (using underscore convention). Add a method `get_grade()` to access it.",
+    "check_variable": ["grade"],
+    "expected_value": [[85]],
+    "solution_code": "class Student:\n    def __init__(self, grade):\n        self._grade = grade\n    def get_grade(self):\n        return self._grade\n\ns = Student(85)\ngrade = s.get_grade()",
+    "explanation": "Leading underscore signals intended privacy by convention."
+  },
+  {
+    "id": 352,
+    "qid_original": 352,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Add a `@property` decorator to the Student class to make `grade` accessible as `student.grade` (read-only).",
+    "check_variable": ["grade"],
+    "expected_value": [[90]],
+    "solution_code": "class Student:\n    def __init__(self, grade):\n        self._grade = grade\n    @property\n    def grade(self):\n        return self._grade\n\ns = Student(90)\ngrade = s.grade",
+    "explanation": "Properties allow attribute-style access to methods."
+  },
+  {
+    "id": 353,
+    "qid_original": 353,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Extend the Student class with a `@grade.setter` to allow setting the grade with validation (must be between 0-100).",
+    "check_variable": ["grade"],
+    "expected_value": [[95]],
+    "solution_code": "class Student:\n    def __init__(self, grade):\n        self._grade = grade\n    @property\n    def grade(self):\n        return self._grade\n    @grade.setter\n    def grade(self, value):\n        if 0 <= value <= 100:\n            self._grade = value\n        else:\n            raise ValueError(\"Grade must be between 0 and 100\")\n\ns = Student(80)\ns.grade = 95\ngrade = s.grade",
+    "explanation": "Setters enforce validation on attribute assignment."
+  },
+  {
+    "id": 354,
+    "qid_original": 354,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Create a class `Temperature` with attribute `celsius`. Add a `@property` for `fahrenheit` that calculates and returns the Fahrenheit value.",
+    "check_variable": ["fahrenheit"],
+    "expected_value": [[68.0]],
+    "solution_code": "class Temperature:\n    def __init__(self, celsius):\n        self.celsius = celsius\n    @property\n    def fahrenheit(self):\n        return self.celsius * 9 / 5 + 32\n\nt = Temperature(20)\nfahrenheit = t.fahrenheit",
+    "explanation": "Computed properties derive values dynamically."
+  },
+  {
+    "id": 355,
+    "qid_original": 355,
+    "category": "Object-Oriented Programming: Basics (Questions 341-355)",
+    "question_raw": "Define a class `MathOperations` with static methods `add(x, y)`, `subtract(x, y)`, and `multiply(x, y)`.",
+    "check_variable": ["result"],
+    "expected_value": [[6]],
+    "solution_code": "class MathOperations:\n    @staticmethod\n    def add(x, y):\n        return x + y\n    @staticmethod\n    def subtract(x, y):\n        return x - y\n    @staticmethod\n    def multiply(x, y):\n        return x * y\n\nresult = MathOperations.add(2, 4)",
+    "explanation": "Static methods belong to the class but do not access instance data."
+  },
+  {
+    "id": 356,
+    "qid_original": 356,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a base class `Animal` with attribute `name` and method `speak()` that prints \"Some generic animal sound\".",
+    "check_variable": ["animal"],
+    "expected_value": [["object"]],
+    "solution_code": "class Animal:\n    def __init__(self, name):\n        self.name = name\n    def speak(self):\n        return \"Some generic animal sound\"\n\nanimal = Animal(\"Creature\")",
+    "explanation": "Base classes define shared behavior."
+  },
+  {
+    "id": 357,
+    "qid_original": 357,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Dog` that inherits from `Animal` and overrides `speak()` to print \"Woof!\".",
+    "check_variable": ["sound"],
+    "expected_value": [["Woof!"]],
+    "solution_code": "class Animal:\n    def speak(self):\n        return \"Some generic animal sound\"\n\nclass Dog(Animal):\n    def speak(self):\n        return \"Woof!\"\n\nd = Dog()\nsound = d.speak()",
+    "explanation": "Method overriding customizes inherited behavior."
+  },
+  {
+    "id": 358,
+    "qid_original": 358,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Cat` that inherits from `Animal` and overrides `speak()` to print \"Meow!\".",
+    "check_variable": ["sound"],
+    "expected_value": [["Meow!"]],
+    "solution_code": "class Animal:\n    def speak(self):\n        return \"Some generic animal sound\"\n\nclass Cat(Animal):\n    def speak(self):\n        return \"Meow!\"\n\nc = Cat()\nsound = c.speak()",
+    "explanation": "Different subclasses can implement the same interface."
+  },
+  {
+    "id": 359,
+    "qid_original": 359,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create instances of Dog and Cat, then call `speak()` on each to demonstrate polymorphism.",
+    "check_variable": ["sounds"],
+    "expected_value": [["Woof!", "Meow!"]],
+    "solution_code": "class Animal:\n    def speak(self):\n        return \"Some sound\"\n\nclass Dog(Animal):\n    def speak(self):\n        return \"Woof!\"\n\nclass Cat(Animal):\n    def speak(self):\n        return \"Meow!\"\n\nd = Dog()\nc = Cat()\nsounds = [d.speak(), c.speak()]",
+    "explanation": "Polymorphism allows different objects to respond differently to the same method call."
+  },
+  {
+    "id": 360,
+    "qid_original": 360,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Employee` with attributes `name` and `salary`. Add a method `get_info()` that returns employee information.",
+    "check_variable": ["info"],
+    "expected_value": [["string"]],
+    "solution_code": "class Employee:\n    def __init__(self, name, salary):\n        self.name = name\n        self.salary = salary\n    def get_info(self):\n        return f\"Employee {self.name}, Salary: {self.salary}\"\n\ne = Employee(\"Alice\", 50000)\ninfo = e.get_info()",
+    "explanation": "Classes bundle data and related behavior together."
   }
 ]
 
