@@ -1985,29 +1985,6 @@
     "explanation": "Converting a string to a set retains only unique characters."
   },
   {
-    "id": 120,
-    "qid_original": 120,
-    "category": "Sets and Tuples (15 Questions)",
-    "question_raw": "Create a set of all unique characters in the string \"programming\".",
-    "check_variable": [
-      "unique_chars"
-    ],
-    "expected_value": [
-      [
-        "p",
-        "r",
-        "o",
-        "g",
-        "a",
-        "m",
-        "i",
-        "n"
-      ]
-    ],
-    "solution_code": "s = \"programming\"\nunique_chars = set(s)",
-    "explanation": "A set keeps only unique characters from the string."
-  },
-  {
     "id": 121,
     "qid_original": 121,
     "category": "Control Flow - If Statements (15 Questions)",
