@@ -3922,6 +3922,34 @@
     "solution_code": "region_count = sales[\"region\"].nunique()\nproducts_all_regions = sales.groupby(\"product\")[\"region\"].nunique()\nproducts_all_regions = products_all_regions[products_all_regions == region_count].index",
     "explanation": "Products present in all regions have counts equal to total unique regions."
   },
+    {
+    "id": 239,
+    "qid_original": 239,
+    "category": "For Fun (Optional)",
+    "question_raw": "Create a variable `python_mood` and assign it the string \"🐍 Python is still running 🐍\".",
+    "check_variable": [
+      "python_mood"
+    ],
+    "expected_value": [
+      ["🐍 Python is still running 🐍"]
+    ],
+    "solution_code": "python_mood = \"🐍 Python is still running 🐍\"",
+    "explanation": "A simple string assignment with emojis for fun."
+  },
+  {
+    "id": 240,
+    "qid_original": 240,
+    "category": "For Fun (Optional)",
+    "question_raw": "Create a list `fun_numbers` containing the numbers 3, 1, 4, 1, 5 and calculate their sum into `total`.",
+    "check_variable": [
+      "total"
+    ],
+    "expected_value": [
+      [14]
+    ],
+    "solution_code": "fun_numbers = [3, 1, 4, 1, 5]\ntotal = sum(fun_numbers)",
+    "explanation": "Uses Python’s built-in sum function on a list."
+  },
   {
     "id": 241,
     "qid_original": 241,
