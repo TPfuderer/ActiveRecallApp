@@ -1,7 +1,7 @@
 # ============================================================
 # 🧠 Mini Python Playground – Spaced Repetition + Difficulty + Counter
 # ============================================================
-import pd
+import pandas as pd
 import streamlit as st
 import io
 import contextlib
