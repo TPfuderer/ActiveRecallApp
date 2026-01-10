@@ -731,6 +731,7 @@ with tabs[0]:
     # 6️⃣ Horizontaler Prozent-Balken
     # -----------------------------
     st.subheader("📊 Fortschritt pro Kategorie (%)")
+    st.caption("Mindestens Einmal Beantwortet")
 
     chart = (
         alt.Chart(cat_df)

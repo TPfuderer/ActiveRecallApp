@@ -5819,6 +5819,406 @@
     "expected_value": [["DataFrame"]],
     "solution_code": "def process_grades(df):\n    def lg(g):\n        if g>=3.5: return 'A'\n        if g>=3.0: return 'B'\n        if g>=2.5: return 'C'\n        if g>=2.0: return 'D'\n        return 'F'\n    df['letter_grade'] = df['gpa'].apply(lg)\n    return df\n\nimport pandas as pd\ndf = process_grades(pd.read_csv('data/questions/students.csv'))",
     "explanation": "Functions encapsulate reusable logic."
+  },
+    {
+    "id": 401,
+    "qid_original": 401,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Import the `re` module and use `re.search()` to check if the word \"python\" exists in the string \"I love python programming\".",
+    "check_variable": ["found"],
+    "expected_value": [[true]],
+    "solution_code": "import re\ntext = \"I love python programming\"\nfound = re.search(\"python\", text) is not None",
+    "explanation": "re.search returns a match object if the pattern exists anywhere in the string."
+  },
+  {
+    "id": 402,
+    "qid_original": 402,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use `re.match()` to check if a string starts with \"Hello\". Test with \"Hello, world!\" and \"Hi there!\".",
+    "check_variable": ["results"],
+    "expected_value": [[[true, false]]],
+    "solution_code": "import re\nresults = [re.match(\"Hello\", \"Hello, world!\") is not None,\n           re.match(\"Hello\", \"Hi there!\") is not None]",
+    "explanation": "re.match checks only at the beginning of the string."
+  },
+  {
+    "id": 403,
+    "qid_original": 403,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use `re.findall()` to find all digits in the string \"My phone is 123-456-7890 and my zip is 12345\".",
+    "check_variable": ["digits"],
+    "expected_value": [[["1","2","3","4","5","6","7","8","9","0","1","2","3","4","5"]]],
+    "solution_code": "import re\ntext = \"My phone is 123-456-7890 and my zip is 12345\"\ndigits = re.findall(\"\\\\d\", text)",
+    "explanation": "\\\\d matches individual digits."
+  },
+  {
+    "id": 404,
+    "qid_original": 404,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use `re.sub()` to replace all digits in \"Order 12345 ships on 2024-01-15\" with \"X\".",
+    "check_variable": ["masked"],
+    "expected_value": [["Order XXXXX ships on XXXX-XX-XX"]],
+    "solution_code": "import re\ntext = \"Order 12345 ships on 2024-01-15\"\nmasked = re.sub(\"\\\\d\", \"X\", text)",
+    "explanation": "re.sub replaces all occurrences of the pattern."
+  },
+  {
+    "id": 405,
+    "qid_original": 405,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Create a pattern that matches email addresses and use it to extract emails from \"Contact us at info@example.com or support@test.org\".",
+    "check_variable": ["emails"],
+    "expected_value": [["info@example.com", "support@test.org"]],
+    "solution_code": "import re\ntext = \"Contact us at info@example.com or support@test.org\"\npattern = r\"[\\w.-]+@[\\w.-]+\"\nemails = re.findall(pattern, text)",
+    "explanation": "The pattern matches basic email formats."
+  },
+  {
+    "id": 406,
+    "qid_original": 406,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Write a regex pattern to match phone numbers in format XXX-XXX-XXXX. Test with \"Call me at 555-123-4567\".",
+    "check_variable": ["phone"],
+    "expected_value": [["555-123-4567"]],
+    "solution_code": "import re\ntext = \"Call me at 555-123-4567\"\nphone = re.search(r\"\\\\d{3}-\\\\d{3}-\\\\d{4}\", text).group()",
+    "explanation": "Quantifiers specify exact digit counts."
+  },
+  {
+    "id": 407,
+    "qid_original": 407,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use regex to validate if a string is a valid date in format YYYY-MM-DD.",
+    "check_variable": ["valid"],
+    "expected_value": [[true]],
+    "solution_code": "import re\nvalid = re.fullmatch(r\"\\\\d{4}-\\\\d{2}-\\\\d{2}\", \"2024-01-15\") is not None",
+    "explanation": "fullmatch ensures the entire string matches the pattern."
+  },
+  {
+    "id": 408,
+    "qid_original": 408,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Create a pattern that matches URLs (starting with http:// or https://). Extract all URLs from a text string.",
+    "check_variable": ["urls"],
+    "expected_value": [["http://example.com", "https://test.org"]],
+    "solution_code": "import re\ntext = \"Visit http://example.com or https://test.org\"\nurls = re.findall(r\"https?://[^\\s]+\", text)",
+    "explanation": "https? matches both http and https."
+  },
+  {
+    "id": 409,
+    "qid_original": 409,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use `\\b` word boundaries to match the whole word \"cat\" but not \"category\".",
+    "check_variable": ["matches"],
+    "expected_value": [["cat"]],
+    "solution_code": "import re\ntext = \"The cat is in the category\"\nmatches = re.findall(r\"\\\\bcat\\\\b\", text)",
+    "explanation": "Word boundaries prevent partial matches."
+  },
+  {
+    "id": 410,
+    "qid_original": 410,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Write a regex pattern to extract hashtags from \"I love #python and #datascience!\".",
+    "check_variable": ["tags"],
+    "expected_value": [["#python", "#datascience"]],
+    "solution_code": "import re\ntext = \"I love #python and #datascience!\"\ntags = re.findall(r\"#[A-Za-z0-9_]+\", text)",
+    "explanation": "Hashtags start with # followed by word characters."
+  },
+  {
+    "id": 411,
+    "qid_original": 411,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use capturing groups to extract parts of phone number \"555-123-4567\".",
+    "check_variable": ["parts"],
+    "expected_value": [[["555","123","4567"]]],
+    "solution_code": "import re\nm = re.search(r\"(\\\\d{3})-(\\\\d{3})-(\\\\d{4})\", \"555-123-4567\")\nparts = list(m.groups())",
+    "explanation": "Capturing groups extract subcomponents."
+  },
+  {
+    "id": 412,
+    "qid_original": 412,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use `re.compile()` to create a reusable email pattern.",
+    "check_variable": ["emails"],
+    "expected_value": [["a@test.com"]],
+    "solution_code": "import re\npattern = re.compile(r\"[\\w.-]+@[\\w.-]+\")\nemails = pattern.findall(\"Email me at a@test.com\")",
+    "explanation": "Compiled patterns improve reuse and readability."
+  },
+  {
+    "id": 413,
+    "qid_original": 413,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Write a function `clean_text(text)` that removes all special characters.",
+    "check_variable": ["cleaned"],
+    "expected_value": [["Hello World 123"]],
+    "solution_code": "import re\ndef clean_text(text):\n    return re.sub(r\"[^A-Za-z0-9 ]\", \"\", text)\n\ncleaned = clean_text(\"Hello, World! 123\")",
+    "explanation": "Character classes define allowed characters."
+  },
+  {
+    "id": 414,
+    "qid_original": 414,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use regex to validate password strength.",
+    "check_variable": ["strong"],
+    "expected_value": [[true]],
+    "solution_code": "import re\nstrong = re.fullmatch(r\"(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d).{8,}\", \"Abcdef12\") is not None",
+    "explanation": "Lookaheads enforce multiple conditions."
+  },
+  {
+    "id": 415,
+    "qid_original": 415,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use `re.split()` to split on comma, semicolon, or pipe.",
+    "check_variable": ["parts"],
+    "expected_value": [["a","b","c","d"]],
+    "solution_code": "import re\nparts = re.split(r\"[,;|]\", \"a,b;c|d\")",
+    "explanation": "Character classes match multiple delimiters."
+  },
+  {
+    "id": 416,
+    "qid_original": 416,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Extract first names from employees.csv.",
+    "check_variable": ["first_names"],
+    "expected_value": [["list"]],
+    "solution_code": "import pandas as pd\nimport re\ndf = pd.read_csv('data/questions/employees.csv')\nfirst_names = df['name'].apply(lambda x: re.match(r\"\\\\w+\", x).group()).tolist()",
+    "explanation": "Regex extracts the first word."
+  },
+  {
+    "id": 417,
+    "qid_original": 417,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Write a regex pattern that matches U.S. ZIP codes.",
+    "check_variable": ["valid"],
+    "expected_value": [[true]],
+    "solution_code": "import re\nvalid = re.fullmatch(r\"\\\\d{5}(-\\\\d{4})?\", \"12345-6789\") is not None",
+    "explanation": "Optional groups handle extended ZIP codes."
+  },
+  {
+    "id": 418,
+    "qid_original": 418,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Use lookahead to check if a password contains a digit.",
+    "check_variable": ["has_digit"],
+    "expected_value": [[true]],
+    "solution_code": "import re\nhas_digit = re.search(r\"(?=.*\\\\d)\", \"Password1\") is not None",
+    "explanation": "Lookaheads assert conditions without consuming characters."
+  },
+  {
+    "id": 419,
+    "qid_original": 419,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Write a function `extract_prices(text)` to find prices.",
+    "check_variable": ["prices"],
+    "expected_value": [["$12.99","$100.00"]],
+    "solution_code": "import re\ndef extract_prices(text):\n    return re.findall(r\"\\\\$\\\\d{2,3}\\\\.\\\\d{2}\", text)\n\nprices = extract_prices(\"Items cost $12.99 and $100.00\")",
+    "explanation": "The pattern matches dollar amounts with decimals."
+  },
+  {
+    "id": 420,
+    "qid_original": 420,
+    "category": "Regular Expressions (Questions 401-420)",
+    "question_raw": "Create a function `anonymize_email(email)` that uses regex to replace the username part of an email with asterisks.",
+    "check_variable": ["anon"],
+    "expected_value": [["****@example.com"]],
+    "solution_code": "import re\ndef anonymize_email(email):\n    return re.sub(r'^[^@]+', '****', email)\n\nanon = anonymize_email('user@example.com')",
+    "explanation": "Regex replaces everything before the @ symbol."
+  },
+  {
+    "id": 421,
+    "qid_original": 421,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Catch ZeroDivisionError when dividing 10 by 0.",
+    "check_variable": ["message"],
+    "expected_value": [["Error: Cannot divide by zero!"]],
+    "solution_code": "try:\n    10 / 0\nexcept ZeroDivisionError:\n    message = 'Error: Cannot divide by zero!'",
+    "explanation": "ZeroDivisionError is raised when dividing by zero."
+  },
+  {
+    "id": 422,
+    "qid_original": 422,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Use try-except-else to convert strings to int.",
+    "check_variable": ["results"],
+    "expected_value": [["Success! The number is: 42", "Conversion failed"]],
+    "solution_code": "results = []\nfor val in ['42', 'abc']:\n    try:\n        num = int(val)\n    except ValueError:\n        results.append('Conversion failed')\n    else:\n        results.append(f'Success! The number is: {num}')",
+    "explanation": "else runs only if no exception occurs."
+  },
+  {
+    "id": 423,
+    "qid_original": 423,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Use try-except-finally to track file opening.",
+    "check_variable": ["file_opened"],
+    "expected_value": [[true]],
+    "solution_code": "file_opened = False\ntry:\n    f = open('data/questions/students.csv')\n    file_opened = True\nfinally:\n    file_opened = file_opened",
+    "explanation": "finally always executes regardless of success."
+  },
+  {
+    "id": 424,
+    "qid_original": 424,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Raise ValueError if number is negative.",
+    "check_variable": ["result"],
+    "expected_value": [[5]],
+    "solution_code": "def check_positive(number):\n    if number < 0:\n        raise ValueError('Number must be positive!')\n    return number\n\nresult = check_positive(5)",
+    "explanation": "Custom ValueError enforces constraints."
+  },
+  {
+    "id": 425,
+    "qid_original": 425,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Handle ValueError and IndexError separately.",
+    "check_variable": ["errors"],
+    "expected_value": [["Cannot convert to integer"]],
+    "solution_code": "numbers = [1,2,3]\ntext = 'abc'\nerrors = []\ntry:\n    int(text)\n    numbers[10]\nexcept ValueError:\n    errors.append('Cannot convert to integer')\nexcept IndexError:\n    errors.append('Index out of range')",
+    "explanation": "Specific exceptions should be handled separately."
+  },
+  {
+    "id": 426,
+    "qid_original": 426,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Create custom InsufficientFundsError.",
+    "check_variable": ["balance"],
+    "expected_value": [[50]],
+    "solution_code": "class InsufficientFundsError(Exception):\n    pass\n\ndef withdraw(balance, amount):\n    if amount > balance:\n        raise InsufficientFundsError(f'Insufficient funds: need {amount} but only have {balance}')\n    return balance - amount\n\nbalance = withdraw(100, 50)",
+    "explanation": "Custom exceptions clarify business logic errors."
+  },
+  {
+    "id": 427,
+    "qid_original": 427,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Validate age using assert.",
+    "check_variable": ["valid"],
+    "expected_value": [[true]],
+    "solution_code": "def validate_age(age):\n    assert age >= 0, 'Age cannot be negative'\n    assert age <= 120, 'Age cannot exceed 120'\n    return True\n\nvalid = validate_age(25)",
+    "explanation": "Assertions enforce assumptions during runtime."
+  },
+  {
+    "id": 428,
+    "qid_original": 428,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Catch FileNotFoundError.",
+    "check_variable": ["message"],
+    "expected_value": ["Error: The file 'nonexistent_file.csv' was not found."],
+    "solution_code": "try:\n    open('nonexistent_file.csv')\nexcept FileNotFoundError:\n    message = \"Error: The file 'nonexistent_file.csv' was not found.\"",
+    "explanation": "FileNotFoundError occurs when file path is invalid."
+  },
+  {
+    "id": 429,
+    "qid_original": 429,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Safely convert value to int.",
+    "check_variable": ["values"],
+    "expected_value": [[42, null, 3, null]],
+    "solution_code": "def safe_int_convert(value):\n    try:\n        return int(value)\n    except (ValueError, TypeError):\n        return None\n\nvalues = [safe_int_convert(v) for v in ['42','abc',3.14,[1,2]]]",
+    "explanation": "Multiple exception types may occur during conversion."
+  },
+  {
+    "id": 430,
+    "qid_original": 430,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Catch IndexError and show list length.",
+    "check_variable": ["message"],
+    "expected_value": ["Index out of range. List has only 3 items."],
+    "solution_code": "fruits = ['apple','banana','cherry']\ntry:\n    fruits[10]\nexcept IndexError:\n    message = f'Index out of range. List has only {len(fruits)} items.'",
+    "explanation": "IndexError is raised when accessing invalid indices."
+  },
+  {
+    "id": 431,
+    "qid_original": 431,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Handle missing dictionary keys.",
+    "check_variable": ["email"],
+    "expected_value": ["No email provided"],
+    "solution_code": "person = {'name':'Alice','age':30}\nemail = person.get('email','No email provided')",
+    "explanation": ".get() avoids KeyError safely."
+  },
+  {
+    "id": 432,
+    "qid_original": 432,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Read first line of file using with statement.",
+    "check_variable": ["line"],
+    "expected_value": ["string"],
+    "solution_code": "with open('data/questions/students.csv') as f:\n    line = f.readline().strip()",
+    "explanation": "Context managers ensure safe file closing."
+  },
+  {
+    "id": 433,
+    "qid_original": 433,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Parse config dictionary safely.",
+    "check_variable": ["result"],
+    "expected_value": ["Connecting to db at localhost:5432"],
+    "solution_code": "def parse_config(cfg):\n    try:\n        host = cfg['host']\n        port = int(cfg['port'])\n        db = cfg['database']\n        return f'Connecting to {db} at {host}:{port}'\n    except KeyError as e:\n        print(f'Missing required key: {e.args[0]}')\n    except ValueError:\n        print('Port must be a valid number')\n\nresult = parse_config({'host':'localhost','port':'5432','database':'db'})",
+    "explanation": "Multiple exception types are handled explicitly."
+  },
+  {
+    "id": 434,
+    "qid_original": 434,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Catch TypeError when adding incompatible types.",
+    "check_variable": ["message"],
+    "expected_value": ["Cannot add string and integer. Attempted to add 'Hello' + 5"],
+    "solution_code": "try:\n    'Hello' + 5\nexcept TypeError:\n    message = \"Cannot add string and integer. Attempted to add 'Hello' + 5\"",
+    "explanation": "TypeError occurs for incompatible operations."
+  },
+  {
+    "id": 435,
+    "qid_original": 435,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Validate input with multiple checks.",
+    "check_variable": ["valid"],
+    "expected_value": [[true]],
+    "solution_code": "def validate_input(data):\n    if not isinstance(data,str):\n        raise TypeError('Input must be a string')\n    if data == '':\n        raise ValueError('Input cannot be empty')\n    assert len(data) >= 5, 'Input must be at least 5 characters'\n    return True\n\nvalid = validate_input('Hello')",
+    "explanation": "Type, value, and length are validated."
+  },
+        {
+    "id": 436,
+    "qid_original": 436,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Create a decorator `error_handler` that catches exceptions and prints an error message. Apply it to a division function.",
+    "check_variable": ["result"],
+    "expected_value": [[null]],
+    "solution_code": "def error_handler(func):\n    def wrapper(*args, **kwargs):\n        try:\n            return func(*args, **kwargs)\n        except Exception as e:\n            print(f\"Error occurred: {e}\")\n            return None\n    return wrapper\n\n@error_handler\ndef divide(a, b):\n    return a / b\n\nresult = divide(10, 0)",
+    "explanation": "Decorator wraps function execution with try-except."
+  },
+  {
+    "id": 437,
+    "qid_original": 437,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Use logging to log a division error.",
+    "check_variable": ["logged"],
+    "expected_value": [[true]],
+    "solution_code": "import logging\nlogging.basicConfig(level=logging.ERROR)\nlogged = False\ntry:\n    10 / 0\nexcept Exception as e:\n    logging.error(\"Division error: \" + str(e))\n    logged = True",
+    "explanation": "logging.error records runtime errors."
+  },
+  {
+    "id": 438,
+    "qid_original": 438,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Re-raise FileNotFoundError after handling it.",
+    "check_variable": ["handled"],
+    "expected_value": [[true]],
+    "solution_code": "handled = False\n\ndef load_and_process(filename):\n    try:\n        open(filename)\n    except FileNotFoundError:\n        print(f\"File not found: {filename}\")\n        raise\n\ntry:\n    load_and_process('missing.csv')\nexcept FileNotFoundError:\n    handled = True",
+    "explanation": "raise without arguments preserves traceback."
+  },
+  {
+    "id": 439,
+    "qid_original": 439,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Safely load students CSV with multiple exception handling.",
+    "check_variable": ["students"],
+    "expected_value": [[null]],
+    "solution_code": "import pandas as pd\n\ndef safe_load_students(filepath):\n    try:\n        df = pd.read_csv(filepath)\n        if df.empty:\n            raise pd.errors.EmptyDataError\n        if 'gpa' not in df.columns:\n            raise KeyError('gpa')\n        return df\n    except FileNotFoundError:\n        print(f\"Error: File not found at {filepath}\")\n    except pd.errors.EmptyDataError:\n        print(\"Error: The CSV file is empty\")\n    except KeyError:\n        print(\"Error: Required column 'gpa' not found\")\n    return None\n\nstudents = safe_load_students('missing.csv')",
+    "explanation": "Handles multiple realistic data-loading failures."
+  },
+  {
+    "id": 440,
+    "qid_original": 440,
+    "category": "Debugging and Error Handling (Questions 421-440)",
+    "question_raw": "Comprehensive student data processing with error handling.",
+    "check_variable": ["output"],
+    "expected_value": [["dict"]],
+    "solution_code": "import pandas as pd\n\ndef process_student_data(filepath):\n    try:\n        df = pd.read_csv(filepath)\n        if df.empty:\n            return {\"success\": False, \"error\": \"Empty file\"}\n        for col in ['name','age','gpa']:\n            if col not in df.columns:\n                return {\"success\": False, \"error\": f\"Missing column: {col}\"}\n        avg_gpa = pd.to_numeric(df['gpa'], errors='raise').mean()\n        return {\"success\": True, \"avg_gpa\": avg_gpa, \"num_students\": len(df)}\n    except FileNotFoundError:\n        return {\"success\": False, \"error\": \"File not found\"}\n    except ValueError:\n        return {\"success\": False, \"error\": \"Invalid GPA values\"}\n\noutput = process_student_data('data/questions/students.csv')",
+    "explanation": "End-to-end robust CSV processing."
   }
 ]
 
