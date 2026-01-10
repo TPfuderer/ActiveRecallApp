@@ -19,7 +19,7 @@ import json
 st.set_page_config(page_title="Mini Python Playground!", page_icon="💻", layout="centered")
 
 
-# --- Load tasks from JSON ---
+# --- #Load tasks from JSON ---
 TASKS_PATH = Path(__file__).parent / "tasks.json"
 
 try:
