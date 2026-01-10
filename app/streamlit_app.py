@@ -670,7 +670,7 @@ with tabs[0]:
     st.markdown("---")
 
     # ============================================================
-    # 📊 Progress per Category (HORIZONTAL, clean)
+    # 📊 Progress per Category (% completed)
     # ============================================================
 
     import pandas as pd
@@ -701,39 +701,36 @@ with tabs[0]:
         .reset_index()
     )
 
+    cat_df["pct"] = (cat_df["answered"] / cat_df["total"] * 100).round(1)
+
 
     # -----------------------------
-    # 4️⃣ Schöne Labels
+    # 4️⃣ Schöne kompakte Labels
     # -----------------------------
-    def format_category_label(cat, total):
+    def format_category_label(cat):
         main = cat.split("(")[0].strip()
         parts = main.split(" - ")
 
         if len(parts) == 2:
-            label = f"{parts[0]} – {parts[1]}"
+            return f"{parts[0]} – {parts[1]}"
         else:
-            label = main
-
-        return f"{label} ({int(total)})"
+            return main
 
 
-    cat_df["category_label"] = cat_df.apply(
-        lambda r: format_category_label(r["category"], r["total"]),
-        axis=1
-    )
+    cat_df["category_label"] = cat_df["category"].apply(format_category_label)
 
     # -----------------------------
-    # 5️⃣ Sortierung: meist beantwortet zuerst
+    # 5️⃣ Sortierung: höchster Fortschritt zuerst
     # -----------------------------
     cat_df = cat_df.sort_values(
-        by=["answered", "total"],
-        ascending=[False, False]
+        by=["pct", "answered", "total"],
+        ascending=[False, False, False]
     )
 
     # -----------------------------
-    # 6️⃣ Horizontal Bar Chart
+    # 6️⃣ Horizontaler Prozent-Balken
     # -----------------------------
-    st.subheader("📊 Beantwortete Aufgaben pro Kategorie")
+    st.subheader("📊 Fortschritt pro Kategorie (%)")
 
     chart = (
         alt.Chart(cat_df)
@@ -745,17 +742,19 @@ with tabs[0]:
                 title="Kategorie"
             ),
             x=alt.X(
-                "answered:Q",
-                title="Beantwortete Aufgaben"
+                "pct:Q",
+                scale=alt.Scale(domain=[0, 100]),
+                title="Abgeschlossene Aufgaben (%)"
             ),
             tooltip=[
                 alt.Tooltip("category:N", title="Kategorie"),
+                alt.Tooltip("total:Q", title="Gesamtfragen"),
                 alt.Tooltip("answered:Q", title="Beantwortet"),
-                alt.Tooltip("total:Q", title="Gesamt")
+                alt.Tooltip("pct:Q", title="Fortschritt (%)")
             ]
         )
         .properties(
-            height=35 * len(cat_df)  # 🔥 dynamische Höhe → nichts wird abgeschnitten
+            height=35 * len(cat_df)  # dynamische Höhe → nichts abgeschnitten
         )
     )
 
