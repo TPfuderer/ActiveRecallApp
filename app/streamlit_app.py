@@ -670,7 +670,7 @@ with tabs[0]:
     st.markdown("---")
 
     # -----------------------------
-    # 📊 Questions answered per category
+    # 📊 Questions answered per category (ALL categories)
     # -----------------------------
 
     # attempts sicher normalisieren
@@ -683,20 +683,22 @@ with tabs[0]:
     # Markiere beantwortete Tasks
     tasks_df["answered"] = tasks_df["id"].apply(lambda tid: attempts.get(tid, 0) >= 1)
 
-    # Gruppieren nach Kategorie
-    cat_progress = (
+    # ALLE Kategorien aus tasks.json
+    all_categories = sorted(tasks_df["category"].unique())
+
+    # Zähle beantwortete Tasks pro Kategorie
+    answered_per_cat = (
         tasks_df[tasks_df["answered"]]
         .groupby("category")
         .size()
-        .sort_values(ascending=False)
     )
+
+    # Fehlende Kategorien mit 0 auffüllen
+    answered_per_cat = answered_per_cat.reindex(all_categories, fill_value=0)
 
     st.subheader("📊 Beantwortete Aufgaben pro Kategorie")
 
-    if len(cat_progress) > 0:
-        st.bar_chart(cat_progress)
-    else:
-        st.info("Noch keine Aufgaben beantwortet.")
+    st.bar_chart(answered_per_cat)
 
 
 # ============================================================
