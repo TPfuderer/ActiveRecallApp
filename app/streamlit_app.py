@@ -741,8 +741,9 @@ with tabs[0]:
                 sort=cat_df["category_label"].tolist(),
                 title="Kategorie",
                 axis=alt.Axis(
-                    labelPadding=12,  # 🔹 Abstand Label ↔ Achse
-                    titlePadding=20
+                    labelLimit=0,  # 🔥 WICHTIG: Abschneiden AUS
+                    labelAlign="left",  # 🔥 nutzt den Platz
+                    labelPadding=10
                 )
             ),
             x=alt.X(
@@ -759,7 +760,7 @@ with tabs[0]:
         )
         .properties(
             height=35 * len(cat_df),
-            padding={"left": 180}  # 🔥 DAS ist der entscheidende Platz
+            width=700  # 🔥 explizite Breite → mehr Platz für Labels
         )
     )
 
