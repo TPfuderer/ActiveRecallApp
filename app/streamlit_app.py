@@ -734,7 +734,7 @@ with tabs[0]:
 
     chart = (
         alt.Chart(cat_df)
-        .mark_bar()
+        .mark_bar(color="#6FCF97")
         .encode(
             y=alt.Y(
                 "category_label:N",
