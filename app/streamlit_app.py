@@ -670,12 +670,11 @@ with tabs[0]:
     st.markdown("---")
 
     # ============================================================
-    # 📊 Progress per Category (ALL categories, nice labels)
+    # 📊 Progress per Category (stacked + wrapped labels)
     # ============================================================
 
     import pandas as pd
     import altair as alt
-    import re
 
     # -----------------------------
     # 1️⃣ Attempts normalisieren
@@ -688,26 +687,28 @@ with tabs[0]:
     # -----------------------------
     df = pd.DataFrame(tasks)[["id", "category"]].copy()
 
-    # answered = mindestens einmal gemacht
     df["answered"] = df["id"].apply(lambda tid: 1 if attempts.get(tid, 0) >= 1 else 0)
 
     # -----------------------------
-    # 3️⃣ Anzahl Fragen pro Kategorie
+    # 3️⃣ Aggregation pro Kategorie
     # -----------------------------
-    total_per_cat = df.groupby("category").size()
-    answered_per_cat = df.groupby("category")["answered"].sum()
+    cat_df = (
+        df.groupby("category")
+        .agg(
+            answered=("answered", "sum"),
+            total=("answered", "count")
+        )
+        .reset_index()
+    )
 
-    cat_df = pd.DataFrame({
-        "answered": answered_per_cat,
-        "total": total_per_cat
-    }).fillna(0).reset_index()
+    cat_df["open"] = cat_df["total"] - cat_df["answered"]
+    cat_df["progress_pct"] = (cat_df["answered"] / cat_df["total"] * 100).round(1)
 
 
     # -----------------------------
-    # 4️⃣ Kategorie-Labels umbrechen
+    # 4️⃣ Schöne mehrzeilige Labels
     # -----------------------------
-    def format_category_label(cat):
-        # Trennt z.B. "NumPy - Basics (15 Questions)"
+    def format_category_label(cat, total):
         main = cat.split("(")[0].strip()
         parts = main.split(" - ")
 
@@ -716,23 +717,39 @@ with tabs[0]:
         else:
             label = main
 
-        return f"{label}\n({int(total_per_cat[cat])} Questions)"
+        return f"{label}\n({int(total)} Questions)"
 
 
-    cat_df["category_label"] = cat_df["category"].apply(format_category_label)
+    cat_df["category_label"] = cat_df.apply(
+        lambda r: format_category_label(r["category"], r["total"]),
+        axis=1
+    )
 
     # -----------------------------
-    # 5️⃣ Sortierung (nach Umfang)
+    # 5️⃣ Sortierung: meist beantwortet zuerst
     # -----------------------------
-    cat_df = cat_df.sort_values("total", ascending=False)
+    cat_df = cat_df.sort_values(
+        by=["answered", "total"],
+        ascending=[False, False]
+    )
 
     # -----------------------------
-    # 6️⃣ Balkendiagramm
+    # 6️⃣ Long-Format für stacked bars
     # -----------------------------
-    st.subheader("📊 Beantwortete Aufgaben pro Kategorie")
+    plot_df = cat_df.melt(
+        id_vars=["category", "category_label", "progress_pct"],
+        value_vars=["answered", "open"],
+        var_name="status",
+        value_name="count"
+    )
+
+    # -----------------------------
+    # 7️⃣ Stacked Bar Chart
+    # -----------------------------
+    st.subheader("📊 Lernfortschritt pro Kategorie")
 
     chart = (
-        alt.Chart(cat_df)
+        alt.Chart(plot_df)
         .mark_bar()
         .encode(
             x=alt.X(
@@ -740,20 +757,37 @@ with tabs[0]:
                 sort=cat_df["category_label"].tolist(),
                 axis=alt.Axis(
                     title="Kategorie",
-                    labelAngle=0
+                    labelAngle=0,
+                    labelLimit=0,  # 🔥 NICHT abschneiden
+                    labelPadding=10
                 )
             ),
             y=alt.Y(
-                "answered:Q",
-                title="Beantwortete Aufgaben"
+                "count:Q",
+                title="Anzahl Aufgaben"
+            ),
+            color=alt.Color(
+                "status:N",
+                scale=alt.Scale(
+                    domain=["answered", "open"],
+                    range=["#2ecc71", "#e74c3c"]  # 🟩🟥
+                ),
+                legend=alt.Legend(
+                    title="Status",
+                    labelExpr="datum.label == 'answered' ? 'Beantwortet' : 'Offen'"
+                )
             ),
             tooltip=[
                 alt.Tooltip("category:N", title="Kategorie"),
                 alt.Tooltip("answered:Q", title="Beantwortet"),
-                alt.Tooltip("total:Q", title="Gesamt")
+                alt.Tooltip("open:Q", title="Offen"),
+                alt.Tooltip("progress_pct:Q", title="Fortschritt (%)")
             ]
         )
-        .properties(height=420)
+        .properties(
+            height=450,
+            padding={"bottom": 60}
+        )
     )
 
     st.altair_chart(chart, use_container_width=True)
