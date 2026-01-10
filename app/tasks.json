@@ -5419,6 +5419,406 @@
     "expected_value": [["string"]],
     "solution_code": "class Employee:\n    def __init__(self, name, salary):\n        self.name = name\n        self.salary = salary\n    def get_info(self):\n        return f\"Employee {self.name}, Salary: {self.salary}\"\n\ne = Employee(\"Alice\", 50000)\ninfo = e.get_info()",
     "explanation": "Classes bundle data and related behavior together."
+  },
+    {
+    "id": 361,
+    "qid_original": 361,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Manager` that inherits from `Employee` and adds attribute `department`. Override `get_info()` to include department info. Use `super()` to call the parent's `get_info()`.",
+    "check_variable": ["info"],
+    "expected_value": [["string"]],
+    "solution_code": "class Employee:\n    def __init__(self, name, salary):\n        self.name = name\n        self.salary = salary\n    def get_info(self):\n        return f\"Employee {self.name}, Salary: {self.salary}\"\n\nclass Manager(Employee):\n    def __init__(self, name, salary, department):\n        super().__init__(name, salary)\n        self.department = department\n    def get_info(self):\n        return super().get_info() + f\", Department: {self.department}\"\n\nm = Manager(\"Alice\", 80000, \"IT\")\ninfo = m.get_info()",
+    "explanation": "super() reuses parent logic while extending behavior."
+  },
+  {
+    "id": 362,
+    "qid_original": 362,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Vehicle` with attributes `brand` and `year`. Add a method `info()`.",
+    "check_variable": ["vehicle"],
+    "expected_value": [["object"]],
+    "solution_code": "class Vehicle:\n    def __init__(self, brand, year):\n        self.brand = brand\n        self.year = year\n    def info(self):\n        return f\"{self.brand} ({self.year})\"\n\nvehicle = Vehicle(\"Toyota\", 2020)",
+    "explanation": "Base vehicle class defines common attributes."
+  },
+  {
+    "id": 363,
+    "qid_original": 363,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Car` that inherits from `Vehicle` and adds attribute `num_doors`. Override `__init__()` using `super()`.",
+    "check_variable": ["car"],
+    "expected_value": [["object"]],
+    "solution_code": "class Vehicle:\n    def __init__(self, brand, year):\n        self.brand = brand\n        self.year = year\n\nclass Car(Vehicle):\n    def __init__(self, brand, year, num_doors):\n        super().__init__(brand, year)\n        self.num_doors = num_doors\n\ncar = Car(\"BMW\", 2021, 4)",
+    "explanation": "super() initializes parent attributes."
+  },
+  {
+    "id": 364,
+    "qid_original": 364,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `ElectricCar` that inherits from `Car` and adds attribute `battery_capacity`. Use `super().__init__()` to initialize parent attributes.",
+    "check_variable": ["ecar"],
+    "expected_value": [["object"]],
+    "solution_code": "class ElectricCar(Car):\n    def __init__(self, brand, year, num_doors, battery_capacity):\n        super().__init__(brand, year, num_doors)\n        self.battery_capacity = battery_capacity\n\necar = ElectricCar(\"Tesla\", 2023, 4, 75)",
+    "explanation": "Chained inheritance builds progressively richer objects."
+  },
+  {
+    "id": 365,
+    "qid_original": 365,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Add a class variable `species = \"Canis familiaris\"` to the Dog class. Create two dogs and verify they share the same species.",
+    "check_variable": ["same_species"],
+    "expected_value": [[true]],
+    "solution_code": "class Dog:\n    species = \"Canis familiaris\"\n    def __init__(self, name):\n        self.name = name\n\nd1 = Dog(\"Rex\")\nd2 = Dog(\"Buddy\")\nsame_species = d1.species == d2.species",
+    "explanation": "Class variables are shared across all instances."
+  },
+  {
+    "id": 366,
+    "qid_original": 366,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Product` with attributes `name` and `price`. Add an `__add__()` method to allow adding two products' prices using the `+` operator.",
+    "check_variable": ["total_price"],
+    "expected_value": [[30]],
+    "solution_code": "class Product:\n    def __init__(self, name, price):\n        self.name = name\n        self.price = price\n    def __add__(self, other):\n        return self.price + other.price\n\np1 = Product(\"A\", 10)\np2 = Product(\"B\", 20)\ntotal_price = p1 + p2",
+    "explanation": "Operator overloading customizes built-in operators."
+  },
+  {
+    "id": 367,
+    "qid_original": 367,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Book` with attributes `title`, `author`, and `pages`. Add an `__eq__()` method to compare books by title.",
+    "check_variable": ["equal"],
+    "expected_value": [[true]],
+    "solution_code": "class Book:\n    def __init__(self, title, author, pages):\n        self.title = title\n        self.author = author\n        self.pages = pages\n    def __eq__(self, other):\n        return self.title == other.title\n\nb1 = Book(\"Python\", \"A\", 300)\nb2 = Book(\"Python\", \"B\", 250)\nequal = (b1 == b2)",
+    "explanation": "__eq__ defines custom equality logic."
+  },
+  {
+    "id": 368,
+    "qid_original": 368,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `Playlist` with a list attribute `songs`. Implement `__len__()` to return the number of songs.",
+    "check_variable": ["length"],
+    "expected_value": [[3]],
+    "solution_code": "class Playlist:\n    def __init__(self, songs):\n        self.songs = songs\n    def __len__(self):\n        return len(self.songs)\n\npl = Playlist([\"a\", \"b\", \"c\"])\nlength = len(pl)",
+    "explanation": "__len__ integrates with built-in len()."
+  },
+  {
+    "id": 369,
+    "qid_original": 369,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Add `__getitem__()` to the Playlist class to support indexing (e.g., `playlist[0]`).",
+    "check_variable": ["song"],
+    "expected_value": [["song1"]],
+    "solution_code": "class Playlist:\n    def __init__(self, songs):\n        self.songs = songs\n    def __getitem__(self, index):\n        return self.songs[index]\n\npl = Playlist([\"song1\", \"song2\"])\nsong = pl[0]",
+    "explanation": "__getitem__ enables index access."
+  },
+  {
+    "id": 370,
+    "qid_original": 370,
+    "category": "Object-Oriented Programming: Inheritance (Questions 356-370)",
+    "question_raw": "Create a class `ShoppingCart` with a list of items. Add methods `add_item(item)`, `remove_item(item)`, and `total_items()`.",
+    "check_variable": ["count"],
+    "expected_value": [[1]],
+    "solution_code": "class ShoppingCart:\n    def __init__(self):\n        self.items = []\n    def add_item(self, item):\n        self.items.append(item)\n    def remove_item(self, item):\n        self.items.remove(item)\n    def total_items(self):\n        return len(self.items)\n\ncart = ShoppingCart()\ncart.add_item(\"apple\")\ncount = cart.total_items()",
+    "explanation": "Encapsulation groups related state and behavior."
+  },
+  {
+    "id": 371,
+    "qid_original": 371,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `StudentRecord` with attributes from the students dataset (name, age, gpa, major, grade, credits). Add a method `is_honors()` that returns True if gpa >= 3.5.",
+    "check_variable": ["honors"],
+    "expected_value": [[true]],
+    "solution_code": "class StudentRecord:\n    def __init__(self, name, age, gpa, major, grade, credits):\n        self.name = name\n        self.age = age\n        self.gpa = gpa\n        self.major = major\n        self.grade = grade\n        self.credits = credits\n    def is_honors(self):\n        return self.gpa >= 3.5\n\ns = StudentRecord(\"Alice\", 22, 3.8, \"CS\", \"Senior\", 120)\nhonors = s.is_honors()",
+    "explanation": "Business logic lives inside the data model."
+  },
+  {
+    "id": 372,
+    "qid_original": 372,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Add a class method `from_dict(cls, data_dict)` to StudentRecord that creates an instance from a dictionary.",
+    "check_variable": ["student"],
+    "expected_value": [["object"]],
+    "solution_code": "class StudentRecord:\n    def __init__(self, name, age, gpa, major, grade, credits):\n        self.name = name\n        self.age = age\n        self.gpa = gpa\n        self.major = major\n        self.grade = grade\n        self.credits = credits\n    @classmethod\n    def from_dict(cls, d):\n        return cls(**d)\n\nstudent = StudentRecord.from_dict({\"name\":\"Bob\",\"age\":21,\"gpa\":3.2,\"major\":\"Math\",\"grade\":\"Junior\",\"credits\":90})",
+    "explanation": "Factory methods simplify object creation."
+  },
+  {
+    "id": 373,
+    "qid_original": 373,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `StudentManager` that loads `data/questions/students.csv` and stores StudentRecord objects in a list. Add a method `get_honors_students()`.",
+    "check_variable": ["honors"],
+    "expected_value": [["list"]],
+    "solution_code": "import pandas as pd\n\nclass StudentManager:\n    def __init__(self, path):\n        df = pd.read_csv(path)\n        self.students = [StudentRecord(**row) for row in df.to_dict(orient=\"records\")]\n    def get_honors_students(self):\n        return [s for s in self.students if s.is_honors()]\n\nmanager = StudentManager(\"data/questions/students.csv\")\nhonors = manager.get_honors_students()",
+    "explanation": "Managers coordinate collections of objects."
+  },
+  {
+    "id": 374,
+    "qid_original": 374,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `SalesTransaction` with attributes matching the sales dataset. Add a method `calculate_profit(cost_ratio=0.6)` that estimates profit as revenue × (1 - cost_ratio).",
+    "check_variable": ["profit"],
+    "expected_value": [[400]],
+    "solution_code": "class SalesTransaction:\n    def __init__(self, product, revenue):\n        self.product = product\n        self.revenue = revenue\n    def calculate_profit(self, cost_ratio=0.6):\n        return self.revenue * (1 - cost_ratio)\n\nt = SalesTransaction(\"A\", 1000)\nprofit = t.calculate_profit()",
+    "explanation": "Default parameters allow flexible calculations."
+  },
+  {
+    "id": 375,
+    "qid_original": 375,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `DataAnalyzer` with a method `load_csv(filepath)` that loads data into a Pandas DataFrame. Add methods `get_summary()` and `get_column_stats(column_name)`.",
+    "check_variable": ["summary"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "import pandas as pd\n\nclass DataAnalyzer:\n    def load_csv(self, filepath):\n        self.df = pd.read_csv(filepath)\n    def get_summary(self):\n        return self.df.describe()\n    def get_column_stats(self, column_name):\n        return self.df[column_name].describe()\n\nanalyzer = DataAnalyzer()\nanalyzer.load_csv(\"data/questions/students.csv\")\nsummary = analyzer.get_summary()",
+    "explanation": "Encapsulates analysis workflows."
+  },
+  {
+    "id": 376,
+    "qid_original": 376,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `EmployeeDatabase` that loads `data/questions/employees.csv`. Add methods: `get_by_department(dept)`, `average_salary()`, and `top_performers(n=5)` based on performance_score.",
+    "check_variable": ["avg"],
+    "expected_value": [["float"]],
+    "solution_code": "import pandas as pd\n\nclass EmployeeDatabase:\n    def __init__(self, path):\n        self.df = pd.read_csv(path)\n    def get_by_department(self, dept):\n        return self.df[self.df[\"department\"] == dept]\n    def average_salary(self):\n        return self.df[\"salary\"].mean()\n    def top_performers(self, n=5):\n        return self.df.sort_values(\"performance_score\", ascending=False).head(n)\n\ndb = EmployeeDatabase(\"data/questions/employees.csv\")\navg = db.average_salary()",
+    "explanation": "Domain-specific database wrapper."
+  },
+  {
+    "id": 377,
+    "qid_original": 377,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Add a method `give_raise(name, percentage)` to EmployeeDatabase that increases an employee's salary by the given percentage.",
+    "check_variable": ["updated_salary"],
+    "expected_value": [["float"]],
+    "solution_code": "def give_raise(self, name, percentage):\n    mask = self.df[\"name\"] == name\n    self.df.loc[mask, \"salary\"] *= (1 + percentage)\n    return self.df.loc[mask, \"salary\"].iloc[0]\n\nEmployeeDatabase.give_raise = give_raise\nupdated_salary = db.give_raise(db.df.iloc[0][\"name\"], 0.1)",
+    "explanation": "In-place updates modify stored data."
+  },
+  {
+    "id": 378,
+    "qid_original": 378,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `WeatherStation` that loads `data/questions/weather.csv`. Add methods `get_city_data(city)` and `coldest_day()` that returns the date with the lowest temperature.",
+    "check_variable": ["coldest"],
+    "expected_value": [["string"]],
+    "solution_code": "import pandas as pd\n\nclass WeatherStation:\n    def __init__(self, path):\n        self.df = pd.read_csv(path)\n    def get_city_data(self, city):\n        return self.df[self.df[\"city\"] == city]\n    def coldest_day(self):\n        row = self.df.loc[self.df[\"temperature\"].idxmin()]\n        return row[\"date\"]\n\nws = WeatherStation(\"data/questions/weather.csv\")\ncoldest = ws.coldest_day()",
+    "explanation": "idxmin finds the row of minimum value."
+  },
+  {
+    "id": 379,
+    "qid_original": 379,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `Validator` with static methods `is_valid_email(email)`, `is_valid_phone(phone)`, and `is_valid_age(age)` using appropriate validation logic.",
+    "check_variable": ["valid"],
+    "expected_value": [[true]],
+    "solution_code": "import re\n\nclass Validator:\n    @staticmethod\n    def is_valid_email(email):\n        return bool(re.match(r\"[^@]+@[^@]+\\.[^@]+\", email))\n    @staticmethod\n    def is_valid_phone(phone):\n        return phone.isdigit() and len(phone) >= 7\n    @staticmethod\n    def is_valid_age(age):\n        return 0 <= age <= 120\n\nvalid = Validator.is_valid_age(30)",
+    "explanation": "Static methods provide utility-style validation."
+  },
+  {
+    "id": 380,
+    "qid_original": 380,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `Logger` that implements a context manager (`__enter__` and `__exit__`). It should log start and end times when used with the `with` statement.",
+    "check_variable": ["logged"],
+    "expected_value": [[true]],
+    "solution_code": "from datetime import datetime\n\nclass Logger:\n    def __enter__(self):\n        self.start = datetime.now()\n        return self\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        self.end = datetime.now()\n        return False\n\nwith Logger() as log:\n    pass\nlogged = True",
+    "explanation": "Context managers manage setup and teardown logic."
+  },
+    {
+    "id": 381,
+    "qid_original": 381,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `RangeIterator` that implements the iterator protocol (`__iter__` and `__next__`) to generate numbers from start to end.",
+    "check_variable": ["values"],
+    "expected_value": [[0, 1, 2, 3]],
+    "solution_code": "class RangeIterator:\n    def __init__(self, start, end):\n        self.current = start\n        self.end = end\n    def __iter__(self):\n        return self\n    def __next__(self):\n        if self.current > self.end:\n            raise StopIteration\n        val = self.current\n        self.current += 1\n        return val\n\nvalues = list(RangeIterator(0, 3))",
+    "explanation": "The iterator protocol requires __iter__ and __next__."
+  },
+  {
+    "id": 382,
+    "qid_original": 382,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `DataProcessor` with a `__call__()` method that processes a DataFrame (e.g., removes null values). Make instances callable.",
+    "check_variable": ["clean_df"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "class DataProcessor:\n    def __call__(self, df):\n        return df.dropna()\n\nprocessor = DataProcessor()\nclean_df = processor(df)",
+    "explanation": "__call__ allows instances to be used like functions."
+  },
+  {
+    "id": 383,
+    "qid_original": 383,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `Point` with attributes `x` and `y`. Add a method `distance_from_origin()` and `distance_to(other_point)`.",
+    "check_variable": ["d"],
+    "expected_value": [[5.0]],
+    "solution_code": "import math\nclass Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    def distance_from_origin(self):\n        return math.sqrt(self.x**2 + self.y**2)\n    def distance_to(self, other):\n        return math.sqrt((self.x-other.x)**2 + (self.y-other.y)**2)\n\np = Point(3,4)\nd = p.distance_from_origin()",
+    "explanation": "Distances are computed using the Euclidean formula."
+  },
+  {
+    "id": 384,
+    "qid_original": 384,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `Shape` and subclasses `Square` and `Triangle` implementing area, perimeter, and describe().",
+    "check_variable": ["areas"],
+    "expected_value": [[16, 6]],
+    "solution_code": "import math\nclass Shape:\n    def describe(self):\n        return \"I am a shape\"\n\nclass Square(Shape):\n    def __init__(self, side):\n        self.side = side\n    def area(self):\n        return self.side**2\n    def perimeter(self):\n        return 4*self.side\n    def describe(self):\n        return \"I am a square\"\n\nclass Triangle(Shape):\n    def __init__(self, a, b, c):\n        self.a, self.b, self.c = a, b, c\n    def area(self):\n        s = (self.a+self.b+self.c)/2\n        return math.sqrt(s*(s-self.a)*(s-self.b)*(s-self.c))\n    def perimeter(self):\n        return self.a+self.b+self.c\n    def describe(self):\n        return \"I am a triangle\"\n\nsq = Square(4)\ntr = Triangle(3,4,5)\nareas = [sq.area(), int(tr.area())]",
+    "explanation": "Subclasses override and extend base-class behavior."
+  },
+  {
+    "id": 385,
+    "qid_original": 385,
+    "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
+    "question_raw": "Create a class `Portfolio` composed of `Stock` objects and compute total value.",
+    "check_variable": ["value"],
+    "expected_value": [[2000]],
+    "solution_code": "class Stock:\n    def __init__(self, symbol, shares, price):\n        self.symbol = symbol\n        self.shares = shares\n        self.price = price\n\nclass Portfolio:\n    def __init__(self, stocks):\n        self.stocks = stocks\n    def total_value(self):\n        return sum(s.shares * s.price for s in self.stocks)\n\np = Portfolio([Stock(\"A\",10,100), Stock(\"B\",5,200)])\nvalue = p.total_value()",
+    "explanation": "Composition models has-a relationships."
+  },
+  {
+    "id": 386,
+    "qid_original": 386,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Use a for loop with `range(10)` to print numbers 0 through 9.",
+    "check_variable": ["nums"],
+    "expected_value": [[0,1,2,3,4,5,6,7,8,9]],
+    "solution_code": "nums = []\nfor i in range(10):\n    nums.append(i)",
+    "explanation": "range(10) generates 0–9."
+  },
+  {
+    "id": 387,
+    "qid_original": 387,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Use a for loop with `range(1, 11)` to calculate the sum of numbers 1 through 10.",
+    "check_variable": ["total"],
+    "expected_value": [[55]],
+    "solution_code": "total = 0\nfor i in range(1,11):\n    total += i",
+    "explanation": "Accumulation pattern with a loop."
+  },
+  {
+    "id": 388,
+    "qid_original": 388,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Use `enumerate()` to print each fruit with its index.",
+    "check_variable": ["pairs"],
+    "expected_value": [[[0, "apple"], [1, "banana"], [2, "cherry"]]],
+    "solution_code": "fruits = ['apple','banana','cherry']\npairs = []\nfor i, f in enumerate(fruits):\n    pairs.append([i, f])",
+    "explanation": "enumerate yields index–value pairs."
+  },
+  {
+    "id": 389,
+    "qid_original": 389,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Iterate through a dictionary and print key-value pairs.",
+    "check_variable": ["items"],
+    "expected_value": [["a:1", "b:2", "c:3"]],
+    "solution_code": "d = {'a': 1, 'b': 2, 'c': 3}\nitems = []\nfor k, v in d.items():\n    items.append(f\\\"{k}:{v}\\\")",
+    "explanation": "dict.items() iterates over key–value pairs."
+  },
+  {
+    "id": 390,
+    "qid_original": 390,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Find the first number divisible by 7 in range(1, 50) using break.",
+    "check_variable": ["first"],
+    "expected_value": [[7]],
+    "solution_code": "for i in range(1,50):\n    if i % 7 == 0:\n        first = i\n        break",
+    "explanation": "break exits the loop early."
+  },
+  {
+    "id": 391,
+    "qid_original": 391,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Print all odd numbers from 1 to 20 using continue.",
+    "check_variable": ["odds"],
+    "expected_value": [[1,3,5,7,9,11,13,15,17,19]],
+    "solution_code": "odds = []\nfor i in range(1,21):\n    if i % 2 == 0:\n        continue\n    odds.append(i)",
+    "explanation": "continue skips the current iteration."
+  },
+  {
+    "id": 392,
+    "qid_original": 392,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Count students with GPA above 3.0 using a for loop.",
+    "check_variable": ["count"],
+    "expected_value": [["int"]],
+    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/questions/students.csv')\ncount = 0\nfor g in df['gpa']:\n    if g > 3.0:\n        count += 1",
+    "explanation": "Manual iteration with a condition."
+  },
+  {
+    "id": 393,
+    "qid_original": 393,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Calculate total revenue for Electronics category using a for loop.",
+    "check_variable": ["total"],
+    "expected_value": [["float"]],
+    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/questions/sales.csv')\ntotal = 0\nfor _,row in df.iterrows():\n    if row['category'] == 'Electronics':\n        total += row['revenue']",
+    "explanation": "Row-wise iteration accumulates revenue."
+  },
+  {
+    "id": 394,
+    "qid_original": 394,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Create a 5×5 multiplication table using nested loops.",
+    "check_variable": ["table"],
+    "expected_value": [["list"]],
+    "solution_code": "table = []\nfor i in range(1,6):\n    row = []\n    for j in range(1,6):\n        row.append(i*j)\n    table.append(row)",
+    "explanation": "Nested loops build a grid."
+  },
+  {
+    "id": 395,
+    "qid_original": 395,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Use a list comprehension to create squares from 1 to 10.",
+    "check_variable": ["squares"],
+    "expected_value": [[1,4,9,16,25,36,49,64,81,100]],
+    "solution_code": "squares = [i*i for i in range(1,11)]",
+    "explanation": "List comprehensions are concise and readable."
+  },
+  {
+    "id": 396,
+    "qid_original": 396,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Create a list of employee names in Engineering using list comprehension.",
+    "check_variable": ["names"],
+    "expected_value": [["list"]],
+    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/questions/employees.csv')\nnames = [n for n,d in zip(df['name'], df['department']) if d=='Engineering']",
+    "explanation": "Comprehensions can filter and transform."
+  },
+  {
+    "id": 397,
+    "qid_original": 397,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Create a dictionary of cubes for numbers 1–5.",
+    "check_variable": ["cubes"],
+    "expected_value": [{"1":1,"2":8,"3":27,"4":64,"5":125}],
+    "solution_code": "cubes = {i: i**3 for i in range(1,6)}",
+    "explanation": "Dictionary comprehensions map keys to values."
+  },
+  {
+    "id": 398,
+    "qid_original": 398,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Implement FizzBuzz.",
+    "check_variable": ["output"],
+    "expected_value": [["list"]],
+    "solution_code": "def fizzbuzz(n):\n    res = []\n    for i in range(1,n+1):\n        if i%15==0: res.append('FizzBuzz')\n        elif i%3==0: res.append('Fizz')\n        elif i%5==0: res.append('Buzz')\n        else: res.append(i)\n    return res\n\noutput = fizzbuzz(15)",
+    "explanation": "Conditional ordering matters."
+  },
+  {
+    "id": 399,
+    "qid_original": 399,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Categorize temperatures and count each category.",
+    "check_variable": ["counts"],
+    "expected_value": [["dict"]],
+    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/questions/weather.csv')\ncounts = {'Cold':0,'Mild':0,'Hot':0}\nfor t in df['temperature']:\n    if t < 50: counts['Cold']+=1\n    elif t <= 75: counts['Mild']+=1\n    else: counts['Hot']+=1",
+    "explanation": "Multiple branches classify values."
+  },
+  {
+    "id": 400,
+    "qid_original": 400,
+    "category": "Loops and Conditionals (Questions 386-400)",
+    "question_raw": "Add a letter_grade column based on GPA.",
+    "check_variable": ["df"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "def process_grades(df):\n    def lg(g):\n        if g>=3.5: return 'A'\n        if g>=3.0: return 'B'\n        if g>=2.5: return 'C'\n        if g>=2.0: return 'D'\n        return 'F'\n    df['letter_grade'] = df['gpa'].apply(lg)\n    return df\n\nimport pandas as pd\ndf = process_grades(pd.read_csv('data/questions/students.csv'))",
+    "explanation": "Functions encapsulate reusable logic."
   }
 ]
 

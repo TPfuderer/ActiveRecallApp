@@ -669,7 +669,34 @@ with tabs[0]:
 
     st.markdown("---")
 
+    # -----------------------------
+    # 📊 Questions answered per category
+    # -----------------------------
 
+    # attempts sicher normalisieren
+    attempts_raw = st.session_state.get("attempts", {})
+    attempts = {int(k): v for k, v in attempts_raw.items()} if isinstance(attempts_raw, dict) else {}
+
+    # Tasks → DataFrame
+    tasks_df = pd.DataFrame(tasks)
+
+    # Markiere beantwortete Tasks
+    tasks_df["answered"] = tasks_df["id"].apply(lambda tid: attempts.get(tid, 0) >= 1)
+
+    # Gruppieren nach Kategorie
+    cat_progress = (
+        tasks_df[tasks_df["answered"]]
+        .groupby("category")
+        .size()
+        .sort_values(ascending=False)
+    )
+
+    st.subheader("📊 Beantwortete Aufgaben pro Kategorie")
+
+    if len(cat_progress) > 0:
+        st.bar_chart(cat_progress)
+    else:
+        st.info("Noch keine Aufgaben beantwortet.")
 
 
 # ============================================================
