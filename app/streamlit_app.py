@@ -744,7 +744,7 @@ with tabs[0]:
                     labelLimit=0,  # nichts abschneiden
                     labelAlign="right",  # Text zeigt nach links
                     labelPadding=6,
-                    offset=50  # 🔥 DAS verschiebt die Balken nach rechts
+                    offset=5  # 🔥 DAS verschiebt die Balken nach rechts
                 )
             ),
             x=alt.X(
