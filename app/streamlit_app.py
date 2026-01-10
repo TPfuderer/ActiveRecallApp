@@ -669,37 +669,94 @@ with tabs[0]:
 
     st.markdown("---")
 
-    # -----------------------------
-    # 📊 Questions answered per category (ALL categories)
-    # -----------------------------
+    # ============================================================
+    # 📊 Progress per Category (ALL categories, nice labels)
+    # ============================================================
 
-    # attempts sicher normalisieren
+    import pandas as pd
+    import altair as alt
+    import re
+
+    # -----------------------------
+    # 1️⃣ Attempts normalisieren
+    # -----------------------------
     attempts_raw = st.session_state.get("attempts", {})
     attempts = {int(k): v for k, v in attempts_raw.items()} if isinstance(attempts_raw, dict) else {}
 
-    # Tasks → DataFrame
-    tasks_df = pd.DataFrame(tasks)
+    # -----------------------------
+    # 2️⃣ Tasks → DataFrame
+    # -----------------------------
+    df = pd.DataFrame(tasks)[["id", "category"]].copy()
 
-    # Markiere beantwortete Tasks
-    tasks_df["answered"] = tasks_df["id"].apply(lambda tid: attempts.get(tid, 0) >= 1)
+    # answered = mindestens einmal gemacht
+    df["answered"] = df["id"].apply(lambda tid: 1 if attempts.get(tid, 0) >= 1 else 0)
 
-    # ALLE Kategorien aus tasks.json
-    all_categories = sorted(tasks_df["category"].unique())
+    # -----------------------------
+    # 3️⃣ Anzahl Fragen pro Kategorie
+    # -----------------------------
+    total_per_cat = df.groupby("category").size()
+    answered_per_cat = df.groupby("category")["answered"].sum()
 
-    # Zähle beantwortete Tasks pro Kategorie
-    answered_per_cat = (
-        tasks_df[tasks_df["answered"]]
-        .groupby("category")
-        .size()
-    )
+    cat_df = pd.DataFrame({
+        "answered": answered_per_cat,
+        "total": total_per_cat
+    }).fillna(0).reset_index()
 
-    # Fehlende Kategorien mit 0 auffüllen
-    answered_per_cat = answered_per_cat.reindex(all_categories, fill_value=0)
 
+    # -----------------------------
+    # 4️⃣ Kategorie-Labels umbrechen
+    # -----------------------------
+    def format_category_label(cat):
+        # Trennt z.B. "NumPy - Basics (15 Questions)"
+        main = cat.split("(")[0].strip()
+        parts = main.split(" - ")
+
+        if len(parts) == 2:
+            label = f"{parts[0]}\n{parts[1]}"
+        else:
+            label = main
+
+        return f"{label}\n({int(total_per_cat[cat])} Questions)"
+
+
+    cat_df["category_label"] = cat_df["category"].apply(format_category_label)
+
+    # -----------------------------
+    # 5️⃣ Sortierung (nach Umfang)
+    # -----------------------------
+    cat_df = cat_df.sort_values("total", ascending=False)
+
+    # -----------------------------
+    # 6️⃣ Balkendiagramm
+    # -----------------------------
     st.subheader("📊 Beantwortete Aufgaben pro Kategorie")
 
-    st.bar_chart(answered_per_cat)
+    chart = (
+        alt.Chart(cat_df)
+        .mark_bar()
+        .encode(
+            x=alt.X(
+                "category_label:N",
+                sort=cat_df["category_label"].tolist(),
+                axis=alt.Axis(
+                    title="Kategorie",
+                    labelAngle=0
+                )
+            ),
+            y=alt.Y(
+                "answered:Q",
+                title="Beantwortete Aufgaben"
+            ),
+            tooltip=[
+                alt.Tooltip("category:N", title="Kategorie"),
+                alt.Tooltip("answered:Q", title="Beantwortet"),
+                alt.Tooltip("total:Q", title="Gesamt")
+            ]
+        )
+        .properties(height=420)
+    )
 
+    st.altair_chart(chart, use_container_width=True)
 
 # ============================================================
 # ❗ TAB 2: Issue melden
