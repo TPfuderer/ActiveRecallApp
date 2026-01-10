@@ -739,7 +739,11 @@ with tabs[0]:
             y=alt.Y(
                 "category_label:N",
                 sort=cat_df["category_label"].tolist(),
-                title="Kategorie"
+                title="Kategorie",
+                axis=alt.Axis(
+                    labelPadding=12,  # 🔹 Abstand Label ↔ Achse
+                    titlePadding=20
+                )
             ),
             x=alt.X(
                 "pct:Q",
@@ -754,7 +758,8 @@ with tabs[0]:
             ]
         )
         .properties(
-            height=35 * len(cat_df)  # dynamische Höhe → nichts abgeschnitten
+            height=35 * len(cat_df),
+            padding={"left": 180}  # 🔥 DAS ist der entscheidende Platz
         )
     )
 
