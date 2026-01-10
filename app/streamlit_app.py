@@ -670,7 +670,7 @@ with tabs[0]:
     st.markdown("---")
 
     # ============================================================
-    # 📊 Progress per Category (stacked + wrapped labels)
+    # 📊 Progress per Category (HORIZONTAL, clean)
     # ============================================================
 
     import pandas as pd
@@ -701,23 +701,20 @@ with tabs[0]:
         .reset_index()
     )
 
-    cat_df["open"] = cat_df["total"] - cat_df["answered"]
-    cat_df["progress_pct"] = (cat_df["answered"] / cat_df["total"] * 100).round(1)
-
 
     # -----------------------------
-    # 4️⃣ Schöne mehrzeilige Labels
+    # 4️⃣ Schöne Labels
     # -----------------------------
     def format_category_label(cat, total):
         main = cat.split("(")[0].strip()
         parts = main.split(" - ")
 
         if len(parts) == 2:
-            label = f"{parts[0]}\n{parts[1]}"
+            label = f"{parts[0]} – {parts[1]}"
         else:
             label = main
 
-        return f"{label}\n({int(total)} Questions)"
+        return f"{label} ({int(total)})"
 
 
     cat_df["category_label"] = cat_df.apply(
@@ -734,59 +731,31 @@ with tabs[0]:
     )
 
     # -----------------------------
-    # 6️⃣ Long-Format für stacked bars
+    # 6️⃣ Horizontal Bar Chart
     # -----------------------------
-    plot_df = cat_df.melt(
-        id_vars=["category", "category_label", "progress_pct"],
-        value_vars=["answered", "open"],
-        var_name="status",
-        value_name="count"
-    )
-
-    # -----------------------------
-    # 7️⃣ Stacked Bar Chart
-    # -----------------------------
-    st.subheader("📊 Lernfortschritt pro Kategorie")
+    st.subheader("📊 Beantwortete Aufgaben pro Kategorie")
 
     chart = (
-        alt.Chart(plot_df)
+        alt.Chart(cat_df)
         .mark_bar()
         .encode(
-            x=alt.X(
+            y=alt.Y(
                 "category_label:N",
                 sort=cat_df["category_label"].tolist(),
-                axis=alt.Axis(
-                    title="Kategorie",
-                    labelAngle=0,
-                    labelLimit=0,  # 🔥 NICHT abschneiden
-                    labelPadding=10
-                )
+                title="Kategorie"
             ),
-            y=alt.Y(
-                "count:Q",
-                title="Anzahl Aufgaben"
-            ),
-            color=alt.Color(
-                "status:N",
-                scale=alt.Scale(
-                    domain=["answered", "open"],
-                    range=["#2ecc71", "#e74c3c"]  # 🟩🟥
-                ),
-                legend=alt.Legend(
-                    title="Status",
-                    labelExpr="datum.label == 'answered' ? 'Beantwortet' : 'Offen'"
-                )
+            x=alt.X(
+                "answered:Q",
+                title="Beantwortete Aufgaben"
             ),
             tooltip=[
                 alt.Tooltip("category:N", title="Kategorie"),
                 alt.Tooltip("answered:Q", title="Beantwortet"),
-                alt.Tooltip("open:Q", title="Offen"),
-                alt.Tooltip("progress_pct:Q", title="Fortschritt (%)")
+                alt.Tooltip("total:Q", title="Gesamt")
             ]
         )
         .properties(
-            height=450,
-            padding={"bottom": 60}
+            height=35 * len(cat_df)  # 🔥 dynamische Höhe → nichts wird abgeschnitten
         )
     )
 
