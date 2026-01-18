@@ -6220,15 +6220,15 @@
     "solution_code": "import pandas as pd\n\ndef process_student_data(filepath):\n    try:\n        df = pd.read_csv(filepath)\n        if df.empty:\n            return {\"success\": False, \"error\": \"Empty file\"}\n        for col in ['name','age','gpa']:\n            if col not in df.columns:\n                return {\"success\": False, \"error\": f\"Missing column: {col}\"}\n        avg_gpa = pd.to_numeric(df['gpa'], errors='raise').mean()\n        return {\"success\": True, \"avg_gpa\": avg_gpa, \"num_students\": len(df)}\n    except FileNotFoundError:\n        return {\"success\": False, \"error\": \"File not found\"}\n    except ValueError:\n        return {\"success\": False, \"error\": \"Invalid GPA values\"}\n\noutput = process_student_data('data/questions/students.csv')",
     "explanation": "End-to-end robust CSV processing."
   },
-  {
+{
   "id": 441,
   "qid_original": 441,
   "category": "Matplotlib Basics (20 Questions)",
   "question_raw": "Import matplotlib.pyplot as plt and pandas, then load the `data/questions/sales.csv` dataset.",
   "check_variable": ["sales"],
   "expected_value": [["DataFrame"]],
-  "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# sales = pd.read_csv('data/questions/sales.csv')\n# print(sales.head())\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nsales = pd.read_csv('data/questions/sales.csv')\n\n# No plot required for this question, but matplotlib is successfully imported\n# and available for later plotting tasks.",
-  "explanation": "Loads the sales dataset after importing pandas and matplotlib, ensuring plotting is available for subsequent exercises."
+  "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# sales = pd.read_csv('data/sales.csv')\n# print(sales.head())\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nsales = pd.read_csv('data/sales.csv')\n\n# No plot required for this question.\n# Matplotlib is imported and ready for subsequent plotting exercises.",
+  "explanation": "Imports pandas and matplotlib and loads the sales dataset from the local data directory."
 }
 
 ]
