@@ -5,6 +5,7 @@ import pandas as pd
 import streamlit as st
 import io
 import contextlib
+import matplotlib.pyplot as plt
 import json
 import random
 import time

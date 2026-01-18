@@ -1,0 +1,427 @@
+---
+title: "Python Formula & Syntax Reference"
+author: "Tristan Pfuderer"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+---
+
+## Variables & Assignment
+
+```python
+x = value
+a, b = v1, v2          # tuple unpacking
+a, b, c = v1, v2, v3
+```
+
+---
+
+## Numeric Operations
+
+```python
+a + b      # addition
+a - b      # subtraction
+a * b      # multiplication
+a / b      # division
+a // b     # integer division
+a % b      # modulo operator
+a ** b     # exponentiation
+```
+
+```python
+(a + b) * c    # parentheses / precedence
+```
+
+---
+
+## Type & Identity
+
+```python
+type(x)
+type(x) == int
+type(x) == float
+type(x) == str
+type(x) == bool
+```
+
+```python
+x is None
+x is not None
+```
+
+---
+
+## Strings
+
+```python
+s = "text"
+s = 'text'
+s = """multi
+line"""
+```
+
+```python
+s[0]
+s[-1]
+s[2:6]
+s[::-1]     # reverse string
+s[::2]      # step slicing
+```
+
+```python
+s.upper()
+s.lower()
+s.title()
+s.strip()
+s.replace(old, new)
+s.split(sep)
+sep.join(list_of_strings)
+s.count(sub)
+s.startswith(prefix)
+s.endswith(suffix)
+s.find(sub)
+s.isdigit()
+```
+
+```python
+f"{expression}"          # f-string
+f"text {variable} text"
+```
+
+```python
+string * n               # string repetition
+```
+
+---
+
+## Lists
+
+```python
+lst = []
+lst = [1, 2, 3]
+lst = list(range(10))
+```
+
+```python
+lst[0]
+lst[-1]
+lst[1:4]
+lst[::-1]
+```
+
+```python
+lst.append(x)
+lst.insert(i, x)
+lst.extend(other)
+lst.pop()
+lst.count(x)
+lst.index(x)
+```
+
+```python
+len(lst)
+sum(lst)
+max(lst)
+min(lst)
+sorted(lst)
+sorted(lst, reverse=True)
+```
+
+```python
+[x for x in iterable]
+[x for x in iterable if cond]
+[x * 2 for x in lst]
+[x for sub in nested for x in sub]
+```
+
+---
+
+## Tuples
+
+```python
+(a, b)
+(a, b, c)
+```
+
+---
+
+## Dictionaries
+
+```python
+d = {}
+d = {"a": 1, "b": 2}
+d = dict(zip(keys, values))
+```
+
+```python
+d[key]
+d.get(key)
+d.get(key, default)
+d[key] = value
+del d[key]
+```
+
+```python
+d.keys()
+d.values()
+d.items()
+```
+
+```python
+{k: v for k, v in d.items()}
+{k: v for k, v in d.items() if cond}
+{v: k for k, v in d.items()}   # dictionary inversion
+```
+
+```python
+for k in d:
+    ...
+for v in d.values():
+    ...
+for k, v in d.items():
+    ...
+```
+
+---
+
+## Sets
+
+```python
+s = set()
+s = {1, 2, 3}
+```
+
+```python
+s.add(x)
+a | b        # union
+a & b        # intersection
+a - b        # difference
+x in s       # membership test
+```
+
+---
+
+## Control Flow
+
+```python
+if condition:
+    ...
+elif condition:
+    ...
+else:
+    ...
+```
+
+---
+
+## Loops
+
+```python
+for x in iterable:
+    ...
+```
+
+```python
+while condition:
+    ...
+```
+
+```python
+for x in iterable:
+    if condition:
+        ...
+```
+
+```python
+for x in iterable1:
+    for y in iterable2:
+        ...
+```
+
+```python
+result = initial_value
+for x in iterable:
+    result = update(result, x)   # accumulation pattern
+```
+
+---
+
+## Built-ins & Iteration Helpers
+
+```python
+print(x)
+len(x)
+sum(x)
+max(x)
+min(x)
+sorted(x)
+range(n)
+zip(a, b)
+enumerate(iterable)
+```
+
+```python
+for i, x in enumerate(lst):
+    ...
+
+for a, b in zip(l1, l2):
+    ...
+```
+
+---
+
+## Functions
+
+```python
+def function_name(arg1, arg2):
+    output = ...
+    return output
+```
+
+```python
+def function_name(arg):
+    """Docstring"""
+    return result
+```
+
+---
+
+## Classes
+
+```python
+class ClassName:
+    def __init__(self, arg1, arg2):
+        self.arg1 = arg1
+        self.arg2 = arg2
+```
+
+```python
+class ClassName:
+    def method(self):
+        return value
+```
+
+---
+
+## NumPy: Array Creation
+
+```python
+np.array([1, 2, 3])
+np.array([[1, 2, 3], [4, 5, 6]])
+```
+
+```python
+np.zeros((3, 4), dtype=int)
+np.ones((2, 3), dtype=int)
+np.eye(4)
+```
+
+```python
+np.arange(10)
+np.arange(1, 10)
+np.linspace(0, 1, 10)
+```
+
+```python
+np.random.seed(42)
+np.random.rand(5, 5)
+np.random.randint(1, 101, size=10)
+```
+
+---
+
+## NumPy: Shape & Reshaping
+
+```python
+arr.shape
+arr.ndim
+arr.size
+arr.dtype
+```
+
+```python
+arr.reshape(3, 4)
+arr.flatten()
+np.array_split(arr, 3)
+```
+
+---
+
+## NumPy: Indexing & Boolean Logic
+
+```python
+arr[0]
+arr[1, 2]
+arr[:, -1]
+arr[1:3, 0:2]
+```
+
+```python
+arr[arr > 5]     # boolean indexing
+```
+
+---
+
+## NumPy: Operations & Statistics
+
+```python
+arr + arr
+arr * 2
+arr ** 2
+```
+
+```python
+arr.sum()
+arr.mean()
+arr.std()
+arr.max()
+arr.argmax()
+```
+
+---
+
+## NumPy: Sorting & Algebra
+
+```python
+np.sort(arr)
+np.argsort(arr)
+np.dot(a, b)
+```
+
+---
+
+## NumPy: Conditional, Combine & Unique
+
+```python
+np.where(arr > 5, 5, arr)
+```
+
+```python
+np.concatenate((arr1, arr2), axis=0)
+np.concatenate((arr1, arr2), axis=1)
+np.vstack((arr1, arr2))
+```
+
+```python
+np.unique(arr)
+```
+
+---
+
+## Generic Transform / Filter / Group Patterns
+
+```python
+# transform
+[f(x) for x in iterable]
+
+# filter
+[x for x in iterable if condition]
+
+# group / accumulate
+result = {}
+for x in iterable:
+    result[key(x)] = value(x)
+```
+
+---

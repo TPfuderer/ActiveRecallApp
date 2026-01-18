@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "qid_original": 401,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Import matplotlib.pyplot as plt and pandas, then load the `data/questions/sales.csv` dataset."
+  },
+  {
+    "id": 2,
+    "qid_original": 402,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/sales.csv`, create a line plot showing total revenue over time. Group by date and sum the revenue column. Add axis labels and a title."
+  },
+  {
+    "id": 3,
+    "qid_original": 403,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Create a scatter plot using `data/questions/employees.csv` showing the relationship between years_experience (x-axis) and salary (y-axis). Add appropriate title and axis labels."
+  },
+  {
+    "id": 4,
+    "qid_original": 404,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/students.csv`, create a bar chart showing the count of students by major. Include a title \"Students by Major\"."
+  },
+  {
+    "id": 5,
+    "qid_original": 405,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Create a histogram of the gpa column from `data/questions/students.csv` with 10 bins. Add a title and axis labels."
+  },
+  {
+    "id": 6,
+    "qid_original": 406,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/weather.csv`, create a line plot comparing temperatures across different cities over time. Use different colors for each city and add a legend."
+  },
+  {
+    "id": 7,
+    "qid_original": 407,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/weather.csv`, create a line plot of temperature over time for one city. Add a grid using `plt.grid(True)` and customize the line with a marker (e.g., `marker='.'`)."
+  },
+  {
+    "id": 8,
+    "qid_original": 408,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/sales.csv`, create a bar chart showing total revenue by region. Add axis labels and a title."
+  },
+  {
+    "id": 9,
+    "qid_original": 409,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Create a box plot using `data/questions/students.csv` showing the distribution of the gpa column. Add a title."
+  },
+  {
+    "id": 10,
+    "qid_original": 410,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/weather.csv`, create a line plot showing temperature over time for two cities. Use different line styles (solid `'-'` and dashed `'--'`) for each city and add a legend."
+  },
+  {
+    "id": 11,
+    "qid_original": 411,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/students.csv`, create a pie chart showing the proportion of students in each major. Display percentages using the `autopct` parameter."
+  },
+  {
+    "id": 12,
+    "qid_original": 412,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Create two line plots on the same figure using `data/questions/employees.csv`: one showing average salary by years_experience and another showing average performance_score by years_experience. Scale the performance score by 10000 so both lines are visible on the same scale. Use different colors, label the y-axis \"Value\", and add a legend."
+  },
+  {
+    "id": 13,
+    "qid_original": 413,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/sales.csv`, create a grouped bar chart comparing total quantity sold by region for two different product categories. Use the technique from nb4 (adjusting x positions with numpy)."
+  },
+  {
+    "id": 14,
+    "qid_original": 414,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Create a scatter plot using `data/questions/employees.csv` with salary vs years_experience. Overlay a line plot connecting the average salary for each year of experience on top of the scatter points."
+  },
+  {
+    "id": 15,
+    "qid_original": 415,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/students.csv`, create a bar chart showing average GPA by grade level and save the plot to a file called \"gpa_by_grade.png\" using `plt.savefig()`."
+  },
+  {
+    "id": 16,
+    "qid_original": 416,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Create a histogram of the salary column from `data/questions/employees.csv` with 15 bins. Add an edge color to the bars using `edgecolor='black'` to make the bins more distinguishable."
+  },
+  {
+    "id": 17,
+    "qid_original": 417,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Apply the 'ggplot' style using `plt.style.use('ggplot')` and create a line plot of temperature over time from `data/questions/weather.csv`. Reset to default style afterwards."
+  },
+  {
+    "id": 18,
+    "qid_original": 418,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Print all available plot styles using `plt.style.available` and then create any simple plot using a style of your choice (other than 'ggplot' or 'default')."
+  },
+  {
+    "id": 19,
+    "qid_original": 419,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/employees.csv`, create a scatter plot of salary vs years_experience. Add custom colors (e.g., `color='purple'`) and markers (e.g., `marker='x'`)."
+  },
+  {
+    "id": 20,
+    "qid_original": 420,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "(Note: Requires knowledge from nb5) Using `data/questions/employees.csv`, create a scatter plot of salary vs years_experience and overlay a linear regression line. Use `scipy.stats.linregress()` to calculate the regression parameters."
+  },
+  {
+    "id": 21,
+    "qid_original": 421,
+    "category": "Seaborn (10 Questions)",
+    "question_raw": "Import seaborn as sns and load `data/questions/students.csv`. Create a distribution plot using `sns.displot()` showing the distribution of GPA with 15 bins."
+  },
+  {
+    "id": 22,
+    "qid_original": 422,
+    "category": "Seaborn (10 Questions)",
+    "question_raw": "Using `data/questions/employees.csv`, create a distribution plot of salary using `sns.displot()` with `kde=True` to add a kernel density estimation curve."
+  },
+  {
+    "id": 23,
+    "qid_original": 423,
+    "category": "Seaborn (10 Questions)",
+    "question_raw": "Using `data/questions/students.csv`, create a distribution plot of credits using `sns.displot()`. Set `stat='probability'` to show proportions instead of counts."
+  },
+  {
+    "id": 24,
+    "qid_original": 424,
+    "category": "Seaborn (10 Questions)",
+    "question_raw": "Create a distribution plot of gpa from `data/questions/students.csv` using `sns.displot()` with both `kde=True` and `bins=20`. Add a title using matplotlib's `plt.title()`."
+  },
+  {
+    "id": 25,
+    "qid_original": 425,
+    "category": "Seaborn (10 Questions)",
+    "question_raw": "Using `data/questions/employees.csv`, create a distribution plot of salary using `sns.displot()` with `kind='kde'` to show a kernel density estimate instead of a histogram. Add a rug plot using `rug=True`."
+  },
+  {
+    "id": 26,
+    "qid_original": 426,
+    "category": "Seaborn (10 Questions)",
+    "question_raw": "(Self-study) Using the seaborn documentation, create a box plot of gpa by major from `data/questions/students.csv` using `sns.boxplot()`."
+  },
+  {
+    "id": 27,
+    "qid_original": 427,
+    "category": "Seaborn (10 Questions)",
+    "question_raw": "(Self-study) Using the seaborn documentation, create a scatter plot of salary vs years_experience from `data/questions/employees.csv` using `sns.scatterplot()`. Color points by department using the `hue` parameter."
+  },
+  {
+    "id": 28,
+    "qid_original": 428,
+    "category": "Seaborn (10 Questions)",
+    "question_raw": "(Self-study) Using the seaborn documentation, create a heatmap showing the correlation matrix of numerical columns (salary, years_experience, performance_score) from `data/questions/employees.csv` using `sns.heatmap()`. Include annotations."
+  },
+  {
+    "id": 29,
+    "qid_original": 429,
+    "category": "Seaborn (10 Questions)",
+    "question_raw": "(Self-study) Using the seaborn documentation, create a bar plot showing average revenue by region from `data/questions/sales.csv` using `sns.barplot()`."
+  },
+  {
+    "id": 30,
+    "qid_original": 430,
+    "category": "Seaborn (10 Questions)",
+    "question_raw": "(Self-study) Using the seaborn documentation, create a pairplot of age, gpa, and credits from `data/questions/students.csv` using `sns.pairplot()`."
+  },
+  {
+    "id": 31,
+    "qid_original": 431,
+    "category": "Additional Practice (5 Questions)",
+    "question_raw": "Using `data/questions/sales.csv`, create a line plot of total quantity sold over time. Add both a title and axis labels, and use `plt.tight_layout()` before showing the plot."
+  },
+  {
+    "id": 32,
+    "qid_original": 432,
+    "category": "Additional Practice (5 Questions)",
+    "question_raw": "Create a histogram of the age column from `data/questions/students.csv` with custom bin edges: `[18, 20, 22, 24, 26, 28, 30]`. Add axis labels."
+  },
+  {
+    "id": 33,
+    "qid_original": 433,
+    "category": "Additional Practice (5 Questions)",
+    "question_raw": "Using `data/questions/employees.csv`, create a bar chart showing the count of employees per department. Use a custom color for the bars (e.g., `color='teal'`)."
+  },
+  {
+    "id": 34,
+    "qid_original": 434,
+    "category": "Additional Practice (5 Questions)",
+    "question_raw": "Using `data/questions/weather.csv`, create a scatter plot of temperature vs precipitation. Add a grid and customize the marker style."
+  },
+  {
+    "id": 35,
+    "qid_original": 435,
+    "category": "Additional Practice (5 Questions)",
+    "question_raw": "Create a pie chart using `data/questions/sales.csv` showing total revenue by category. Use the `explode` parameter to highlight one slice."
+  }
+]

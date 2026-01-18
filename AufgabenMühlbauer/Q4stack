@@ -1,0 +1,311 @@
+---
+title: "nb4 questions"
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    toc: true
+    toc-depth: 2
+    number-sections: true
+---
+
+# Instructions
+
+This document contains coding questions covering topics from Notebook 4 of the Python Data Analysis course. Questions are primarily based on the material taught in `nb4_plotting.qmd`, with a few questions requiring students to explore documentation independently.
+
+**Datasets:** Several CSV files in the `data/questions/` directory are used throughout. Each question specifies which dataset to use:
+
+- `students.csv` - Student information (name, age, gpa, major, grade, credits)
+- `sales.csv` - Sales transactions (date, product, category, region, price, quantity, revenue)
+- `weather.csv` - Weather data (date, city, temperature, precipitation)
+- `employees.csv` - Employee records (name, department, salary, years_experience, performance_score)
+
+---
+
+## Matplotlib Basics (20 Questions)
+
+### Question 401
+Import matplotlib.pyplot as plt and pandas, then load the `data/questions/sales.csv` dataset.
+
+```{python}
+# Your code here
+
+```
+
+### Question 402
+Using `data/questions/sales.csv`, create a line plot showing total revenue over time. Group by date and sum the revenue column. Add axis labels and a title.
+
+```{python}
+# Your code here
+
+```
+
+### Question 403
+Create a scatter plot using `data/questions/employees.csv` showing the relationship between years_experience (x-axis) and salary (y-axis). Add appropriate title and axis labels.
+
+```{python}
+# Your code here
+
+```
+
+### Question 404
+Using `data/questions/students.csv`, create a bar chart showing the count of students by major. Include a title "Students by Major".
+
+```{python}
+# Your code here
+
+```
+
+### Question 405
+Create a histogram of the gpa column from `data/questions/students.csv` with 10 bins. Add a title and axis labels.
+
+```{python}
+# Your code here
+
+```
+
+### Question 406
+Using `data/questions/weather.csv`, create a line plot comparing temperatures across different cities over time. Use different colors for each city and add a legend.
+
+```{python}
+# Your code here
+
+```
+
+### Question 407
+Using `data/questions/weather.csv`, create a line plot of temperature over time for one city. Add a grid using `plt.grid(True)` and customize the line with a marker (e.g., `marker='.'`).
+
+```{python}
+# Your code here
+
+```
+
+### Question 408
+Using `data/questions/sales.csv`, create a bar chart showing total revenue by region. Add axis labels and a title.
+
+```{python}
+# Your code here
+
+```
+
+### Question 409
+Create a box plot using `data/questions/students.csv` showing the distribution of the gpa column. Add a title.
+
+```{python}
+# Your code here
+
+```
+
+### Question 410
+Using `data/questions/weather.csv`, create a line plot showing temperature over time for two cities. Use different line styles (solid `'-'` and dashed `'--'`) for each city and add a legend.
+
+```{python}
+# Your code here
+
+```
+
+### Question 411
+Using `data/questions/students.csv`, create a pie chart showing the proportion of students in each major. Display percentages using the `autopct` parameter.
+
+```{python}
+# Your code here
+
+```
+
+### Question 412
+Create two line plots on the same figure using `data/questions/employees.csv`: one showing average salary by years_experience and another showing average performance_score by years_experience. Scale the performance score by 10000 so both lines are visible on the same scale. Use different colors, label the y-axis "Value", and add a legend.
+
+```{python}
+# Your code here
+
+```
+
+### Question 413
+Using `data/questions/sales.csv`, create a grouped bar chart comparing total quantity sold by region for two different product categories. Use the technique from nb4 (adjusting x positions with numpy).
+
+```{python}
+# Your code here
+
+```
+
+### Question 414
+Create a scatter plot using `data/questions/employees.csv` with salary vs years_experience. Overlay a line plot connecting the average salary for each year of experience on top of the scatter points.
+
+```{python}
+# Your code here
+
+```
+
+### Question 415
+Using `data/questions/students.csv`, create a bar chart showing average GPA by grade level and save the plot to a file called "gpa_by_grade.png" using `plt.savefig()`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 416
+Create a histogram of the salary column from `data/questions/employees.csv` with 15 bins. Add an edge color to the bars using `edgecolor='black'` to make the bins more distinguishable.
+
+```{python}
+# Your code here
+
+```
+
+### Question 417
+Apply the 'ggplot' style using `plt.style.use('ggplot')` and create a line plot of temperature over time from `data/questions/weather.csv`. Reset to default style afterwards.
+
+```{python}
+# Your code here
+
+```
+
+### Question 418
+Print all available plot styles using `plt.style.available` and then create any simple plot using a style of your choice (other than 'ggplot' or 'default').
+
+```{python}
+# Your code here
+
+```
+
+### Question 419
+Using `data/questions/employees.csv`, create a scatter plot of salary vs years_experience. Add custom colors (e.g., `color='purple'`) and markers (e.g., `marker='x'`).
+
+```{python}
+# Your code here
+
+```
+
+### Question 420
+(Note: Requires knowledge from nb5) Using `data/questions/employees.csv`, create a scatter plot of salary vs years_experience and overlay a linear regression line. Use `scipy.stats.linregress()` to calculate the regression parameters.
+
+```{python}
+# Your code here
+
+```
+
+## Seaborn (10 Questions)
+
+Note: The notebook primarily covers `sns.displot()` with KDE. These questions test that knowledge plus encourage independent exploration of the seaborn documentation.
+
+### Question 421
+Import seaborn as sns and load `data/questions/students.csv`. Create a distribution plot using `sns.displot()` showing the distribution of GPA with 15 bins.
+
+```{python}
+# Your code here
+
+```
+
+### Question 422
+Using `data/questions/employees.csv`, create a distribution plot of salary using `sns.displot()` with `kde=True` to add a kernel density estimation curve.
+
+```{python}
+# Your code here
+
+```
+
+### Question 423
+Using `data/questions/students.csv`, create a distribution plot of credits using `sns.displot()`. Set `stat='probability'` to show proportions instead of counts.
+
+```{python}
+# Your code here
+
+```
+
+### Question 424
+Create a distribution plot of gpa from `data/questions/students.csv` using `sns.displot()` with both `kde=True` and `bins=20`. Add a title using matplotlib's `plt.title()`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 425
+Using `data/questions/employees.csv`, create a distribution plot of salary using `sns.displot()` with `kind='kde'` to show a kernel density estimate instead of a histogram. Add a rug plot using `rug=True`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 426
+(Self-study) Using the seaborn documentation, create a box plot of gpa by major from `data/questions/students.csv` using `sns.boxplot()`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 427
+(Self-study) Using the seaborn documentation, create a scatter plot of salary vs years_experience from `data/questions/employees.csv` using `sns.scatterplot()`. Color points by department using the `hue` parameter.
+
+```{python}
+# Your code here
+
+```
+
+### Question 428
+(Self-study) Using the seaborn documentation, create a heatmap showing the correlation matrix of numerical columns (salary, years_experience, performance_score) from `data/questions/employees.csv` using `sns.heatmap()`. Include annotations.
+
+```{python}
+# Your code here
+
+```
+
+### Question 429
+(Self-study) Using the seaborn documentation, create a bar plot showing average revenue by region from `data/questions/sales.csv` using `sns.barplot()`.
+
+```{python}
+# Your code here
+
+```
+
+### Question 430
+(Self-study) Using the seaborn documentation, create a pairplot of age, gpa, and credits from `data/questions/students.csv` using `sns.pairplot()`.
+
+```{python}
+# Your code here
+
+```
+
+## Additional Practice (5 Questions)
+
+### Question 431
+Using `data/questions/sales.csv`, create a line plot of total quantity sold over time. Add both a title and axis labels, and use `plt.tight_layout()` before showing the plot.
+
+```{python}
+# Your code here
+
+```
+
+### Question 432
+Create a histogram of the age column from `data/questions/students.csv` with custom bin edges: `[18, 20, 22, 24, 26, 28, 30]`. Add axis labels.
+
+```{python}
+# Your code here
+
+```
+
+### Question 433
+Using `data/questions/employees.csv`, create a bar chart showing the count of employees per department. Use a custom color for the bars (e.g., `color='teal'`).
+
+```{python}
+# Your code here
+
+```
+
+### Question 434
+Using `data/questions/weather.csv`, create a scatter plot of temperature vs precipitation. Add a grid and customize the marker style.
+
+```{python}
+# Your code here
+
+```
+
+### Question 435
+Create a pie chart using `data/questions/sales.csv` showing total revenue by category. Use the `explode` parameter to highlight one slice.
+
+```{python}
+# Your code here
+
+```

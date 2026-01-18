@@ -1,0 +1,326 @@
+---
+title: "Formulas"
+format:
+  html:
+    toc: true
+    embed-resources: true
+    math: mathjax
+---
+
+# Time & Unit Conversions
+
+## Hours and Minutes to Seconds
+
+**Rule**
+
+$$
+\text{seconds} = \text{hours} \times 3600 + \text{minutes} \times 60
+$$
+
+------------------------------------------------------------------------
+
+## Seconds to Hours, Minutes, Seconds
+
+**Rule**
+
+$$
+\text{hours} = \left\lfloor \frac{\text{seconds}}{3600} \right\rfloor
+$$
+
+$$
+\text{remaining} = \text{seconds} \bmod 3600
+$$
+
+$$
+\text{minutes} = \left\lfloor \frac{\text{remaining}}{60} \right\rfloor
+$$
+
+$$
+\text{seconds}_{\text{left}} = \text{remaining} \bmod 60
+$$
+
+------------------------------------------------------------------------
+
+## Celsius to Fahrenheit
+
+**Rule**
+
+$$
+F = C \times \frac{9}{5} + 32
+$$
+
+------------------------------------------------------------------------
+
+# Geometry & Measurement
+
+## Rectangle Area
+
+**Rule**
+
+$$
+A = l \times w
+$$
+
+$$
+\text Area = length *width
+$$
+
+------------------------------------------------------------------------
+
+## Rectangle Perimeter
+
+**Rule**
+
+$$
+P = 2(l + w)
+$$
+
+$$
+\text Area = 2*(length *width)
+$$
+
+------------------------------------------------------------------------
+
+## Circle Area
+
+**Rule**
+
+$$
+A = \pi r^2
+$$
+
+$$
+\text Area = pi*radius^2
+$$
+
+------------------------------------------------------------------------
+
+## Triangle Perimeter
+
+**Rule**
+
+$$
+P = a + b + c
+$$
+
+Sum of all four sides of the rectangle.
+
+------------------------------------------------------------------------
+
+## Triangle Area (Heron's Formula)
+
+**Rule**
+
+$$
+s = \frac{a + b + c}{2}
+$$
+
+$$
+A = \sqrt{s(s-a)(s-b)(s-c)}
+$$
+
+Computes triangle area using only side lengths.
+
+------------------------------------------------------------------------
+
+# Finance & Rates
+
+## Percentage Discount
+
+**Rule**
+
+$$
+\text{discounted price} = \text{original price} \times (1 - d)
+$$
+
+where ( d ) is the discount rate.
+
+------------------------------------------------------------------------
+
+## Compound Interest
+
+**Rule**
+
+$$
+A = P(1 + r)^t
+$$
+
+where\
+( P ) = principal\
+( r ) = interest rate\
+( t ) = time
+
+------------------------------------------------------------------------
+
+# Health & Science
+
+## Body Mass Index (BMI)
+
+**Rule**
+
+$$
+\text{BMI} = \frac{\text{weight}}{\text{height}^2}
+$$
+
+------------------------------------------------------------------------
+
+# Arithmetic Rules
+
+## Modulo (Remainder)
+
+**Rule**
+
+$$
+a \bmod b = \text{remainder of } \frac{a}{b}
+$$
+
+------------------------------------------------------------------------
+
+## Even / Odd Check
+
+**Rule**
+
+$$
+\text{even} \iff n \bmod 2 = 0
+$$
+
+------------------------------------------------------------------------
+
+## Floor Division
+
+**Rule**
+
+$$
+a \mathbin{//} b = \left\lfloor \frac{a}{b} \right\rfloor
+$$
+
+Divides and rounds down to the nearest integer. (Full number)
+
+------------------------------------------------------------------------
+
+# Sequences & Series
+
+## Fibonacci Sequence
+
+**Rule**
+
+$$
+F_n = F_{n-1} + F_{n-2}
+$$
+
+with initial values ( F_0 = 0, F_1 = 1 ).
+
+Each term equals the sum of the two preceding ones.
+
+------------------------------------------------------------------------
+
+# String Logic (Conceptual)
+
+## String Repetition
+
+**Rule**
+
+$$
+\text{text} \times n = \text{text concatenated } n \text{ times}
+$$
+
+------------------------------------------------------------------------
+
+## Palindrome Check
+
+**Rule**
+
+$$
+\text{string} = \text{reverse(string)}
+$$
+
+Reads same forward as backwards:\
+Nun\
+Mom\
+Madam
+
+------------------------------------------------------------------------
+
+## Substring Extraction
+
+**Rule**
+
+$$
+\text{substring} = \text{characters from index } i \text{ to } j-1
+$$
+
+------------------------------------------------------------------------
+
+# Lists & Sets
+
+## Second Largest Element
+
+**Rule**
+
+$$
+\text{sort descending} \rightarrow \text{take second element}
+$$
+
+------------------------------------------------------------------------
+
+## Filtering by Condition
+
+**Rule**
+
+$$
+\{x \mid \text{condition}(x) = \text{true}\}
+$$
+
+------------------------------------------------------------------------
+
+## Flatten Nested Lists
+
+**Rule**
+
+$$
+[[a,b],[c,d]] \rightarrow [a,b,c,d]
+$$
+
+------------------------------------------------------------------------
+
+# Dictionary Logic
+
+## Grouping by Key
+
+**Rule**
+
+$$
+\text{group elements sharing the same property}
+$$
+
+------------------------------------------------------------------------
+
+# Set Theory
+
+## Union
+
+**Rule**
+
+$$
+A \cup B = \{x \mid x \in A \text{ or } x \in B\}
+$$
+
+------------------------------------------------------------------------
+
+## Intersection
+
+**Rule**
+
+$$
+A \cap B = \{x \mid x \in A \text{ and } x \in B\}
+$$
+
+------------------------------------------------------------------------
+
+## Difference
+
+**Rule**
+
+$$
+A - B = \{x \mid x \in A \text{ and } x \notin B\}
+$$
