@@ -9,17 +9,17 @@ format:
 
 ## Variables & Assignment
 
-```python
+``` python
 x = value
 a, b = v1, v2          # tuple unpacking
 a, b, c = v1, v2, v3
 ```
 
----
+------------------------------------------------------------------------
 
 ## Numeric Operations
 
-```python
+``` python
 a + b      # addition
 a - b      # subtraction
 a * b      # multiplication
@@ -29,15 +29,15 @@ a % b      # modulo operator
 a ** b     # exponentiation
 ```
 
-```python
+``` python
 (a + b) * c    # parentheses / precedence
 ```
 
----
+------------------------------------------------------------------------
 
 ## Type & Identity
 
-```python
+``` python
 type(x)
 type(x) == int
 type(x) == float
@@ -45,23 +45,23 @@ type(x) == str
 type(x) == bool
 ```
 
-```python
+``` python
 x is None
 x is not None
 ```
 
----
+------------------------------------------------------------------------
 
 ## Strings
 
-```python
+``` python
 s = "text"
 s = 'text'
 s = """multi
 line"""
 ```
 
-```python
+``` python
 s[0]
 s[-1]
 s[2:6]
@@ -69,7 +69,7 @@ s[::-1]     # reverse string
 s[::2]      # step slicing
 ```
 
-```python
+``` python
 s.upper()
 s.lower()
 s.title()
@@ -84,33 +84,33 @@ s.find(sub)
 s.isdigit()
 ```
 
-```python
+``` python
 f"{expression}"          # f-string
 f"text {variable} text"
 ```
 
-```python
+``` python
 string * n               # string repetition
 ```
 
----
+------------------------------------------------------------------------
 
 ## Lists
 
-```python
+``` python
 lst = []
 lst = [1, 2, 3]
 lst = list(range(10))
 ```
 
-```python
+``` python
 lst[0]
 lst[-1]
 lst[1:4]
 lst[::-1]
 ```
 
-```python
+``` python
 lst.append(x)
 lst.insert(i, x)
 lst.extend(other)
@@ -119,7 +119,7 @@ lst.count(x)
 lst.index(x)
 ```
 
-```python
+``` python
 len(lst)
 sum(lst)
 max(lst)
@@ -128,33 +128,33 @@ sorted(lst)
 sorted(lst, reverse=True)
 ```
 
-```python
+``` python
 [x for x in iterable]
 [x for x in iterable if cond]
 [x * 2 for x in lst]
 [x for sub in nested for x in sub]
 ```
 
----
+------------------------------------------------------------------------
 
 ## Tuples
 
-```python
+``` python
 (a, b)
 (a, b, c)
 ```
 
----
+------------------------------------------------------------------------
 
 ## Dictionaries
 
-```python
+``` python
 d = {}
 d = {"a": 1, "b": 2}
 d = dict(zip(keys, values))
 ```
 
-```python
+``` python
 d[key]
 d.get(key)
 d.get(key, default)
@@ -162,19 +162,19 @@ d[key] = value
 del d[key]
 ```
 
-```python
+``` python
 d.keys()
 d.values()
 d.items()
 ```
 
-```python
+``` python
 {k: v for k, v in d.items()}
 {k: v for k, v in d.items() if cond}
 {v: k for k, v in d.items()}   # dictionary inversion
 ```
 
-```python
+``` python
 for k in d:
     ...
 for v in d.values():
@@ -183,16 +183,16 @@ for k, v in d.items():
     ...
 ```
 
----
+------------------------------------------------------------------------
 
 ## Sets
 
-```python
+``` python
 s = set()
 s = {1, 2, 3}
 ```
 
-```python
+``` python
 s.add(x)
 a | b        # union
 a & b        # intersection
@@ -200,11 +200,11 @@ a - b        # difference
 x in s       # membership test
 ```
 
----
+------------------------------------------------------------------------
 
 ## Control Flow
 
-```python
+``` python
 if condition:
     ...
 elif condition:
@@ -213,43 +213,43 @@ else:
     ...
 ```
 
----
+------------------------------------------------------------------------
 
 ## Loops
 
-```python
+``` python
 for x in iterable:
     ...
 ```
 
-```python
+``` python
 while condition:
     ...
 ```
 
-```python
+``` python
 for x in iterable:
     if condition:
         ...
 ```
 
-```python
+``` python
 for x in iterable1:
     for y in iterable2:
         ...
 ```
 
-```python
+``` python
 result = initial_value
 for x in iterable:
     result = update(result, x)   # accumulation pattern
 ```
 
----
+------------------------------------------------------------------------
 
 ## Built-ins & Iteration Helpers
 
-```python
+``` python
 print(x)
 len(x)
 sum(x)
@@ -261,7 +261,7 @@ zip(a, b)
 enumerate(iterable)
 ```
 
-```python
+``` python
 for i, x in enumerate(lst):
     ...
 
@@ -269,109 +269,109 @@ for a, b in zip(l1, l2):
     ...
 ```
 
----
+------------------------------------------------------------------------
 
 ## Functions
 
-```python
+``` python
 def function_name(arg1, arg2):
     output = ...
     return output
 ```
 
-```python
+``` python
 def function_name(arg):
     """Docstring"""
     return result
 ```
 
----
+------------------------------------------------------------------------
 
 ## Classes
 
-```python
+``` python
 class ClassName:
     def __init__(self, arg1, arg2):
         self.arg1 = arg1
         self.arg2 = arg2
 ```
 
-```python
+``` python
 class ClassName:
     def method(self):
         return value
 ```
 
----
+------------------------------------------------------------------------
 
 ## NumPy: Array Creation
 
-```python
+``` python
 np.array([1, 2, 3])
 np.array([[1, 2, 3], [4, 5, 6]])
 ```
 
-```python
+``` python
 np.zeros((3, 4), dtype=int)
 np.ones((2, 3), dtype=int)
 np.eye(4)
 ```
 
-```python
+``` python
 np.arange(10)
 np.arange(1, 10)
 np.linspace(0, 1, 10)
 ```
 
-```python
+``` python
 np.random.seed(42)
 np.random.rand(5, 5)
 np.random.randint(1, 101, size=10)
 ```
 
----
+------------------------------------------------------------------------
 
 ## NumPy: Shape & Reshaping
 
-```python
+``` python
 arr.shape
 arr.ndim
 arr.size
 arr.dtype
 ```
 
-```python
+``` python
 arr.reshape(3, 4)
 arr.flatten()
 np.array_split(arr, 3)
 ```
 
----
+------------------------------------------------------------------------
 
 ## NumPy: Indexing & Boolean Logic
 
-```python
+``` python
 arr[0]
 arr[1, 2]
 arr[:, -1]
 arr[1:3, 0:2]
 ```
 
-```python
+``` python
 arr[arr > 5]     # boolean indexing
 ```
 
----
+------------------------------------------------------------------------
 
 ## NumPy: Operations & Statistics
 
-```python
+``` python
 arr + arr
 arr * 2
 arr ** 2
 ```
 
-```python
+``` python
 arr.sum()
 arr.mean()
 arr.std()
@@ -379,39 +379,39 @@ arr.max()
 arr.argmax()
 ```
 
----
+------------------------------------------------------------------------
 
 ## NumPy: Sorting & Algebra
 
-```python
+``` python
 np.sort(arr)
 np.argsort(arr)
 np.dot(a, b)
 ```
 
----
+------------------------------------------------------------------------
 
 ## NumPy: Conditional, Combine & Unique
 
-```python
+``` python
 np.where(arr > 5, 5, arr)
 ```
 
-```python
+``` python
 np.concatenate((arr1, arr2), axis=0)
 np.concatenate((arr1, arr2), axis=1)
 np.vstack((arr1, arr2))
 ```
 
-```python
+``` python
 np.unique(arr)
 ```
 
----
+------------------------------------------------------------------------
 
 ## Generic Transform / Filter / Group Patterns
 
-```python
+``` python
 # transform
 [f(x) for x in iterable]
 
@@ -424,4 +424,223 @@ for x in iterable:
     result[key(x)] = value(x)
 ```
 
----
+------------------------------------------------------------------------
+
+## Pandas: Data Inspection
+
+``` python
+df.head()
+df.columns
+df.index
+```
+
+------------------------------------------------------------------------
+
+## Pandas: Column Access
+
+``` python
+df["column"]
+df.column
+```
+
+------------------------------------------------------------------------
+
+## Pandas: Grouping & Aggregation
+
+``` python
+df.groupby("column")
+df.groupby("column")["value"].sum()
+df.groupby("column")["value"].mean()
+df.groupby(["col1", "col2"])["value"].sum()
+```
+
+``` python
+df.groupby("column").mean()
+```
+
+------------------------------------------------------------------------
+
+## Pandas: Reshaping
+
+``` python
+df.unstack()
+```
+
+------------------------------------------------------------------------
+
+## Pandas: Value Counts
+
+``` python
+df["column"].value_counts()
+```
+
+------------------------------------------------------------------------
+
+## NumPy: Arrays & Positions
+
+``` python
+np.arange(n)
+```
+
+------------------------------------------------------------------------
+
+## Matplotlib: Figure Creation
+
+``` python
+plt.figure()
+```
+
+------------------------------------------------------------------------
+
+## Matplotlib: Line Plot
+
+``` python
+plt.plot(x, y)
+plt.plot(x, y, label="label")
+plt.plot(x, y, linestyle="--")
+plt.plot(x, y, marker=".")
+```
+
+------------------------------------------------------------------------
+
+## Matplotlib: Scatter Plot
+
+``` python
+plt.scatter(x, y)
+plt.scatter(x, y, color="purple", marker="x")
+```
+
+------------------------------------------------------------------------
+
+## Matplotlib: Bar Chart
+
+``` python
+plt.bar(x, y)
+plt.bar(x - 0.2, y1, width=0.4)
+plt.bar(x + 0.2, y2, width=0.4)
+```
+
+------------------------------------------------------------------------
+
+## Matplotlib: Histogram
+
+``` python
+plt.hist(x, bins=10)
+plt.hist(x, bins=15, edgecolor="black")
+```
+
+------------------------------------------------------------------------
+
+## Matplotlib: Box Plot
+
+``` python
+plt.boxplot(x)
+```
+
+------------------------------------------------------------------------
+
+## Matplotlib: Pie Chart
+
+``` python
+plt.pie(values, labels=labels, autopct="%1.1f%%")
+```
+
+------------------------------------------------------------------------
+
+## Matplotlib: Labels & Titles
+
+``` python
+plt.xlabel("label")
+plt.ylabel("label")
+plt.title("title")
+```
+
+------------------------------------------------------------------------
+
+## Matplotlib: Legend, Grid & Layout
+
+``` python
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+```
+
+------------------------------------------------------------------------
+
+## Matplotlib: Styles
+
+``` python
+plt.style.use("ggplot")
+plt.style.use("default")
+plt.style.available
+```
+
+------------------------------------------------------------------------
+
+## Matplotlib: Saving Figures
+
+``` python
+plt.savefig("filename.png")
+```
+
+------------------------------------------------------------------------
+
+## Matplotlib: Display Hook
+
+``` python
+st.pyplot(plt.gcf())
+plt.close()
+plt.close("all")
+```
+
+------------------------------------------------------------------------
+
+## Seaborn: Distribution Plots
+
+``` python
+sns.displot(data, x="column", bins=15)
+sns.displot(data, x="column", kde=True)
+sns.displot(data, x="column", stat="probability")
+sns.displot(data, x="column", bins=20, kde=True)
+sns.displot(data, x="column", kind="kde", rug=True)
+```
+
+------------------------------------------------------------------------
+
+## Seaborn: Categorical & Relational Plots
+
+``` python
+sns.boxplot(data=df, x="major", y="gpa")
+sns.scatterplot(data=df, x="x", y="y", hue="category")
+```
+
+------------------------------------------------------------------------
+
+## Seaborn: Heatmap
+
+``` python
+sns.heatmap(df.corr(), annot=True)
+```
+
+------------------------------------------------------------------------
+
+## Seaborn: Pairplot
+
+``` python
+sns.pairplot(df[["age", "gpa", "credits"]])
+```
+
+------------------------------------------------------------------------
+
+## SciPy: Linear Regression
+
+``` python
+linregress(x, y)
+```
+
+``` python
+result.slope
+result.intercept
+```
+
+------------------------------------------------------------------------
