@@ -6220,16 +6220,189 @@
     "solution_code": "import pandas as pd\n\ndef process_student_data(filepath):\n    try:\n        df = pd.read_csv(filepath)\n        if df.empty:\n            return {\"success\": False, \"error\": \"Empty file\"}\n        for col in ['name','age','gpa']:\n            if col not in df.columns:\n                return {\"success\": False, \"error\": f\"Missing column: {col}\"}\n        avg_gpa = pd.to_numeric(df['gpa'], errors='raise').mean()\n        return {\"success\": True, \"avg_gpa\": avg_gpa, \"num_students\": len(df)}\n    except FileNotFoundError:\n        return {\"success\": False, \"error\": \"File not found\"}\n    except ValueError:\n        return {\"success\": False, \"error\": \"Invalid GPA values\"}\n\noutput = process_student_data('data/questions/students.csv')",
     "explanation": "End-to-end robust CSV processing."
   },
-{
-  "id": 441,
-  "qid_original": 441,
+  {
+    "id": 441,
+    "qid_original": 441,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Import matplotlib.pyplot as plt and pandas, then load the `data/questions/sales.csv` dataset.",
+    "check_variable": ["sales"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# sales = pd.read_csv('data/sales.csv')\n# print(sales.head())\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nsales = pd.read_csv('data/sales.csv')\n\n# No plot required for this question.\n# Matplotlib is imported and ready for subsequent plotting exercises.",
+    "explanation": "Imports pandas and matplotlib and loads the sales dataset from the local data directory."
+  },
+  {
+  "id": 442,
+  "qid_original": 442,
   "category": "Matplotlib Basics (20 Questions)",
-  "question_raw": "Import matplotlib.pyplot as plt and pandas, then load the `data/questions/sales.csv` dataset.",
-  "check_variable": ["sales"],
+  "question_raw": "Using `data/questions/sales.csv`, create a line plot showing total revenue over time. Group by date and sum the revenue column. Add axis labels and a title.",
+  "check_variable": ["sales_grouped"],
   "expected_value": [["DataFrame"]],
-  "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# sales = pd.read_csv('data/sales.csv')\n# print(sales.head())\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nsales = pd.read_csv('data/sales.csv')\n\n# No plot required for this question.\n# Matplotlib is imported and ready for subsequent plotting exercises.",
-  "explanation": "Imports pandas and matplotlib and loads the sales dataset from the local data directory."
-}
+  "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# sales = pd.read_csv('data/sales.csv')\n# sales_grouped = sales.groupby('date')['revenue'].sum()\n# plt.plot(sales_grouped.index, sales_grouped.values)\n# plt.xlabel('Date')\n# plt.ylabel('Total Revenue')\n# plt.title('Total Revenue Over Time')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nsales = pd.read_csv('data/sales.csv')\n\nsales_grouped = sales.groupby('date')['revenue'].sum()\n\nplt.figure()\nplt.plot(sales_grouped.index, sales_grouped.values)\nplt.xlabel('Date')\nplt.ylabel('Total Revenue')\nplt.title('Total Revenue Over Time')\n\n# Streamlit display hook\nst.pyplot(plt.gcf())\nplt.close()",
+  "explanation": "Groups sales data by date, sums revenue, and visualizes total revenue over time using a line plot."
+  },
+  {
+    "id": 443,
+    "qid_original": 443,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Create a scatter plot using `data/questions/employees.csv` showing the relationship between years_experience (x-axis) and salary (y-axis). Add appropriate title and axis labels.",
+    "check_variable": ["employees"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# employees = pd.read_csv('data/employees.csv')\n# plt.scatter(employees['years_experience'], employees['salary'])\n# plt.xlabel('Years Experience')\n# plt.ylabel('Salary')\n# plt.title('Salary vs Experience')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nemployees = pd.read_csv('data/employees.csv')\n\nplt.figure()\nplt.scatter(employees['years_experience'], employees['salary'])\nplt.xlabel('Years Experience')\nplt.ylabel('Salary')\nplt.title('Salary vs Experience')\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 444,
+    "qid_original": 444,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/students.csv`, create a bar chart showing the count of students by major. Include a title \"Students by Major\".",
+    "check_variable": ["students"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# students = pd.read_csv('data/students.csv')\n# students['major'].value_counts().plot(kind='bar')\n# plt.title('Students by Major')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nstudents = pd.read_csv('data/students.csv')\n\ncounts = students['major'].value_counts()\n\nplt.figure()\nplt.bar(counts.index, counts.values)\nplt.title('Students by Major')\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 445,
+    "qid_original": 445,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Create a histogram of the gpa column from `data/questions/students.csv` with 10 bins. Add a title and axis labels.",
+    "check_variable": ["students"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# students = pd.read_csv('data/students.csv')\n# plt.hist(students['gpa'], bins=10)\n# plt.xlabel('GPA')\n# plt.ylabel('Frequency')\n# plt.title('GPA Distribution')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nstudents = pd.read_csv('data/students.csv')\n\nplt.figure()\nplt.hist(students['gpa'], bins=10)\nplt.xlabel('GPA')\nplt.ylabel('Frequency')\nplt.title('GPA Distribution')\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
 
+  {
+    "id": 446,
+    "qid_original": 446,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/weather.csv`, create a line plot comparing temperatures across different cities over time. Use different colors for each city and add a legend.",
+    "check_variable": ["weather"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# weather = pd.read_csv('data/weather.csv')\n# for city in weather['city'].unique():\n#     subset = weather[weather['city'] == city]\n#     plt.plot(subset['date'], subset['temperature'], label=city)\n# plt.legend()\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nweather = pd.read_csv('data/weather.csv')\n\nplt.figure()\nfor city in weather['city'].unique():\n    subset = weather[weather['city'] == city]\n    plt.plot(subset['date'], subset['temperature'], label=city)\n\nplt.legend()\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+
+  {
+    "id": 447,
+    "qid_original": 447,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/weather.csv`, create a line plot of temperature over time for one city. Add a grid using `plt.grid(True)` and customize the line with a marker (e.g., `marker='.'`).",
+    "check_variable": ["weather"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# weather = pd.read_csv('data/weather.csv')\n# city_data = weather[weather['city'] == weather['city'].iloc[0]]\n# plt.plot(city_data['date'], city_data['temperature'], marker='.')\n# plt.grid(True)\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nweather = pd.read_csv('data/weather.csv')\ncity_data = weather[weather['city'] == weather['city'].iloc[0]]\n\nplt.figure()\nplt.plot(city_data['date'], city_data['temperature'], marker='.')\nplt.grid(True)\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+    {
+    "id": 448,
+    "qid_original": 448,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/sales.csv`, create a bar chart showing total revenue by region. Add axis labels and a title.",
+    "check_variable": ["sales_region"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# sales = pd.read_csv('data/sales.csv')\n# sales_region = sales.groupby('region')['revenue'].sum()\n# plt.bar(sales_region.index, sales_region.values)\n# plt.xlabel('Region')\n# plt.ylabel('Total Revenue')\n# plt.title('Total Revenue by Region')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nsales = pd.read_csv('data/sales.csv')\nsales_region = sales.groupby('region')['revenue'].sum()\n\nplt.figure()\nplt.bar(sales_region.index, sales_region.values)\nplt.xlabel('Region')\nplt.ylabel('Total Revenue')\nplt.title('Total Revenue by Region')\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 449,
+    "qid_original": 449,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Create a box plot using `data/questions/students.csv` showing the distribution of the gpa column. Add a title.",
+    "check_variable": ["students"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# students = pd.read_csv('data/students.csv')\n# plt.boxplot(students['gpa'])\n# plt.title('GPA Distribution')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nstudents = pd.read_csv('data/students.csv')\n\nplt.figure()\nplt.boxplot(students['gpa'])\nplt.title('GPA Distribution')\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 450,
+    "qid_original": 450,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/weather.csv`, create a line plot showing temperature over time for two cities. Use different line styles (solid `'-'` and dashed `'--'`) for each city and add a legend.",
+    "check_variable": ["weather"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# weather = pd.read_csv('data/weather.csv')\n# cities = weather['city'].unique()[:2]\n# for city, style in zip(cities, ['-', '--']):\n#     subset = weather[weather['city'] == city]\n#     plt.plot(subset['date'], subset['temperature'], linestyle=style, label=city)\n# plt.legend()\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nweather = pd.read_csv('data/weather.csv')\ncities = weather['city'].unique()[:2]\n\nplt.figure()\nfor city, style in zip(cities, ['-', '--']):\n    subset = weather[weather['city'] == city]\n    plt.plot(subset['date'], subset['temperature'], linestyle=style, label=city)\n\nplt.legend()\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 451,
+    "qid_original": 451,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/students.csv`, create a pie chart showing the proportion of students in each major. Display percentages using the `autopct` parameter.",
+    "check_variable": ["students"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# students = pd.read_csv('data/students.csv')\n# counts = students['major'].value_counts()\n# plt.pie(counts.values, labels=counts.index, autopct='%1.1f%%')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nstudents = pd.read_csv('data/students.csv')\ncounts = students['major'].value_counts()\n\nplt.figure()\nplt.pie(counts.values, labels=counts.index, autopct='%1.1f%%')\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 452,
+    "qid_original": 452,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Create two line plots on the same figure using `data/questions/employees.csv`: one showing average salary by years_experience and another showing average performance_score by years_experience. Scale the performance score by 10000 so both lines are visible on the same scale. Use different colors, label the y-axis \"Value\", and add a legend.",
+    "check_variable": ["employees_grouped"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# employees = pd.read_csv('data/employees.csv')\n# grouped = employees.groupby('years_experience').mean()\n# plt.plot(grouped.index, grouped['salary'], label='Salary')\n# plt.plot(grouped.index, grouped['performance_score'] * 10000, label='Performance Score * 10000')\n# plt.ylabel('Value')\n# plt.legend()\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nemployees = pd.read_csv('data/employees.csv')\nemployees_grouped = employees.groupby('years_experience').mean()\n\nplt.figure()\nplt.plot(employees_grouped.index, employees_grouped['salary'], label='Salary')\nplt.plot(employees_grouped.index, employees_grouped['performance_score'] * 10000, label='Performance Score * 10000')\nplt.ylabel('Value')\nplt.legend()\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 453,
+    "qid_original": 453,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/sales.csv`, create a grouped bar chart comparing total quantity sold by region for two different product categories. Use the technique from nb4 (adjusting x positions with numpy).",
+    "check_variable": ["grouped"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd, numpy as np, matplotlib.pyplot as plt\n# sales = pd.read_csv('data/sales.csv')\n# grouped = sales.groupby(['region','category'])['quantity'].sum().unstack()\n# x = np.arange(len(grouped.index))\n# plt.bar(x-0.2, grouped.iloc[:,0], width=0.4)\n# plt.bar(x+0.2, grouped.iloc[:,1], width=0.4)\n# plt.show()\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nsales = pd.read_csv('data/sales.csv')\ngrouped = sales.groupby(['region','category'])['quantity'].sum().unstack()\n\nx = np.arange(len(grouped.index))\n\nplt.figure()\nplt.bar(x - 0.2, grouped.iloc[:, 0], width=0.4, label=grouped.columns[0])\nplt.bar(x + 0.2, grouped.iloc[:, 1], width=0.4, label=grouped.columns[1])\nplt.xticks(x, grouped.index)\nplt.legend()\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 454,
+    "qid_original": 454,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Create a scatter plot using `data/questions/employees.csv` with salary vs years_experience. Overlay a line plot connecting the average salary for each year of experience on top of the scatter points.",
+    "check_variable": ["employees"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# employees = pd.read_csv('data/employees.csv')\n# plt.scatter(employees['years_experience'], employees['salary'])\n# avg = employees.groupby('years_experience')['salary'].mean()\n# plt.plot(avg.index, avg.values)\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nemployees = pd.read_csv('data/employees.csv')\navg = employees.groupby('years_experience')['salary'].mean()\n\nplt.figure()\nplt.scatter(employees['years_experience'], employees['salary'])\nplt.plot(avg.index, avg.values)\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 455,
+    "qid_original": 455,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/students.csv`, create a bar chart showing average GPA by grade level and save the plot to a file called \"gpa_by_grade.png\" using `plt.savefig()`.",
+    "check_variable": ["students_grouped"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# students = pd.read_csv('data/students.csv')\n# grouped = students.groupby('grade')['gpa'].mean()\n# grouped.plot(kind='bar')\n# plt.savefig('gpa_by_grade.png')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nstudents = pd.read_csv('data/students.csv')\nstudents_grouped = students.groupby('grade')['gpa'].mean()\n\nplt.figure()\nplt.bar(students_grouped.index, students_grouped.values)\nplt.savefig('gpa_by_grade.png')\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 456,
+    "qid_original": 456,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Create a histogram of the salary column from `data/questions/employees.csv` with 15 bins. Add an edge color to the bars using `edgecolor='black'` to make the bins more distinguishable.",
+    "check_variable": ["employees"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# employees = pd.read_csv('data/employees.csv')\n# plt.hist(employees['salary'], bins=15, edgecolor='black')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nemployees = pd.read_csv('data/employees.csv')\n\nplt.figure()\nplt.hist(employees['salary'], bins=15, edgecolor='black')\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 457,
+    "qid_original": 457,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Apply the 'ggplot' style using `plt.style.use('ggplot')` and create a line plot of temperature over time from `data/questions/weather.csv`. Reset to default style afterwards.",
+    "check_variable": ["weather"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# plt.style.use('ggplot')\n# weather = pd.read_csv('data/weather.csv')\n# plt.plot(weather['date'], weather['temperature'])\n# plt.style.use('default')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nplt.style.use('ggplot')\nweather = pd.read_csv('data/weather.csv')\n\nplt.figure()\nplt.plot(weather['date'], weather['temperature'])\n\nplt.style.use('default')\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 458,
+    "qid_original": 458,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Print all available plot styles using `plt.style.available` and then create any simple plot using a style of your choice (other than 'ggplot' or 'default').",
+    "check_variable": ["styles"],
+    "expected_value": [["list"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import matplotlib.pyplot as plt\n# print(plt.style.available)\n# plt.style.use('seaborn-v0_8')\n# plt.plot([1,2,3],[1,4,9])\n# plt.show()\n\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nstyles = plt.style.available\nplt.style.use(styles[0])\n\nplt.figure()\nplt.plot([1, 2, 3], [1, 4, 9])\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 459,
+    "qid_original": 459,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "Using `data/questions/employees.csv`, create a scatter plot of salary vs years_experience. Add custom colors (e.g., `color='purple'`) and markers (e.g., `marker='x'`).",
+    "check_variable": ["employees"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# employees = pd.read_csv('data/employees.csv')\n# plt.scatter(employees['years_experience'], employees['salary'], color='purple', marker='x')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nemployees = pd.read_csv('data/employees.csv')\n\nplt.figure()\nplt.scatter(employees['years_experience'], employees['salary'], color='purple', marker='x')\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 460,
+    "qid_original": 460,
+    "category": "Matplotlib Basics (20 Questions)",
+    "question_raw": "(Note: Requires knowledge from nb5) Using `data/questions/employees.csv`, create a scatter plot of salary vs years_experience and overlay a linear regression line. Use `scipy.stats.linregress()` to calculate the regression parameters.",
+    "check_variable": ["slope"],
+    "expected_value": [["float"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# from scipy.stats import linregress\n# employees = pd.read_csv('data/employees.csv')\n# res = linregress(employees['years_experience'], employees['salary'])\n# plt.scatter(employees['years_experience'], employees['salary'])\n# plt.plot(employees['years_experience'], res.intercept + res.slope * employees['years_experience'])\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\nfrom scipy.stats import linregress\n\nemployees = pd.read_csv('data/employees.csv')\nres = linregress(employees['years_experience'], employees['salary'])\nslope = res.slope\n\nplt.figure()\nplt.scatter(employees['years_experience'], employees['salary'])\nplt.plot(employees['years_experience'], res.intercept + res.slope * employees['years_experience'])\n\nst.pyplot(plt.gcf())\nplt.close()"
+  }
 ]
 
