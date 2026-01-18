@@ -616,7 +616,7 @@ with tabs[0]:
     # -------------------------------------------------------
     with st.expander("💡 Lösung & Erklärung", expanded=False):
         st.code(task["solution_code"], language="python")
-        st.markdown(task["explanation"])
+        st.markdown(task.get("explanation", "_Keine Erklärung für diese Aufgabe hinterlegt._"))
 
     with st.popover("ℹ️"):
         st.write(
