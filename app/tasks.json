@@ -2241,7 +2241,7 @@
         5
       ]
     ],
-    "solution_code": "output = []\nfor i in range(1, 6):\n    output.append(i)",
+    "solution_code": "for i in range(1, 6):\n    print(i)",
     "explanation": "A simple for loop iterating from 1 to 5 using range(1,6)."
   },
   {
