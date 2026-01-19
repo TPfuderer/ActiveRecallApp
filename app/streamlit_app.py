@@ -111,6 +111,16 @@ with tabs[0]:
 
 
     def save_progress(username):
+        # 🔹 bestehenden Progress aus DB laden (falls vorhanden)
+        res = supabase.table("users_progress") \
+            .select("progress") \
+            .eq("username", username) \
+            .limit(1) \
+            .execute()
+
+        db_progress = res.data[0]["progress"] if res.data else {}
+
+        # 🔹 lokaler Export (wie vorher)
         export_data = {
             "ratings": st.session_state.get("ratings", {}),
             "attempts": st.session_state.get("attempts", {}),
@@ -118,11 +128,21 @@ with tabs[0]:
             "timestamp": time.time(),
         }
 
+        # 🔹 MINIMALER Merge (DB + lokal)
+        merged_progress = {
+            "ratings": {**db_progress.get("ratings", {}), **export_data["ratings"]},
+            "attempts": {**db_progress.get("attempts", {}), **export_data["attempts"]},
+            "review_data": {**db_progress.get("review_data", {}), **export_data["review_data"]},
+            "timestamp": export_data["timestamp"],
+        }
+
+        # 🔹 speichern wie vorher
         supabase.table("users_progress").upsert({
             "username": username,
-            "progress": export_data
+            "progress": merged_progress
         }).execute()
 
+        # 🔹 UX bleibt identisch
         st.success("✔ Fortschritt gespeichert!")
 
 
