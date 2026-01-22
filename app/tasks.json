@@ -4027,7 +4027,7 @@
     "id": 248,
     "qid_original": 248,
     "category": "Data Manipulation (26 Questions)",
-    "question_raw": "Calculate the correlation between years_experience and salary.",
+    "question_raw": "Load \"data/employees.csv\". Calculate the correlation between years_experience and salary.",
     "check_variable": [
       "corr_val"
     ],
