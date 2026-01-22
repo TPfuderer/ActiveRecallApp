@@ -2077,9 +2077,7 @@
         20
       ]
     ],
-    "solution_code": "a, b, c = 10, 20, 15\nif a >= b and a >= c:\n    largest = a\nelif b >= a and b >= c:\n    largest = b\nelse:\n    largest = c",
-    "explanation": "Compare values pairwise to determine the largest."
-  },
+    "solution_code": "a = 10\nb = 20\nc = 15\n\nlargest = max(a, b, c)"  },
   {
     "id": 127,
     "qid_original": 127,
