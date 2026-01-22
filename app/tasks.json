@@ -6260,7 +6260,7 @@
     "id": 445,
     "qid_original": 445,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Create a histogram of the gpa column from `data/questions/students.csv` with 10 bins. Add a title and axis labels.",
+    "question_raw": "Create a histogram of the gpa column from `data/students.csv` with 10 bins. Add a title and axis labels.",
     "check_variable": ["students"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# students = pd.read_csv('data/students.csv')\n# plt.hist(students['gpa'], bins=10)\n# plt.xlabel('GPA')\n# plt.ylabel('Frequency')\n# plt.title('GPA Distribution')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nstudents = pd.read_csv('data/students.csv')\n\nplt.figure()\nplt.hist(students['gpa'], bins=10)\nplt.xlabel('GPA')\nplt.ylabel('Frequency')\nplt.title('GPA Distribution')\n\nst.pyplot(plt.gcf())\nplt.close()"
