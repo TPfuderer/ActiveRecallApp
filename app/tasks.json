@@ -696,7 +696,7 @@
     "expected_value": [
       "Hll Wrld"
     ],
-    "solution_code": "s = 'Hello World'\nvowels = 'aeiouAEIOU'\nresult = ''.join(ch for ch in s if ch not in vowels) \"KISS version:\" s = \"Hello World\"\n\nss = s.replace(\"e\", \" \")\nss = ss.replace(\"o\", \" \")\n\nprint(ss)",
+    "solution_code": "s = 'Hello World'\nvowels = 'aeiouAEIOU'\nresult = ''.join(ch for ch in s if ch not in vowels) \nKISS version: s = \"Hello World\"\n\nss = s.replace(\"e\", \" \")\nss = ss.replace(\"o\", \" \")\n\nprint(ss)",
     "explanation": "We filter out all vowel characters by checking membership in a vowel string."
   },
   {
