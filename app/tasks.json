@@ -3985,7 +3985,7 @@
     "id": 245,
     "qid_original": 245,
     "category": "Data Manipulation (26 Questions)",
-    "question_raw": "Calculate the temperature range (max - min) for each city. weather = pd.read_csv(\"data/weather.csv\")",
+    "question_raw": "Calculate the temperature range (max - min) for each city. Use [weather = pd.read_csv(\"data/weather.csv\")]",
     "check_variable": [
       "temp_range"
     ],
