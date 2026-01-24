@@ -3943,7 +3943,7 @@
     "id": 242,
     "qid_original": 242,
     "category": "Data Manipulation (26 Questions)",
-    "question_raw": "Find the average temperature for each city.",
+    "question_raw": "Find the average temperature for each city. Use: weather = pd.read_csv(\"data/weather.csv\")",
     "check_variable": [
       "avg_temp"
     ],
@@ -3957,7 +3957,7 @@
     "id": 243,
     "qid_original": 243,
     "category": "Data Manipulation (26 Questions)",
-    "question_raw": "Find the day with the highest temperature across all cities.",
+    "question_raw": "Find the day with the highest temperature across all cities. Use: weather = pd.read_csv(\"data/weather.csv\")",
     "check_variable": [
       "hottest_day"
     ],
@@ -3971,7 +3971,7 @@
     "id": 244,
     "qid_original": 244,
     "category": "Data Manipulation (26 Questions)",
-    "question_raw": "Filter days where precipitation > 0.",
+    "question_raw": "Filter days where precipitation > 0. Use: weather = pd.read_csv(\"data/weather.csv\")" ,
     "check_variable": [
       "rainy_days"
     ],
@@ -3999,7 +3999,7 @@
     "id": 246,
     "qid_original": 246,
     "category": "Data Manipulation (26 Questions)",
-    "question_raw": "Find which city had the most rainy days (precipitation > 0).",
+    "question_raw": "Find which city had the most rainy days (precipitation > 0). Use: weather = pd.read_csv(\"data/weather.csv\")",
     "check_variable": [
       "rainiest_city"
     ],
