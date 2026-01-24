@@ -42,7 +42,7 @@ type(x)
 type(x) == int
 type(x) == float
 type(x) == str
-type(x) == bool
+type(x) == bool 
 ```
 
 ``` python
