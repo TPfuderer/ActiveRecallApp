@@ -409,18 +409,41 @@ with tabs[0]:
                 # --- echte libs vorher speichern ---
                 import numpy as _np_real
                 import pandas as _pd_real
+                import types
 
-                # --- user bekommt initial Zugriff ---
-                user_globals["np"] = _np_real
-                user_globals["pd"] = _pd_real
+                # --- SAFE MODULE COPIES ---
+                safe_pd = types.SimpleNamespace(**_pd_real.__dict__)
+                safe_np = types.SimpleNamespace(**_np_real.__dict__)
+
+                user_globals["pd"] = safe_pd
+                user_globals["np"] = safe_np
+
+                # --- SAFE BUILTINS (no import, no os, no sys) ---
+                SAFE_BUILTINS = {
+                    "print": print,
+                    "range": range,
+                    "len": len,
+                    "sum": sum,
+                    "min": min,
+                    "max": max,
+                    "abs": abs,
+                    "round": round,
+                    "sorted": sorted,
+                    "enumerate": enumerate,
+                    "zip": zip,
+                    "int": int,
+                    "float": float,
+                    "str": str,
+                    "list": list,
+                    "dict": dict,
+                    "set": set,
+                    "tuple": tuple,
+                }
+
+                user_globals["__builtins__"] = SAFE_BUILTINS
 
                 # --- user-code ausführen ---
                 exec(content, user_globals)
-
-                # --- nachher np/pd AUTOMATISCH wiederherstellen ---
-                # Falls user np überschreibt → ersetzen wir es zurück
-                user_globals["np"] = _np_real
-                user_globals["pd"] = _pd_real
 
             # Output collection
             output = stdout_buffer.getvalue().strip()
@@ -434,7 +457,6 @@ with tabs[0]:
 
             if not output and not errors:
                 st.info("ℹ️ No output shown — `print()` is required, just like in regular Python.")
-
 
         except Exception as e:
             st.error(f"❌ Exception during execution:\n{e}")
@@ -456,18 +478,41 @@ with tabs[0]:
                 # --- echte libs vorher speichern ---
                 import numpy as _np_real
                 import pandas as _pd_real
+                import types
 
-                # --- user bekommt initial Zugriff ---
-                user_globals["np"] = _np_real
-                user_globals["pd"] = _pd_real
+                # --- SAFE MODULE COPIES ---
+                safe_pd = types.SimpleNamespace(**_pd_real.__dict__)
+                safe_np = types.SimpleNamespace(**_np_real.__dict__)
+
+                user_globals["pd"] = safe_pd
+                user_globals["np"] = safe_np
+
+                # --- SAFE BUILTINS ---
+                SAFE_BUILTINS = {
+                    "print": print,
+                    "range": range,
+                    "len": len,
+                    "sum": sum,
+                    "min": min,
+                    "max": max,
+                    "abs": abs,
+                    "round": round,
+                    "sorted": sorted,
+                    "enumerate": enumerate,
+                    "zip": zip,
+                    "int": int,
+                    "float": float,
+                    "str": str,
+                    "list": list,
+                    "dict": dict,
+                    "set": set,
+                    "tuple": tuple,
+                }
+
+                user_globals["__builtins__"] = SAFE_BUILTINS
 
                 # --- user-code ausführen ---
                 exec(content, user_globals)
-
-                # --- nachher np/pd AUTOMATISCH wiederherstellen ---
-                # Falls user np überschreibt → ersetzen wir es zurück
-                user_globals["np"] = _np_real
-                user_globals["pd"] = _pd_real
 
             output = stdout_buffer.getvalue()
             errors = stderr_buffer.getvalue()
@@ -477,7 +522,10 @@ with tabs[0]:
             if errors.strip():
                 st.error(errors)
 
-            # Checking logic
+            # ============================
+            # Checking logic (UNCHANGED)
+            # ============================
+
             check_vars = task.get("check_variable", [])
             expected_vals = task.get("expected_value", [])
             expected_output = task.get("expected_output", None)
@@ -499,16 +547,9 @@ with tabs[0]:
                             pass
                     # --------------------------------------------------
 
-                    # ============================
-                    # 💡 TYPE-FLEXIBLE CHECK
-                    #   akzeptiert list, set, dict, tuple
-                    # ============================
-
                     ALLOWED_TYPES = (list, set, dict, tuple)
 
-                    # Falls Nutzer andere Struktur liefert → Warnung
                     if isinstance(user_val, ALLOWED_TYPES) and isinstance(exp, ALLOWED_TYPES):
-                        # Sets sortieren / normalisieren
                         if isinstance(user_val, set):
                             user_norm = sorted(user_val)
                         elif isinstance(user_val, dict):
@@ -527,9 +568,7 @@ with tabs[0]:
                             results.append(f"✅ `{var}` = {user_val}")
                         else:
                             results.append(f"❌ `{var}` = {user_val} (expected {exp})")
-
                     else:
-                        # exact fallback (für ints, floats, strings, etc.)
                         if user_val == exp:
                             results.append(f"✅ `{var}` = {exp}")
                         else:
@@ -537,7 +576,6 @@ with tabs[0]:
                                 results.append(f"❌ `{var}` not found.")
                             else:
                                 results.append(f"❌ `{var}` = {user_val} (expected {exp})")
-
 
             elif isinstance(check_vars, str):
                 user_val = user_globals.get(check_vars, None)
@@ -549,14 +587,15 @@ with tabs[0]:
                     else:
                         results.append(f"❌ `{check_vars}` = {user_val} (expected {expected_vals})")
 
-            # Check printed output if defined
             if expected_output is not None:
                 if output == expected_output:
                     results.append("✅ Printed output is correct.")
                 else:
-                    results.append(f"❌ Printed output was `{output.strip()}` (expected `{expected_output.strip()}`)")
+                    results.append(
+                        f"❌ Printed output was `{output.strip()}` "
+                        f"(expected `{expected_output.strip()}`)"
+                    )
 
-            # Show results
             if results:
                 for line in results:
                     if "✅" in line:

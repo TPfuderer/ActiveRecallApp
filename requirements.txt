@@ -6,3 +6,5 @@ supabase
 requests
 seaborn
 scipy
+numpy
+altair
