@@ -3684,10 +3684,7 @@
     "expected_value": [
       ["DataFrame"]
     ],
-    "solution_code": {
-  "code": "students = pd.read_csv(\"data/students.csv\")\nstudents[\"gpa_percent\"] = students.gpa * 25"
-}
-,
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\nstudents[\"gpa_percent\"] = students.gpa * 25",
     "explanation": "apply applies a function element-wise to a column."
   },
   {
