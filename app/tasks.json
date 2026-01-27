@@ -6195,7 +6195,7 @@
     "question_raw": "Re-raise FileNotFoundError after handling it.",
     "check_variable": ["handled"],
     "expected_value": [[true]],
-    "solution_code": "handled = False\n\ndef load_and_process(filename):\n    try:\n        open(filename)\n    except FileNotFoundError:\n        print(f\"File not found: {filename}\")\n        raise\n\ntry:\n    load_and_process('missing.csv')\nexcept FileNotFoundError:\n    handled = True",
+    "solution_code": "try:\n    f = open(\"data.txt\")\nexcept FileNotFoundError:\n    print(\"File not found\")\n    raise",
     "explanation": "raise without arguments preserves traceback."
   },
   {
