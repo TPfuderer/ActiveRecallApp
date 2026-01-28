@@ -412,11 +412,8 @@ with tabs[0]:
                 import types
 
                 # --- SAFE MODULE COPIES ---
-                safe_pd = types.SimpleNamespace(**_pd_real.__dict__)
-                safe_np = types.SimpleNamespace(**_np_real.__dict__)
-
-                user_globals["pd"] = safe_pd
-                user_globals["np"] = safe_np
+                user_globals["pd"] = _pd_real
+                user_globals["np"] = _np_real
 
                 # --- SAFE BUILTINS (no import, no os, no sys) ---
                 SAFE_BUILTINS = {
@@ -508,11 +505,8 @@ with tabs[0]:
                 import types
 
                 # --- SAFE MODULE COPIES ---
-                safe_pd = types.SimpleNamespace(**_pd_real.__dict__)
-                safe_np = types.SimpleNamespace(**_np_real.__dict__)
-
-                user_globals["pd"] = safe_pd
-                user_globals["np"] = safe_np
+                user_globals["pd"] = _pd_real
+                user_globals["np"] = _np_real
 
                 SAFE_BUILTINS = {
                     "__build_class__": __build_class__,
