@@ -406,24 +406,19 @@ with tabs[0]:
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
                 user_globals = {}
 
-                # --- echte libs vorher speichern ---
                 import numpy as _np_real
                 import pandas as _pd_real
-                import types
-
-                # --- SAFE MODULE COPIES ---
                 import sys
+                import re
 
                 user_globals["np"] = _np_real
                 user_globals["pd"] = _pd_real
-                user_globals["sys"] = sys  # 🔥 REQUIRED for numpy printing
+                user_globals["sys"] = sys
+                user_globals["re"] = re
 
-                # --- SAFE BUILTINS (no import, no os, no sys) ---
                 SAFE_BUILTINS = {
                     "__build_class__": __build_class__,
-                    "__name__": "__main__",
 
-                    # core
                     "print": print,
                     "range": range,
                     "len": len,
@@ -436,13 +431,12 @@ with tabs[0]:
                     "enumerate": enumerate,
                     "zip": zip,
 
-                    # logic & typing
                     "any": any,
                     "all": all,
+                    "bool": bool,
                     "type": type,
                     "isinstance": isinstance,
 
-                    # data types
                     "int": int,
                     "float": float,
                     "str": str,
@@ -450,16 +444,11 @@ with tabs[0]:
                     "dict": dict,
                     "set": set,
                     "tuple": tuple,
-                    "True": True,
-                    "False": False,
-                    "None": None,
 
-                    # decorators
                     "classmethod": classmethod,
                     "staticmethod": staticmethod,
                     "property": property,
 
-                    # exceptions
                     "AssertionError": AssertionError,
                     "ValueError": ValueError,
                     "TypeError": TypeError,
@@ -470,7 +459,6 @@ with tabs[0]:
                 user_globals["__builtins__"] = SAFE_BUILTINS
                 user_globals["__name__"] = "__main__"
 
-                # --- user-code ausführen ---
                 exec(content, user_globals)
 
             # Output collection
@@ -503,23 +491,19 @@ with tabs[0]:
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
                 user_globals = {}
 
-                # --- echte libs vorher speichern ---
                 import numpy as _np_real
                 import pandas as _pd_real
-                import types
-
-                # --- SAFE MODULE COPIES ---
                 import sys
+                import re
 
                 user_globals["np"] = _np_real
                 user_globals["pd"] = _pd_real
-                user_globals["sys"] = sys  # 🔥 REQUIRED for numpy printing
+                user_globals["sys"] = sys
+                user_globals["re"] = re
 
                 SAFE_BUILTINS = {
                     "__build_class__": __build_class__,
-                    "__name__": "__main__",
 
-                    # core
                     "print": print,
                     "range": range,
                     "len": len,
@@ -532,13 +516,12 @@ with tabs[0]:
                     "enumerate": enumerate,
                     "zip": zip,
 
-                    # logic & typing
                     "any": any,
                     "all": all,
+                    "bool": bool,
                     "type": type,
                     "isinstance": isinstance,
 
-                    # data types
                     "int": int,
                     "float": float,
                     "str": str,
@@ -546,16 +529,11 @@ with tabs[0]:
                     "dict": dict,
                     "set": set,
                     "tuple": tuple,
-                    "True": True,
-                    "False": False,
-                    "None": None,
 
-                    # decorators
                     "classmethod": classmethod,
                     "staticmethod": staticmethod,
                     "property": property,
 
-                    # exceptions
                     "AssertionError": AssertionError,
                     "ValueError": ValueError,
                     "TypeError": TypeError,
@@ -566,7 +544,6 @@ with tabs[0]:
                 user_globals["__builtins__"] = SAFE_BUILTINS
                 user_globals["__name__"] = "__main__"
 
-                # --- user-code ausführen ---
                 exec(content, user_globals)
 
             output = stdout_buffer.getvalue()
@@ -879,7 +856,7 @@ with tabs[0]:
         )
     )
 
-    st.altair_chart(chart, use_container_width=True)
+    st.altair_chart(chart, width="stretch")
 
 # ============================================================
 # ❗ TAB 2: Issue melden
