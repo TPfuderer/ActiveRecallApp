@@ -412,8 +412,11 @@ with tabs[0]:
                 import types
 
                 # --- SAFE MODULE COPIES ---
-                user_globals["pd"] = _pd_real
+                import sys
+
                 user_globals["np"] = _np_real
+                user_globals["pd"] = _pd_real
+                user_globals["sys"] = sys  # 🔥 REQUIRED for numpy printing
 
                 # --- SAFE BUILTINS (no import, no os, no sys) ---
                 SAFE_BUILTINS = {
@@ -506,8 +509,11 @@ with tabs[0]:
                 import types
 
                 # --- SAFE MODULE COPIES ---
-                user_globals["pd"] = _pd_real
+                import sys
+
                 user_globals["np"] = _np_real
+                user_globals["pd"] = _pd_real
+                user_globals["sys"] = sys  # 🔥 REQUIRED for numpy printing
 
                 SAFE_BUILTINS = {
                     "__build_class__": __build_class__,
