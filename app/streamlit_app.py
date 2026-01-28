@@ -420,7 +420,10 @@ with tabs[0]:
 
                 # --- SAFE BUILTINS (no import, no os, no sys) ---
                 SAFE_BUILTINS = {
-                    "__build_class__": __build_class__,  # 🔥 REQUIRED
+                    "__build_class__": __build_class__,
+                    "__name__": "__main__",
+
+                    # core
                     "print": print,
                     "range": range,
                     "len": len,
@@ -432,6 +435,14 @@ with tabs[0]:
                     "sorted": sorted,
                     "enumerate": enumerate,
                     "zip": zip,
+
+                    # logic & typing
+                    "any": any,
+                    "all": all,
+                    "type": type,
+                    "isinstance": isinstance,
+
+                    # data types
                     "int": int,
                     "float": float,
                     "str": str,
@@ -439,6 +450,21 @@ with tabs[0]:
                     "dict": dict,
                     "set": set,
                     "tuple": tuple,
+                    "True": True,
+                    "False": False,
+                    "None": None,
+
+                    # decorators
+                    "classmethod": classmethod,
+                    "staticmethod": staticmethod,
+                    "property": property,
+
+                    # exceptions
+                    "AssertionError": AssertionError,
+                    "ValueError": ValueError,
+                    "TypeError": TypeError,
+                    "ZeroDivisionError": ZeroDivisionError,
+                    "Exception": Exception,
                 }
 
                 user_globals["__builtins__"] = SAFE_BUILTINS
@@ -489,7 +515,10 @@ with tabs[0]:
                 user_globals["np"] = safe_np
 
                 SAFE_BUILTINS = {
-                    "__build_class__": __build_class__,  # 🔥 REQUIRED
+                    "__build_class__": __build_class__,
+                    "__name__": "__main__",
+
+                    # core
                     "print": print,
                     "range": range,
                     "len": len,
@@ -501,6 +530,14 @@ with tabs[0]:
                     "sorted": sorted,
                     "enumerate": enumerate,
                     "zip": zip,
+
+                    # logic & typing
+                    "any": any,
+                    "all": all,
+                    "type": type,
+                    "isinstance": isinstance,
+
+                    # data types
                     "int": int,
                     "float": float,
                     "str": str,
@@ -508,6 +545,21 @@ with tabs[0]:
                     "dict": dict,
                     "set": set,
                     "tuple": tuple,
+                    "True": True,
+                    "False": False,
+                    "None": None,
+
+                    # decorators
+                    "classmethod": classmethod,
+                    "staticmethod": staticmethod,
+                    "property": property,
+
+                    # exceptions
+                    "AssertionError": AssertionError,
+                    "ValueError": ValueError,
+                    "TypeError": TypeError,
+                    "ZeroDivisionError": ZeroDivisionError,
+                    "Exception": Exception,
                 }
 
                 user_globals["__builtins__"] = SAFE_BUILTINS
