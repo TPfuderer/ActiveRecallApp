@@ -409,6 +409,7 @@ with tabs[0]:
 
         SAFE_BUILTINS = {
             "__build_class__": __build_class__,
+            "__import__": __import__,
 
             # core
             "print": print,
