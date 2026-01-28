@@ -430,6 +430,7 @@ with tabs[0]:
                     "sorted": sorted,
                     "enumerate": enumerate,
                     "zip": zip,
+                    "open": open,
 
                     "any": any,
                     "all": all,
@@ -515,6 +516,7 @@ with tabs[0]:
                     "sorted": sorted,
                     "enumerate": enumerate,
                     "zip": zip,
+                    "open": open,
 
                     "any": any,
                     "all": all,
