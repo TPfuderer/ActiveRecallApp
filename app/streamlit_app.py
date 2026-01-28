@@ -420,6 +420,7 @@ with tabs[0]:
 
                 # --- SAFE BUILTINS (no import, no os, no sys) ---
                 SAFE_BUILTINS = {
+                    "__build_class__": __build_class__,  # 🔥 REQUIRED
                     "print": print,
                     "range": range,
                     "len": len,
@@ -487,8 +488,8 @@ with tabs[0]:
                 user_globals["pd"] = safe_pd
                 user_globals["np"] = safe_np
 
-                # --- SAFE BUILTINS ---
                 SAFE_BUILTINS = {
+                    "__build_class__": __build_class__,  # 🔥 REQUIRED
                     "print": print,
                     "range": range,
                     "len": len,
