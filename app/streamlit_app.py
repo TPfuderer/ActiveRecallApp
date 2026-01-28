@@ -392,7 +392,89 @@ with tabs[0]:
         height=200,
     )
 
-    # --- Unified run: manual button OR Ctrl+Enter ---
+
+    # ============================
+    # 🧠 Shared sandbox setup
+    # ============================
+    def build_user_globals():
+        import numpy as np
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        import seaborn as sns
+        import scipy
+        import scipy.stats as stats
+        import streamlit as st
+        import sys
+        import re
+
+        SAFE_BUILTINS = {
+            "__build_class__": __build_class__,
+
+            # core
+            "print": print,
+            "open": open,
+            "range": range,
+            "len": len,
+            "sum": sum,
+            "min": min,
+            "max": max,
+            "abs": abs,
+            "round": round,
+            "sorted": sorted,
+            "enumerate": enumerate,
+            "zip": zip,
+
+            # logic / typing
+            "any": any,
+            "all": all,
+            "bool": bool,
+            "type": type,
+            "isinstance": isinstance,
+
+            # data types
+            "int": int,
+            "float": float,
+            "str": str,
+            "list": list,
+            "dict": dict,
+            "set": set,
+            "tuple": tuple,
+
+            # decorators
+            "classmethod": classmethod,
+            "staticmethod": staticmethod,
+            "property": property,
+
+            # exceptions
+            "AssertionError": AssertionError,
+            "ValueError": ValueError,
+            "TypeError": TypeError,
+            "ZeroDivisionError": ZeroDivisionError,
+            "Exception": Exception,
+        }
+
+        return {
+            "__builtins__": SAFE_BUILTINS,
+            "__name__": "__main__",
+
+            # scientific stack
+            "np": np,
+            "pd": pd,
+            "plt": plt,
+            "sns": sns,
+            "scipy": scipy,
+            "stats": stats,
+
+            # infra
+            "st": st,
+            "sys": sys,
+            "re": re,
+        }
+
+
+    # ============================
+    # ▶️ Run without Check
+    # ============================
     do_run = st.button("▶️ Run without Check") or run_trigger
 
     if do_run:
@@ -402,86 +484,26 @@ with tabs[0]:
         stderr_buffer = io.StringIO()
 
         try:
-            # Execute user code
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
-                user_globals = {}
-
-                import numpy as _np_real
-                import pandas as _pd_real
-                import sys
-                import re
-
-                user_globals["np"] = _np_real
-                user_globals["pd"] = _pd_real
-                user_globals["sys"] = sys
-                user_globals["re"] = re
-
-                SAFE_BUILTINS = {
-                    "__build_class__": __build_class__,
-
-                    "print": print,
-                    "range": range,
-                    "len": len,
-                    "sum": sum,
-                    "min": min,
-                    "max": max,
-                    "abs": abs,
-                    "round": round,
-                    "sorted": sorted,
-                    "enumerate": enumerate,
-                    "zip": zip,
-                    "open": open,
-
-                    "any": any,
-                    "all": all,
-                    "bool": bool,
-                    "type": type,
-                    "isinstance": isinstance,
-
-                    "int": int,
-                    "float": float,
-                    "str": str,
-                    "list": list,
-                    "dict": dict,
-                    "set": set,
-                    "tuple": tuple,
-
-                    "classmethod": classmethod,
-                    "staticmethod": staticmethod,
-                    "property": property,
-
-                    "AssertionError": AssertionError,
-                    "ValueError": ValueError,
-                    "TypeError": TypeError,
-                    "ZeroDivisionError": ZeroDivisionError,
-                    "Exception": Exception,
-                }
-
-                user_globals["__builtins__"] = SAFE_BUILTINS
-                user_globals["__name__"] = "__main__"
-
+                user_globals = build_user_globals()
                 exec(content, user_globals)
 
-            # Output collection
             output = stdout_buffer.getvalue().strip()
             errors = stderr_buffer.getvalue().strip()
 
             if output:
                 st.text_area("📤 Output", output, height=150)
-
             if errors:
                 st.error(errors)
-
             if not output and not errors:
-                st.info("ℹ️ No output shown — `print()` is required, just like in regular Python.")
+                st.info("ℹ️ No output shown — `print()` is required.")
 
         except Exception as e:
             st.error(f"❌ Exception during execution:\n{e}")
 
     # ============================
-    # ▶️ RUN & CHECK LOGIC
+    # ▶️ Run & Check
     # ============================
-
     if st.button("▶️ Run & Check"):
         st.subheader("🖥️ Execution Result")
 
@@ -490,62 +512,7 @@ with tabs[0]:
 
         try:
             with contextlib.redirect_stdout(stdout_buffer), contextlib.redirect_stderr(stderr_buffer):
-                user_globals = {}
-
-                import numpy as _np_real
-                import pandas as _pd_real
-                import sys
-                import re
-
-                user_globals["np"] = _np_real
-                user_globals["pd"] = _pd_real
-                user_globals["sys"] = sys
-                user_globals["re"] = re
-
-                SAFE_BUILTINS = {
-                    "__build_class__": __build_class__,
-
-                    "print": print,
-                    "range": range,
-                    "len": len,
-                    "sum": sum,
-                    "min": min,
-                    "max": max,
-                    "abs": abs,
-                    "round": round,
-                    "sorted": sorted,
-                    "enumerate": enumerate,
-                    "zip": zip,
-                    "open": open,
-
-                    "any": any,
-                    "all": all,
-                    "bool": bool,
-                    "type": type,
-                    "isinstance": isinstance,
-
-                    "int": int,
-                    "float": float,
-                    "str": str,
-                    "list": list,
-                    "dict": dict,
-                    "set": set,
-                    "tuple": tuple,
-
-                    "classmethod": classmethod,
-                    "staticmethod": staticmethod,
-                    "property": property,
-
-                    "AssertionError": AssertionError,
-                    "ValueError": ValueError,
-                    "TypeError": TypeError,
-                    "ZeroDivisionError": ZeroDivisionError,
-                    "Exception": Exception,
-                }
-
-                user_globals["__builtins__"] = SAFE_BUILTINS
-                user_globals["__name__"] = "__main__"
-
+                user_globals = build_user_globals()
                 exec(content, user_globals)
 
             output = stdout_buffer.getvalue()
