@@ -465,6 +465,7 @@ with tabs[0]:
                 }
 
                 user_globals["__builtins__"] = SAFE_BUILTINS
+                user_globals["__name__"] = "__main__"
 
                 # --- user-code ausführen ---
                 exec(content, user_globals)
@@ -557,6 +558,7 @@ with tabs[0]:
                 }
 
                 user_globals["__builtins__"] = SAFE_BUILTINS
+                user_globals["__name__"] = "__main__"
 
                 # --- user-code ausführen ---
                 exec(content, user_globals)
