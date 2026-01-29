@@ -5122,30 +5122,30 @@
     "id": 331,
     "qid_original": 331,
     "category": "Functions: Advanced with Data (Questions 331-340)",
-    "question_raw": "Write a function `filter_by_gpa(students_df, min_gpa)` that takes a Pandas DataFrame and returns rows where gpa >= min_gpa. Load `data/questions/students.csv` first.",
+    "question_raw": "Write a function `filter_by_gpa(students_df, min_gpa)` that takes a Pandas DataFrame and returns rows where gpa >= min_gpa. Load `data/students.csv` first.",
     "check_variable": ["filtered"],
     "expected_value": [["DataFrame"]],
-    "solution_code": "import pandas as pd\nstudents_df = pd.read_csv(\"data/questions/students.csv\")\n\ndef filter_by_gpa(students_df, min_gpa):\n    return students_df[students_df[\"gpa\"] >= min_gpa]\n\nfiltered = filter_by_gpa(students_df, 3.5)",
+    "solution_code": "import pandas as pd\nstudents_df = pd.read_csv(\"data/students.csv\")\n\ndef filter_by_gpa(students_df, min_gpa):\n    return students_df[students_df[\"gpa\"] >= min_gpa]\n\nfiltered = filter_by_gpa(students_df, 3.5)",
     "explanation": "Boolean indexing filters rows based on GPA."
   },
   {
     "id": 332,
     "qid_original": 332,
     "category": "Functions: Advanced with Data (Questions 331-340)",
-    "question_raw": "Write a function `calculate_total_revenue(sales_df, product_name)` that filters the sales DataFrame for a specific product and returns the sum of revenue. Use `data/questions/sales.csv`.",
+    "question_raw": "Write a function `calculate_total_revenue(sales_df, product_name)` that filters the sales DataFrame for a specific product and returns the sum of revenue. Use `data/sales.csv`.",
     "check_variable": ["result"],
     "expected_value": [["float"]],
-    "solution_code": "import pandas as pd\nsales_df = pd.read_csv(\"data/questions/sales.csv\")\n\ndef calculate_total_revenue(sales_df, product_name):\n    return sales_df[sales_df[\"product\"] == product_name][\"revenue\"].sum()\n\nresult = calculate_total_revenue(sales_df, sales_df.iloc[0][\"product\"])",
+    "solution_code": "import pandas as pd\nsales_df = pd.read_csv(\"data/sales.csv\")\n\ndef calculate_total_revenue(sales_df, product_name):\n    return sales_df[sales_df[\"product\"] == product_name][\"revenue\"].sum()\n\nresult = calculate_total_revenue(sales_df, sales_df.iloc[0][\"product\"])",
     "explanation": "Filtering by product then summing revenue computes total sales."
   },
   {
     "id": 333,
     "qid_original": 333,
     "category": "Functions: Advanced with Data (Questions 331-340)",
-    "question_raw": "Create a function `temperature_stats(weather_df, city_name)` that returns a dictionary with 'mean_temp', 'max_temp', 'min_temp' for a specific city. Use `data/questions/weather.csv`.",
+    "question_raw": "Create a function `temperature_stats(weather_df, city_name)` that returns a dictionary with 'mean_temp', 'max_temp', 'min_temp' for a specific city. Use `data/weather.csv`.",
     "check_variable": ["stats"],
     "expected_value": [["dict"]],
-    "solution_code": "import pandas as pd\nweather_df = pd.read_csv(\"data/questions/weather.csv\")\n\ndef temperature_stats(weather_df, city_name):\n    city = weather_df[weather_df[\"city\"] == city_name]\n    return {\n        \"mean_temp\": city[\"temperature\"].mean(),\n        \"max_temp\": city[\"temperature\"].max(),\n        \"min_temp\": city[\"temperature\"].min()\n    }\n\nstats = temperature_stats(weather_df, weather_df.iloc[0][\"city\"])",
+    "solution_code": "import pandas as pd\nweather_df = pd.read_csv(\"data/weather.csv\")\n\ndef temperature_stats(weather_df, city_name):\n    city = weather_df[weather_df[\"city\"] == city_name]\n    return {\n        \"mean_temp\": city[\"temperature\"].mean(),\n        \"max_temp\": city[\"temperature\"].max(),\n        \"min_temp\": city[\"temperature\"].min()\n    }\n\nstats = temperature_stats(weather_df, weather_df.iloc[0][\"city\"])",
     "explanation": "Aggregation functions summarize temperature statistics."
   },
   {
@@ -5172,30 +5172,30 @@
     "id": 336,
     "qid_original": 336,
     "category": "Functions: Advanced with Data (Questions 331-340)",
-    "question_raw": "Write a function `group_by_category(sales_df)` that groups the sales DataFrame by 'category' and returns the total revenue per category as a dictionary. Use `data/questions/sales.csv`.",
+    "question_raw": "Write a function `group_by_category(sales_df)` that groups the sales DataFrame by 'category' and returns the total revenue per category as a dictionary. Use `data/sales.csv`.",
     "check_variable": ["result"],
     "expected_value": [["dict"]],
-    "solution_code": "import pandas as pd\nsales_df = pd.read_csv(\"data/questions/sales.csv\")\n\ndef group_by_category(sales_df):\n    return sales_df.groupby(\"category\")[\"revenue\"].sum().to_dict()\n\nresult = group_by_category(sales_df)",
+    "solution_code": "import pandas as pd\nsales_df = pd.read_csv(\"data/sales.csv\")\n\ndef group_by_category(sales_df):\n    return sales_df.groupby(\"category\")[\"revenue\"].sum().to_dict()\n\nresult = group_by_category(sales_df)",
     "explanation": "groupby followed by aggregation produces category totals."
   },
   {
     "id": 337,
     "qid_original": 337,
     "category": "Functions: Advanced with Data (Questions 331-340)",
-    "question_raw": "Create a function `get_top_students(students_df, n=5)` that returns the top n students by GPA. Use `data/questions/students.csv`.",
+    "question_raw": "Create a function `get_top_students(students_df, n=5)` that returns the top n students by GPA. Use `data/students.csv`.",
     "check_variable": ["result"],
     "expected_value": [["DataFrame"]],
-    "solution_code": "import pandas as pd\nstudents_df = pd.read_csv(\"data/questions/students.csv\")\n\ndef get_top_students(students_df, n=5):\n    return students_df.sort_values(\"gpa\", ascending=False).head(n)\n\nresult = get_top_students(students_df, 3)",
+    "solution_code": "import pandas as pd\nstudents_df = pd.read_csv(\"data/students.csv\")\n\ndef get_top_students(students_df, n=5):\n    return students_df.sort_values(\"gpa\", ascending=False).head(n)\n\nresult = get_top_students(students_df, 3)",
     "explanation": "Sorting by GPA and slicing returns top-performing students."
   },
   {
     "id": 338,
     "qid_original": 338,
     "category": "Functions: Advanced with Data (Questions 331-340)",
-    "question_raw": "Write a function `salary_by_department(employees_df)` that returns a dictionary where keys are departments and values are lists of salaries in that department. Use `data/questions/employees.csv`.",
+    "question_raw": "Write a function `salary_by_department(employees_df)` that returns a dictionary where keys are departments and values are lists of salaries in that department. Use `data/employees.csv`.",
     "check_variable": ["result"],
     "expected_value": [["dict"]],
-    "solution_code": "import pandas as pd\nemployees_df = pd.read_csv(\"data/questions/employees.csv\")\n\ndef salary_by_department(employees_df):\n    return employees_df.groupby(\"department\")[\"salary\"].apply(list).to_dict()\n\nresult = salary_by_department(employees_df)",
+    "solution_code": "import pandas as pd\nemployees_df = pd.read_csv(\"data/employees.csv\")\n\ndef salary_by_department(employees_df):\n    return employees_df.groupby(\"department\")[\"salary\"].apply(list).to_dict()\n\nresult = salary_by_department(employees_df)",
     "explanation": "Grouping and collecting salaries produces a department-wise mapping."
   },
   {
@@ -5542,10 +5542,10 @@
     "id": 373,
     "qid_original": 373,
     "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
-    "question_raw": "Create a class `StudentManager` that loads `data/questions/students.csv` and stores StudentRecord objects in a list. Add a method `get_honors_students()`.",
+    "question_raw": "Create a class `StudentManager` that loads `data/students.csv` and stores StudentRecord objects in a list. Add a method `get_honors_students()`.",
     "check_variable": ["honors"],
     "expected_value": [["list"]],
-    "solution_code": "import pandas as pd\n\nclass StudentManager:\n    def __init__(self, path):\n        df = pd.read_csv(path)\n        self.students = [StudentRecord(**row) for row in df.to_dict(orient=\"records\")]\n    def get_honors_students(self):\n        return [s for s in self.students if s.is_honors()]\n\nmanager = StudentManager(\"data/questions/students.csv\")\nhonors = manager.get_honors_students()",
+    "solution_code": "import pandas as pd\n\nclass StudentManager:\n    def __init__(self, path):\n        df = pd.read_csv(path)\n        self.students = [StudentRecord(**row) for row in df.to_dict(orient=\"records\")]\n    def get_honors_students(self):\n        return [s for s in self.students if s.is_honors()]\n\nmanager = StudentManager(\"data/students.csv\")\nhonors = manager.get_honors_students()",
     "explanation": "Managers coordinate collections of objects."
   },
   {
@@ -5565,17 +5565,17 @@
     "question_raw": "Create a class `DataAnalyzer` with a method `load_csv(filepath)` that loads data into a Pandas DataFrame. Add methods `get_summary()` and `get_column_stats(column_name)`.",
     "check_variable": ["summary"],
     "expected_value": [["DataFrame"]],
-    "solution_code": "import pandas as pd\n\nclass DataAnalyzer:\n    def load_csv(self, filepath):\n        self.df = pd.read_csv(filepath)\n    def get_summary(self):\n        return self.df.describe()\n    def get_column_stats(self, column_name):\n        return self.df[column_name].describe()\n\nanalyzer = DataAnalyzer()\nanalyzer.load_csv(\"data/questions/students.csv\")\nsummary = analyzer.get_summary()",
+    "solution_code": "import pandas as pd\n\nclass DataAnalyzer:\n    def load_csv(self, filepath):\n        self.df = pd.read_csv(filepath)\n    def get_summary(self):\n        return self.df.describe()\n    def get_column_stats(self, column_name):\n        return self.df[column_name].describe()\n\nanalyzer = DataAnalyzer()\nanalyzer.load_csv(\"data/students.csv\")\nsummary = analyzer.get_summary()",
     "explanation": "Encapsulates analysis workflows."
   },
   {
     "id": 376,
     "qid_original": 376,
     "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
-    "question_raw": "Create a class `EmployeeDatabase` that loads `data/questions/employees.csv`. Add methods: `get_by_department(dept)`, `average_salary()`, and `top_performers(n=5)` based on performance_score.",
+    "question_raw": "Create a class `EmployeeDatabase` that loads `data/employees.csv`. Add methods: `get_by_department(dept)`, `average_salary()`, and `top_performers(n=5)` based on performance_score.",
     "check_variable": ["avg"],
     "expected_value": [["float"]],
-    "solution_code": "import pandas as pd\n\nclass EmployeeDatabase:\n    def __init__(self, path):\n        self.df = pd.read_csv(path)\n    def get_by_department(self, dept):\n        return self.df[self.df[\"department\"] == dept]\n    def average_salary(self):\n        return self.df[\"salary\"].mean()\n    def top_performers(self, n=5):\n        return self.df.sort_values(\"performance_score\", ascending=False).head(n)\n\ndb = EmployeeDatabase(\"data/questions/employees.csv\")\navg = db.average_salary()",
+    "solution_code": "import pandas as pd\n\nclass EmployeeDatabase:\n    def __init__(self, path):\n        self.df = pd.read_csv(path)\n    def get_by_department(self, dept):\n        return self.df[self.df[\"department\"] == dept]\n    def average_salary(self):\n        return self.df[\"salary\"].mean()\n    def top_performers(self, n=5):\n        return self.df.sort_values(\"performance_score\", ascending=False).head(n)\n\ndb = EmployeeDatabase(\"data/employees.csv\")\navg = db.average_salary()",
     "explanation": "Domain-specific database wrapper."
   },
   {
@@ -5592,10 +5592,10 @@
     "id": 378,
     "qid_original": 378,
     "category": "OOP: Advanced & Integration with Data (Questions 371-385)",
-    "question_raw": "Create a class `WeatherStation` that loads `data/questions/weather.csv`. Add methods `get_city_data(city)` and `coldest_day()` that returns the date with the lowest temperature.",
+    "question_raw": "Create a class `WeatherStation` that loads `data/weather.csv`. Add methods `get_city_data(city)` and `coldest_day()` that returns the date with the lowest temperature.",
     "check_variable": ["coldest"],
     "expected_value": [["string"]],
-    "solution_code": "import pandas as pd\n\nclass WeatherStation:\n    def __init__(self, path):\n        self.df = pd.read_csv(path)\n    def get_city_data(self, city):\n        return self.df[self.df[\"city\"] == city]\n    def coldest_day(self):\n        row = self.df.loc[self.df[\"temperature\"].idxmin()]\n        return row[\"date\"]\n\nws = WeatherStation(\"data/questions/weather.csv\")\ncoldest = ws.coldest_day()",
+    "solution_code": "import pandas as pd\n\nclass WeatherStation:\n    def __init__(self, path):\n        self.df = pd.read_csv(path)\n    def get_city_data(self, city):\n        return self.df[self.df[\"city\"] == city]\n    def coldest_day(self):\n        row = self.df.loc[self.df[\"temperature\"].idxmin()]\n        return row[\"date\"]\n\nws = WeatherStation(\"data/weather.csv\")\ncoldest = ws.coldest_day()",
     "explanation": "idxmin finds the row of minimum value."
   },
   {
@@ -5735,7 +5735,7 @@
     "question_raw": "Count students with GPA above 3.0 using a for loop.",
     "check_variable": ["count"],
     "expected_value": [["int"]],
-    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/questions/students.csv')\ncount = 0\nfor g in df['gpa']:\n    if g > 3.0:\n        count += 1",
+    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/students.csv')\ncount = 0\nfor g in df['gpa']:\n    if g > 3.0:\n        count += 1",
     "explanation": "Manual iteration with a condition."
   },
   {
@@ -5745,7 +5745,7 @@
     "question_raw": "Calculate total revenue for Electronics category using a for loop.",
     "check_variable": ["total"],
     "expected_value": [["float"]],
-    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/questions/sales.csv')\ntotal = 0\nfor _,row in df.iterrows():\n    if row['category'] == 'Electronics':\n        total += row['revenue']",
+    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/sales.csv')\ntotal = 0\nfor _,row in df.iterrows():\n    if row['category'] == 'Electronics':\n        total += row['revenue']",
     "explanation": "Row-wise iteration accumulates revenue."
   },
   {
@@ -5775,7 +5775,7 @@
     "question_raw": "Create a list of employee names in Engineering using list comprehension.",
     "check_variable": ["names"],
     "expected_value": [["list"]],
-    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/questions/employees.csv')\nnames = [n for n,d in zip(df['name'], df['department']) if d=='Engineering']",
+    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/employees.csv')\nnames = [n for n,d in zip(df['name'], df['department']) if d=='Engineering']",
     "explanation": "Comprehensions can filter and transform."
   },
   {
@@ -5805,7 +5805,7 @@
     "question_raw": "Categorize temperatures and count each category.",
     "check_variable": ["counts"],
     "expected_value": [["dict"]],
-    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/questions/weather.csv')\ncounts = {'Cold':0,'Mild':0,'Hot':0}\nfor t in df['temperature']:\n    if t < 50: counts['Cold']+=1\n    elif t <= 75: counts['Mild']+=1\n    else: counts['Hot']+=1",
+    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/weather.csv')\ncounts = {'Cold':0,'Mild':0,'Hot':0}\nfor t in df['temperature']:\n    if t < 50: counts['Cold']+=1\n    elif t <= 75: counts['Mild']+=1\n    else: counts['Hot']+=1",
     "explanation": "Multiple branches classify values."
   },
   {
@@ -5815,7 +5815,7 @@
     "question_raw": "Add a letter_grade column based on GPA.",
     "check_variable": ["df"],
     "expected_value": [["DataFrame"]],
-    "solution_code": "def process_grades(df):\n    def lg(g):\n        if g>=3.5: return 'A'\n        if g>=3.0: return 'B'\n        if g>=2.5: return 'C'\n        if g>=2.0: return 'D'\n        return 'F'\n    df['letter_grade'] = df['gpa'].apply(lg)\n    return df\n\nimport pandas as pd\ndf = process_grades(pd.read_csv('data/questions/students.csv'))",
+    "solution_code": "def process_grades(df):\n    def lg(g):\n        if g>=3.5: return 'A'\n        if g>=3.0: return 'B'\n        if g>=2.5: return 'C'\n        if g>=2.0: return 'D'\n        return 'F'\n    df['letter_grade'] = df['gpa'].apply(lg)\n    return df\n\nimport pandas as pd\ndf = process_grades(pd.read_csv('data/students.csv'))",
     "explanation": "Functions encapsulate reusable logic."
   },
     {
@@ -5975,7 +5975,7 @@
     "question_raw": "Extract first names from employees.csv.",
     "check_variable": ["first_names"],
     "expected_value": [["list"]],
-    "solution_code": "import pandas as pd\nimport re\ndf = pd.read_csv('data/questions/employees.csv')\nfirst_names = df['name'].apply(lambda x: re.match(r\"\\\\w+\", x).group()).tolist()",
+    "solution_code": "import pandas as pd\nimport re\ndf = pd.read_csv('data/employees.csv')\nfirst_names = df['name'].apply(lambda x: re.match(r\"\\\\w+\", x).group()).tolist()",
     "explanation": "Regex extracts the first word."
   },
   {
@@ -6045,7 +6045,7 @@
     "question_raw": "Use try-except-finally to track file opening.",
     "check_variable": ["file_opened"],
     "expected_value": [[true]],
-    "solution_code": "file_opened = False\ntry:\n    f = open('data/questions/students.csv')\n    file_opened = True\nfinally:\n    file_opened = file_opened",
+    "solution_code": "file_opened = False\ntry:\n    f = open('data/students.csv')\n    file_opened = True\nfinally:\n    file_opened = file_opened",
     "explanation": "finally always executes regardless of success."
   },
   {
@@ -6135,7 +6135,7 @@
     "question_raw": "Read first line of file using with statement.",
     "check_variable": ["line"],
     "expected_value": ["string"],
-    "solution_code": "with open('data/questions/students.csv') as f:\n    line = f.readline().strip()",
+    "solution_code": "with open('data/students.csv') as f:\n    line = f.readline().strip()",
     "explanation": "Context managers ensure safe file closing."
   },
   {
@@ -6215,14 +6215,14 @@
     "question_raw": "Comprehensive student data processing with error handling.",
     "check_variable": ["output"],
     "expected_value": [["dict"]],
-    "solution_code": "import pandas as pd\n\ndef process_student_data(filepath):\n    try:\n        df = pd.read_csv(filepath)\n        if df.empty:\n            return {\"success\": False, \"error\": \"Empty file\"}\n        for col in ['name','age','gpa']:\n            if col not in df.columns:\n                return {\"success\": False, \"error\": f\"Missing column: {col}\"}\n        avg_gpa = pd.to_numeric(df['gpa'], errors='raise').mean()\n        return {\"success\": True, \"avg_gpa\": avg_gpa, \"num_students\": len(df)}\n    except FileNotFoundError:\n        return {\"success\": False, \"error\": \"File not found\"}\n    except ValueError:\n        return {\"success\": False, \"error\": \"Invalid GPA values\"}\n\noutput = process_student_data('data/questions/students.csv')",
+    "solution_code": "import pandas as pd\n\ndef process_student_data(filepath):\n    try:\n        df = pd.read_csv(filepath)\n        if df.empty:\n            return {\"success\": False, \"error\": \"Empty file\"}\n        for col in ['name','age','gpa']:\n            if col not in df.columns:\n                return {\"success\": False, \"error\": f\"Missing column: {col}\"}\n        avg_gpa = pd.to_numeric(df['gpa'], errors='raise').mean()\n        return {\"success\": True, \"avg_gpa\": avg_gpa, \"num_students\": len(df)}\n    except FileNotFoundError:\n        return {\"success\": False, \"error\": \"File not found\"}\n    except ValueError:\n        return {\"success\": False, \"error\": \"Invalid GPA values\"}\n\noutput = process_student_data('data/students.csv')",
     "explanation": "End-to-end robust CSV processing."
   },
   {
     "id": 441,
     "qid_original": 441,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Import matplotlib.pyplot as plt and pandas, then load the `data/questions/sales.csv` dataset.",
+    "question_raw": "Import matplotlib.pyplot as plt and pandas, then load the `data/sales.csv` dataset.",
     "check_variable": ["sales"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# sales = pd.read_csv('data/sales.csv')\n# print(sales.head())\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nsales = pd.read_csv('data/sales.csv')\n\n# No plot required for this question.\n# Matplotlib is imported and ready for subsequent plotting exercises.",
@@ -6232,7 +6232,7 @@
   "id": 442,
   "qid_original": 442,
   "category": "Matplotlib Basics (20 Questions)",
-  "question_raw": "Using `data/questions/sales.csv`, create a line plot showing total revenue over time. Group by date and sum the revenue column. Add axis labels and a title.",
+  "question_raw": "Using `data/sales.csv`, create a line plot showing total revenue over time. Group by date and sum the revenue column. Add axis labels and a title.",
   "check_variable": ["sales_grouped"],
   "expected_value": [["DataFrame"]],
   "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# sales = pd.read_csv('data/sales.csv')\n# sales_grouped = sales.groupby('date')['revenue'].sum()\n# plt.plot(sales_grouped.index, sales_grouped.values)\n# plt.xlabel('Date')\n# plt.ylabel('Total Revenue')\n# plt.title('Total Revenue Over Time')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nsales = pd.read_csv('data/sales.csv')\n\nsales_grouped = sales.groupby('date')['revenue'].sum()\n\nplt.figure()\nplt.plot(sales_grouped.index, sales_grouped.values)\nplt.xlabel('Date')\nplt.ylabel('Total Revenue')\nplt.title('Total Revenue Over Time')\n\n# Streamlit display hook\nst.pyplot(plt.gcf())\nplt.close()",
@@ -6242,7 +6242,7 @@
     "id": 443,
     "qid_original": 443,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Create a scatter plot using `data/questions/employees.csv` showing the relationship between years_experience (x-axis) and salary (y-axis). Add appropriate title and axis labels.",
+    "question_raw": "Create a scatter plot using `data/employees.csv` showing the relationship between years_experience (x-axis) and salary (y-axis). Add appropriate title and axis labels.",
     "check_variable": ["employees"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# employees = pd.read_csv('data/employees.csv')\n# plt.scatter(employees['years_experience'], employees['salary'])\n# plt.xlabel('Years Experience')\n# plt.ylabel('Salary')\n# plt.title('Salary vs Experience')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nemployees = pd.read_csv('data/employees.csv')\n\nplt.figure()\nplt.scatter(employees['years_experience'], employees['salary'])\nplt.xlabel('Years Experience')\nplt.ylabel('Salary')\nplt.title('Salary vs Experience')\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6251,7 +6251,7 @@
     "id": 444,
     "qid_original": 444,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Using `data/questions/students.csv`, create a bar chart showing the count of students by major. Include a title \"Students by Major\".",
+    "question_raw": "Using `data/students.csv`, create a bar chart showing the count of students by major. Include a title \"Students by Major\".",
     "check_variable": ["students"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# students = pd.read_csv('data/students.csv')\n# students['major'].value_counts().plot(kind='bar')\n# plt.title('Students by Major')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nstudents = pd.read_csv('data/students.csv')\n\ncounts = students['major'].value_counts()\n\nplt.figure()\nplt.bar(counts.index, counts.values)\nplt.title('Students by Major')\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6270,7 +6270,7 @@
     "id": 446,
     "qid_original": 446,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Using `data/questions/weather.csv`, create a line plot comparing temperatures across different cities over time. Use different colors for each city and add a legend.",
+    "question_raw": "Using `data/weather.csv`, create a line plot comparing temperatures across different cities over time. Use different colors for each city and add a legend.",
     "check_variable": ["weather"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# weather = pd.read_csv('data/weather.csv')\n# for city in weather['city'].unique():\n#     subset = weather[weather['city'] == city]\n#     plt.plot(subset['date'], subset['temperature'], label=city)\n# plt.legend()\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nweather = pd.read_csv('data/weather.csv')\n\nplt.figure()\nfor city in weather['city'].unique():\n    subset = weather[weather['city'] == city]\n    plt.plot(subset['date'], subset['temperature'], label=city)\n\nplt.legend()\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6280,7 +6280,7 @@
     "id": 447,
     "qid_original": 447,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Using `data/questions/weather.csv`, create a line plot of temperature over time for one city. Add a grid using `plt.grid(True)` and customize the line with a marker (e.g., `marker='.'`).",
+    "question_raw": "Using `data/weather.csv`, create a line plot of temperature over time for one city. Add a grid using `plt.grid(True)` and customize the line with a marker (e.g., `marker='.'`).",
     "check_variable": ["weather"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# weather = pd.read_csv('data/weather.csv')\n# city_data = weather[weather['city'] == weather['city'].iloc[0]]\n# plt.plot(city_data['date'], city_data['temperature'], marker='.')\n# plt.grid(True)\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nweather = pd.read_csv('data/weather.csv')\ncity_data = weather[weather['city'] == weather['city'].iloc[0]]\n\nplt.figure()\nplt.plot(city_data['date'], city_data['temperature'], marker='.')\nplt.grid(True)\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6289,7 +6289,7 @@
     "id": 448,
     "qid_original": 448,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Using `data/questions/sales.csv`, create a bar chart showing total revenue by region. Add axis labels and a title.",
+    "question_raw": "Using `data/sales.csv`, create a bar chart showing total revenue by region. Add axis labels and a title.",
     "check_variable": ["sales_region"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# sales = pd.read_csv('data/sales.csv')\n# sales_region = sales.groupby('region')['revenue'].sum()\n# plt.bar(sales_region.index, sales_region.values)\n# plt.xlabel('Region')\n# plt.ylabel('Total Revenue')\n# plt.title('Total Revenue by Region')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nsales = pd.read_csv('data/sales.csv')\nsales_region = sales.groupby('region')['revenue'].sum()\n\nplt.figure()\nplt.bar(sales_region.index, sales_region.values)\nplt.xlabel('Region')\nplt.ylabel('Total Revenue')\nplt.title('Total Revenue by Region')\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6298,7 +6298,7 @@
     "id": 449,
     "qid_original": 449,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Create a box plot using `data/questions/students.csv` showing the distribution of the gpa column. Add a title.",
+    "question_raw": "Create a box plot using `data/students.csv` showing the distribution of the gpa column. Add a title.",
     "check_variable": ["students"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# students = pd.read_csv('data/students.csv')\n# plt.boxplot(students['gpa'])\n# plt.title('GPA Distribution')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nstudents = pd.read_csv('data/students.csv')\n\nplt.figure()\nplt.boxplot(students['gpa'])\nplt.title('GPA Distribution')\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6307,7 +6307,7 @@
     "id": 450,
     "qid_original": 450,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Using `data/questions/weather.csv`, create a line plot showing temperature over time for two cities. Use different line styles (solid `'-'` and dashed `'--'`) for each city and add a legend.",
+    "question_raw": "Using `data/weather.csv`, create a line plot showing temperature over time for two cities. Use different line styles (solid `'-'` and dashed `'--'`) for each city and add a legend.",
     "check_variable": ["weather"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# weather = pd.read_csv('data/weather.csv')\n# cities = weather['city'].unique()[:2]\n# for city, style in zip(cities, ['-', '--']):\n#     subset = weather[weather['city'] == city]\n#     plt.plot(subset['date'], subset['temperature'], linestyle=style, label=city)\n# plt.legend()\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nweather = pd.read_csv('data/weather.csv')\ncities = weather['city'].unique()[:2]\n\nplt.figure()\nfor city, style in zip(cities, ['-', '--']):\n    subset = weather[weather['city'] == city]\n    plt.plot(subset['date'], subset['temperature'], linestyle=style, label=city)\n\nplt.legend()\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6316,7 +6316,7 @@
     "id": 451,
     "qid_original": 451,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Using `data/questions/students.csv`, create a pie chart showing the proportion of students in each major. Display percentages using the `autopct` parameter.",
+    "question_raw": "Using `data/students.csv`, create a pie chart showing the proportion of students in each major. Display percentages using the `autopct` parameter.",
     "check_variable": ["students"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# students = pd.read_csv('data/students.csv')\n# counts = students['major'].value_counts()\n# plt.pie(counts.values, labels=counts.index, autopct='%1.1f%%')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nstudents = pd.read_csv('data/students.csv')\ncounts = students['major'].value_counts()\n\nplt.figure()\nplt.pie(counts.values, labels=counts.index, autopct='%1.1f%%')\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6325,7 +6325,7 @@
     "id": 452,
     "qid_original": 452,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Create two line plots on the same figure using `data/questions/employees.csv`: one showing average salary by years_experience and another showing average performance_score by years_experience. Scale the performance score by 10000 so both lines are visible on the same scale. Use different colors, label the y-axis \"Value\", and add a legend.",
+    "question_raw": "Create two line plots on the same figure using `data/employees.csv`: one showing average salary by years_experience and another showing average performance_score by years_experience. Scale the performance score by 10000 so both lines are visible on the same scale. Use different colors, label the y-axis \"Value\", and add a legend.",
     "check_variable": ["employees_grouped"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# employees = pd.read_csv('data/employees.csv')\n# grouped = employees.groupby('years_experience').mean()\n# plt.plot(grouped.index, grouped['salary'], label='Salary')\n# plt.plot(grouped.index, grouped['performance_score'] * 10000, label='Performance Score * 10000')\n# plt.ylabel('Value')\n# plt.legend()\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nemployees = pd.read_csv('data/employees.csv')\nemployees_grouped = employees.groupby('years_experience').mean()\n\nplt.figure()\nplt.plot(employees_grouped.index, employees_grouped['salary'], label='Salary')\nplt.plot(employees_grouped.index, employees_grouped['performance_score'] * 10000, label='Performance Score * 10000')\nplt.ylabel('Value')\nplt.legend()\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6334,7 +6334,7 @@
     "id": 453,
     "qid_original": 453,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Using `data/questions/sales.csv`, create a grouped bar chart comparing total quantity sold by region for two different product categories. Use the technique from nb4 (adjusting x positions with numpy).",
+    "question_raw": "Using `data/sales.csv`, create a grouped bar chart comparing total quantity sold by region for two different product categories. Use the technique from nb4 (adjusting x positions with numpy).",
     "check_variable": ["grouped"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd, numpy as np, matplotlib.pyplot as plt\n# sales = pd.read_csv('data/sales.csv')\n# grouped = sales.groupby(['region','category'])['quantity'].sum().unstack()\n# x = np.arange(len(grouped.index))\n# plt.bar(x-0.2, grouped.iloc[:,0], width=0.4)\n# plt.bar(x+0.2, grouped.iloc[:,1], width=0.4)\n# plt.show()\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nsales = pd.read_csv('data/sales.csv')\ngrouped = sales.groupby(['region','category'])['quantity'].sum().unstack()\n\nx = np.arange(len(grouped.index))\n\nplt.figure()\nplt.bar(x - 0.2, grouped.iloc[:, 0], width=0.4, label=grouped.columns[0])\nplt.bar(x + 0.2, grouped.iloc[:, 1], width=0.4, label=grouped.columns[1])\nplt.xticks(x, grouped.index)\nplt.legend()\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6343,7 +6343,7 @@
     "id": 454,
     "qid_original": 454,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Create a scatter plot using `data/questions/employees.csv` with salary vs years_experience. Overlay a line plot connecting the average salary for each year of experience on top of the scatter points.",
+    "question_raw": "Create a scatter plot using `data/employees.csv` with salary vs years_experience. Overlay a line plot connecting the average salary for each year of experience on top of the scatter points.",
     "check_variable": ["employees"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# employees = pd.read_csv('data/employees.csv')\n# plt.scatter(employees['years_experience'], employees['salary'])\n# avg = employees.groupby('years_experience')['salary'].mean()\n# plt.plot(avg.index, avg.values)\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nemployees = pd.read_csv('data/employees.csv')\navg = employees.groupby('years_experience')['salary'].mean()\n\nplt.figure()\nplt.scatter(employees['years_experience'], employees['salary'])\nplt.plot(avg.index, avg.values)\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6352,7 +6352,7 @@
     "id": 455,
     "qid_original": 455,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Using `data/questions/students.csv`, create a bar chart showing average GPA by grade level and save the plot to a file called \"gpa_by_grade.png\" using `plt.savefig()`.",
+    "question_raw": "Using `data/students.csv`, create a bar chart showing average GPA by grade level and save the plot to a file called \"gpa_by_grade.png\" using `plt.savefig()`.",
     "check_variable": ["students_grouped"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# students = pd.read_csv('data/students.csv')\n# grouped = students.groupby('grade')['gpa'].mean()\n# grouped.plot(kind='bar')\n# plt.savefig('gpa_by_grade.png')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nstudents = pd.read_csv('data/students.csv')\nstudents_grouped = students.groupby('grade')['gpa'].mean()\n\nplt.figure()\nplt.bar(students_grouped.index, students_grouped.values)\nplt.savefig('gpa_by_grade.png')\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6361,7 +6361,7 @@
     "id": 456,
     "qid_original": 456,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Create a histogram of the salary column from `data/questions/employees.csv` with 15 bins. Add an edge color to the bars using `edgecolor='black'` to make the bins more distinguishable.",
+    "question_raw": "Create a histogram of the salary column from `data/employees.csv` with 15 bins. Add an edge color to the bars using `edgecolor='black'` to make the bins more distinguishable.",
     "check_variable": ["employees"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# employees = pd.read_csv('data/employees.csv')\n# plt.hist(employees['salary'], bins=15, edgecolor='black')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nemployees = pd.read_csv('data/employees.csv')\n\nplt.figure()\nplt.hist(employees['salary'], bins=15, edgecolor='black')\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6370,7 +6370,7 @@
     "id": 457,
     "qid_original": 457,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Apply the 'ggplot' style using `plt.style.use('ggplot')` and create a line plot of temperature over time from `data/questions/weather.csv`. Reset to default style afterwards.",
+    "question_raw": "Apply the 'ggplot' style using `plt.style.use('ggplot')` and create a line plot of temperature over time from `data/weather.csv`. Reset to default style afterwards.",
     "check_variable": ["weather"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# plt.style.use('ggplot')\n# weather = pd.read_csv('data/weather.csv')\n# plt.plot(weather['date'], weather['temperature'])\n# plt.style.use('default')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nplt.style.use('ggplot')\nweather = pd.read_csv('data/weather.csv')\n\nplt.figure()\nplt.plot(weather['date'], weather['temperature'])\n\nplt.style.use('default')\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6388,7 +6388,7 @@
     "id": 459,
     "qid_original": 459,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "Using `data/questions/employees.csv`, create a scatter plot of salary vs years_experience. Add custom colors (e.g., `color='purple'`) and markers (e.g., `marker='x'`).",
+    "question_raw": "Using `data/employees.csv`, create a scatter plot of salary vs years_experience. Add custom colors (e.g., `color='purple'`) and markers (e.g., `marker='x'`).",
     "check_variable": ["employees"],
     "expected_value": [["DataFrame"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# employees = pd.read_csv('data/employees.csv')\n# plt.scatter(employees['years_experience'], employees['salary'], color='purple', marker='x')\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nemployees = pd.read_csv('data/employees.csv')\n\nplt.figure()\nplt.scatter(employees['years_experience'], employees['salary'], color='purple', marker='x')\n\nst.pyplot(plt.gcf())\nplt.close()"
@@ -6397,7 +6397,7 @@
     "id": 460,
     "qid_original": 460,
     "category": "Matplotlib Basics (20 Questions)",
-    "question_raw": "(Note: Requires knowledge from nb5) Using `data/questions/employees.csv`, create a scatter plot of salary vs years_experience and overlay a linear regression line. Use `scipy.stats.linregress()` to calculate the regression parameters.",
+    "question_raw": "(Note: Requires knowledge from nb5) Using `data/employees.csv`, create a scatter plot of salary vs years_experience and overlay a linear regression line. Use `scipy.stats.linregress()` to calculate the regression parameters.",
     "check_variable": ["slope"],
     "expected_value": [["float"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# from scipy.stats import linregress\n# employees = pd.read_csv('data/employees.csv')\n# res = linregress(employees['years_experience'], employees['salary'])\n# plt.scatter(employees['years_experience'], employees['salary'])\n# plt.plot(employees['years_experience'], res.intercept + res.slope * employees['years_experience'])\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\nfrom scipy.stats import linregress\n\nemployees = pd.read_csv('data/employees.csv')\nres = linregress(employees['years_experience'], employees['salary'])\nslope = res.slope\n\nplt.figure()\nplt.scatter(employees['years_experience'], employees['salary'])\nplt.plot(employees['years_experience'], res.intercept + res.slope * employees['years_experience'])\n\nst.pyplot(plt.gcf())\nplt.close()"
