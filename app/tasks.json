@@ -4210,7 +4210,7 @@
     "id": 261,
     "qid_original": 261,
     "category": "Merging and Joining (35 Questions)",
-    "question_raw": "Using the DataFrames from Q259, perform a left join (keep all rows from df1) on the \"id\" column.",
+    "question_raw": "Using the DataFrames from Q259, perform a left join (keep all rows from df1) on the \"id\" column. df1 = pd.DataFrame({\"id\": [1, 2, 3], \"name\": [\"Alice\", \"Bob\", \"Charlie\"]}) and df2 = pd.DataFrame({\"id\": [1, 2, 4], \"score\": [85, 90, 78]})",
     "check_variable": [
       "merged"
     ],
@@ -4224,7 +4224,7 @@
     "id": 262,
     "qid_original": 262,
     "category": "Merging and Joining (35 Questions)",
-    "question_raw": "Using the DataFrames from Q259, perform a right join (keep all rows from df2) on the \"id\" column.",
+    "question_raw": "Using the DataFrames from Q259, perform a right join (keep all rows from df2) on the \"id\" column. | df1 = pd.DataFrame({\"id\": [1, 2, 3], \"name\": [\"Alice\", \"Bob\", \"Charlie\"]}) and df2 = pd.DataFrame({\"id\": [1, 2, 4], \"score\": [85, 90, 78]})",
     "check_variable": [
       "merged"
     ],
@@ -4238,7 +4238,7 @@
     "id": 263,
     "qid_original": 263,
     "category": "Merging and Joining (35 Questions)",
-    "question_raw": "Using the DataFrames from Q259, perform an outer join (keep all rows from both DataFrames) on the \"id\" column.",
+    "question_raw": "Using the DataFrames from Q259, perform an outer join (keep all rows from both DataFrames) on the \"id\" column. | df1 = pd.DataFrame({\"id\": [1, 2, 3], \"name\": [\"Alice\", \"Bob\", \"Charlie\"]}) and df2 = pd.DataFrame({\"id\": [1, 2, 4], \"score\": [85, 90, 78]})",
     "check_variable": [
       "merged"
     ],
