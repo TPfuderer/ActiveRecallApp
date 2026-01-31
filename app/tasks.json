@@ -5805,8 +5805,7 @@
     "question_raw": "Categorize temperatures and count each category.",
     "check_variable": ["counts"],
     "expected_value": [["dict"]],
-    "solution_code": "import pandas as pd\ndf = pd.read_csv('data/weather.csv')\ncounts = {'Cold':0,'Mild':0,'Hot':0}\nfor t in df['temperature']:\n    if t < 50: counts['Cold']+=1\n    elif t <= 75: counts['Mild']+=1\n    else: counts['Hot']+=1",
-    "explanation": "Multiple branches classify values."
+  "solution_code": "df = pd.read_csv('data/weather.csv')\ncounts = df['temperature'].apply(lambda t: 'Cold' if t < 50 else 'Mild' if t <= 75 else 'Hot').value_counts()",    "explanation": "Multiple branches classify values."
   },
   {
     "id": 400,
