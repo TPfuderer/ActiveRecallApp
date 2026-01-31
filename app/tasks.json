@@ -3712,7 +3712,7 @@
     "expected_value": [
       ["Series"]
     ],
-    "solution_code": "students = pd.read_csv(\"data/students.csv\")\ntop_student = students.loc[students[\"gpa\"].idxmax()]",
+    "solution_code": "students = pd.read_csv(\"data/students.csv\")\ntop_student = students.nlargest(1, \"gpa\")",
     "explanation": "idxmax returns the index of the maximum value."
   },
   {
