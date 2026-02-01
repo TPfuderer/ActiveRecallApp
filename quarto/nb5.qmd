@@ -1,0 +1,691 @@
+---
+title: "Simulations and Modelling"
+format:
+  html:
+    code-fold: false
+    code-tools: true
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    html-math-method: katex
+execute:
+  cache: true
+  freeze: auto
+jupyter: python3
+---
+
+# Simulations
+
+## Generation of random numbers
+
+
+Generating random numbers is a common requirement in many programming languages, including Python. While Python has a built-in `random` module, for data analysis we use NumPy's random module, which offers better performance and more distributions.
+
+To use NumPy's random functionality, you first create a random number generator object.
+Here are some commonly used methods:
+
+1. `rng.random()`: This function returns a random number between 0 and 1. Every possible number has the same probability.
+
+```{python}
+import numpy as np
+# Creation of a random generator:
+
+rng = np.random.default_rng(seed=42)
+
+# Generate a random float from a uniform distribution between 0 and 1
+x = rng.random()
+print(x)
+
+# Attention! Number does not change because rng is always created with the same seed.
+```
+
+```{python}
+# Here: Access to already created rng, numbers change:
+x = rng.random()
+print(x)
+```
+
+```{python}
+# import random #legacy package, best not to use anymore.
+# random.seed(42) #legacy
+# x = random.random() #legacy
+# print(x) #legacy
+```
+
+
+2. `rng.integers(a, b)`: This method returns a random integer from `a` (inclusive) to `b` (exclusive). Use `endpoint=True` to include `b`.
+
+```{python}
+x = rng.integers(1, 10)
+print(x)
+```
+
+3. `rng.choice(sequence)`: This function returns a random element from a given sequence. The sequence can be a list, a tuple or a string.
+
+```{python}
+fruits = ["Apple", "Banana", "Orange"]
+random_fruit = rng.choice(fruits)
+print(random_fruit)
+```
+
+These are just a few examples. NumPy provides many more methods for sampling from distributions like `rng.normal()`, `rng.poisson()`, `rng.binomial()`, `rng.exponential()`, and others.
+
+However, it is important to note that random numbers in computers are not truly random, but are based on deterministic algorithms. For reproducibility, you can specify the starting value of the random number generator with the `seed` argument.
+
+
+## Distributions:
+
+
+### Normal distribution
+
+```{python}
+# Mean value of the normal distribution
+mean = 0  
+
+# Standard deviation of the normal distribution
+std_dev = 1  
+
+# Number of random numbers to be generated
+num_samples = 10  
+
+# Generate 'num_samples' random numbers from a normal distribution
+# with the specified mean value and standard deviation
+samples = rng.normal(loc=mean, 
+                    scale=std_dev, 
+                    size=num_samples)
+
+# Output of the generated random numbers
+print(samples)
+```
+
+### Poisson distribution
+
+```{python}
+# Lambda parameter (expected number of events)
+lambda_ = 2.0
+
+# Number of random numbers to be generated
+num_samples = 10
+
+# Generate 'num_samples' random numbers from a Poisson distribution
+samples = rng.poisson(lambda_, num_samples)
+
+# Output of the generated random numbers
+print(samples)
+
+# Why is there an underscore at the end of the lambda?
+```
+
+### Binomial distribution
+
+```{python}
+# Number of trials
+n = 10
+
+# Probability of success on each trial
+p = 0.7
+
+# Number of random numbers to be generated
+num_samples = 10
+
+# Generate 'num_samples' random numbers from a binomial distribution
+samples = rng.binomial(n, p, num_samples)
+
+# Output of the generated random numbers
+print(samples)
+```
+
+## Small simulation
+
+In this example, we'll demonstrate how to simulate data with known relationships between variables. This is useful for testing statistical models and understanding how different relationships manifest in data.
+
+We'll create two independent variables `X1` and `X2`, and two dependent variables with different relationships:
+- `Y_linear`: has a linear relationship with the independent variables
+- `Y_interaction`: has a linear relationship plus an interaction between `X1` and `X2`
+
+**Model equations:**
+
+Linear model:
+$$
+Y_{\text{linear}} = 5 + 2 \cdot X_1 + 3 \cdot X_2 + \epsilon
+$$
+
+Interaction model:
+$$
+Y_{\text{interaction}} = 5 + 2 \cdot X_1 + 3 \cdot X_2 + 2 \cdot X_1 \cdot X_2 + \epsilon
+$$
+
+where $\epsilon \sim \mathcal{N}(0, 1)$ is random noise from a normal distribution with mean 0 and standard deviation 1.
+
+Let's create this dataset:
+
+```{python}
+import pandas as pd
+
+# Number of data points
+n = 200
+
+# Simulated independent variables
+X1 = rng.uniform(low=0, high=10, size=n)
+X2 = rng.uniform(low=0, high=5, size=n)
+
+# Simulated dependent variable with linear relationship
+Y_linear = 5 + 2 * X1 + 3 * X2 + rng.normal(loc=0, scale=1, size=n)
+
+# Simulated dependent variable with interaction term
+Y_interaction = 5 + 2 * X1 + 3 * X2 + 2 * X1 * X2 + rng.normal(loc=0, scale=1, size=n)
+
+# Create dataset
+data = pd.DataFrame({
+    'X1': X1,
+    'X2': X2,
+    'Y_linear': Y_linear,
+    'Y_interaction': Y_interaction
+})
+
+# Display first five rows
+data.head()
+```
+
+<div class="alert alert-block alert-warning">
+<font size="3"><b>Task: Create Your Own Simulated Dataset</b></font>
+
+Create a simulated dataset with different parameters.
+
+**Requirements:**
+
+1. **Independent variables:**
+   - Create `X3` with values uniformly distributed between [0, 20]
+   - Create `X4` with values uniformly distributed between [-5, 5]
+   - Generate 150 data points
+
+2. **Dependent variable:**
+   - Create `Y_custom` with the following relationship:
+     $$
+     Y_{\text{custom}} = 5 \cdot X3 - 2 \cdot X4 + \epsilon
+     $$
+     where $\epsilon$ is random noise from a normal distribution with mean 0 and standard deviation 2.
+
+3. **Output:**
+   - Store the data in a DataFrame called `data_custom`
+   - Display the first five rows
+   - Calculate and print the correlation between `X3` and `Y_custom`
+
+**Hints:**
+- Use `rng.uniform()` for the independent variables
+- Use `rng.normal()` for the noise term
+- The correlation between `X3` and `Y_custom` should be positive (why?)
+</div>
+
+```{python}
+# Solution:
+```
+
+# Modelling
+
+## Linear model
+
+Linear regression finds the best-fitting straight line (or hyperplane in multiple dimensions) through the data. Given our simulated data where we know $Y = 5 + 2 \cdot X_1 + 3 \cdot X_2 + \epsilon$, the model should recover coefficients close to 2 and 3, and an intercept close to 5.
+
+```{python}
+from sklearn.linear_model import LinearRegression
+
+def linear_model(data, features, target):
+    # Extract features and target variables from the data set
+    X = data[features]
+    y = data[target]
+
+    # Create and fit the linear regression model
+    model = LinearRegression()
+    model.fit(X, y)  # modifies model in place (adds coef_, intercept_, etc.)
+
+    # Make predictions for the data set
+    predictions = model.predict(X)
+
+    return model, predictions
+
+# Example call of the function
+features = ['X1', 'X2']
+target = 'Y_linear'
+model_linear, predictions_linear = linear_model(data, features, target)
+```
+
+```{python}
+# Inspect the learned coefficients
+print(f"Intercept: {model_linear.intercept_:.3f}")
+print(f"Coefficient for X1: {model_linear.coef_[0]:.3f}")
+print(f"Coefficient for X2: {model_linear.coef_[1]:.3f}")
+```
+
+```{python}
+# Compare predictions with actual values
+comparison = pd.DataFrame({
+    'Actual': data[target],
+    'Predicted': predictions_linear
+})
+comparison.head(10)
+```
+
+**Note on scikit-learn's API:** When you call `model.fit(X, y)`, the method doesn't return a new model - it modifies the existing `model` object in place, adding attributes like `coef_` and `intercept_`. The method also returns `self`, which allows method chaining (e.g., `model.fit(X, y).predict(X)`).
+
+You can verify this by inspecting the actual source code using Python's `inspect` module:
+
+```{python}
+import inspect
+
+# View the source code of the fit method
+#print(inspect.getsource(LinearRegression.fit))
+```
+
+Notice that the method ends with `return self`. Alternatively, in IPython/Jupyter you can use the `??` magic: `LinearRegression.fit??`
+
+## Random Forest
+
+Random Forest is an ensemble method that builds multiple decision trees and averages their predictions. Unlike linear regression, it can automatically capture non-linear relationships and interactions between variables - which is why we use `Y_interaction` as the target here.
+
+```{python}
+from sklearn.ensemble import RandomForestRegressor
+
+def random_forest(data, features, target, n_estimators=100, random_state=None):
+    # Extract features and target variables from the data set
+    X = data[features]
+    y = data[target]
+
+    # Create and fit the random forest regressor
+    model = RandomForestRegressor(n_estimators=n_estimators, random_state=random_state)
+    model.fit(X, y)
+
+    # Make predictions for the data set
+    predictions = model.predict(X)
+
+    return model, predictions
+
+# Example call of the function
+features = ['X1', 'X2']
+target = 'Y_interaction'
+model_rf, predictions_rf = random_forest(data, features, target, random_state=42)
+```
+
+```{python}
+# Inspect feature importances
+print(f"Feature importance for X1: {model_rf.feature_importances_[0]:.3f}")
+print(f"Feature importance for X2: {model_rf.feature_importances_[1]:.3f}")
+```
+
+```{python}
+# Compare predictions with actual values
+comparison_rf = pd.DataFrame({
+    'Actual': data[target],
+    'Predicted': predictions_rf
+})
+comparison_rf.head(10)
+```
+
+## Compare results using RMSE
+
+RMSE (Root Mean Squared Error) measures the average prediction error. Lower values indicate better model performance.
+
+```{python}
+from sklearn.metrics import mean_squared_error
+
+def calculate_rmse(predictions, actual_values):
+    mse = mean_squared_error(actual_values, predictions)
+    rmse = np.sqrt(mse)
+    return rmse
+```
+
+Let's compare both models on `Y_interaction`:
+
+```{python}
+# Fit linear model on Y_interaction (without the interaction term as a feature)
+model_linear_interaction, predictions_linear_interaction = linear_model(data, features, 'Y_interaction')
+
+# Calculate RMSE for both models on the same target
+rmse_linear = calculate_rmse(predictions_linear_interaction, data['Y_interaction'])
+rmse_rf = calculate_rmse(predictions_rf, data['Y_interaction'])
+
+print(f"RMSE Linear Regression: {rmse_linear:.3f}")
+print(f"RMSE Random Forest: {rmse_rf:.3f}")
+```
+
+The Random Forest achieves a lower RMSE because it can capture the interaction term ($X_1 \cdot X_2$) that a simple linear model with only $X_1$ and $X_2$ as features cannot represent.
+
+### Train/Test Split: A Fair Comparison
+
+The comparison above has a problem: we're evaluating on the same data we trained on, which can lead to **overfitting** (the model memorizes the training data rather than learning general patterns). A proper evaluation uses separate training and test sets.
+
+```{python}
+from sklearn.model_selection import train_test_split
+
+# Create interaction term from existing data
+data['X1_X2'] = data['X1'] * data['X2']
+
+# Split data into training (80%) and test (20%) sets
+X_train, X_test, y_train, y_test = train_test_split(
+    data[['X1', 'X2', 'X1_X2']], data['Y_interaction'], test_size=0.2, random_state=42
+)
+```
+
+```{python}
+# Linear model without interaction term (only X1, X2)
+model_no_interaction = LinearRegression()
+model_no_interaction.fit(X_train[['X1', 'X2']], y_train)
+pred_no_interaction = model_no_interaction.predict(X_test[['X1', 'X2']])
+print(f"Linear Model (no interaction): {calculate_rmse(pred_no_interaction, y_test):.3f}")
+
+# Linear model with interaction term (X1, X2, X1*X2)
+model_with_interaction = LinearRegression()
+model_with_interaction.fit(X_train, y_train)
+pred_with_interaction = model_with_interaction.predict(X_test)
+print(f"Linear Model (with interaction): {calculate_rmse(pred_with_interaction, y_test):.3f}")
+
+# Random Forest (only X1, X2 - no explicit interaction term)
+model_rf = RandomForestRegressor(n_estimators=100, random_state=42)
+model_rf.fit(X_train[['X1', 'X2']], y_train)
+pred_rf = model_rf.predict(X_test[['X1', 'X2']])
+print(f"Random Forest (no interaction): {calculate_rmse(pred_rf, y_test):.3f}")
+```
+
+**Key insights:**
+
+- The linear model without the interaction term performs poorly because it cannot capture the $X_1 \cdot X_2$ relationship.
+- The linear model with the interaction term performs best when we explicitly provide the interaction feature.
+- Random Forest can discover interactions automatically, but may not match a correctly specified linear model.
+
+## Linear model: Diagnosis
+
+So far, we have focused on prediction. Inference and model diagnosis are two other important aspects of statistical analysis. Let's create a new dataset to explore these concepts.
+
+```{python}
+# Create new data for diagnosis example
+rng_diag = np.random.default_rng(seed=42)
+n_diag = 200
+
+X1_diag = rng_diag.uniform(low=0, high=10, size=n_diag)
+X2_diag = rng_diag.uniform(low=0, high=5, size=n_diag)
+Y_diag = 2 * X1_diag - 5 * X2_diag + rng_diag.normal(loc=0, scale=1, size=n_diag)
+
+df_diag = pd.DataFrame({
+    'X1': X1_diag,
+    'X2': X2_diag,
+    'Y': Y_diag
+})
+df_diag.head()
+```
+
+A good starting point for further analysis is often visualizing the data.
+
+```{python}
+import matplotlib.pyplot as plt
+
+# Plot Y against each predictor
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+
+axes[0].scatter(df_diag['X1'], df_diag['Y'])
+axes[0].set_xlabel('X1')
+axes[0].set_ylabel('Y')
+axes[0].set_title('Y vs X1')
+
+axes[1].scatter(df_diag['X2'], df_diag['Y'])
+axes[1].set_xlabel('X2')
+axes[1].set_ylabel('Y')
+axes[1].set_title('Y vs X2')
+
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+# 3D Plot
+import plotly.express as px
+
+fig = px.scatter_3d(df_diag, x='X1', y='X2', z='Y')
+fig.show()
+```
+
+```{python}
+X_diag = df_diag[['X1', 'X2']]
+y_diag = df_diag['Y']
+
+sklearn_model = LinearRegression()
+sklearn_model.fit(X_diag, y_diag)
+```
+
+The classic `summary()` function from R does not exist in scikit-learn. We have to access the model parameters individually.
+
+```{python}
+sklearn_model.coef_  # Coefficients (betas)
+```
+
+```{python}
+sklearn_model.intercept_  # Intercept
+```
+
+**Note:** In scikit-learn, the underscore at the end of an attribute name (e.g., `coef_`) indicates that this attribute is created after the model has been fitted. This naming convention distinguishes between parameters set at initialization and attributes derived from the data during fitting.
+
+```{python}
+sklearn_model.score(X_diag, y_diag)  # R-squared
+```
+
+Scikit-learn has no built-in capability to output t-values or p-values - its focus is on prediction. To obtain t- and p-values for inference, we need the `statsmodels` package.
+
+```{python}
+import statsmodels.api as sm
+
+# Add constant for intercept (statsmodels doesn't include it by default)
+X_diag_const = sm.add_constant(X_diag)
+
+# Create and fit the OLS (Ordinary Least Squares) model
+ols_model = sm.OLS(y_diag, X_diag_const)
+ols_results = ols_model.fit()
+
+# Print the summary which includes p-values
+print(ols_results.summary())
+```
+
+```{python}
+# Visualize the regression line (holding X2 = 0)
+x1_line = np.linspace(df_diag['X1'].min(), df_diag['X1'].max(), 100)
+x0_line = np.ones(100)  # Constant term
+x2_line = np.zeros(100)  # Hold X2 at 0
+
+# Predictions
+y_line = ols_results.predict(np.column_stack((x0_line, x1_line, x2_line)))
+
+# Plot
+plt.scatter(df_diag['X1'], df_diag['Y'], alpha=0.5, label='Data')
+plt.plot(x1_line, y_line, color='red', label='Regression line (X2=0)')
+plt.xlabel('X1')
+plt.ylabel('Y')
+plt.title('Linear Regression: Y vs X1')
+plt.legend()
+plt.show()
+```
+
+## GLM: Logistic Regression
+
+Sometimes the relationship we observe is not linear. Furthermore
+it can happen that the assumption of normally distributed perturbation terms
+does not make sense. For example, if we observe the variable "survived"
+in the context of the Titanic, there are only 2 characteristic values: 0 = dead,
+1 = survived. A normally distributed disturbance term makes no sense here, as
+it would make values such as 1.22321 or -0.2324 possible.
+A remedy is provided by gerneralized linear models (GLM).
+
+We start with logistic regression:
+
+$$
+\mathbb{E}[Y|X] = P(Y=1|X) = \frac{1}{1 + \exp\left(-(\beta_0 + \beta_1 \cdot X)\right)}
+$$
+
+The distribution assumption for the logistic regression states that
+the dependent variable follows a binomially distributed random variable.
+This assumption can be illustrated as follows:
+
+- $Y_i$ is the observed number of successes for the $i$-th case,
+- $n_i$ is the number of trials or observations for the $i$-th case, and
+- $p_i$ is the probability of success for the $i$th case.
+
+In mathematical terms, the distribution assumption is as follows:
+
+$Y_i \sim \text{binomial}(n_i, p_i)$
+
+```{python}
+import seaborn as sns
+
+# Download Titanic dataset from seaborn
+titanic_data = sns.load_dataset('titanic')
+
+# Access to the "age" and "survived" columns
+age = titanic_data['age']
+survived = titanic_data['survived']
+```
+
+```{python}
+# Scatter plot of age versus survival
+plt.scatter(age, survived, alpha=0.5)
+
+# Axis labeling
+plt.xlabel('age')
+plt.ylabel('Survived')
+
+# Show plot
+plt.show()
+```
+
+```{python}
+# Selection of the 'age' and 'survived' columns
+data = titanic_data[['age', 'survived']].copy()
+
+# Remove rows with missing values
+data.dropna(inplace=True)
+```
+
+**Note: Copies vs. Views**
+
+Why did we use `.copy()` above? In Python, assigning a variable to another variable doesn't create a new object - it creates a **reference** to the same object. Modifying one will affect the other. To avoid this, use `.copy()` to create an independent copy.
+
+```{python}
+# Without copy: both variables point to the same array
+np1 = np.array([1, 2, 3, 4, 5])
+np2 = np1  # np2 is a reference to np1, not a copy
+
+np2[0] = 99
+print("np1:", np1)  # np1 is also changed!
+print("np2:", np2)
+```
+
+```{python}
+# With copy: independent objects
+np1 = np.array([1, 2, 3, 4, 5])
+np2 = np1.copy()  # np2 is a separate copy
+
+np2[0] = 99
+print("np1:", np1)  # np1 is unchanged
+print("np2:", np2)
+```
+
+This applies to other Python objects like lists and DataFrames:
+
+```{python}
+list_a = [1, 2, 3]
+list_b = list_a  # Reference, not a copy
+
+list_b.append(4)
+
+print("list_a:", list_a)  # Both are [1, 2, 3, 4]
+print("list_b:", list_b)
+```
+
+```{python}
+# Convert 'survived' to binary 0/1 values
+data['survived'] = data['survived'].astype(int)
+
+# Adding a constant column for the intercept term
+data['intercept'] = 1
+
+# Definition of the predictor and target variables
+X = data[['intercept', 'age']]
+y = data['survived']
+
+# Creating and adjusting the logistic regression model
+logit_model = sm.Logit(y, X)
+logit_results = logit_model.fit()
+
+# Output of the summary of the logistic regression model
+print(logit_results.summary())
+```
+
+```{python}
+predictions = logit_results.predict(X)
+plt.scatter(data['age'], data['survived'], alpha=0.5, label='data')
+
+plt.scatter(data['age'], predictions, color='red', label='Logistic regression')
+
+
+plt.xlabel('age')
+plt.ylabel('Survived')
+plt.title('Logistic regression - age vs. survival')
+
+
+plt.legend()
+plt.show()
+```
+
+## GLM: Possion Regression
+
+Model equation of the Poisson model:
+$$\log(\lambda_i) = \beta_0 + \beta_1 \cdot X_i$$
+
+thus:
+
+$$E(Y_i|X_i) = \lambda_i = e^{\beta_0 + \beta_1 \cdot X_i}$$
+
+Distribution assumption:
+$$Y_i \sim \text{Poisson}(\lambda_i)$$
+
+In the model equation, $Y_i$ represents the observed number of events (e.g. bicycle crossings) for the i-th data point. $X_i$ is the predictor value for the i-th data point, and $\lambda_i$ is the expected value of the Poisson distribution, which depends on the predictors.
+
+The model equation uses the log transformation to describe the linear relationship between the predictors and the expected value $\lambda_i$. The coefficients $\beta_0$ and $\beta_1$ indicate the effect of the predictors on the log expected value.
+
+The distribution assumption states that the observed events $Y_i$ follow a Poisson distribution. This distribution assumption is appropriate if the events occur randomly and the event rate $\lambda_i$ is proportional to the predictors.
+
+**Note:** $\log(\lambda_i)$ is also known as the link function and is used to establish the linear relationship between the predictors and the expected value $\lambda_i$.
+
+```{python}
+# Load the dataset
+data = pd.read_csv('data/NB5/nyc-east-river-bicycle-counts.csv')
+data.head()
+```
+
+```{python}
+# Calculate the average temperature
+data['avg_temp'] = (data['High Temp (°F)'] + data['Low Temp (°F)']) / 2
+data.head()
+```
+
+```{python}
+X = sm.add_constant(data['avg_temp'])
+y = data['Total']
+
+# Create and adjust Poisson regression model
+poisson_modell = sm.GLM(y, X, family=sm.families.Poisson())
+poisson_results = poisson_modell.fit()
+
+# Show model summary
+print(poisson_results.summary())
+```
+
+```{python}
+# Predictions:
+predictions = poisson_results.predict(X)
+
+# Plot:
+plt.scatter(data['avg_temp'], data['Total'], label='Actual Data')
+plt.scatter(data['avg_temp'], predictions, color='red', label='Predictions')
+plt.xlabel('Average Temperature')
+plt.ylabel('Total Bike Crossings')
+plt.legend()
+plt.title('Actual Data vs. Predictions')
+plt.show()
+```
