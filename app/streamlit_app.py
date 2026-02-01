@@ -454,6 +454,7 @@ with tabs[0]:
             "TypeError": TypeError,
             "ZeroDivisionError": ZeroDivisionError,
             "Exception": Exception,
+            "FileNotFoundError": FileNotFoundError,
         }
 
         return {
