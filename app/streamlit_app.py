@@ -410,6 +410,7 @@ with tabs[0]:
         SAFE_BUILTINS = {
             "__build_class__": __build_class__,
             "__import__": __import__,
+            "super": super,
             "StopIteration": StopIteration,
 
             # core
@@ -453,6 +454,7 @@ with tabs[0]:
             "TypeError": TypeError,
             "ZeroDivisionError": ZeroDivisionError,
             "Exception": Exception,
+            "FileNotFoundError": FileNotFoundError,
         }
 
         return {
