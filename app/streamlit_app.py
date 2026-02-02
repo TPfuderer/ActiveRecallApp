@@ -413,6 +413,34 @@ with tabs[0]:
             "super": super,
             "StopIteration": StopIteration,
 
+            # math / numeric helpers
+            "pow": pow,
+            "divmod": divmod,
+
+            # functional
+            "map": map,
+            "filter": filter,
+
+            # iteration / slicing
+            "reversed": reversed,
+
+            # comparisons / identity
+            "hash": hash,
+
+            # exceptions commonly raised by user code
+            "IndexError": IndexError,
+            "KeyError": KeyError,
+            "AttributeError": AttributeError,
+            "ImportError": ImportError,
+            "RuntimeError": RuntimeError,
+
+            # casting / inspection
+            "callable": callable,
+            "id": id,
+
+            # context helpers (harmless, often used)
+            "object": object,
+
             # core
             "print": print,
             "open": open,

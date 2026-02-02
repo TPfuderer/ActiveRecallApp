@@ -8,3 +8,5 @@ seaborn
 scipy
 numpy
 altair
+scikit-learn
+statsmodels
