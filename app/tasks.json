@@ -6400,6 +6400,150 @@
     "check_variable": ["slope"],
     "expected_value": [["float"]],
     "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import pandas as pd\n# import matplotlib.pyplot as plt\n# from scipy.stats import linregress\n# employees = pd.read_csv('data/employees.csv')\n# res = linregress(employees['years_experience'], employees['salary'])\n# plt.scatter(employees['years_experience'], employees['salary'])\n# plt.plot(employees['years_experience'], res.intercept + res.slope * employees['years_experience'])\n# plt.show()\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\nfrom scipy.stats import linregress\n\nemployees = pd.read_csv('data/employees.csv')\nres = linregress(employees['years_experience'], employees['salary'])\nslope = res.slope\n\nplt.figure()\nplt.scatter(employees['years_experience'], employees['salary'])\nplt.plot(employees['years_experience'], res.intercept + res.slope * employees['years_experience'])\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 461,
+    "qid_original": 461,
+    "category": "Simulation & Random Sampling (6 Questions)",
+    "question_raw": "Import NumPy and create a random number generator with seed 42. Load the `employees.csv` dataset. For each employee, simulate 1000 possible salary raises where the raise follows a normal distribution with mean = `performance_score * 1000` and standard deviation = 500. Add two new columns to the DataFrame: `median_raise` (median of simulated raises) and `raise_95th` (95th percentile of raises). Display the first 10 rows.",
+    "check_variable": ["median_raise", "raise_95th"],
+    "expected_value": [["Series"], ["Series"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import numpy as np\n# import pandas as pd\n# rng = np.random.default_rng(42)\n# employees = pd.read_csv('data/employees.csv')\n# sim = rng.normal(loc=employees['performance_score'].values[:, None] * 1000, scale=500, size=(len(employees), 1000))\n# employees['median_raise'] = np.median(sim, axis=1)\n# employees['raise_95th'] = np.percentile(sim, 95, axis=1)\n# print(employees.head(10))\n\nimport numpy as np\nimport pandas as pd\nimport streamlit as st\n\nrng = np.random.default_rng(42)\nemployees = pd.read_csv('data/employees.csv')\n\nsim = rng.normal(\n    loc=employees['performance_score'].values[:, None] * 1000,\n    scale=500,\n    size=(len(employees), 1000)\n)\n\nemployees['median_raise'] = np.median(sim, axis=1)\nemployees['raise_95th'] = np.percentile(sim, 95, axis=1)\n\nst.write(employees.head(10))"
+  },
+  {
+    "id": 462,
+    "qid_original": 462,
+    "category": "Simulation & Random Sampling (6 Questions)",
+    "question_raw": "Using the `sales.csv` dataset, implement bootstrap resampling to estimate the confidence interval for the mean of the `revenue` column. Sample with replacement 1000 times (each sample same size as original), calculate mean for each sample. Report: (a) the 95% confidence interval using the 2.5th and 97.5th percentiles, (b) the standard error of the mean. Use seed 42.",
+    "check_variable": ["ci_lower", "ci_upper", "std_error"],
+    "expected_value": [["float"], ["float"], ["float"]],
+    "solution_code": "# STANDARD PYTHON (PyCharm / Jupyter)\n# import numpy as np\n# import pandas as pd\n# rng = np.random.default_rng(42)\n# sales = pd.read_csv('data/sales.csv')\n# boot_means = [rng.choice(sales['revenue'], size=len(sales), replace=True).mean() for _ in range(1000)]\n# ci_lower, ci_upper = np.percentile(boot_means, [2.5, 97.5])\n# std_error = np.std(boot_means, ddof=1)\n# print(ci_lower, ci_upper, std_error)\n\nimport numpy as np\nimport pandas as pd\nimport streamlit as st\n\nrng = np.random.default_rng(42)\nsales = pd.read_csv('data/sales.csv')\n\nboot_means = []\nfor _ in range(1000):\n    sample = rng.choice(sales['revenue'], size=len(sales), replace=True)\n    boot_means.append(sample.mean())\n\nboot_means = np.array(boot_means)\n\nci_lower, ci_upper = np.percentile(boot_means, [2.5, 97.5])\nstd_error = np.std(boot_means, ddof=1)\n\nst.write({\"ci_lower\": ci_lower, \"ci_upper\": ci_upper, \"std_error\": std_error})"
+  },
+  {
+    "id": 463,
+    "qid_original": 463,
+    "category": "Simulation & Random Sampling (6 Questions)",
+    "question_raw": "Load the `students.csv` dataset. Simulate exam scores for each student: generate 100 scores from a normal distribution where mean = gpa * 25 and std = 5. Create a summary DataFrame with columns: `name`, `gpa`, `mean_score`, `pass_rate` (proportion of scores >= 70). Sort by pass_rate descending and display the first 10 rows. Use seed 42.",
+    "check_variable": ["summary_df"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "import numpy as np\nimport pandas as pd\nimport streamlit as st\n\nrng = np.random.default_rng(42)\nstudents = pd.read_csv('data/students.csv')\n\nscores = rng.normal(\n    loc=students['gpa'].values[:, None] * 25,\n    scale=5,\n    size=(len(students), 100)\n)\n\nsummary_df = pd.DataFrame({\n    'name': students['name'],\n    'gpa': students['gpa'],\n    'mean_score': scores.mean(axis=1),\n    'pass_rate': (scores >= 70).mean(axis=1)\n}).sort_values('pass_rate', ascending=False)\n\nst.write(summary_df.head(10))"
+  },
+  {
+    "id": 464,
+    "qid_original": 464,
+    "category": "Simulation & Random Sampling (6 Questions)",
+    "question_raw": "Generate 1000 samples from a Poisson distribution with lambda=5 using seed 42. Create a comparison DataFrame with columns: `value` (0-15), `empirical_count`, `empirical_prob`, `theoretical_prob` (using scipy.stats.poisson.pmf). Create a scatter plot comparing empirical vs theoretical probabilities, with a diagonal reference line (y=x).",
+    "check_variable": ["comparison_df"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\nfrom scipy.stats import poisson\n\nrng = np.random.default_rng(42)\nsamples = rng.poisson(lam=5, size=1000)\n\nvalues = np.arange(0, 16)\ncounts = np.array([(samples == v).sum() for v in values])\n\ncomparison_df = pd.DataFrame({\n    'value': values,\n    'empirical_count': counts,\n    'empirical_prob': counts / counts.sum(),\n    'theoretical_prob': poisson.pmf(values, mu=5)\n})\n\nplt.figure()\nplt.scatter(comparison_df['empirical_prob'], comparison_df['theoretical_prob'])\nplt.plot([0, comparison_df[['empirical_prob','theoretical_prob']].values.max()],\n         [0, comparison_df[['empirical_prob','theoretical_prob']].values.max()])\nplt.xlabel('Empirical Probability')\nplt.ylabel('Theoretical Probability')\nplt.axis('equal')\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 465,
+    "qid_original": 465,
+    "category": "Simulation & Random Sampling (6 Questions)",
+    "question_raw": "Using the `employees.csv` dataset, simulate correlated future changes in salary and performance using a multivariate normal distribution. Verify the correlation is approximately 0.7. Use seed 42.",
+    "check_variable": ["empirical_corr"],
+    "expected_value": [["float"]],
+    "solution_code": "import numpy as np\nimport pandas as pd\nimport streamlit as st\n\nrng = np.random.default_rng(42)\nemployees = pd.read_csv('data/employees.csv')\n\nstd_salary = 5000\nstd_perf = 0.5\ncorr = 0.7\ncov = corr * std_salary * std_perf\n\ncov_matrix = [[std_salary**2, cov], [cov, std_perf**2]]\nchanges = rng.multivariate_normal([0, 0], cov_matrix, size=len(employees))\n\nemployees['salary_change'] = changes[:, 0]\nemployees['performance_change'] = changes[:, 1]\n\nemployees['future_salary'] = employees['salary'] + employees['salary_change']\nemployees['future_performance'] = employees['performance_score'] + employees['performance_change']\n\nempirical_corr = np.corrcoef(employees['salary_change'], employees['performance_change'])[0, 1]\n\nst.write(empirical_corr)"
+  },
+  {
+    "id": 466,
+    "qid_original": 466,
+    "category": "Simulation & Random Sampling (6 Questions)",
+    "question_raw": "Create a Monte Carlo simulation to estimate the probability that a random team of 3 employees has average performance_score > 4.0. Run 10000 simulations. Use seed 42.",
+    "check_variable": ["estimated_probability"],
+    "expected_value": [["float"]],
+    "solution_code": "import numpy as np\nimport pandas as pd\nimport streamlit as st\n\nrng = np.random.default_rng(42)\nemployees = pd.read_csv('data/employees.csv')\n\ncount = 0\nn_sim = 10000\n\nfor _ in range(n_sim):\n    team = rng.choice(employees['performance_score'], size=3, replace=False)\n    if team.mean() > 4.0:\n        count += 1\n\nestimated_probability = count / n_sim\nst.write(estimated_probability)"
+  },
+  {
+    "id": 467,
+    "qid_original": 467,
+    "category": "Modeling with Functions/OOP (6 Questions)",
+    "question_raw": "Write a function `fit_and_evaluate` that fits LinearRegression and returns intercept, coefficients, train/test R² and test RMSE. Test on `employees.csv`.",
+    "check_variable": ["results"],
+    "expected_value": [["dict"]],
+    "solution_code": "import pandas as pd\nimport numpy as np\nimport streamlit as st\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import r2_score, mean_squared_error\n\nemployees = pd.read_csv('data/employees.csv')\n\ndef fit_and_evaluate(df, feature_cols, target_col, test_size=0.2, seed=42):\n    X = df[feature_cols]\n    y = df[target_col]\n    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=seed)\n    model = LinearRegression()\n    model.fit(X_train, y_train)\n    return {\n        'intercept': model.intercept_,\n        'coefficients': dict(zip(feature_cols, model.coef_)),\n        'train_r2': r2_score(y_train, model.predict(X_train))),\n        'test_r2': r2_score(y_test, model.predict(X_test))),\n        'test_rmse': mean_squared_error(y_test, model.predict(X_test), squared=False)\n    }\n\nresults = fit_and_evaluate(employees, ['years_experience', 'performance_score'], 'salary')\nst.write(results)"
+  },
+  {
+    "id": 468,
+    "qid_original": 468,
+    "category": "Model Visualization & Diagnostics (6 Questions)",
+    "question_raw": "Using the `employees.csv` dataset, compare LinearRegression vs RandomForestRegressor for predicting salary from years_experience and performance_score. Create a 1x2 subplot figure with feature importances and test RMSE comparison. Use random_state=42.",
+    "check_variable": ["rmse_lr", "rmse_rf"],
+    "expected_value": [["float"], ["float"]],
+    "solution_code": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport streamlit as st\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.ensemble import RandomForestRegressor\nfrom sklearn.metrics import mean_squared_error\n\nemployees = pd.read_csv('data/employees.csv')\nX = employees[['years_experience', 'performance_score']]\ny = employees['salary']\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\nlr = LinearRegression().fit(X_train, y_train)\nrf = RandomForestRegressor(random_state=42).fit(X_train, y_train)\n\nrmse_lr = mean_squared_error(y_test, lr.predict(X_test), squared=False)\nrmse_rf = mean_squared_error(y_test, rf.predict(X_test), squared=False)\n\nfig, axes = plt.subplots(1, 2, figsize=(10, 4))\naxes[0].bar(X.columns, rf.feature_importances_)\naxes[0].set_title('RF Feature Importances')\naxes[1].bar(['LinearRegression', 'RandomForest'], [rmse_lr, rmse_rf])\naxes[1].set_title('Test RMSE Comparison')\nfig.suptitle('Model Comparison')\n\nst.pyplot(fig)\nplt.close()"
+  },
+  {
+    "id": 469,
+    "qid_original": 469,
+    "category": "Model Visualization & Diagnostics (6 Questions)",
+    "question_raw": "Generate 1000 samples from normal(mu=50, sigma=10) with seed 42 and visualize histogram, PDF, and mean lines.",
+    "check_variable": ["sample_mean"],
+    "expected_value": [["float"]],
+    "solution_code": "import numpy as np\nimport matplotlib.pyplot as plt\nimport streamlit as st\nfrom scipy.stats import norm\n\nrng = np.random.default_rng(42)\ndata = rng.normal(50, 10, 1000)\nsample_mean = data.mean()\n\nx = np.linspace(data.min(), data.max(), 200)\n\nplt.figure()\nplt.hist(data, bins=30, density=True)\nplt.plot(x, norm.pdf(x, 50, 10))\nplt.axvline(sample_mean, color='red')\nplt.axvline(50, color='blue', linestyle='--')\nplt.legend(['PDF', 'Sample Mean', 'Theoretical Mean'])\n\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 470,
+    "qid_original": 470,
+    "category": "Model Visualization & Diagnostics (6 Questions)",
+    "question_raw": "Simulate samples from Normal, Exponential, and Uniform distributions and plot histograms with sample means. Use seed 42.",
+    "check_variable": ["means"],
+    "expected_value": [["list"]],
+    "solution_code": "import numpy as np\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nrng = np.random.default_rng(42)\ndists = [rng.normal(50, 10, 500), rng.exponential(20, 500), rng.uniform(20, 80, 500)]\nnames = ['Normal', 'Exponential', 'Uniform']\nmeans = [d.mean() for d in dists]\n\nfig, axes = plt.subplots(1, 3, figsize=(12, 4))\nfor ax, d, name, m in zip(axes, dists, names, means):\n    ax.hist(d, bins=25, density=True)\n    ax.axvline(m, linestyle='--')\n    ax.set_title(f\"{name} (mean={m:.2f})\")\n\nplt.tight_layout()\nst.pyplot(fig)\nplt.close()"
+  },
+  {
+    "id": 471,
+    "qid_original": 471,
+    "category": "Statistical Inference & GLM (6 Questions)",
+    "question_raw": "Using seaborn tips dataset, fit OLS regressions per day and identify day with highest R².",
+    "check_variable": ["best_day"],
+    "expected_value": [["str"]],
+    "solution_code": "import pandas as pd\nimport streamlit as st\nimport seaborn as sns\nimport statsmodels.api as sm\n\n tips = sns.load_dataset('tips')\n\nrows = []\nfor day, df in tips.groupby('day'):\n    X = sm.add_constant(df['total_bill'])\n    y = df['tip']\n    model = sm.OLS(y, X).fit()\n    rows.append({\n        'day': day,\n        'n_observations': len(df),\n        'intercept': model.params['const'],\n        'slope': model.params['total_bill'],\n        'r_squared': model.rsquared,\n        'p_value_slope': model.pvalues['total_bill']\n    })\n\nsummary_df = pd.DataFrame(rows).sort_values('r_squared', ascending=False)\nbest_day = summary_df.iloc[0]['day']\n\nst.write(summary_df)\nst.write(best_day)"
+  },
+  {
+    "id": 472,
+    "qid_original": 472,
+    "category": "Statistical Inference & GLM (6 Questions)",
+    "question_raw": "Simulate revenue by category and estimate probability of exceeding 75th percentile. Use seed 42.",
+    "check_variable": ["result_df"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "import numpy as np\nimport pandas as pd\nimport streamlit as st\n\nrng = np.random.default_rng(42)\nsales = pd.read_csv('data/sales.csv')\n\nrows = []\nfor cat, df in sales.groupby('category'):\n    mu = df['revenue'].mean()\n    sd = df['revenue'].std()\n    thr = df['revenue'].quantile(0.75)\n    sim = rng.normal(mu, sd, 10000)\n    rows.append({\n        'category': cat,\n        'mean_revenue': mu,\n        'std_revenue': sd,\n        'threshold_75': thr,\n        'prob_exceed': (sim > thr).mean()\n    })\n\nresult_df = pd.DataFrame(rows)\nst.write(result_df)"
+  },
+  {
+    "id": 473,
+    "qid_original": 473,
+    "category": "Statistical Inference & GLM (6 Questions)",
+    "question_raw": "Bootstrap 95% CI for mean temperature per city and plot with error bars. Use seed 42.",
+    "check_variable": ["ci_df"],
+    "expected_value": [["DataFrame"]],
+    "solution_code": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nrng = np.random.default_rng(42)\nweather = pd.read_csv('data/weather.csv')\n\nrows = []\nfor city, df in weather.groupby('city'):\n    temps = df['temperature'].to_numpy()\n    means = [rng.choice(temps, size=len(temps), replace=True).mean() for _ in range(1000)]\n    lo, hi = np.percentile(means, [2.5, 97.5])\n    rows.append({'city': city, 'mean': np.mean(temps), 'ci_low': lo, 'ci_high': hi})\n\nci_df = pd.DataFrame(rows)\n\nplt.figure()\nplt.bar(ci_df['city'], ci_df['mean'], yerr=[ci_df['mean']-ci_df['ci_low'], ci_df['ci_high']-ci_df['mean']])\nst.pyplot(plt.gcf())\nplt.close()"
+  },
+  {
+    "id": 474,
+    "qid_original": 474,
+    "category": "Statistical Inference & GLM (6 Questions)",
+    "question_raw": "Fit logistic regression predicting STEM_major using statsmodels and display odds ratios.",
+    "check_variable": ["odds_ratios"],
+    "expected_value": [["Series"]],
+    "solution_code": "import pandas as pd\nimport statsmodels.api as sm\nimport numpy as np\nimport streamlit as st\n\nstudents = pd.read_csv('data/students.csv')\nstudents['STEM_major'] = students['major'].isin(['Computer Science','Mathematics','Physics']).astype(int)\n\nX = sm.add_constant(students[['age','gpa','credits']])\ny = students['STEM_major']\n\nmodel = sm.Logit(y, X).fit(disp=False)\nodds_ratios = np.exp(model.params)\n\nst.write(model.summary())\nst.write(odds_ratios)\nst.write(np.exp(model.conf_int()))"
+  },
+  {
+    "id": 475,
+    "qid_original": 475,
+    "category": "Statistical Inference & GLM (6 Questions)",
+    "question_raw": "Compare polynomial regression degrees 1–3 using training and CV RMSE.",
+    "check_variable": ["best_degree"],
+    "expected_value": [["int"]],
+    "solution_code": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport streamlit as st\nfrom sklearn.preprocessing import PolynomialFeatures\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.model_selection import cross_val_score\nfrom sklearn.metrics import mean_squared_error\n\nemployees = pd.read_csv('data/employees.csv')\nX = employees[['years_experience']]\ny = employees['salary']\n\ndegrees = [1,2,3]\ntrain_rmse = []\ncv_rmse = []\n\nfor d in degrees:\n    Xp = PolynomialFeatures(d, include_bias=False).fit_transform(X)\n    model = LinearRegression().fit(Xp, y)\n    train_rmse.append(mean_squared_error(y, model.predict(Xp), squared=False))\n    scores = cross_val_score(model, Xp, y, cv=5, scoring='neg_mean_squared_error')\n    cv_rmse.append(np.sqrt(-scores.mean()))\n\nbest_degree = degrees[int(np.argmin(cv_rmse))]\n\nplt.figure()\nplt.plot(degrees, train_rmse)\nplt.plot(degrees, cv_rmse)\nst.pyplot(plt.gcf())\nplt.close()\n\nst.write(best_degree)"
+  },
+  {
+    "id": 476,
+    "qid_original": 476,
+    "category": "Statistical Inference & GLM (6 Questions)",
+    "question_raw": "Fit Poisson GLM predicting quantity from price and category and predict expected quantity.",
+    "check_variable": ["predicted_quantity"],
+    "expected_value": [["Series"]],
+    "solution_code": "import pandas as pd\nimport statsmodels.api as sm\nimport streamlit as st\n\nsales = pd.read_csv('data/sales.csv')\nX = pd.get_dummies(sales[['price','category']], drop_first=True)\nX = sm.add_constant(X)\ny = sales['quantity']\n\nmodel = sm.GLM(y, X, family=sm.families.Poisson()).fit()\n\nhypo = X.groupby(level=0).mean()\npredicted_quantity = model.predict(hypo)\n\nst.write(model.summary())\nst.write(predicted_quantity)"
   }
 ]
 
