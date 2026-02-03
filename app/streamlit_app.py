@@ -16,7 +16,7 @@ from supabase import create_client
 import json
 
 # --- Page setup ---
-st.set_page_config(page_title="Mini Python Playground!", page_icon="💻", layout="centered")
+st.set_page_config(page_title="Python Exam Preparer", page_icon="💻", layout="centered")
 
 
 # --- #Load tasks from JSON ---
