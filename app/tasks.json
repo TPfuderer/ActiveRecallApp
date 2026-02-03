@@ -6426,7 +6426,7 @@
     "question_raw": "Load the `students.csv` dataset. Simulate exam scores for each student: generate 100 scores from a normal distribution where mean = gpa * 25 and std = 5. Create a summary DataFrame with columns: `name`, `gpa`, `mean_score`, `pass_rate` (proportion of scores >= 70). Sort by pass_rate descending and display the first 10 rows. Use seed 42.",
     "check_variable": ["summary_df"],
     "expected_value": [["DataFrame"]],
-    "solution_code": "import numpy as np\nimport pandas as pd\nimport streamlit as st\n\nrng = np.random.default_rng(42)\nstudents = pd.read_csv('data/students.csv')\n\nscores = rng.normal(\n    loc=students['gpa'].values[:, None] * 25,\n    scale=5,\n    size=(len(students), 100)\n)\n\nsummary_df = pd.DataFrame({\n    'name': students['name'],\n    'gpa': students['gpa'],\n    'mean_score': scores.mean(axis=1),\n    'pass_rate': (scores >= 70).mean(axis=1)\n}).sort_values('pass_rate', ascending=False)\n\nst.write(summary_df.head(10))"
+    "solution_code": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nstudents = pd.read_csv('data/students.csv')\n\nsim = rng.normal(\n    loc=students['gpa'].to_numpy()[:, None] * 25,\n    scale=5,\n    size=(len(students), 100)\n)\n\nstudents['mean_score'] = np.median(sim, axis=1)\nstudents['pass_rate'] = np.mean(sim >= 70, axis=1)\n\nsummary_df = students[['name', 'gpa', 'pass_rate', 'mean_score']]\nsummary_df = summary_df.sort_values('pass_rate', ascending=False)\n\nprint(summary_df.head(10))"
   },
   {
     "id": 464,
