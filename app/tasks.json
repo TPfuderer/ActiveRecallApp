@@ -6498,7 +6498,7 @@
     "question_raw": "Using seaborn tips dataset, fit OLS regressions per day and identify day with highest R².",
     "check_variable": ["best_day"],
     "expected_value": [["str"]],
-    "solution_code": "import pandas as pd\nimport streamlit as st\nimport seaborn as sns\nimport statsmodels.api as sm\n\n tips = sns.load_dataset('tips')\n\nrows = []\nfor day, df in tips.groupby('day'):\n    X = sm.add_constant(df['total_bill'])\n    y = df['tip']\n    model = sm.OLS(y, X).fit()\n    rows.append({\n        'day': day,\n        'n_observations': len(df),\n        'intercept': model.params['const'],\n        'slope': model.params['total_bill'],\n        'r_squared': model.rsquared,\n        'p_value_slope': model.pvalues['total_bill']\n    })\n\nsummary_df = pd.DataFrame(rows).sort_values('r_squared', ascending=False)\nbest_day = summary_df.iloc[0]['day']\n\nst.write(summary_df)\nst.write(best_day)"
+  "solution_code": "import seaborn as sns\nimport statsmodels.api as sm\n\ntips = sns.load_dataset(\"tips\")\n\n# Split data\ntips_sun  = tips[tips[\"day\"] == \"Sun\"]\ntips_sat  = tips[tips[\"day\"] == \"Sat\"]\ntips_thur = tips[tips[\"day\"] == \"Thur\"]\ntips_fri  = tips[tips[\"day\"] == \"Fri\"]\n\n# Fit models\ndef fit(df):\n    y = df[\"total_bill\"]\n    X = sm.add_constant(df[[\"tip\", \"size\"]])\n    return sm.OLS(y, X).fit().rsquared\n\nr2_sun  = fit(tips_sun)\nr2_sat  = fit(tips_sat)\nr2_thur = fit(tips_thur)\nr2_fri  = fit(tips_fri)\n\n# Compare\nr2 = {\n    \"Sun\": r2_sun,\n    \"Sat\": r2_sat,\n    \"Thur\": r2_thur,\n    \"Fri\": r2_fri\n}\n\nprint(r2)\nprint(\"Best day:\", max(r2, key=r2.get))"
   },
   {
     "id": 472,
