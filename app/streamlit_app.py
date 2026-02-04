@@ -16,7 +16,7 @@ from supabase import create_client
 import json
 
 # --- Page setup ---
-st.set_page_config(page_title="Mini Python Playground!", page_icon="💻", layout="centered")
+st.set_page_config(page_title="Python Exam Preparer", page_icon="💻", layout="centered")
 
 
 # --- #Load tasks from JSON ---
@@ -406,6 +406,12 @@ with tabs[0]:
         import streamlit as st
         import sys
         import re
+        import statsmodels.api as sm
+
+        # 👉 ADD THESE
+        from sklearn.model_selection import train_test_split
+        from sklearn.linear_model import LinearRegression
+        from sklearn.metrics import mean_squared_error, r2_score
 
         SAFE_BUILTINS = {
             "__build_class__": __build_class__,
@@ -416,6 +422,8 @@ with tabs[0]:
             # math / numeric helpers
             "pow": pow,
             "divmod": divmod,
+
+            "sm": sm,
 
             # functional
             "map": map,
@@ -496,6 +504,12 @@ with tabs[0]:
             "sns": sns,
             "scipy": scipy,
             "stats": stats,
+
+            # 👉 ADD THESE
+            "train_test_split": train_test_split,
+            "LinearRegression": LinearRegression,
+            "mean_squared_error": mean_squared_error,
+            "r2_score": r2_score,
 
             # infra
             "st": st,

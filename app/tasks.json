@@ -6426,7 +6426,7 @@
     "question_raw": "Load the `students.csv` dataset. Simulate exam scores for each student: generate 100 scores from a normal distribution where mean = gpa * 25 and std = 5. Create a summary DataFrame with columns: `name`, `gpa`, `mean_score`, `pass_rate` (proportion of scores >= 70). Sort by pass_rate descending and display the first 10 rows. Use seed 42.",
     "check_variable": ["summary_df"],
     "expected_value": [["DataFrame"]],
-    "solution_code": "import numpy as np\nimport pandas as pd\nimport streamlit as st\n\nrng = np.random.default_rng(42)\nstudents = pd.read_csv('data/students.csv')\n\nscores = rng.normal(\n    loc=students['gpa'].values[:, None] * 25,\n    scale=5,\n    size=(len(students), 100)\n)\n\nsummary_df = pd.DataFrame({\n    'name': students['name'],\n    'gpa': students['gpa'],\n    'mean_score': scores.mean(axis=1),\n    'pass_rate': (scores >= 70).mean(axis=1)\n}).sort_values('pass_rate', ascending=False)\n\nst.write(summary_df.head(10))"
+    "solution_code": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nstudents = pd.read_csv('data/students.csv')\n\nsim = rng.normal(\n    loc=students['gpa'].to_numpy()[:, None] * 25,\n    scale=5,\n    size=(len(students), 100)\n)\n\nstudents['mean_score'] = np.median(sim, axis=1)\nstudents['pass_rate'] = np.mean(sim >= 70, axis=1)\n\nsummary_df = students[['name', 'gpa', 'pass_rate', 'mean_score']]\nsummary_df = summary_df.sort_values('pass_rate', ascending=False)\n\nprint(summary_df.head(10))"
   },
   {
     "id": 464,
@@ -6435,7 +6435,7 @@
     "question_raw": "Generate 1000 samples from a Poisson distribution with lambda=5 using seed 42. Create a comparison DataFrame with columns: `value` (0-15), `empirical_count`, `empirical_prob`, `theoretical_prob` (using scipy.stats.poisson.pmf). Create a scatter plot comparing empirical vs theoretical probabilities, with a diagonal reference line (y=x).",
     "check_variable": ["comparison_df"],
     "expected_value": [["DataFrame"]],
-    "solution_code": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\nfrom scipy.stats import poisson\n\nrng = np.random.default_rng(42)\nsamples = rng.poisson(lam=5, size=1000)\n\nvalues = np.arange(0, 16)\ncounts = np.array([(samples == v).sum() for v in values])\n\ncomparison_df = pd.DataFrame({\n    'value': values,\n    'empirical_count': counts,\n    'empirical_prob': counts / counts.sum(),\n    'theoretical_prob': poisson.pmf(values, mu=5)\n})\n\nplt.figure()\nplt.scatter(comparison_df['empirical_prob'], comparison_df['theoretical_prob'])\nplt.plot([0, comparison_df[['empirical_prob','theoretical_prob']].values.max()],\n         [0, comparison_df[['empirical_prob','theoretical_prob']].values.max()])\nplt.xlabel('Empirical Probability')\nplt.ylabel('Theoretical Probability')\nplt.axis('equal')\n\nst.pyplot(plt.gcf())\nplt.close()"
+    "solution_code": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport streamlit as st\nfrom scipy import stats\n\nrng = np.random.default_rng(42)\n\nsamples = rng.poisson(\n    lam=5,\n    size=1000\n)\n\nvalue = np.arange(16)\nempirical_count = np.bincount(samples, minlength=16)\nempirical_prob = empirical_count / len(samples)\ntheoretical_prob = stats.poisson.pmf(value, mu=5)\n\ndf = pd.DataFrame({\n    \"value\": value,\n    \"empirical_count\": empirical_count,\n    \"empirical_prob\": empirical_prob,\n    \"theoretical_prob\": theoretical_prob\n})\n\nplt.scatter(theoretical_prob, empirical_prob)\nplt.axis('equal')\nplt.plot([0, 0.2], [0, 0.2])\n\nst.pyplot(plt.gcf())"
   },
   {
     "id": 465,
@@ -6462,7 +6462,7 @@
     "question_raw": "Write a function `fit_and_evaluate` that fits LinearRegression and returns intercept, coefficients, train/test R² and test RMSE. Test on `employees.csv`.",
     "check_variable": ["results"],
     "expected_value": [["dict"]],
-    "solution_code": "import pandas as pd\nimport numpy as np\nimport streamlit as st\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import r2_score, mean_squared_error\n\nemployees = pd.read_csv('data/employees.csv')\n\ndef fit_and_evaluate(df, feature_cols, target_col, test_size=0.2, seed=42):\n    X = df[feature_cols]\n    y = df[target_col]\n    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=seed)\n    model = LinearRegression()\n    model.fit(X_train, y_train)\n    return {\n        'intercept': model.intercept_,\n        'coefficients': dict(zip(feature_cols, model.coef_)),\n        'train_r2': r2_score(y_train, model.predict(X_train))),\n        'test_r2': r2_score(y_test, model.predict(X_test))),\n        'test_rmse': mean_squared_error(y_test, model.predict(X_test), squared=False)\n    }\n\nresults = fit_and_evaluate(employees, ['years_experience', 'performance_score'], 'salary')\nst.write(results)"
+    "solution_code": "import pandas as pd\nimport numpy as np\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import r2_score, mean_squared_error\n\n\ndef fit_and_evaluate(data, Y, Xs):\n    X = data[Xs]\n    Y = data[Y]\n    X_train, X_test, Y_train, Y_test = train_test_split(\n        X, Y, test_size=0.2, random_state=42\n    )\n    model = LinearRegression()\n    model.fit(X_train, Y_train)\n    Y_pred = model.predict(X_test)\n    return {\n        \"intercept\": model.intercept_,\n        \"coefficients\": model.coef_,\n        \"rmse\": mean_squared_error(Y_test, Y_pred) ** 2,\n        \"r2\": r2_score(Y_test, Y_pred),\n        \"Y_test\": Y_test,\n        \"X_test\": X_test,\n        \"Y_train\": Y_train,\n        \"X_test\": X_test\n    }\n\n\nemployees = pd.read_csv(\"data/employees.csv\")\nresults = fit_and_evaluate(\n    employees,\n    \"salary\",\n    [\"performance_score\", \"years_experience\"]\n)\n\nprint(results)"
   },
   {
     "id": 468,
@@ -6487,9 +6487,15 @@
     "qid_original": 470,
     "category": "Model Visualization & Diagnostics (6 Questions)",
     "question_raw": "Simulate samples from Normal, Exponential, and Uniform distributions and plot histograms with sample means. Use seed 42.",
-    "check_variable": ["means"],
-    "expected_value": [["list"]],
-    "solution_code": "import numpy as np\nimport matplotlib.pyplot as plt\nimport streamlit as st\n\nrng = np.random.default_rng(42)\ndists = [rng.normal(50, 10, 500), rng.exponential(20, 500), rng.uniform(20, 80, 500)]\nnames = ['Normal', 'Exponential', 'Uniform']\nmeans = [d.mean() for d in dists]\n\nfig, axes = plt.subplots(1, 3, figsize=(12, 4))\nfor ax, d, name, m in zip(axes, dists, names, means):\n    ax.hist(d, bins=25, density=True)\n    ax.axvline(m, linestyle='--')\n    ax.set_title(f\"{name} (mean={m:.2f})\")\n\nplt.tight_layout()\nst.pyplot(fig)\nplt.close()"
+    "check_variable": [
+      "means"
+    ],
+    "expected_value": [
+      [
+        "list"
+      ]
+    ],
+  "solution_code": "import numpy as np\nimport matplotlib.pyplot as plt\n\nnp.random.seed(42)\n\nnormal = np.random.normal(50, 10, 500)\nexpo = np.random.exponential(20, 500)\nuni = np.random.uniform(20, 80, 500)\n\nplt.figure(figsize=(12, 4))\n\nplt.subplot(1, 3, 1)\nplt.hist(normal, bins=25)\nplt.axvline(normal.mean(), linestyle='--')\nplt.title(f\"Normal (mean={normal.mean():.2f})\")\n\nplt.subplot(1, 3, 2)\nplt.hist(expo, bins=25)\nplt.axvline(expo.mean(), linestyle='--')\nplt.title(f\"Exponential (mean={expo.mean():.2f})\")\n\nplt.subplot(1, 3, 3)\nplt.hist(uni, bins=25)\nplt.axvline(uni.mean(), linestyle='--')\nplt.title(f\"Uniform (mean={uni.mean():.2f})\")\n\nplt.tight_layout()\n\n# Only for streamlit:\n# import streamlit as st\n# st.pyplot(plt.gcf())\n\nplt.show()\nplt.close()"
   },
   {
     "id": 471,
