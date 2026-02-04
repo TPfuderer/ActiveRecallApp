@@ -6495,7 +6495,7 @@
         "list"
       ]
     ],
-    "solution_code": "import numpy as np\nimport matplotlib.pyplot as plt\n\nnp.random.seed(42)\n\nnormal = np.random.normal(50, 10, 500)\nexpo = np.random.exponential(20, 500)\nuni = np.random.uniform(20, 80, 500)\n\ndata = [normal, expo, uni]\nnames = ['Normal', 'Exponential', 'Uniform']\n\nplt.figure(figsize=(12, 4))\n\nfor i, (d, name) in enumerate(zip(data, names), 1):\n    plt.subplot(1, 3, i)\n    plt.hist(d, bins=25)\n    plt.axvline(d.mean(), linestyle='--')\n    plt.title(f\"{name} (mean={d.mean():.2f})\")\n\nplt.tight_layout()\n\n# Only for streamlit:\n# import streamlit as st\n# st.pyplot(plt.gcf())\n\nplt.show()\nplt.close()"
+  "solution_code": "import numpy as np\nimport matplotlib.pyplot as plt\n\nnp.random.seed(42)\n\nnormal = np.random.normal(50, 10, 500)\nexpo = np.random.exponential(20, 500)\nuni = np.random.uniform(20, 80, 500)\n\nplt.figure(figsize=(12, 4))\n\nplt.subplot(1, 3, 1)\nplt.hist(normal, bins=25)\nplt.axvline(normal.mean(), linestyle='--')\nplt.title(f\"Normal (mean={normal.mean():.2f})\")\n\nplt.subplot(1, 3, 2)\nplt.hist(expo, bins=25)\nplt.axvline(expo.mean(), linestyle='--')\nplt.title(f\"Exponential (mean={expo.mean():.2f})\")\n\nplt.subplot(1, 3, 3)\nplt.hist(uni, bins=25)\nplt.axvline(uni.mean(), linestyle='--')\nplt.title(f\"Uniform (mean={uni.mean():.2f})\")\n\nplt.tight_layout()\n\n# Only for streamlit:\n# import streamlit as st\n# st.pyplot(plt.gcf())\n\nplt.show()\nplt.close()"
   },
   {
     "id": 471,
