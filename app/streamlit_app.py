@@ -406,6 +406,7 @@ with tabs[0]:
         import streamlit as st
         import sys
         import re
+        import statsmodels.api as sm
 
         # 👉 ADD THESE
         from sklearn.model_selection import train_test_split
@@ -421,6 +422,8 @@ with tabs[0]:
             # math / numeric helpers
             "pow": pow,
             "divmod": divmod,
+
+            "sm": sm,
 
             # functional
             "map": map,
