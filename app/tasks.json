@@ -8008,7 +8008,7 @@
     "question_raw": "Using seaborn's built-in `tips` dataset, fit OLS regressions per day and identify day with highest R².",
     "check_variable": ["best_day"],
     "expected_value": [["str"]],
-    "solution_code": "import seaborn as sns\nimport pandas as pd\nimport statsmodels.api as sm\n\ntips = sns.load_dataset('tips')\n\nrows = []\nfor day, df in tips.groupby('day'):\n    y = df['tip']\n    X = sm.add_constant(df['total_bill'])\n    model = sm.OLS(y, X).fit()\n    rows.append({\n        'day': day,\n        'n_observations': len(df),\n        'intercept': model.params['const'],\n        'slope': model.params['total_bill'],\n        'r_squared': model.rsquared,\n        'p_value_slope': model.pvalues['total_bill']\n    })\n\nsummary_df = pd.DataFrame(rows).sort_values('r_squared', ascending=False)\nbest_day = summary_df.iloc[0]['day']\n\nprint(summary_df)\nprint(best_day)"
+    "solution_code": "import seaborn as sns\nimport pandas as pd\nimport statsmodels.api as sm\n\n# --- FULL VERSION WITH CATEGORICALS ---\ntips = sns.load_dataset('tips')\n\nfor day, df in tips.groupby('day'):\n    y = df['tip']\n    X = df[['total_bill', 'size', 'sex', 'smoker', 'time']]\n    X = pd.get_dummies(X, drop_first=True)\n    X = X.astype(float)\n    X = sm.add_constant(X)\n    print(day, sm.OLS(y, X).fit().rsquared)\n\n# --- MINIMAL VERSION ---\nimport statsmodels.api as sm\n\ntips = sns.load_dataset('tips')\n\nfor day, df in tips.groupby('day'):\n    y = df['tip']\n    X = sm.add_constant(df['total_bill'])\n    print(day, sm.OLS(y, X).fit().rsquared)"
   },
   {
     "id": 480,
