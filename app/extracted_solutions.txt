@@ -206,7 +206,16 @@ is_palindrome = (s == s[::-1])
 # ===== Solution 49 =====
 s = 'Hello World'
 vowels = 'aeiouAEIOU'
-result = ''.join(ch for ch in s if ch not in vowels)
+result = ''.join(ch for ch in s if ch not in vowels) 
+ ----- 
+
+KISS version: 
+s = "Hello World"
+
+ss = s.replace("e", " ")
+ss = ss.replace("o", " ")
+
+print(ss)
 
 # ===== Solution 50 =====
 s = 'Python is a great programming language'
@@ -1010,7 +1019,7 @@ head_df = students.set_index("student_id").head(3)
 
 # ===== Solution 223 =====
 students = pd.read_csv("data/students.csv")
-students["gpa_percent"] = students["gpa"].apply(lambda x: x * 25)
+students["gpa_percent"] = students.gpa * 25
 
 # ===== Solution 224 =====
 students = pd.read_csv("data/students.csv")
@@ -1018,7 +1027,7 @@ filtered = students[(students["major"] == "Computer Science") & (students["grade
 
 # ===== Solution 225 =====
 students = pd.read_csv("data/students.csv")
-top_student = students.loc[students["gpa"].idxmax()]
+top_student = students.nlargest(1, "gpa")
 
 # ===== Solution 226 =====
 students = pd.read_csv("data/students.csv")
@@ -1574,7 +1583,7 @@ result = average()
 
 # ===== Solution 331 =====
 import pandas as pd
-students_df = pd.read_csv("data/questions/students.csv")
+students_df = pd.read_csv("data/students.csv")
 
 def filter_by_gpa(students_df, min_gpa):
     return students_df[students_df["gpa"] >= min_gpa]
@@ -1583,7 +1592,7 @@ filtered = filter_by_gpa(students_df, 3.5)
 
 # ===== Solution 332 =====
 import pandas as pd
-sales_df = pd.read_csv("data/questions/sales.csv")
+sales_df = pd.read_csv("data/sales.csv")
 
 def calculate_total_revenue(sales_df, product_name):
     return sales_df[sales_df["product"] == product_name]["revenue"].sum()
@@ -1592,7 +1601,7 @@ result = calculate_total_revenue(sales_df, sales_df.iloc[0]["product"])
 
 # ===== Solution 333 =====
 import pandas as pd
-weather_df = pd.read_csv("data/questions/weather.csv")
+weather_df = pd.read_csv("data/weather.csv")
 
 def temperature_stats(weather_df, city_name):
     city = weather_df[weather_df["city"] == city_name]
@@ -1628,7 +1637,7 @@ result = z_score([1, 2, 3, 4, 5])
 
 # ===== Solution 336 =====
 import pandas as pd
-sales_df = pd.read_csv("data/questions/sales.csv")
+sales_df = pd.read_csv("data/sales.csv")
 
 def group_by_category(sales_df):
     return sales_df.groupby("category")["revenue"].sum().to_dict()
@@ -1637,7 +1646,7 @@ result = group_by_category(sales_df)
 
 # ===== Solution 337 =====
 import pandas as pd
-students_df = pd.read_csv("data/questions/students.csv")
+students_df = pd.read_csv("data/students.csv")
 
 def get_top_students(students_df, n=5):
     return students_df.sort_values("gpa", ascending=False).head(n)
@@ -1646,7 +1655,7 @@ result = get_top_students(students_df, 3)
 
 # ===== Solution 338 =====
 import pandas as pd
-employees_df = pd.read_csv("data/questions/employees.csv")
+employees_df = pd.read_csv("data/employees.csv")
 
 def salary_by_department(employees_df):
     return employees_df.groupby("department")["salary"].apply(list).to_dict()
@@ -2076,7 +2085,7 @@ class StudentManager:
     def get_honors_students(self):
         return [s for s in self.students if s.is_honors()]
 
-manager = StudentManager("data/questions/students.csv")
+manager = StudentManager("data/students.csv")
 honors = manager.get_honors_students()
 
 # ===== Solution 374 =====
@@ -2102,7 +2111,7 @@ class DataAnalyzer:
         return self.df[column_name].describe()
 
 analyzer = DataAnalyzer()
-analyzer.load_csv("data/questions/students.csv")
+analyzer.load_csv("data/students.csv")
 summary = analyzer.get_summary()
 
 # ===== Solution 376 =====
@@ -2118,7 +2127,7 @@ class EmployeeDatabase:
     def top_performers(self, n=5):
         return self.df.sort_values("performance_score", ascending=False).head(n)
 
-db = EmployeeDatabase("data/questions/employees.csv")
+db = EmployeeDatabase("data/employees.csv")
 avg = db.average_salary()
 
 # ===== Solution 377 =====
@@ -2142,7 +2151,7 @@ class WeatherStation:
         row = self.df.loc[self.df["temperature"].idxmin()]
         return row["date"]
 
-ws = WeatherStation("data/questions/weather.csv")
+ws = WeatherStation("data/weather.csv")
 coldest = ws.coldest_day()
 
 # ===== Solution 379 =====
@@ -2298,7 +2307,7 @@ for i in range(1,21):
 
 # ===== Solution 392 =====
 import pandas as pd
-df = pd.read_csv('data/questions/students.csv')
+df = pd.read_csv('data/students.csv')
 count = 0
 for g in df['gpa']:
     if g > 3.0:
@@ -2306,7 +2315,7 @@ for g in df['gpa']:
 
 # ===== Solution 393 =====
 import pandas as pd
-df = pd.read_csv('data/questions/sales.csv')
+df = pd.read_csv('data/sales.csv')
 total = 0
 for _,row in df.iterrows():
     if row['category'] == 'Electronics':
@@ -2325,7 +2334,7 @@ squares = [i*i for i in range(1,11)]
 
 # ===== Solution 396 =====
 import pandas as pd
-df = pd.read_csv('data/questions/employees.csv')
+df = pd.read_csv('data/employees.csv')
 names = [n for n,d in zip(df['name'], df['department']) if d=='Engineering']
 
 # ===== Solution 397 =====
@@ -2344,13 +2353,8 @@ def fizzbuzz(n):
 output = fizzbuzz(15)
 
 # ===== Solution 399 =====
-import pandas as pd
-df = pd.read_csv('data/questions/weather.csv')
-counts = {'Cold':0,'Mild':0,'Hot':0}
-for t in df['temperature']:
-    if t < 50: counts['Cold']+=1
-    elif t <= 75: counts['Mild']+=1
-    else: counts['Hot']+=1
+df = pd.read_csv('data/weather.csv')
+counts = df['temperature'].apply(lambda t: 'Cold' if t < 50 else 'Mild' if t <= 75 else 'Hot').value_counts()
 
 # ===== Solution 400 =====
 def process_grades(df):
@@ -2364,7 +2368,7 @@ def process_grades(df):
     return df
 
 import pandas as pd
-df = process_grades(pd.read_csv('data/questions/students.csv'))
+df = process_grades(pd.read_csv('data/students.csv'))
 
 # ===== Solution 401 =====
 import re
@@ -2444,7 +2448,7 @@ parts = re.split(r"[,;|]", "a,b;c|d")
 # ===== Solution 416 =====
 import pandas as pd
 import re
-df = pd.read_csv('data/questions/employees.csv')
+df = pd.read_csv('data/employees.csv')
 first_names = df['name'].apply(lambda x: re.match(r"\\w+", x).group()).tolist()
 
 # ===== Solution 417 =====
@@ -2488,7 +2492,7 @@ for val in ['42', 'abc']:
 # ===== Solution 423 =====
 file_opened = False
 try:
-    f = open('data/questions/students.csv')
+    f = open('data/students.csv')
     file_opened = True
 finally:
     file_opened = file_opened
@@ -2559,7 +2563,7 @@ person = {'name':'Alice','age':30}
 email = person.get('email','No email provided')
 
 # ===== Solution 432 =====
-with open('data/questions/students.csv') as f:
+with open('data/students.csv') as f:
     line = f.readline().strip()
 
 # ===== Solution 433 =====
@@ -2620,19 +2624,11 @@ except Exception as e:
     logged = True
 
 # ===== Solution 438 =====
-handled = False
-
-def load_and_process(filename):
-    try:
-        open(filename)
-    except FileNotFoundError:
-        print(f"File not found: {filename}")
-        raise
-
 try:
-    load_and_process('missing.csv')
+    f = open("data.txt")
 except FileNotFoundError:
-    handled = True
+    print("File not found")
+    raise
 
 # ===== Solution 439 =====
 import pandas as pd
@@ -2673,7 +2669,7 @@ def process_student_data(filepath):
     except ValueError:
         return {"success": False, "error": "Invalid GPA values"}
 
-output = process_student_data('data/questions/students.csv')
+output = process_student_data('data/students.csv')
 
 # ===== Solution 441 =====
 # STANDARD PYTHON (PyCharm / Jupyter)
@@ -3163,4 +3159,530 @@ plt.plot(employees['years_experience'], res.intercept + res.slope * employees['y
 
 st.pyplot(plt.gcf())
 plt.close()
+
+# ===== Solution 461 =====
+# STANDARD PYTHON (PyCharm / Jupyter)
+# import numpy as np
+# import pandas as pd
+# rng = np.random.default_rng(42)
+# employees = pd.read_csv('data/employees.csv')
+# sim = rng.normal(loc=employees['performance_score'].to_numpy()[:, None] * 1000, scale=500, size=(len(employees), 1000))
+# employees['median_raise'] = np.median(sim, axis=1)
+# employees['raise_95th'] = np.percentile(sim, 95, axis=1)
+# print(employees.head(10))
+
+import numpy as np
+import pandas as pd
+import streamlit as st
+
+rng = np.random.default_rng(42)
+employees = pd.read_csv('data/employees.csv')
+
+sim = rng.normal(
+    loc=employees['performance_score'].values[:, None] * 1000,
+    scale=500,
+    size=(len(employees), 1000)
+)
+
+employees['median_raise'] = np.median(sim, axis=1)
+employees['raise_95th'] = np.percentile(sim, 95, axis=1)
+
+st.write(employees.head(10))
+
+# ===== Solution 462 =====
+# STANDARD PYTHON (PyCharm / Jupyter)
+# import numpy as np
+# import pandas as pd
+# rng = np.random.default_rng(42)
+# sales = pd.read_csv('data/sales.csv')
+# boot_means = [rng.choice(sales['revenue'], size=len(sales), replace=True).mean() for _ in range(1000)]
+# ci_lower, ci_upper = np.percentile(boot_means, [2.5, 97.5])
+# std_error = np.std(boot_means, ddof=1)
+# print(ci_lower, ci_upper, std_error)
+
+import numpy as np
+import pandas as pd
+import streamlit as st
+
+rng = np.random.default_rng(42)
+sales = pd.read_csv('data/sales.csv')
+
+boot_means = []
+for _ in range(1000):
+    sample = rng.choice(sales['revenue'], size=len(sales), replace=True)
+    boot_means.append(sample.mean())
+
+boot_means = np.array(boot_means)
+
+ci_lower, ci_upper = np.percentile(boot_means, [2.5, 97.5])
+std_error = np.std(boot_means, ddof=1)
+
+st.write({"ci_lower": ci_lower, "ci_upper": ci_upper, "std_error": std_error})
+
+# ===== Solution 463 =====
+import numpy as np
+import pandas as pd
+
+rng = np.random.default_rng(42)
+students = pd.read_csv('data/students.csv')
+
+sim = rng.normal(
+    loc=students['gpa'].to_numpy()[:, None] * 25,
+    scale=5,
+    size=(len(students), 100)
+)
+
+students['mean_score'] = np.median(sim, axis=1)
+students['pass_rate'] = np.mean(sim >= 70, axis=1)
+
+summary_df = students[['name', 'gpa', 'pass_rate', 'mean_score']]
+summary_df = summary_df.sort_values('pass_rate', ascending=False)
+
+print(summary_df.head(10))
+
+# ===== Solution 464 =====
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import streamlit as st
+from scipy import stats
+
+rng = np.random.default_rng(42)
+
+samples = rng.poisson(
+    lam=5,
+    size=1000
+)
+
+value = np.arange(16)
+empirical_count = np.bincount(samples, minlength=16)
+empirical_prob = empirical_count / len(samples)
+theoretical_prob = stats.poisson.pmf(value, mu=5)
+
+df = pd.DataFrame({
+    "value": value,
+    "empirical_count": empirical_count,
+    "empirical_prob": empirical_prob,
+    "theoretical_prob": theoretical_prob
+})
+
+plt.scatter(theoretical_prob, empirical_prob)
+plt.axis('equal')
+plt.plot([0, 0.2], [0, 0.2])
+
+st.pyplot(plt.gcf())
+
+# ===== Solution 465 =====
+import numpy as np
+import pandas as pd
+import streamlit as st
+
+rng = np.random.default_rng(42)
+employees = pd.read_csv('data/employees.csv')
+
+std_salary = 5000
+std_perf = 0.5
+corr = 0.7
+cov = corr * std_salary * std_perf
+
+cov_matrix = [[std_salary**2, cov], [cov, std_perf**2]]
+changes = rng.multivariate_normal([0, 0], cov_matrix, size=len(employees))
+
+employees['salary_change'] = changes[:, 0]
+employees['performance_change'] = changes[:, 1]
+
+employees['future_salary'] = employees['salary'] + employees['salary_change']
+employees['future_performance'] = employees['performance_score'] + employees['performance_change']
+
+empirical_corr = np.corrcoef(employees['salary_change'], employees['performance_change'])[0, 1]
+
+st.write(empirical_corr)
+
+# ===== Solution 466 =====
+import numpy as np
+import pandas as pd
+import streamlit as st
+
+rng = np.random.default_rng(42)
+employees = pd.read_csv('data/employees.csv')
+
+count = 0
+n_sim = 10000
+
+for _ in range(n_sim):
+    team = rng.choice(employees['performance_score'], size=3, replace=False)
+    if team.mean() > 4.0:
+        count += 1
+
+estimated_probability = count / n_sim
+st.write(estimated_probability)
+
+# ===== Solution 467 =====
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score, mean_squared_error
+
+
+def fit_and_evaluate(data, Y, Xs):
+    X = data[Xs]
+    Y = data[Y]
+    X_train, X_test, Y_train, Y_test = train_test_split(
+        X, Y, test_size=0.2, random_state=42
+    )
+    model = LinearRegression()
+    model.fit(X_train, Y_train)
+    Y_pred = model.predict(X_test)
+    return {
+        "intercept": model.intercept_,
+        "coefficients": model.coef_,
+        "rmse": mean_squared_error(Y_test, Y_pred) ** 2,
+        "r2": r2_score(Y_test, Y_pred),
+        "Y_test": Y_test,
+        "X_test": X_test,
+        "Y_train": Y_train,
+        "X_test": X_test
+    }
+
+
+employees = pd.read_csv("data/employees.csv")
+results = fit_and_evaluate(
+    employees,
+    "salary",
+    ["performance_score", "years_experience"]
+)
+
+print(results)
+
+# ===== Solution 468 =====
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+employees = pd.read_csv('data/employees.csv')
+X = employees[['years_experience']]
+y = employees['salary']
+
+lr = LinearRegression().fit(X, y)
+y_pred = lr.predict(X)
+
+m = lr.coef_[0]
+b = lr.intercept_
+
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+
+axes[0].scatter(X, y)
+axes[0].plot(X, y_pred, label=f'y = {m:.2f}x + {b:.2f}')
+axes[0].set_title('Salary vs Experience')
+axes[0].set_xlabel('Years Experience')
+axes[0].set_ylabel('Salary')
+axes[0].legend()
+
+residuals = y - y_pred
+axes[1].scatter(y_pred, residuals)
+axes[1].axhline(0, linestyle='--')
+axes[1].set_title('Residual Plot')
+axes[1].set_xlabel('Predicted Salary')
+axes[1].set_ylabel('Residuals')
+
+plt.tight_layout()
+plt.show()
+
+# ===== Solution 469 =====
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+
+students = pd.read_csv('data/students.csv')
+students['high_gpa'] = (students['gpa'] >= 3.5).astype(int)
+
+X = students[['credits']]
+y = students['high_gpa']
+
+model = LogisticRegression().fit(X, y)
+
+x_vals = np.linspace(X.min().values[0], X.max().values[0], 100).reshape(-1, 1)
+probs = model.predict_proba(x_vals)[:, 1]
+
+jitter = np.random.uniform(-0.02, 0.02, size=len(y))
+
+plt.figure()
+plt.scatter(X, y + jitter)
+plt.plot(x_vals, probs)
+plt.xlabel('Credits')
+plt.ylabel('High GPA')
+plt.title('Logistic Regression: High GPA')
+plt.show()
+
+# ===== Solution 470 =====
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+
+employees = pd.read_csv('data/employees.csv')
+X = sm.add_constant(employees['years_experience'])
+y = employees['salary']
+
+model = sm.OLS(y, X).fit()
+pred = model.get_prediction(X).summary_frame()
+
+r2 = model.rsquared
+pval = model.pvalues['years_experience']
+
+plt.figure()
+plt.scatter(employees['years_experience'], y)
+plt.plot(employees['years_experience'], pred['mean'])
+plt.fill_between(employees['years_experience'], pred['mean_ci_lower'], pred['mean_ci_upper'], alpha=0.3)
+plt.xlabel('Years Experience')
+plt.ylabel('Salary')
+plt.title(f'OLS Regression (R2={r2:.3f}, p={pval:.3e})')
+plt.show()
+
+# ===== Solution 471 =====
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import streamlit as st
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error
+
+employees = pd.read_csv('data/employees.csv')
+X = employees[['years_experience', 'performance_score']]
+y = employees['salary']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+lr = LinearRegression().fit(X_train, y_train)
+rf = RandomForestRegressor(random_state=42).fit(X_train, y_train)
+
+rmse_lr = mean_squared_error(y_test, lr.predict(X_test), squared=False)
+rmse_rf = mean_squared_error(y_test, rf.predict(X_test), squared=False)
+
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+axes[0].bar(X.columns, rf.feature_importances_)
+axes[0].set_title('RF Feature Importances')
+axes[1].bar(['LinearRegression', 'RandomForest'], [rmse_lr, rmse_rf])
+axes[1].set_title('Test RMSE Comparison')
+fig.suptitle('Model Comparison')
+
+st.pyplot(fig)
+plt.close()
+
+# ===== Solution 472 =====
+import numpy as np
+import matplotlib.pyplot as plt
+import streamlit as st
+from scipy.stats import norm
+
+rng = np.random.default_rng(42)
+data = rng.normal(50, 10, 1000)
+sample_mean = data.mean()
+
+x = np.linspace(data.min(), data.max(), 200)
+
+plt.figure()
+plt.hist(data, bins=30, density=True)
+plt.plot(x, norm.pdf(x, 50, 10))
+plt.axvline(sample_mean, color='red')
+plt.axvline(50, color='blue', linestyle='--')
+plt.legend(['PDF', 'Sample Mean', 'Theoretical Mean'])
+
+st.pyplot(plt.gcf())
+plt.close()
+
+# ===== Solution 473 =====
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(42)
+
+normal = np.random.normal(50, 10, 500)
+expo = np.random.exponential(20, 500)
+uni = np.random.uniform(20, 80, 500)
+
+plt.figure(figsize=(12, 4))
+
+plt.subplot(1, 3, 1)
+plt.hist(normal, bins=25)
+plt.axvline(normal.mean(), linestyle='--')
+plt.title(f"Normal (mean={normal.mean():.2f})")
+
+plt.subplot(1, 3, 2)
+plt.hist(expo, bins=25)
+plt.axvline(expo.mean(), linestyle='--')
+plt.title(f"Exponential (mean={expo.mean():.2f})")
+
+plt.subplot(1, 3, 3)
+plt.hist(uni, bins=25)
+plt.axvline(uni.mean(), linestyle='--')
+plt.title(f"Uniform (mean={uni.mean():.2f})")
+
+plt.tight_layout()
+
+# Only for streamlit:
+# import streamlit as st
+# st.pyplot(plt.gcf())
+
+plt.show()
+plt.close()
+
+# ===== Solution 474 =====
+import seaborn as sns
+import statsmodels.api as sm
+
+tips = sns.load_dataset("tips")
+
+# Split data
+tips_sun  = tips[tips["day"] == "Sun"]
+tips_sat  = tips[tips["day"] == "Sat"]
+tips_thur = tips[tips["day"] == "Thur"]
+tips_fri  = tips[tips["day"] == "Fri"]
+
+# Fit models
+def fit(df):
+    y = df["total_bill"]
+    X = sm.add_constant(df[["tip", "size"]])
+    return sm.OLS(y, X).fit().rsquared
+
+r2_sun  = fit(tips_sun)
+r2_sat  = fit(tips_sat)
+r2_thur = fit(tips_thur)
+r2_fri  = fit(tips_fri)
+
+# Compare
+r2 = {
+    "Sun": r2_sun,
+    "Sat": r2_sat,
+    "Thur": r2_thur,
+    "Fri": r2_fri
+}
+
+print(r2)
+print("Best day:", max(r2, key=r2.get))
+
+# ===== Solution 475 =====
+import numpy as np
+import pandas as pd
+import streamlit as st
+
+rng = np.random.default_rng(42)
+sales = pd.read_csv('data/sales.csv')
+
+rows = []
+for cat, df in sales.groupby('category'):
+    mu = df['revenue'].mean()
+    sd = df['revenue'].std()
+    thr = df['revenue'].quantile(0.75)
+    sim = rng.normal(mu, sd, 10000)
+    rows.append({
+        'category': cat,
+        'mean_revenue': mu,
+        'std_revenue': sd,
+        'threshold_75': thr,
+        'prob_exceed': (sim > thr).mean()
+    })
+
+result_df = pd.DataFrame(rows)
+st.write(result_df)
+
+# ===== Solution 476 =====
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import streamlit as st
+
+rng = np.random.default_rng(42)
+weather = pd.read_csv('data/weather.csv')
+
+rows = []
+for city, df in weather.groupby('city'):
+    temps = df['temperature'].to_numpy()
+    means = [rng.choice(temps, size=len(temps), replace=True).mean() for _ in range(1000)]
+    lo, hi = np.percentile(means, [2.5, 97.5])
+    rows.append({'city': city, 'mean': np.mean(temps), 'ci_low': lo, 'ci_high': hi})
+
+ci_df = pd.DataFrame(rows)
+
+plt.figure()
+plt.bar(ci_df['city'], ci_df['mean'], yerr=[ci_df['mean']-ci_df['ci_low'], ci_df['ci_high']-ci_df['mean']])
+st.pyplot(plt.gcf())
+plt.close()
+
+# ===== Solution 477 =====
+import pandas as pd
+import statsmodels.api as sm
+import numpy as np
+import streamlit as st
+
+students = pd.read_csv('data/students.csv')
+students['STEM_major'] = students['major'].isin(['Computer Science','Mathematics','Physics']).astype(int)
+
+X = sm.add_constant(students[['age','gpa','credits']])
+y = students['STEM_major']
+
+model = sm.Logit(y, X).fit(disp=False)
+odds_ratios = np.exp(model.params)
+
+st.write(model.summary())
+st.write(odds_ratios)
+st.write(np.exp(model.conf_int()))
+
+# ===== Solution 478 =====
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import streamlit as st
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import mean_squared_error
+
+employees = pd.read_csv('data/employees.csv')
+X = employees[['years_experience']]
+y = employees['salary']
+
+degrees = [1,2,3]
+train_rmse = []
+cv_rmse = []
+
+for d in degrees:
+    Xp = PolynomialFeatures(d, include_bias=False).fit_transform(X)
+    model = LinearRegression().fit(Xp, y)
+    train_rmse.append(mean_squared_error(y, model.predict(Xp), squared=False))
+    scores = cross_val_score(model, Xp, y, cv=5, scoring='neg_mean_squared_error')
+    cv_rmse.append(np.sqrt(-scores.mean()))
+
+best_degree = degrees[int(np.argmin(cv_rmse))]
+
+plt.figure()
+plt.plot(degrees, train_rmse)
+plt.plot(degrees, cv_rmse)
+st.pyplot(plt.gcf())
+plt.close()
+
+st.write(best_degree)
+
+# ===== Solution 479 =====
+import pandas as pd
+import statsmodels.api as sm
+import streamlit as st
+
+sales = pd.read_csv('data/sales.csv')
+X = pd.get_dummies(sales[['price','category']], drop_first=True)
+X = sm.add_constant(X)
+y = sales['quantity']
+
+model = sm.GLM(y, X, family=sm.families.Poisson()).fit()
+
+hypo = X.groupby(level=0).mean()
+predicted_quantity = model.predict(hypo)
+
+st.write(model.summary())
+st.write(predicted_quantity)
 
