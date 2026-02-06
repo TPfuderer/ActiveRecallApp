@@ -7861,7 +7861,7 @@
     "id": 463,
     "qid_original": 463,
     "category": "Simulation & Random Sampling (6 Questions)",
-    "question_raw": "Load the `students.csv` dataset. Simulate exam scores for each student: generate 100 scores from a normal distribution where mean = gpa * 25 and std = 5. Create a summary DataFrame with columns: `name`, `gpa`, `mean_score`, `pass_rate` (proportion of scores >= 70). Sort by pass_rate descending and display the first 10 rows. Use seed 42.",
+    "question_raw": "Load the `students.csv` dataset. Simulate exam scores for each student: generate 100 scores from a normal distribution where mean = gpa * 25 and std = 5. Create a summary DataFrame with columns: `name`, `gpa`, `mean_score`, `pass_rate` (proportion of scores >= 70). Sort by pass_rate descending and display the first 10 rows. Use seed 42.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["summary_df"],
     "expected_value": [["DataFrame"]],
     "solution_code": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nstudents = pd.read_csv('data/students.csv')\n\nsim = rng.normal(\n    loc=students['gpa'].to_numpy()[:, None] * 25,\n    scale=5,\n    size=(len(students), 100)\n)\n\nstudents['mean_score'] = np.mean(sim, axis=1)\nstudents['pass_rate'] = np.mean(sim >= 70, axis=1)\n\nsummary_df = students[['name', 'gpa', 'mean_score', 'pass_rate']]\nsummary_df = summary_df.sort_values('pass_rate', ascending=False)\n\nprint(summary_df.head(10))"
@@ -7870,7 +7870,7 @@
     "id": 464,
     "qid_original": 464,
     "category": "Simulation & Random Sampling (6 Questions)",
-    "question_raw": "Generate 1000 samples from a Poisson distribution with lambda=5 using seed 42. Create a comparison DataFrame with columns: `value` (0-15), `empirical_count`, `empirical_prob`, `theoretical_prob` (using scipy.stats.poisson.pmf). Create a scatter plot comparing empirical vs theoretical probabilities, with a diagonal reference line (y=x).",
+    "question_raw": "Generate 1000 samples from a Poisson distribution with lambda=5 using seed 42. Create a comparison DataFrame with columns: `value` (0-15), `empirical_count`, `empirical_prob`, `theoretical_prob` (using scipy.stats.poisson.pmf). Create a scatter plot comparing empirical vs theoretical probabilities, with a diagonal reference line (y=x) to show perfect agreement. If points fall close to this line, the sample matches the theoretical distribution well. Ensure both axes use the same scale so the diagonal line appears at a true 45-degree angle.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["comparison_df"],
     "expected_value": [["DataFrame"]],
     "solution_code": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom scipy import stats\n\nrng = np.random.default_rng(42)\nsamples = rng.poisson(lam=5, size=1000)\n\nvalue = np.arange(16)\nempirical_count = np.bincount(samples, minlength=16)\nempirical_prob = empirical_count / len(samples)\ntheoretical_prob = stats.poisson.pmf(value, mu=5)\n\ncomparison_df = pd.DataFrame({\n    'value': value,\n    'empirical_count': empirical_count,\n    'empirical_prob': empirical_prob,\n    'theoretical_prob': theoretical_prob\n})\n\nplt.scatter(theoretical_prob, empirical_prob)\nplt.plot([0, max(theoretical_prob)], [0, max(theoretical_prob)])\nplt.axis('equal')\nplt.show()"
@@ -7879,7 +7879,7 @@
     "id": 465,
     "qid_original": 465,
     "category": "Simulation & Random Sampling (6 Questions)",
-    "question_raw": "Using the `employees.csv` dataset, simulate correlated future changes in salary and performance using a multivariate normal distribution. Verify the correlation is approximately 0.7. Use seed 42.",
+    "question_raw": "Using the `employees.csv` dataset, simulate correlated future changes in salary and performance. Generate changes for each employee using multivariate normal with: means=[0, 0], standard deviations=[5000, 0.5], correlation=0.7. Add columns `salary_change` and `performance_change` to the DataFrame, then create `future_salary` and `future_performance` by adding changes to original values. Verify the correlation between the changes is approximately 0.7 by printing it. Use seed 42.\n\n*Hint:* Recall that the correlation coefficient is defined as $\\rho_{XY} = \\frac{\\text{Cov}(X, Y)}{\\sigma_X \\cdot \\sigma_Y}$.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["empirical_corr"],
     "expected_value": [["float"]],
     "solution_code": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nemployees = pd.read_csv(\"data/employees.csv\")\n\nsim = rng.multivariate_normal(\n    mean=[0, 0],\n    cov=[[1, 0.7], [0.7, 1]],\n    size=len(employees)\n)\n\ncorr = np.corrcoef(sim[:, 0], sim[:, 1])[0, 1]\nprint(corr)"
@@ -7888,7 +7888,7 @@
     "id": 466,
     "qid_original": 466,
     "category": "Simulation & Random Sampling (6 Questions)",
-    "question_raw": "Create a Monte Carlo simulation to estimate the probability that a random team of 3 employees has average performance_score > 4.0. Run 10000 simulations. Use seed 42.",
+    "question_raw": "Create a Monte Carlo simulation to estimate the probability that a randomly formed team of 3 employees from the `employees.csv` dataset will have average performance_score > 4.0. Run 10000 simulations (randomly select 3 employees without replacement each time), calculate the proportion of simulations meeting the criterion. Use seed 42. Print the estimated probability.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["estimated_probability"],
     "expected_value": [["float"]],
     "solution_code": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nemployees = pd.read_csv(\"data/employees.csv\")\n\nscores = employees[\"performance_score\"].to_numpy()\n\nmeans = []\n\nfor _ in range(10000):\n    means.append(rng.choice(scores, size=3, replace=True).mean())\n\nprob = np.mean(np.array(means) > 4.0)\nprint(prob)"
@@ -7897,7 +7897,7 @@
     "id": 467,
     "qid_original": 467,
     "category": "Modeling with Functions/OOP (6 Questions)",
-    "question_raw": "Write a function `fit_and_evaluate` that fits LinearRegression and returns intercept, coefficients, train/test R² and test RMSE. Test on `employees.csv`.",
+    "question_raw": "Write a function `fit_and_evaluate(df, feature_cols, target_col, test_size=0.2, seed=42)` that:\n- Splits data into train/test sets\n- Fits a LinearRegression model\n- Returns a dict with keys: 'intercept', 'coefficients' (dict mapping feature names to values), 'train_r2' (R² on training data), 'test_r2' (R² on test data), 'test_rmse' (RMSE on test data)\n\nTest using the `employees.csv` dataset predicting salary from years_experience and performance_score. Print the returned dictionary.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["results"],
     "expected_value": [["dict"]],
     "solution_code": "import pandas as pd\nimport numpy as np\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import r2_score, mean_squared_error\n\n\ndef fit_and_evaluate(df, feature_cols, target_col, test_size=0.2, seed=42):\n    X = df[feature_cols]\n    y = df[target_col]\n    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=seed)\n    model = LinearRegression().fit(X_train, y_train)\n    return {\n        'intercept': model.intercept_,\n        'coefficients': dict(zip(feature_cols, model.coef_)),\n        'train_r2': model.score(X_train, y_train),\n        'test_r2': model.score(X_test, y_test),\n        'test_rmse': mean_squared_error(y_test, model.predict(X_test), squared=False)\n    }\n\nemployees = pd.read_csv('data/employees.csv')\nresults = fit_and_evaluate(employees, ['years_experience', 'performance_score'], 'salary')\nprint(results)"
@@ -7906,19 +7906,28 @@
     "id": 468,
     "qid_original": 468,
     "category": "Modeling with Functions/OOP (6 Questions)",
-    "question_raw": "Create a class `RegressionAnalyzer` with methods to fit LinearRegression and RandomForestRegressor and return evaluation metrics.",
+    "question_raw": "Create a class `RegressionAnalyzer` with:\n- `__init__(self, df, features, target)`: Store data, feature columns, and target column\n- `fit_linear(self)`: Fit and store a LinearRegression model\n- `fit_random_forest(self, n_estimators=100, random_state=42)`: Fit and store a RandomForestRegressor\n- `get_model_metrics(self, test_size=0.2, random_state=42)`: Return a DataFrame with evaluation metrics for all fitted models. Columns: model_name, train_rmse, test_rmse, r_squared. Only include models that have been fitted (skip models that haven't been fitted yet).\n\nTest with the `employees.csv` dataset predicting salary from years_experience and performance_score. Fit both models, then display the metrics DataFrame.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": [],
     "expected_value": [],
-    "solution_code": "import pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.ensemble import RandomForestRegressor\nfrom sklearn.metrics import mean_squared_error, r2_score\n\nclass RegressionAnalyzer:\n    def __init__(self, df, features, target):\n        self.df = df\n        self.features = features\n        self.target = target\n        self.linear_model = None\n        self.rf_model = None\n\n    def fit_linear(self):\n        self.linear_model = LinearRegression()\n        return self\n\n    def fit_random_forest(self, n_estimators=100, random_state=42):\n        self.rf_model = RandomForestRegressor(n_estimators=n_estimators, random_state=random_state)\n        return self\n\n    def get_model_metrics(self, test_size=0.2, random_state=42):\n        X = self.df[self.features]\n        y = self.df[self.target]\n        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)\n        rows = []\n        if self.linear_model is not None:\n            self.linear_model.fit(X_train, y_train)\n            rows.append({\n                'model_name': 'LinearRegression',\n                'train_rmse': mean_squared_error(y_train, self.linear_model.predict(X_train), squared=False),\n                'test_rmse': mean_squared_error(y_test, self.linear_model.predict(X_test), squared=False),\n                'r_squared': r2_score(y_test, self.linear_model.predict(X_test))\n            })\n        if self.rf_model is not None:\n            self.rf_model.fit(X_train, y_train)\n            rows.append({\n                'model_name': 'RandomForestRegressor',\n                'train_rmse': mean_squared_error(y_train, self.rf_model.predict(X_train), squared=False),\n                'test_rmse': mean_squared_error(y_test, self.rf_model.predict(X_test), squared=False),\n                'r_squared': r2_score(y_test, self.rf_model.predict(X_test))\n            })\n        return pd.DataFrame(rows)\n\nemployees = pd.read_csv('data/employees.csv')\nanalyzer = RegressionAnalyzer(employees, ['years_experience', 'performance_score'], 'salary')\nanalyzer.fit_linear().fit_random_forest()\nmetrics = analyzer.get_model_metrics()\nprint(metrics)"
+    "solution_code": "# Write your code below:\nclass RegressionAnalyzer:\n    def __init__(self, X, y):\n        self.X = X\n        self.y = y\n\n    def evaluate(self):\n        X_train, X_test, y_train, y_test = train_test_split(\n            self.X, self.y, test_size=0.2, random_state=42\n        )\n\n        lr = LinearRegression()\n        rf = RandomForestRegressor(random_state=42)\n\n        lr.fit(X_train, y_train)\n        rf.fit(X_train, y_train)\n\n        return {\n            \"LinearRegression\": {\n                \"rmse\": np.sqrt(mean_squared_error(y_test, lr.predict(X_test))),\n                \"r2\": r2_score(y_test, lr.predict(X_test))\n            },\n            \"RandomForestRegressor\": {\n                \"rmse\": np.sqrt(mean_squared_error(y_test, rf.predict(X_test))),\n                \"r2\": r2_score(y_test, rf.predict(X_test))\n            }\n        }\n\n# minimal test example\n\nemployees = pd.read_csv(\"data/employees.csv\")\n\nX = employees[[\"years_experience\", \"performance_score\"]]\ny = employees[\"salary\"]\n\nanalyzer = RegressionAnalyzer(X, y)\nmetrics = analyzer.evaluate()\n\nprint(metrics)"
   },
   {
     "id": 469,
     "qid_original": 469,
     "category": "Modeling with Functions/OOP (6 Questions)",
-    "question_raw": "Implement k-fold cross-validation from scratch.",
+    "question_raw": "Implement k-fold cross-validation from scratch. Write function `manual_kfold_cv(X, y, model, k=5, seed=42)` that:\n- Accepts X (features), y (target), and a sklearn model instance (e.g., LinearRegression() or RandomForestRegressor())\n- Shuffles indices using np.random.default_rng(seed)\n- Splits data into k folds\n- For each fold: creates a fresh copy of the model using `clone()` from `sklearn.base`, trains on k-1 folds, tests on the held-out fold, calculates RMSE\n- Returns dict with 'fold_rmses' (list of RMSE for each fold), 'mean_rmse', 'std_rmse'\n\n*Hint: `from sklearn.base import clone` - the clone() function creates an unfitted copy of an estimator with the same hyperparameters.*\n\nTest with LinearRegression on the `employees.csv` dataset (salary ~ years_experience). Print your results and compare with sklearn's cross_val_score (using neg_mean_squared_error).\n\n```{python}\n# Your code here\n\n```",
     "check_variable": [],
     "expected_value": [],
     "solution_code": "import pandas as pd\nimport numpy as np\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error\nfrom sklearn.base import clone\nfrom sklearn.model_selection import cross_val_score\n\n\ndef manual_kfold_cv(X, y, model, k=5, seed=42):\n    rng = np.random.default_rng(seed)\n    indices = rng.permutation(len(X))\n    folds = np.array_split(indices, k)\n    rmses = []\n\n    for i in range(k):\n        test_idx = folds[i]\n        train_idx = np.hstack([folds[j] for j in range(k) if j != i])\n        m = clone(model)\n        m.fit(X.iloc[train_idx], y.iloc[train_idx])\n        preds = m.predict(X.iloc[test_idx])\n        rmses.append(mean_squared_error(y.iloc[test_idx], preds, squared=False))\n\n    return {\n        'fold_rmses': rmses,\n        'mean_rmse': np.mean(rmses),\n        'std_rmse': np.std(rmses)\n    }\n\nemployees = pd.read_csv('data/employees.csv')\nX = employees[['years_experience']]\ny = employees['salary']\n\nresult = manual_kfold_cv(X, y, LinearRegression())\nprint(result)\n\nscores = cross_val_score(LinearRegression(), X, y, cv=5, scoring='neg_mean_squared_error')\nprint(np.sqrt(-scores))"
+  },
+  {
+    "id": 470,
+    "qid_original": 470,
+    "category": "Modeling with Functions/OOP (6 Questions)",
+    "question_raw": "Write a function `simulate_linear_data(n, true_intercept, true_slopes, noise_std, seed)` that:\n- Creates a random generator with the given seed\n- Generates len(true_slopes) features from uniform[0, 10]\n- Generates y = intercept + sum(slopes * features) + normal noise\n- Fits LinearRegression\n- Returns dict with: 'true_intercept', 'estimated_intercept', 'true_slopes', 'estimated_slopes', 'intercept_error_pct', 'slope_errors_pct'\n\nThe error percentages measure how far the estimated values deviate from the true values: `|estimated - true| / |true| * 100`. For example, if the true intercept is 5 and the estimate is 5.1, the error is 2%.\n\nTest with n=300, intercept=5, slopes=[2.5, -1.5], noise_std=2. Print the comparison showing how close estimates are to true values.\n\n```{python}\n# Your code here\n\n```",
+    "check_variable": [],
+    "expected_value": [],
+    "solution_code": "import numpy as np\nfrom sklearn.linear_model import LinearRegression\n\n\ndef simulate_linear_data(n, true_intercept, true_slopes, noise_std, seed):\n    rng = np.random.default_rng(seed)\n    X = rng.uniform(0, 10, size=(n, len(true_slopes)))\n    noise = rng.normal(0, noise_std, size=n)\n    y = true_intercept + X.dot(true_slopes) + noise\n\n    model = LinearRegression().fit(X, y)\n\n    intercept_error = abs(model.intercept_ - true_intercept) / abs(true_intercept) * 100\n    slope_errors = abs(model.coef_ - true_slopes) / abs(true_slopes) * 100\n\n    return {\n        'true_intercept': true_intercept,\n        'estimated_intercept': model.intercept_,\n        'true_slopes': list(true_slopes),\n        'estimated_slopes': list(model.coef_),\n        'intercept_error_pct': intercept_error,\n        'slope_errors_pct': list(slope_errors)\n    }\n\nresult = simulate_linear_data(300, 5, np.array([2.5, -1.5]), 2, 42)\nprint(result)"
   },
   {
     "id": 470,
@@ -7933,7 +7942,7 @@
     "id": 471,
     "qid_original": 471,
     "category": "Modeling with Functions/OOP (6 Questions)",
-    "question_raw": "Create LogisticClassifier wrapper class.",
+    "question_raw": "Create a class `LogisticClassifier` that wraps sklearn's LogisticRegression:\n- `__init__(self)`: Initialize the model\n- `fit(self, X, y)`: Fit the model, return self\n- `predict(self, X)`: Return predicted classes (0 or 1)\n- `predict_proba(self, X)`: Return probability of class 1\n- `get_accuracy(self, X, y)`: Return accuracy score\n- `get_coefficients(self)`: Return dict with 'intercept' and 'coefficients' (as a list)\n\nTest using the `students.csv` dataset predicting high_gpa (gpa >= 3.5) from age and credits. Print the accuracy and interpret the coefficients (which feature has a positive/negative effect on high GPA probability).\n\n```{python}\n# Your code here\n\n```",
     "check_variable": [],
     "expected_value": [],
     "solution_code": "import pandas as pd\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import accuracy_score\n\nclass LogisticClassifier:\n    def __init__(self):\n        self.model = LogisticRegression()\n\n    def fit(self, X, y):\n        self.model.fit(X, y)\n        return self\n\n    def predict(self, X):\n        return self.model.predict(X)\n\n    def predict_proba(self, X):\n        return self.model.predict_proba(X)[:, 1]\n\n    def get_accuracy(self, X, y):\n        return accuracy_score(y, self.predict(X))\n\n    def get_coefficients(self):\n        return {\n            'intercept': self.model.intercept_[0],\n            'coefficients': list(self.model.coef_[0])\n        }\n\nstudents = pd.read_csv('data/students.csv')\nstudents['high_gpa'] = (students['gpa'] >= 3.5).astype(int)\n\nX = students[['age', 'credits']]\ny = students['high_gpa']\n\nclf = LogisticClassifier().fit(X, y)\nprint(clf.get_accuracy(X, y))\nprint(clf.get_coefficients())"
@@ -7942,7 +7951,7 @@
     "id": 472,
     "qid_original": 472,
     "category": "Modeling with Functions/OOP (6 Questions)",
-    "question_raw": "Compare multiple regression models using a class.",
+    "question_raw": "Create a class `ModelComparison` that compares multiple regression models on the same dataset. The class should:\n\n- `__init__(self, df, features, target)`: Store the data and split into train/test (test_size=0.2, random_state=42)\n- `add_model(self, name, model)`: Add a model to compare (store in a dict)\n- `fit_all(self)`: Fit all added models on training data\n- `@property` `results`: Return a DataFrame with columns 'model', 'train_r2', 'test_r2' for all fitted models\n- `@classmethod` `from_csv(cls, filepath, features, target)`: Create instance by loading data from CSV\n\nTest by loading `employees.csv` using the `@classmethod`, adding LinearRegression and RandomForestRegressor, fitting all models, and displaying the results DataFrame.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": [],
     "expected_value": [],
     "solution_code": "import pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.ensemble import RandomForestRegressor\n\nclass ModelComparison:\n    def __init__(self, df, features, target):\n        X = df[features]\n        y = df[target]\n        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n        self.models = {}\n\n    def add_model(self, name, model):\n        self.models[name] = model\n\n    def fit_all(self):\n        for model in self.models.values():\n            model.fit(self.X_train, self.y_train)\n\n    @property\n    def results(self):\n        rows = []\n        for name, model in self.models.items():\n            rows.append({\n                'model': name,\n                'train_r2': model.score(self.X_train, self.y_train),\n                'test_r2': model.score(self.X_test, self.y_test)\n            })\n        return pd.DataFrame(rows)\n\n    @classmethod\n    def from_csv(cls, filepath, features, target):\n        df = pd.read_csv(filepath)\n        return cls(df, features, target)\n\nmc = ModelComparison.from_csv('data/employees.csv', ['years_experience', 'performance_score'], 'salary')\nmc.add_model('LinearRegression', LinearRegression())\nmc.add_model('RandomForestRegressor', RandomForestRegressor(random_state=42))\nmc.fit_all()\nprint(mc.results)"
@@ -7951,7 +7960,7 @@
     "id": 473,
     "qid_original": 473,
     "category": "Model Visualization & Diagnostics (6 Questions)",
-    "question_raw": "Using the `employees.csv` dataset, fit a linear regression predicting salary from years_experience. Create a 1x2 subplot with scatter+regression line and residual plot.",
+    "question_raw": "Using the `employees.csv` dataset, fit a linear regression predicting salary from years_experience. Create a figure with 2 subplots side-by-side (1 row, 2 columns):\n- Left: Scatter plot of data with regression line. Include the equation (y = mx + b with actual values) in the legend.\n- Right: Residual plot (predicted values on x-axis, residuals on y-axis) with a horizontal dashed line at y=0.\n\nAdd appropriate titles, axis labels, and use `plt.tight_layout()`.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": [],
     "expected_value": [],
     "solution_code": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.linear_model import LinearRegression\n\nemployees = pd.read_csv('data/employees.csv')\nX = employees[['years_experience']]\ny = employees['salary']\n\nmodel = LinearRegression().fit(X, y)\ny_pred = model.predict(X)\n\nm = model.coef_[0]\nb = model.intercept_\n\nfig, axes = plt.subplots(1, 2, figsize=(10, 4))\n\naxes[0].scatter(X, y)\naxes[0].plot(X, y_pred, label=f'y = {m:.2f}x + {b:.2f}')\naxes[0].set_xlabel('Years Experience')\naxes[0].set_ylabel('Salary')\naxes[0].set_title('Salary vs Experience')\naxes[0].legend()\n\nresiduals = y - y_pred\naxes[1].scatter(y_pred, residuals)\naxes[1].axhline(0, linestyle='--')\naxes[1].set_xlabel('Predicted Salary')\naxes[1].set_ylabel('Residuals')\naxes[1].set_title('Residual Plot')\n\nplt.tight_layout()\nplt.show()"
@@ -7960,7 +7969,7 @@
     "id": 474,
     "qid_original": 474,
     "category": "Model Visualization & Diagnostics (6 Questions)",
-    "question_raw": "Using the `students.csv` dataset, fit logistic regression predicting high_gpa from credits and visualize probabilities.",
+    "question_raw": "Using the `students.csv` dataset, create binary target `high_gpa` (1 if gpa >= 3.5, else 0). Fit logistic regression predicting high_gpa from credits only. Create a visualization with:\n- Scatter plot of actual data points (credits on x-axis, high_gpa on y-axis with small jitter for visibility)\n- Smooth S-curve showing predicted probability across the credits range (use np.linspace to create 100 points from min to max credits)\n\n```{python}\n# Your code here\n\n```",
     "check_variable": [],
     "expected_value": [],
     "solution_code": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.linear_model import LogisticRegression\n\nstudents = pd.read_csv('data/students.csv')\nstudents['high_gpa'] = (students['gpa'] >= 3.5).astype(int)\n\nX = students[['credits']]\ny = students['high_gpa']\n\nmodel = LogisticRegression().fit(X, y)\n\nx_vals = np.linspace(X.min().values[0], X.max().values[0], 100).reshape(-1, 1)\nprobs = model.predict_proba(x_vals)[:, 1]\n\njitter = np.random.uniform(-0.02, 0.02, size=len(y))\n\nplt.scatter(X, y + jitter)\nplt.plot(x_vals, probs)\nplt.xlabel('Credits')\nplt.ylabel('High GPA')\nplt.title('Logistic Regression: High GPA')\nplt.show()"
@@ -7969,7 +7978,7 @@
     "id": 475,
     "qid_original": 475,
     "category": "Model Visualization & Diagnostics (6 Questions)",
-    "question_raw": "Using the `employees.csv` dataset, fit OLS regression with confidence interval visualization.",
+    "question_raw": "Using the `employees.csv` dataset, fit OLS regression using statsmodels (with an intercept) predicting salary from years_experience. Create a figure showing:\n- Scatter plot of the data\n- Regression line\n- 95% confidence band for the mean prediction (use `get_prediction().summary_frame()` to get confidence intervals)\n- Use `plt.fill_between()` for the shaded confidence region\n\nInclude R-squared value and p-value for the slope coefficient in the title.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": [],
     "expected_value": [],
     "solution_code": "import pandas as pd\nimport matplotlib.pyplot as plt\nimport statsmodels.api as sm\n\nemployees = pd.read_csv('data/employees.csv')\nX = sm.add_constant(employees['years_experience'])\ny = employees['salary']\n\nmodel = sm.OLS(y, X).fit()\npred = model.get_prediction(X).summary_frame()\n\nr2 = model.rsquared\npval = model.pvalues['years_experience']\n\nplt.scatter(employees['years_experience'], y)\nplt.plot(employees['years_experience'], pred['mean'])\nplt.fill_between(\n    employees['years_experience'],\n    pred['mean_ci_lower'],\n    pred['mean_ci_upper'],\n    alpha=0.3\n)\nplt.xlabel('Years Experience')\nplt.ylabel('Salary')\nplt.title(f'OLS Regression (R2={r2:.3f}, p={pval:.3e})')\nplt.show()"
@@ -7978,7 +7987,7 @@
     "id": 476,
     "qid_original": 476,
     "category": "Model Visualization & Diagnostics (6 Questions)",
-    "question_raw": "Using the `employees.csv` dataset, compare LinearRegression vs RandomForestRegressor for predicting salary from years_experience and performance_score. Create a 1x2 subplot figure with feature importances and test RMSE comparison. Use random_state=42.",
+    "question_raw": "Using the `employees.csv` dataset, compare LinearRegression vs RandomForestRegressor for predicting salary from years_experience and performance_score. Create a 1x2 subplot figure with:\n- Left: Feature importances bar chart for Random Forest\n- Right: Model comparison bar chart showing test RMSE for both models\n\nUse 80/20 train/test split with random_state=42. Add a main title for the entire figure.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["rmse_lr", "rmse_rf"],
     "expected_value": [["float"], ["float"]],
     "solution_code": "import pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.ensemble import RandomForestRegressor\nfrom sklearn.metrics import mean_squared_error\n\nemployees = pd.read_csv('data/employees.csv')\nX = employees[['years_experience', 'performance_score']]\ny = employees['salary']\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\nlr = LinearRegression().fit(X_train, y_train)\nrf = RandomForestRegressor(random_state=42).fit(X_train, y_train)\n\nrmse_lr = mean_squared_error(y_test, lr.predict(X_test), squared=False)\nrmse_rf = mean_squared_error(y_test, rf.predict(X_test), squared=False)\n\nfig, axes = plt.subplots(1, 2, figsize=(10, 4))\naxes[0].bar(X.columns, rf.feature_importances_)\naxes[0].set_title('RF Feature Importances')\naxes[1].bar(['LinearRegression', 'RandomForest'], [rmse_lr, rmse_rf])\naxes[1].set_title('Test RMSE Comparison')\nfig.suptitle('Model Comparison')\n\nplt.show()"
@@ -7987,7 +7996,7 @@
     "id": 477,
     "qid_original": 477,
     "category": "Model Visualization & Diagnostics (6 Questions)",
-    "question_raw": "Generate 1000 samples from normal(mu=50, sigma=10) with seed 42 and visualize histogram, PDF, and mean lines.",
+    "question_raw": "Generate 1000 samples from normal(mu=50, sigma=10) with seed 42. Create a visualization with:\n- Histogram with 30 bins using `density=True` to show probability density\n- Theoretical PDF curve overlay (use scipy.stats.norm.pdf)\n- Vertical solid red line at sample mean\n- Vertical dashed blue line at theoretical mean (50)\n- Legend identifying the histogram, PDF curve, sample mean, and theoretical mean\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["sample_mean"],
     "expected_value": [["float"]],
     "solution_code": "import numpy as np\nimport matplotlib.pyplot as plt\nfrom scipy.stats import norm\n\nrng = np.random.default_rng(42)\ndata = rng.normal(50, 10, 1000)\n\nsample_mean = data.mean()\n\nx = np.linspace(data.min(), data.max(), 200)\n\nplt.hist(data, bins=30, density=True, label='Histogram')\nplt.plot(x, norm.pdf(x, 50, 10), label='PDF')\nplt.axvline(sample_mean, color='red', label='Sample Mean')\nplt.axvline(50, color='blue', linestyle='--', label='Theoretical Mean')\nplt.legend()\nplt.show()"
@@ -7996,7 +8005,7 @@
     "id": 478,
     "qid_original": 478,
     "category": "Model Visualization & Diagnostics (6 Questions)",
-    "question_raw": "Simulate samples from Normal, Exponential, and Uniform distributions and plot histograms with sample means. Use seed 42.",
+    "question_raw": "Using seed 42, simulate 500 samples from each of three distributions: Normal(50, 10), Exponential(scale=20), and Uniform(20, 80). Create a 1x3 subplot figure where each subplot shows:\n- Histogram with 25 bins using `density=True`\n- Vertical dashed line at the sample mean\n\nAdd titles showing distribution name and sample mean. Use `plt.tight_layout()`.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["means"],
     "expected_value": [["list"]],
     "solution_code": "import numpy as np\nimport matplotlib.pyplot as plt\n\nrng = np.random.default_rng(42)\n\nnormal = rng.normal(50, 10, 500)\nexpo = rng.exponential(20, 500)\nuni = rng.uniform(20, 80, 500)\n\nmeans = [normal.mean(), expo.mean(), uni.mean()]\n\nplt.figure(figsize=(12, 4))\n\nplt.subplot(1, 3, 1)\nplt.hist(normal, bins=25, density=True)\nplt.axvline(normal.mean(), linestyle='--')\nplt.title(f'Normal (mean={normal.mean():.2f})')\n\nplt.subplot(1, 3, 2)\nplt.hist(expo, bins=25, density=True)\nplt.axvline(expo.mean(), linestyle='--')\nplt.title(f'Exponential (mean={expo.mean():.2f})')\n\nplt.subplot(1, 3, 3)\nplt.hist(uni, bins=25, density=True)\nplt.axvline(uni.mean(), linestyle='--')\nplt.title(f'Uniform (mean={uni.mean():.2f})')\n\nplt.tight_layout()\nplt.show()"
@@ -8005,7 +8014,7 @@
     "id": 479,
     "qid_original": 479,
     "category": "Statistical Inference & GLM (6 Questions)",
-    "question_raw": "Using seaborn's built-in `tips` dataset, fit OLS regressions per day and identify day with highest R².",
+    "question_raw": "Using seaborn's built-in `tips` dataset (`sns.load_dataset('tips')`), fit separate OLS regressions (tip ~ total_bill, with intercept) for each day of the week. Use groupby with a custom function that fits statsmodels OLS and extracts statistics. Create a summary DataFrame with columns: `day`, `n_observations`, `intercept`, `slope`, `r_squared`, `p_value_slope`. Sort by r_squared descending and print which day shows the strongest linear relationship (highest R²) between total_bill and tip.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["best_day"],
     "expected_value": [["str"]],
     "solution_code": "import seaborn as sns\nimport pandas as pd\nimport statsmodels.api as sm\n\n# --- FULL VERSION WITH CATEGORICALS ---\ntips = sns.load_dataset('tips')\n\nfor day, df in tips.groupby('day'):\n    y = df['tip']\n    X = df[['total_bill', 'size', 'sex', 'smoker', 'time']]\n    X = pd.get_dummies(X, drop_first=True)\n    X = X.astype(float)\n    X = sm.add_constant(X)\n    print(day, sm.OLS(y, X).fit().rsquared)\n\n# --- MINIMAL VERSION ---\nimport statsmodels.api as sm\n\ntips = sns.load_dataset('tips')\n\nfor day, df in tips.groupby('day'):\n    y = df['tip']\n    X = sm.add_constant(df['total_bill'])\n    print(day, sm.OLS(y, X).fit().rsquared)"
@@ -8014,7 +8023,7 @@
     "id": 480,
     "qid_original": 480,
     "category": "Statistical Inference & GLM (6 Questions)",
-    "question_raw": "Simulate revenue by category and estimate probability of exceeding 75th percentile. Use seed 42.",
+    "question_raw": "Using the `sales.csv` dataset, for each product category:\n1. Calculate the mean and standard deviation of revenue\n2. Calculate the 75th percentile of actual revenue as a threshold\n3. Simulate 10000 revenue values from a normal distribution with the category's mean and std\n4. Calculate the probability of simulated revenue exceeding the 75th percentile threshold\n\nCreate and display a DataFrame with columns: `category`, `mean_revenue`, `std_revenue`, `threshold_75`, `prob_exceed`. Use seed 42.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["result_df"],
     "expected_value": [["DataFrame"]],
     "solution_code": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nsales = pd.read_csv('data/sales.csv')\n\nrows = []\nfor cat, df in sales.groupby('category'):\n    mu = df['revenue'].mean()\n    sd = df['revenue'].std()\n    thr = df['revenue'].quantile(0.75)\n    sim = rng.normal(mu, sd, 10000)\n    rows.append({\n        'category': cat,\n        'mean_revenue': mu,\n        'std_revenue': sd,\n        'threshold_75': thr,\n        'prob_exceed': (sim > thr).mean()\n    })\n\nresult_df = pd.DataFrame(rows)\nprint(result_df)"
@@ -8023,7 +8032,7 @@
     "id": 481,
     "qid_original": 481,
     "category": "Statistical Inference & GLM (6 Questions)",
-    "question_raw": "Bootstrap 95% CI for mean temperature per city and plot with error bars. Use seed 42.",
+    "question_raw": "Using the `weather.csv` dataset, estimate the 95% confidence interval for mean temperature in each city using bootstrap resampling. For each city:\n\n1. Get the temperature values as a NumPy array\n2. Run 1000 bootstrap iterations: in each iteration, use `rng.choice()` to sample with replacement (same size as original), then calculate the mean\n3. Store all 1000 bootstrap means in a list\n4. Calculate the 95% CI as the 2.5th and 97.5th percentiles of the bootstrap means\n\nPrint the mean and 95% CI for each city. Then create a bar plot showing mean temperature per city with error bars representing the CI (use `plt.bar()` with `yerr` parameter). Use seed 42.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["ci_df"],
     "expected_value": [["DataFrame"]],
     "solution_code": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nrng = np.random.default_rng(42)\nweather = pd.read_csv('data/weather.csv')\n\nrows = []\nfor city, df in weather.groupby('city'):\n    temps = df['temperature'].to_numpy()\n    means = [rng.choice(temps, size=len(temps), replace=True).mean() for _ in range(1000)]\n    lo, hi = np.percentile(means, [2.5, 97.5])\n    rows.append({\n        'city': city,\n        'mean': temps.mean(),\n        'ci_low': lo,\n        'ci_high': hi\n    })\n\nci_df = pd.DataFrame(rows)\n\nplt.bar(\n    ci_df['city'],\n    ci_df['mean'],\n    yerr=[ci_df['mean'] - ci_df['ci_low'], ci_df['ci_high'] - ci_df['mean']]\n)\nplt.show()\n\nprint(ci_df)"
@@ -8032,7 +8041,7 @@
     "id": 482,
     "qid_original": 482,
     "category": "Statistical Inference & GLM (6 Questions)",
-    "question_raw": "Fit logistic regression predicting STEM_major using statsmodels and display odds ratios.",
+    "question_raw": "Using the `students.csv` dataset, create a binary column `STEM_major` that equals 1 if the student's major is in ['Computer Science', 'Mathematics', 'Physics'], else 0. Fit logistic regression using statsmodels (`sm.Logit`, with intercept) predicting STEM_major from age, gpa, and credits. Display:\n- The model summary\n- The coefficients and their exponentiated values (odds ratios)\n- 95% confidence intervals for the odds ratios\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["odds_ratios"],
     "expected_value": [["Series"]],
     "solution_code": "import pandas as pd\nimport numpy as np\nimport statsmodels.api as sm\n\nstudents = pd.read_csv('data/students.csv')\nstudents['STEM_major'] = students['major'].isin(['Computer Science', 'Mathematics', 'Physics']).astype(int)\n\nX = sm.add_constant(students[['age', 'gpa', 'credits']])\ny = students['STEM_major']\n\nmodel = sm.Logit(y, X).fit(disp=False)\nodds_ratios = np.exp(model.params)\n\nprint(model.summary())\nprint(odds_ratios)\nprint(np.exp(model.conf_int()))"
@@ -8041,7 +8050,7 @@
     "id": 483,
     "qid_original": 483,
     "category": "Statistical Inference & GLM (6 Questions)",
-    "question_raw": "Compare polynomial regression degrees 1–3 using training and CV RMSE.",
+    "question_raw": "Using the `employees.csv` dataset, compare polynomial regression models of degrees 1, 2, and 3 for predicting salary from years_experience. For each degree:\n1. Create polynomial features using `PolynomialFeatures(degree=d, include_bias=False)` and `fit_transform()`\n2. Fit `LinearRegression` on the polynomial features\n3. Calculate training RMSE on full data using `mean_squared_error()` and `np.sqrt()`\n4. Calculate 5-fold cross-validation RMSE using `cross_val_score(..., cv=5, scoring='neg_mean_squared_error')`\n\nCreate a plot with two lines: training RMSE and CV RMSE vs polynomial degree. Print which degree is optimal based on the lowest CV RMSE.\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["best_degree"],
     "expected_value": [["int"]],
     "solution_code": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.preprocessing import PolynomialFeatures\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.model_selection import cross_val_score\nfrom sklearn.metrics import mean_squared_error\n\nemployees = pd.read_csv('data/employees.csv')\nX = employees[['years_experience']]\ny = employees['salary']\n\ndegrees = [1, 2, 3]\ntrain_rmse = []\ncv_rmse = []\n\nfor d in degrees:\n    Xp = PolynomialFeatures(d, include_bias=False).fit_transform(X)\n    model = LinearRegression().fit(Xp, y)\n    train_rmse.append(mean_squared_error(y, model.predict(Xp), squared=False))\n    scores = cross_val_score(model, Xp, y, cv=5, scoring='neg_mean_squared_error')\n    cv_rmse.append(np.sqrt(-scores.mean()))\n\nbest_degree = degrees[int(np.argmin(cv_rmse))]\n\nplt.plot(degrees, train_rmse)\nplt.plot(degrees, cv_rmse)\nplt.show()\n\nprint(best_degree)"
@@ -8050,11 +8059,11 @@
     "id": 484,
     "qid_original": 484,
     "category": "Statistical Inference & GLM (6 Questions)",
-    "question_raw": "Fit Poisson GLM predicting quantity from price and category and predict expected quantity.",
+    "question_raw": "Using the `sales.csv` dataset, fit a Poisson GLM (with intercept) predicting quantity from price and category. Use `pd.get_dummies()` to create dummy variables for category (drop the first category to avoid multicollinearity). Using statsmodels:\n1. Fit the GLM with Poisson family\n2. Display the model summary\n3. For a hypothetical product with price=50 in each category, predict the expected quantity\n\n```{python}\n# Your code here\n\n```",
     "check_variable": ["predicted_quantity"],
     "expected_value": [["Series"]],
     "solution_code": "import pandas as pd\nimport statsmodels.api as sm\n\nsales = pd.read_csv('data/sales.csv')\n\nX = pd.get_dummies(sales[['price', 'category']], drop_first=True).astype(int)\nX = sm.add_constant(X)\ny = sales['quantity']\n\nmodel = sm.GLM(y, X, family=sm.families.Poisson()).fit()\n\nrows = []\nfor cat in sales['category'].unique():\n    row = {'price': 50}\n    for c in X.columns:\n        if c.startswith('category_'):\n            row[c] = int(c == f'category_{cat}')\n    rows.append(row)\n\nhypo = pd.DataFrame(rows).fillna(0)\nhypo = sm.add_constant(hypo, has_constant='add')\n\npredicted_quantity = pd.Series(model.predict(hypo))\n\nprint(model.summary())\nprint(predicted_quantity)"
   }
-
 ]
+
 
