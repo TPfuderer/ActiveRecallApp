@@ -39,7 +39,7 @@ st.write("Supabase connected:", supabase is not None)
 
 
 # --- Tabs ----------------------------------------------------
-tabs = st.tabs(["🧠 Aufgaben", "❗ Issue melden", "📊 Dashboard"])
+tabs = st.tabs(["🧠 Aufgaben", "❗ Issue melden!", "📊 Dashboard"])
 
 # ============================================================
 # 🧠 TAB 1: Aufgaben & Learning UI

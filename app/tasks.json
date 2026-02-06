@@ -7882,7 +7882,7 @@
     "question_raw": "Using the `employees.csv` dataset, simulate correlated future changes in salary and performance using a multivariate normal distribution. Verify the correlation is approximately 0.7. Use seed 42.",
     "check_variable": ["empirical_corr"],
     "expected_value": [["float"]],
-  "solution_code": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nemployees = pd.read_csv(\"data/employees.csv\")\n\nsim = rng.multivariate_normal(\n    mean=[0, 0],\n    cov=[[1, 0.7], [0.7, 1]],\n    size=len(employees)\n)\n\ncorr = np.corrcoef(sim[:, 0], sim[:, 1])[0, 1]\nprint(corr)"
+    "solution_code": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nemployees = pd.read_csv(\"data/employees.csv\")\n\nsim = rng.multivariate_normal(\n    mean=[0, 0],\n    cov=[[1, 0.7], [0.7, 1]],\n    size=len(employees)\n)\n\ncorr = np.corrcoef(sim[:, 0], sim[:, 1])[0, 1]\nprint(corr)"
   },
   {
     "id": 466,
@@ -7891,7 +7891,7 @@
     "question_raw": "Create a Monte Carlo simulation to estimate the probability that a random team of 3 employees has average performance_score > 4.0. Run 10000 simulations. Use seed 42.",
     "check_variable": ["estimated_probability"],
     "expected_value": [["float"]],
-    "solution_code": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nemployees = pd.read_csv('data/employees.csv')\n\ncount = 0\nn_sim = 10000\n\nfor _ in range(n_sim):\n    team = rng.choice(employees['performance_score'], size=3, replace=False)\n    if team.mean() > 4.0:\n        count += 1\n\nestimated_probability = count / n_sim\nprint(estimated_probability)"
+    "solution_code": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nemployees = pd.read_csv(\"data/employees.csv\")\n\nscores = employees[\"performance_score\"].to_numpy()\n\nmeans = []\n\nfor _ in range(10000):\n    means.append(rng.choice(scores, size=3, replace=True).mean())\n\nprob = np.mean(np.array(means) > 4.0)\nprint(prob)"
   },
   {
     "id": 467,
