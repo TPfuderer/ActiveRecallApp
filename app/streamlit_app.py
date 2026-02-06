@@ -266,7 +266,7 @@ with tabs[0]:
     days_left = (exam_date - date.today()).days
 
     if days_left >= 0:
-        st.info(f"⏳ **Prüfung in {days_left} Tagen ** (12. Februar)")
+        st.info(f"⏳ **Prüfung in {days_left} Tagen** (12. Februar)")
     else:
         st.success("🎉 Prüfung vorbei – stark durchgezogen!")
 

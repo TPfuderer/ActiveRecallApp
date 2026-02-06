@@ -7882,7 +7882,7 @@
     "question_raw": "Using the `employees.csv` dataset, simulate correlated future changes in salary and performance using a multivariate normal distribution. Verify the correlation is approximately 0.7. Use seed 42.",
     "check_variable": ["empirical_corr"],
     "expected_value": [["float"]],
-    "solution_code": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nemployees = pd.read_csv('data/employees.csv')\n\nstd_salary = 5000\nstd_perf = 0.5\ncorr = 0.7\ncov = corr * std_salary * std_perf\n\ncov_matrix = [[std_salary**2, cov], [cov, std_perf**2]]\nchanges = rng.multivariate_normal([0, 0], cov_matrix, size=len(employees))\n\nemployees['salary_change'] = changes[:, 0]\nemployees['performance_change'] = changes[:, 1]\n\nempirical_corr = np.corrcoef(employees['salary_change'], employees['performance_change'])[0, 1]\nprint(empirical_corr)"
+  "solution_code": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nemployees = pd.read_csv(\"data/employees.csv\")\n\nsim = rng.multivariate_normal(\n    mean=[0, 0],\n    cov=[[1, 0.7], [0.7, 1]],\n    size=len(employees)\n)\n\ncorr = np.corrcoef(sim[:, 0], sim[:, 1])[0, 1]\nprint(corr)"
   },
   {
     "id": 466,
