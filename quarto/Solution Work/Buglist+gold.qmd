@@ -1,0 +1,66 @@
+
+```{python}
+astype(float)
+-scores.mean()
+reindex(columns=X.columns)
+```
+
+### Gold
+
+## 6 one-glance skeletons (copy/paste)
+
+### 1 RNG / Simulation skeleton (normal / choice / poisson / multivariate)
+
+```{python}
+# =========================
+# ONE CHUNK: SPECIAL STUFF (copy/paste snippets)
+# =========================
+
+#--- neg MSE -> RMSE (sklearn CV) ---
+scores = cross_val_score(model, X, y, cv=5, scoring="neg_mean_squared_error")
+cv_rmse = np.sqrt(-scores.mean())
+
+# --- groupby loop pattern (rows -> DataFrame) ---
+rows = []
+for key, g in df.groupby("group_col"):
+    rows.append({"group_col": key, "...": ...})
+out = pd.DataFrame(rows)
+
+# --- bootstrap means list name + CI ---
+boot_means = []
+for _ in range(1000):
+    sample = rng.choice(x, size=len(x), replace=True)
+    boot_means.append(sample.mean())
+ci_low, ci_high = np.percentile(boot_means, [2.5, 97.5])
+
+# --- yerr (asymmetric) for plt.bar ---
+yerr = [ci_df["mean"] - ci_df["ci_low"], ci_df["ci_high"] - ci_df["mean"]]
+plt.bar(ci_df["x"], ci_df["mean"], yerr=yerr, capsize=5)
+
+# --- multivariate normal cov matrix from corr + stds ---
+cov = corr * std1 * std2
+cov_matrix = [[std1**2, cov], [cov, std2**2]]
+samples = rng.multivariate_normal([0, 0], cov_matrix, size=n)
+
+# --- statsmodels: force constant (avoid skip) ---
+X_new = sm.add_constant(X_new, has_constant="add").astype(float)
+
+# --- statsmodels predict bug-fixer: SAME columns + SAME order ---
+X_new = X_new.reindex(columns=X.columns, fill_value=0)
+
+# --- 2-subplot frame (fast) ---
+plt.subplot(1, 2, 1)
+plt.scatter(x, y)
+plt.plot(x, y_pred)
+
+plt.subplot(1, 2, 2)
+plt.scatter(y_pred, y - y_pred)
+plt.axhline(0, ls="--")
+
+plt.tight_layout()
+plt.show()
+
+# --- diagonal reference line + equal axes (empirical vs theoretical) ---
+plt.plot([0, 1], [0, 1], "--")
+plt.axis("equal")
+```
